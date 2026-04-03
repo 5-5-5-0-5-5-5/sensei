@@ -1,3 +1,11 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Sensei (licença MIT).
+Nada aqui implica cessão de direitos morais/autorais.
+Conteúdos de terceiros não licenciados de forma compatível não devem ser incluídos.
+Referências a materiais externos devem ser linkadas e reescritas com palavras próprias.
+---
+
+
 # Guia de Configuração
 
 Este guia reflete a configuração observável no projeto atual, com base em [`sensei.config.json`](../../sensei.config.json), nos comandos da CLI e nas variáveis lidas durante a execução.
@@ -300,3 +308,4 @@ sensei diagnosticar --full
 sensei diagnosticar --json --export
 sensei guardian --diff
 ```
+

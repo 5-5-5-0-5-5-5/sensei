@@ -1,3 +1,11 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Sensei (licença MIT).
+Nada aqui implica cessão de direitos morais/autorais.
+Conteúdos de terceiros não licenciados de forma compatível não devem ser incluídos.
+Referências a materiais externos devem ser linkadas e reescritas com palavras próprias.
+---
+
+
 # Sensei
 
 CLI modular para análise, diagnóstico e manutenção de projetos JavaScript/TypeScript com suporte heurístico adicional para HTML, CSS, XML, Python e PHP.
@@ -13,8 +21,8 @@ O Sensei foi projetado para operar como ferramenta de análise estática e manut
 - correções de tipos inseguros via `fix-types`
 - utilitários de formatação, licenças, métricas, nomes e performance
 
-Versão atual: `0.4.0`  
-Requisito de runtime: `Node.js >= 24.12.0`  
+Versão atual: `0.4.0`
+Requisito de runtime: `Node.js >= 24.12.0`
 Licença: `MIT`
 
 ## Instalação
@@ -199,3 +207,4 @@ npm run fix-types
 
 - Código-fonte: `https://github.com/5-5-5-0-5-5-5/sensei`
 - Issues: `https://github.com/5-5-5-0-5-5-5/sensei/issues`
+
