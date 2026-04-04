@@ -134,7 +134,7 @@ const ANALISTA: Analista = {
     }
 
   /* -------------------------- DETECTAR Object e {} (tipos fracos) -------------------------- */
-    const tiposFracosPadrao = /:\s*(Object|\{\})\b/g;
+    const tiposFracosPadrao = /:\s*(Object|\{\})(?![a-zA-Z0-9_$])/g;
     let matchFraco: RegExpMatchArray | null;
     while ((matchFraco = tiposFracosPadrao.exec(src)) !== null) {
       const position = matchFraco.index || 0;

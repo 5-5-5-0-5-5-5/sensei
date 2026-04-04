@@ -53,7 +53,8 @@
     "sync-aliases": "node scripts/sync-aliases.mjs",
     "security:deps": "npm audit",
     "security:lint": "eslint src --ext .ts",
-    "md:scan": "sensei diagnosticar --include '**/*.md'"
+    "md:scan": "sensei diagnosticar --include '**/*.md'",
+    "coverage": "vitest run --coverage"
   },
   "keywords": [
     "cli",
