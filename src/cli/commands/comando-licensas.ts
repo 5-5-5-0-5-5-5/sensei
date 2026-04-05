@@ -7,9 +7,10 @@ import path from 'node:path';
 
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
 import * as licensas from '@licensas/licensas.js';
 import { Command } from 'commander';
+
+const { log } = getMessages();
 
 export function comandoLicencas(): Command {
   const cmd = new Command('licencas').description('Ferramentas relacionadas a licença');

@@ -14,10 +14,11 @@ import { detectarContextoInteligente } from '@analistas/detectores/detector-cont
 import type { NodePath } from '@babel/traverse';
 import type { Node } from '@babel/types';
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
-import { SugestoesContextuaisMensagens } from '@core/messages/ui/sugestoes-contextuais-messages.js';
+import { SugestoesContextuaisMensagens } from '@core/messages/pt/ui/sugestoes-contextuais-messages.js';
 
 import type { Analista, ContextoExecucao, Ocorrencia, PackageJson } from '@';
+
+const { log } = getMessages();
 
 export const analistaSugestoesContextuais: Analista = {
   nome: 'sugestoes-contextuais',

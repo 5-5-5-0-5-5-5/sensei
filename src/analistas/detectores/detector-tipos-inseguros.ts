@@ -14,8 +14,8 @@ import { categorizarUnknown, extractVariableName, isAnyInGenericFunction, isInSt
 import type { NodePath } from '@babel/traverse';
 import type { Node } from '@babel/types';
 import { config } from '@core/config/config.js';
-import { isTestArquivo, shouldSuppressOccurrence } from '@shared/helpers/rule-config.js';
 import { splitLines } from '@shared/helpers/lines.js';
+import { isTestArquivo, shouldSuppressOccurrence } from '@shared/helpers/rule-config.js';
 
 import type { Analista, Ocorrencia } from '@';
 

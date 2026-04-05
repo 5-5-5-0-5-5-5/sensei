@@ -8,12 +8,13 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 import { config } from '@core/config/config.js';
-import { CliExportersMensagens } from '@core/messages/cli/cli-exporters-messages.js';
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
+import { CliExportersMensagens } from '@core/messages/pt/cli/cli-exporters-messages.js';
 import { gerarRelatorioReestruturarJson, gerarRelatorioReestruturarMarkdown } from '@relatorios/relatorio-reestruturar.js';
 
 import type { MovimentoEstrutural, ReestruturacaoExportOptions, ReestruturacaoExportResult } from '@';
+
+const { log } = getMessages();
 
 // Re-export para compatibilidade
 export type { ReestruturacaoExportOptions, ReestruturacaoExportResult };

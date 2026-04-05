@@ -2,7 +2,7 @@
 
 import type { NodePath } from '@babel/traverse';
 import type { Node } from '@babel/types';
-import { ExcecoesMensagens } from '@core/messages/core/excecoes-messages.js';
+import { ExcecoesMensagens } from '@core/messages/pt/core/excecoes-messages.js';
 
 import type { ContextoExecucao, Ocorrencia } from '@';
 

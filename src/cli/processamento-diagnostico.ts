@@ -11,10 +11,9 @@ import { config } from '@core/config/config.js';
 import { isInsideConfigDirectory, isInsideTestsDirectory } from '@core/config/conventions.js';
 import { isInsideSrc } from '@core/config/paths.js';
 import { executarInquisicao, iniciarInquisicao, prepararComAst, registrarUltimasMetricas } from '@core/execution/inquisidor.js';
-import { CliProcessamentoDiagnosticoMensagens } from '@core/messages/cli/cli-processamento-diagnostico-messages.js';
-import { ExcecoesMensagens } from '@core/messages/core/excecoes-messages.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, logGuardian, logRelatorio, logSistema, MENSAGENS_AUTOFIX, CliProcessamentoExtraMensagens } = getMessages();
+import { CliProcessamentoDiagnosticoMensagens } from '@core/messages/pt/cli/cli-processamento-diagnostico-messages.js';
+import { ExcecoesMensagens } from '@core/messages/pt/core/excecoes-messages.js';
 import { aplicarSupressaoOcorrencias } from '@core/parsing/filters.js';
 import { scanSystemIntegrity } from '@guardian/sentinela.js';
 import { emitirConselhoSenseial } from '@relatorios/conselheiro-senseial.js';
@@ -25,6 +24,8 @@ import { dedupeOcorrencias } from '@shared/data-processing/ocorrencias.js';
 
 // Importar tipos centralizados (consolidado)
 import { asTecnicas, converterResultadoGuardian, type FileEntry, type FileEntryWithAst, type FiltrosConfig, IntegridadeStatus, type LinguagensJson, type LogExtensions, type OpcoesProcessamentoDiagnostico, type ParseErrosJson, type ResultadoGuardian, type ResultadoInquisicaoCompleto, type ResultadoProcessamentoDiagnostico, type SaidaJsonDiagnostico } from '@';
+
+const { log, logGuardian, logRelatorio, logSistema, MENSAGENS_AUTOFIX, CliProcessamentoExtraMensagens } = getMessages();
 
 // Persistência: usar helper centralizado, mas com resolver dinâmico para compat com mocks de teste
 let salvarEstado: (caminho: string, dados: unknown) => Promise<void>;
@@ -40,7 +41,7 @@ async function getSalvarEstado(): Promise<(caminho: string, dados: unknown) => P
         break;
       }
     } catch (err) {
-      log.debug('Erro em getSalvarEstado (importação dinâmica): ' + (err instanceof Error ? err.message : String(err)));
+      log.debug(`Erro em getSalvarEstado (importação dinâmica): ${  err instanceof Error ? err.message : String(err)}`);
     }
   }
 
@@ -80,7 +81,7 @@ async function detectarArquetiposComTimeout(ctx: Parameters<typeof detectarArque
           }).erro(`Falha detector arquetipos: ${msg}`);
         }
       } catch (err) {
-        log.debug('Erro em detectarArquetiposComTimeout (log de erro): ' + (err instanceof Error ? err.message : String(err)));
+        log.debug(`Erro em detectarArquetiposComTimeout (log de erro): ${  err instanceof Error ? err.message : String(err)}`);
       }
       return undefined;
     });
@@ -218,11 +219,11 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
                 nomeProjeto = parsed.name.trim();
               }
             } catch (err) {
-              log.debug('Erro ao ler package.json (fallback): ' + (err instanceof Error ? err.message : String(err)));
+              log.debug(`Erro ao ler package.json (fallback): ${  err instanceof Error ? err.message : String(err)}`);
             }
           }
         } catch (err) {
-          log.debug('Erro ao obter nome do projeto do package.json: ' + (err instanceof Error ? err.message : String(err)));
+          log.debug(`Erro ao obter nome do projeto do package.json: ${  err instanceof Error ? err.message : String(err)}`);
         }
         const estruturaDetectada = Array.from(dirSet);
         const {
@@ -409,7 +410,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
       const verifyCycles = Boolean((opts as unknown as Record<string, unknown>)['verifyCycles'] || (config as unknown as Record<string, unknown>)['SPECIAL_VERIFY_CYCLES']);
       (config as unknown as Record<string, unknown>)['SPECIAL_VERIFY_CYCLES'] = verifyCycles;
     } catch (err) {
-      log.debug('Erro ao configurar flags especiais (verifyCycles): ' + (err instanceof Error ? err.message : String(err)));
+      log.debug(`Erro ao configurar flags especiais (verifyCycles): ${  err instanceof Error ? err.message : String(err)}`);
     }
     const resultadoExecucao = await executarInquisicao(fileEntriesComAst, tecnicas, baseDir, converterResultadoGuardian(guardianResultado), {
       verbose: config.VERBOSE,
@@ -442,7 +443,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
           });
         }
       } catch (err) {
-        log.debug('Erro em processarDiagnostico (trustCompiler): ' + (err instanceof Error ? err.message : String(err)));
+        log.debug(`Erro em processarDiagnostico (trustCompiler): ${  err instanceof Error ? err.message : String(err)}`);
       }
     }
     // Conciliação simples entre analistas: rebaixa severidade em casos de conflito
@@ -478,7 +479,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
         }
       }
     } catch (err) {
-      log.debug('Erro em processarDiagnostico (conciliação analistas): ' + (err instanceof Error ? err.message : String(err)));
+      log.debug(`Erro em processarDiagnostico (conciliação analistas): ${  err instanceof Error ? err.message : String(err)}`);
     }
     // Aplicar supressões configuradas em sensei.config.json
     ocorrenciasFiltradas = aplicarSupressaoOcorrencias(ocorrenciasFiltradas, config as unknown as FiltrosConfig || undefined);
@@ -907,7 +908,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
         logRelatorio.repositorioImpecavel();
       }
     } catch (err) {
-      log.debug('Erro ao emitir log de repositório impecável: ' + (err instanceof Error ? err.message : String(err)));
+      log.debug(`Erro ao emitir log de repositório impecável: ${  err instanceof Error ? err.message : String(err)}`);
     }
 
     // Em ambiente de testes (Vitest) também invocar via import dinâmico o módulo
@@ -1074,7 +1075,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
             debug: Function;
           }).debug(CliProcessamentoDiagnosticoMensagens.debugAboutToEmitJson(JSON.stringify(opts)));
         } catch (err) {
-          log.debug('Erro ao emitir log de debug sobre JSON: ' + (err instanceof Error ? err.message : String(err)));
+          log.debug(`Erro ao emitir log de debug sobre JSON: ${  err instanceof Error ? err.message : String(err)}`);
         }
       }
       if (opts.json) {

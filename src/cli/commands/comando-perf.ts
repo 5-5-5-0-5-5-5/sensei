@@ -6,14 +6,15 @@ import path from 'node:path';
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import { config } from '@core/config/config.js';
 import { formatPct } from '@core/config/format.js';
-import { CliComandoDesempMensagens } from '@core/messages/cli/cli-comando-perf-messages.js';
-import { ICONES_DIAGNOSTICO } from '@core/messages/shared/icons.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, logSistema } = getMessages();
+import { CliComandoDesempMensagens } from '@core/messages/pt/cli/cli-comando-perf-messages.js';
+import { ICONES_DIAGNOSTICO } from '@core/messages/shared/icons.js';
 import { lerEstado, salvarEstado } from '@shared/persistence/persistencia.js';
 import { Command } from 'commander';
 
 import type { MetricaExecucaoLike, SnapshotPerf } from '@';
+
+const { log, logSistema } = getMessages();
 
 async function obterCommit(): Promise<string | undefined> {
   try {

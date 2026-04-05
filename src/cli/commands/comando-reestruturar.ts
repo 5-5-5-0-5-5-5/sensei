@@ -10,15 +10,15 @@ import { parsearCategorias } from '@cli/helpers/flags-helpers.js';
 import chalk from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { executarInquisicao, prepararComAst } from '@core/execution/inquisidor.js';
-import { CliComandoReestruturarMensagens } from '@core/messages/cli/cli-comando-reestruturar-messages.js';
-import { CABECALHOS } from '@core/messages/index.js';
-import { getMessages } from '@core/messages/index.js';
-const { log, CliReestruturarExtraMensagens } = getMessages();
+import { CABECALHOS , getMessages } from '@core/messages/index.js';
+import { CliComandoReestruturarMensagens } from '@core/messages/pt/cli/cli-comando-reestruturar-messages.js';
 import { Command } from 'commander';
 import ora from 'ora';
 
 import type { FileEntry, FileEntryWithAst, Ocorrencia, ResultadoInquisicao } from '@';
 import { extrairMensagemErro } from '@';
+
+const { log, CliReestruturarExtraMensagens } = getMessages();
 
 /**
  * Comando para reestruturar o projeto
@@ -322,9 +322,9 @@ if (typeof iniciarInquisicao === 'function') {
       } catch (err) {
         // Spinner é apenas uma melhoria de UX; falhas aqui não devem ser silenciosas.
         if (config.DEV_MODE) {
-          console.debug('Falha ao atualizar spinner:', err);
+          console.debug(CliReestruturarExtraMensagens.falhaAtualizarSpinner, err);
         } else {
-          log.aviso('Falha ao atualizar spinner durante reestruturação.');
+          log.aviso(CliReestruturarExtraMensagens.falhaSpinnerReestruturacao);
         }
       }
       log.erro(CliComandoReestruturarMensagens.erroDuranteReestruturacao(typeof error === 'object' && error && 'message' in error ? (error as {

@@ -2,9 +2,7 @@
 import type { ParserOptions as BabelParserOptions } from '@babel/parser';
 import { parse as babelParse } from '@babel/parser';
 import type { File as BabelFile } from '@babel/types';
-import { getMessages } from '@core/messages/index.js';
-import { PluginCoreMensagens } from '@core/messages/index.js';
-const { log, logCore } = getMessages();
+import { getMessages , PluginCoreMensagens } from '@core/messages/index.js';
 import { getCurrentParsingFile } from '@core/parsing/parser.js';
 import * as csstree from 'css-tree';
 import { XMLParser, XMLValidator } from 'fast-xml-parser';
@@ -12,6 +10,8 @@ import { parseDocument } from 'htmlparser2';
 import { createRequire } from 'module';
 
 import type { BabelFileExtra, ParserOptions, ParserPlugin, RawAst } from '@';
+
+const { log, logCore } = getMessages();
 
 const localRequire = createRequire(import.meta.url);
 

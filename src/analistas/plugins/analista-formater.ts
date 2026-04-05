@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-import { AnalystOrigens, AnalystTipos, FormatadorMensagens, SeverityNiveis } from '@core/messages/core/plugin-messages.js';
+import { AnalystOrigens, AnalystTipos, FormatadorMensagens, SeverityNiveis } from '@core/messages/pt/core/plugin-messages.js';
 import { formatarPrettierMinimo } from '@shared/impar/formater.js';
 
 import { criarAnalista, criarOcorrencia } from '@';

@@ -1,10 +1,7 @@
 // SPDX-License-Identifier: MIT
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
 
 import { config } from '@core/config/config.js';
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
 import { ensureDir } from '@shared/helpers/fs.js';
 import { normalizePath } from '@shared/helpers/path.js';
 import micromatch from 'micromatch';
@@ -16,6 +13,8 @@ import { carregarBaseline, salvarBaseline } from './baseline.js';
 import { LINHA_BASE_CAMINHO } from './constantes.js';
 import { diffSnapshots, verificarErros } from './diff.js';
 import { gerarSnapshotDoConteudo } from './hash.js';
+
+const { log } = getMessages();
 
 type Snapshot = Record<string, string>;
 function construirSnapshot(fileEntries: FileEntry[]): Snapshot {

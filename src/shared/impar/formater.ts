@@ -10,8 +10,8 @@ import type { FormatadorMinimoParser, FormatadorMinimoResult, MarkdownFenceMatch
 
 import type { FormatterFn } from './formatter-registry.js';
 import { getFormatterForPath, registerFormatter } from './formatter-registry.js';
-import { getSyntaxInfoForPath } from './syntax-map.js';
 import { otimizarSvgLikeSvgo } from './svgs.js';
+import { getSyntaxInfoForPath } from './syntax-map.js';
 
 // Re-exportar para compatibilidade com código existente
 export type { FormatadorMinimoParser, FormatadorMinimoResult, MarkdownFenceMatch } from '@';
@@ -1273,7 +1273,7 @@ function formatarScssMinimo(code: string): FormatadorMinimoResult {
   const out: string[] = [];
   let indent = 0;
   let currentBlockProps: Array<{ prop: string; value: string; isComment: boolean }> = [];
-  let currentSelector = '';
+  const currentSelector = '';
 
   const flushBlock = () => {
     if (currentBlockProps.length > 0) {
@@ -1587,7 +1587,7 @@ function formatarTomlMinimo(code: string): FormatadorMinimoResult {
   const lines = normalized.split('\n');
   const out: string[] = [];
   let currentSection: Array<{ key: string; value: string; comment: string }> = [];
-  let currentSectionHeader = '';
+  const currentSectionHeader = '';
 
   const flushSection = () => {
     if (currentSection.length > 0) {
@@ -2216,7 +2216,7 @@ function formatarGoMinimo(code: string): FormatadorMinimoResult {
   let indent = 0;
   let inComment = false;
   let inString = false;
-  let stringChar = '';
+  const stringChar = '';
   let inBacktick = false;
 
   for (const raw of lines) {
@@ -2254,7 +2254,7 @@ function formatarGoMinimo(code: string): FormatadorMinimoResult {
     }
     if (inString) {
       out.push(`${'  '.repeat(indent)}${trimmed}`);
-      if (trimmed.endsWith(stringChar) && !trimmed.endsWith('\\' + stringChar)) inString = false;
+      if (trimmed.endsWith(stringChar) && !trimmed.endsWith(`\\${  stringChar}`)) inString = false;
       continue;
     }
     const closeBraces = (trimmed.match(/}/g) || []).length;

@@ -4,9 +4,10 @@
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
+import { getMessages } from '@core/messages/index.js';
+
 import type { ErrorLike } from '@';
 import { extrairMensagemErro } from '@';
-import { getMessages } from '@core/messages/index.js';
 
 const { CliBinMensagens } = getMessages();
 

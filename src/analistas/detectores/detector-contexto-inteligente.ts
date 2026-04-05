@@ -13,11 +13,12 @@
 import type { NodePath } from '@babel/traverse';
 import type { ExportDeclaration, ImportDeclaration, Program } from '@babel/types';
 import { config } from '@core/config/config.js';
-import { getMessages } from '@core/messages/index.js';
-const { DetectorContextoExtraMensagens } = getMessages();
 import { traverse } from '@core/config/traverse.js';
+import { getMessages } from '@core/messages/index.js';
 
 import type { EvidenciaContexto, FileEntryWithAst, PackageJson, ResultadoDeteccaoContextual } from '@';
+
+const { DetectorContextoExtraMensagens } = getMessages();
 
 // Re-exporta os tipos para compatibilidade
 export type { EvidenciaContexto, ResultadoDeteccaoContextual };

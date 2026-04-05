@@ -42,7 +42,7 @@ export const analistaArquitetura: Analista = {
           return [];
         }
         const { DetectorArquiteturaMensagens } = await import(
-          '@core/messages/analistas/detector-arquitetura-messages.js'
+          '@core/messages/pt/analistas/detector-arquitetura-messages.js'
         );
         return [criarOcorrencia({
           tipo: 'erro-analise',
@@ -69,7 +69,7 @@ export const analistaArquitetura: Analista = {
         });
       } else {
         const { DetectorArquiteturaMensagens } = await import(
-          '@core/messages/analistas/detector-arquitetura-messages.js'
+          '@core/messages/pt/analistas/detector-arquitetura-messages.js'
         );
         ocorrencias.push(criarOcorrencia({
           tipo: 'analise-arquitetura',
@@ -94,7 +94,7 @@ export const analistaArquitetura: Analista = {
           });
         } else {
           const { DetectorArquiteturaMensagens } = await import(
-            '@core/messages/analistas/detector-arquitetura-messages.js'
+            '@core/messages/pt/analistas/detector-arquitetura-messages.js'
           );
           ocorrencias.push(criarOcorrencia({
             tipo: 'caracteristicas-arquitetura',
@@ -120,7 +120,7 @@ export const analistaArquitetura: Analista = {
           });
         } else {
           const { DetectorArquiteturaMensagens } = await import(
-            '@core/messages/analistas/detector-arquitetura-messages.js'
+            '@core/messages/pt/analistas/detector-arquitetura-messages.js'
           );
           ocorrencias.push(criarOcorrencia({
             tipo: 'violacao-arquitetura',
@@ -151,7 +151,7 @@ export const analistaArquitetura: Analista = {
             });
           } else {
             const { DetectorArquiteturaMensagens } = await import(
-              '@core/messages/analistas/detector-arquitetura-messages.js'
+              '@core/messages/pt/analistas/detector-arquitetura-messages.js'
             );
             ocorrencias.push(criarOcorrencia({
               tipo: 'metricas-arquitetura',
@@ -178,7 +178,7 @@ export const analistaArquitetura: Analista = {
         return [];
       }
       const { DetectorArquiteturaMensagens } = await import(
-        '@core/messages/analistas/detector-arquitetura-messages.js'
+        '@core/messages/pt/analistas/detector-arquitetura-messages.js'
       );
       return [criarOcorrencia({
         tipo: 'erro-analise',

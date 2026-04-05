@@ -11,12 +11,13 @@
 
 import { detectarArquetipos } from '@analistas/detectores/detector-arquetipos.js';
 import { config } from '@core/config/config.js';
-import { CliArquetipoHandlerMensagens } from '@core/messages/cli/cli-arquetipo-handler-messages.js';
-import { MENSAGENS_ARQUETIPOS } from '@core/messages/core/diagnostico-messages.js';
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
+import { CliArquetipoHandlerMensagens } from '@core/messages/pt/cli/cli-arquetipo-handler-messages.js';
+import { MENSAGENS_ARQUETIPOS } from '@core/messages/pt/core/diagnostico-messages.js';
 
 import type { ArquetipoOptions, ArquetipoResult, FileEntryWithAst } from '@';
+
+const { log } = getMessages();
 
 // Re-export para compatibilidade
 export type { ArquetipoOptions, ArquetipoResult };

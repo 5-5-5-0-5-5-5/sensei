@@ -5,11 +5,12 @@
  */
 
 import { config } from '@core/config/config.js';
-import { LogContextConfiguracao, LogMensagens } from './log-messages.js';
 import { ICONES_FEEDBACK } from '@core/messages/shared/icons.js';
 import { isJsonMode } from '@shared/helpers/json-mode.js';
 
 import type { FileMap, LogContext, LogData, LogLevel, LogTemplate, ProjetoMetricas } from '@';
+
+import { LogContextConfiguracao, LogMensagens } from './log-messages.js';
 
 class LogEngineAdaptativo {
   private static instance: LogEngineAdaptativo;

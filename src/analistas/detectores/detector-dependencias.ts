@@ -5,7 +5,7 @@ import type { NodePath } from '@babel/traverse';
 import type * as t from '@babel/types';
 import { config } from '@core/config/config.js';
 import { traverse } from '@core/config/traverse.js';
-import { DetectorDependenciasMensagens } from '@core/messages/analistas/detector-dependencias-messages.js';
+import { DetectorDependenciasMensagens } from '@core/messages/pt/analistas/detector-dependencias-messages.js';
 import { normalizarPosix, resolverModulo } from '@shared/helpers/imports.js';
 import { normalizePath } from '@shared/helpers/path.js';
 

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 import type { NodePath } from '@babel/traverse';
 import type { Node } from '@babel/types';
-import { DetectorAgregadosMensagens } from '@core/messages/analistas/detector-agregados-messages.js';
+import { DetectorAgregadosMensagens } from '@core/messages/pt/analistas/detector-agregados-messages.js';
 import { detectarContextoProjeto } from '@shared/contexto-projeto.js';
 import { filtrarOcorrenciasSuprimidas } from '@shared/helpers/suppressao.js';
 

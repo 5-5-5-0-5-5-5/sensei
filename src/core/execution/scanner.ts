@@ -3,8 +3,8 @@ import type { Dirent, Stats } from 'node:fs';
 import { promises as fs } from 'node:fs';
 
 import { config } from '@core/config/config.js';
-import { ExcecoesMensagens } from '@core/messages/core/excecoes-messages.js';
-import { logVarredor } from '@core/messages/log/log-helper.js';
+import { ExcecoesMensagens } from '@core/messages/pt/core/excecoes-messages.js';
+import { logVarredor } from '@core/messages/pt/log/log-helper.js';
 import { lerArquivoTexto, lerEstado } from '@shared/persistence/persistencia.js';
 import micromatch from 'micromatch';
 import path from 'path';

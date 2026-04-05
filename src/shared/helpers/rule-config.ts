@@ -9,7 +9,6 @@
  */
 
 import { config } from '@core/config/config.js';
-import { normalizePath } from '@shared/helpers/path.js';
 import { minimatch } from 'minimatch';
 
 import type { RuleConfig, RuleOverride } from '@';

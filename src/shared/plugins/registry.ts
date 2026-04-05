@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
-import { ExcecoesMensagens } from '@core/messages/core/excecoes-messages.js';
 import { getMessages } from '@core/messages/index.js';
 import { PluginRegistryMensagens } from '@core/messages/index.js';
-const { log, logCore } = getMessages();
+import { ExcecoesMensagens } from '@core/messages/pt/core/excecoes-messages.js';
 
 import type { GlobalComImport, ImportDinamico, LanguageSupport, ParserPlugin, PluginConfig } from '@';
+
+const { log, logCore } = getMessages();
 
 /**
  * Registry centralizado para gerenciamento de plugins de parser

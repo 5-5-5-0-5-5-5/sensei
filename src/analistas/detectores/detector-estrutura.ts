@@ -5,7 +5,7 @@ import type { Node } from '@babel/types';
 import { config } from '@core/config/config.js';
 import { getAllExpectedDirNames, getDirVariantPattern, getNameConventions } from '@core/config/conventions.js';
 import { isInsideSrc } from '@core/config/paths.js';
-import { DetectorEstruturaMensagens } from '@core/messages/analistas/detector-estrutura-messages.js';
+import { DetectorEstruturaMensagens } from '@core/messages/pt/analistas/detector-estrutura-messages.js';
 import { detectarContextoProjeto } from '@shared/contexto-projeto.js';
 import micromatch from 'micromatch';
 

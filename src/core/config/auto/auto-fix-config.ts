@@ -4,9 +4,9 @@
 // Merged auto-fix configuration: keep compatibility with both older
 // AUTO_FIX_CONFIG_DEFAULTS and the newer DEFAULT_AUTO_FIX_CONFIG surface.
 
-import { LIMITES_PADRAO } from '../limites.js';
-
 import type { AutoFixConfig } from '@';
+
+import { LIMITES_PADRAO } from '../limites.js';
 
 // Re-exporta o tipo para compatibilidade
 export type { AutoFixConfig };

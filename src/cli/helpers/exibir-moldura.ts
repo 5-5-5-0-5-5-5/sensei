@@ -4,10 +4,11 @@
  * Fornece fallback para ambientes onde log.bloco não está disponível
  */
 
-import { CliExibirMolduraMensagens } from '@core/messages/cli/cli-exibir-moldura-messages.js';
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
+import { CliExibirMolduraMensagens } from '@core/messages/pt/cli/cli-exibir-moldura-messages.js';
 import { normalizePath } from '@shared/helpers/path.js';
+
+const { log } = getMessages();
 
 /**
  * Exibe uma moldura formatada com fallback seguro

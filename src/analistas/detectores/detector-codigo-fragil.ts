@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
 import type { NodePath } from '@babel/traverse';
-import type { ArrowFunctionExpression, CatchClause, FunctionDeclaration, FunctionExpression, Node, NumericLiteral, TSAnyKeyword } from '@babel/types';
+import type { CatchClause, FunctionDeclaration, Node, NumericLiteral, TSAnyKeyword } from '@babel/types';
 import { config } from '@core/config/config.js';
 import { LIMITES_PADRAO } from '@core/config/limites.js';
 import { traverse } from '@core/config/traverse.js';
-import { DetectorCodigoFragilMensagens } from '@core/messages/analistas/detector-codigo-fragil-messages.js';
+import { DetectorCodigoFragilMensagens } from '@core/messages/pt/analistas/detector-codigo-fragil-messages.js';
+import { agruparPor } from '@shared/helpers/agrupar.js';
 import { detectarComentariosPendentes, detectarLogsDebug } from '@shared/helpers/detectores-comuns.js';
 import { detectarFrameworks } from '@shared/helpers/framework-detector.js';
-import { isWhitelistedConstant } from '@shared/helpers/magic-constants-whitelist.js';
-import { agruparPor } from '@shared/helpers/agrupar.js';
 import { splitLines } from '@shared/helpers/lines.js';
+import { isWhitelistedConstant } from '@shared/helpers/magic-constants-whitelist.js';
 import { filtrarOcorrenciasSuprimidas } from '@shared/helpers/suppressao.js';
 
 import type { Analista, Fragilidade, Ocorrencia } from '@';

@@ -2,6 +2,8 @@
 // Analistas de melhorias e correções automáticas (unificado)
 // Resolve analistas de correção automática dinamicamente para compatibilidade com múltiplas formas de export
 // analistaFantasma not exported from js-ts/fantasma; that module provides detectarFantasmas used by zeladores
+// Analistas especializados complementares
+import analistaAntiPadroesAsync from '@analistas/detectores/detector-anti-padroes-async.js';
 import { analistaArquitetura } from '@analistas/detectores/detector-arquitetura.js';
 import { analistaCodigoFragil } from '@analistas/detectores/detector-codigo-fragil.js';
 // Novos analistas refinados
@@ -10,11 +12,9 @@ import * as detectorDependenciasMod from '@analistas/detectores/detector-depende
 import { analistaDuplicacoes } from '@analistas/detectores/detector-duplicacoes.js';
 import * as detectorEstruturaMod from '@analistas/detectores/detector-estrutura.js';
 import detectorInterfacesInline from '@analistas/detectores/detector-interfaces-inline.js';
-// Analistas especializados complementares
-import analistaAntiPadroesAsync from '@analistas/detectores/detector-anti-padroes-async.js';
-import analistaVazamentoMemoria from '@analistas/detectores/detector-vazamentos-memoria.js';
 import { analistaSeguranca } from '@analistas/detectores/detector-seguranca.js';
 import detectorTiposInseguros from '@analistas/detectores/detector-tipos-inseguros.js';
+import analistaVazamentoMemoria from '@analistas/detectores/detector-vazamentos-memoria.js';
 // Analistas contextuais inteligentes
 import { analistaSugestoesContextuais } from '@analistas/estrategistas/sugestoes-contextuais.js';
 import { analistaComandosCli } from '@analistas/js-ts/analista-comandos-cli.js';

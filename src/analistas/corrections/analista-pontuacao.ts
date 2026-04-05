@@ -5,10 +5,10 @@ import { findQuickFixes, type PatternBasedQuickFix } from '@core/config/auto/fix
 
 import type { Analista, Ocorrencia } from '@';
 import { criarOcorrencia } from '@';
+
 import {
   analisarTexto,
-  calcularLinha,
-  CONFIGURACAO_PADRAO
+  calcularLinha
 } from './pontuacao-shared.js';
 
   /* -------------------------- Helpers / Config -------------------------- */

@@ -106,6 +106,8 @@ export const ICONES_DIAGNOSTICO = {
   rapido: '[FAST]',
   completo: '[FULL]',
   stats: '[STATS]',
+  info: '[INFO]',
+  sucesso: '[OK]',
 } as const;
 
 /**

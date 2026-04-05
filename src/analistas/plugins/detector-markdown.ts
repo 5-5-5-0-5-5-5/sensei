@@ -17,11 +17,12 @@ import { promises as fs } from 'node:fs';
 
 import { config } from '@core/config/config.js';
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
 
 import type { Ocorrencia } from '@';
 
 import type { MarkdownAnaliseArquivo, MarkdownDetectorOptions, MarkdownLicensePatterns, MarkdownProblema, MarkdownWhitelistConfig } from '../../types/analistas/markdown.js';
+
+const { log } = getMessages();
 
 /**
  * Padrões de licenças e cessões problemáticas

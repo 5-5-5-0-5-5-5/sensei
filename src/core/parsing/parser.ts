@@ -3,7 +3,6 @@ import type { ParserOptions } from '@babel/parser';
 import { parse as babelParse } from '@babel/parser';
 import type { File as BabelFile } from '@babel/types';
 import { getMessages } from '@core/messages/index.js';
-const { log, logCore, ParserExtraMensagens } = getMessages();
 import { initializeDefaultPlugins } from '@shared/plugins/init.js';
   /* -------------------------- SISTEMA DE PLUGINS - Novo sistema de parsers modular (Fase 1) -------------------------- */
 import { getGlobalRegistry } from '@shared/plugins/registry.js';
@@ -14,6 +13,8 @@ import { parseDocument } from 'htmlparser2';
 import { createRequire } from 'module';
 
 import type { DecifrarSintaxeOpts, ParserBabelFileExtra as BabelFileExtra, ParserFunc, ParserOptions as PluginParserOptions, ParserRawAst } from '@';
+
+const { log, logCore, ParserExtraMensagens } = getMessages();
 
 // Contexto global para o arquivo atual durante parsing
 let currentParsingArquivo: string | undefined;

@@ -4,13 +4,14 @@
 import {
   getMessages,
 } from '@core/messages/index.js';
+
+import type { LogComBloco } from '@';
+
 const {
   log,
   logRelatorio,
   MENSAGENS_RELATORIOS_ANALISE,
 } = getMessages();
-
-import type { LogComBloco } from '@';
 
 export function exibirRelatorioPadroesUso(): void {
   // Cabeçalho compatível com testes

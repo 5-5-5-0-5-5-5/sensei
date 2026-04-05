@@ -6,7 +6,7 @@
  * formatadas usando os templates de mensagens dos detectores correspondentes.
  */
 
-import { DetectorArquiteturaMensagens } from '@core/messages/analistas/detector-arquitetura-messages.js';
+import { DetectorArquiteturaMensagens } from '@core/messages/pt/analistas/detector-arquitetura-messages.js';
 
 import type { Ocorrencia, ReportEvent } from '@';
 import { criarOcorrencia } from '@';

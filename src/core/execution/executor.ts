@@ -5,8 +5,7 @@ import { config } from '@core/config/config.js';
 import { formatMs } from '@core/config/format.js';
 import { traverse } from '@core/config/traverse.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, logCore, ExecutorExtraMensagens } = getMessages();
-import { logAnalistas } from '@core/messages/log/log-helper.js';
+import { logAnalistas } from '@core/messages/pt/log/log-helper.js';
 import { createDefaultReporter } from '@core/reporting/default-reporter.js';
 import { WorkerPool } from '@core/workers/worker-pool.js';
 import { lerEstado, salvarEstado } from '@shared/persistence/persistencia.js';
@@ -16,6 +15,8 @@ import type { ContextoExecucao, EstadoIncremental, FileEntryWithAst, GuardianRes
 import { ocorrenciaErroAnalista } from '@';
 
 import type { ExecutorEventEmitter } from '../../types/core/config/config.js';
+
+const { log, logCore, ExecutorExtraMensagens } = getMessages();
 
 export type { ExecutorEventEmitter };
 // Fallback para infoDestaque quando mock de log não implementa

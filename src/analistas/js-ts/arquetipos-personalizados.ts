@@ -16,11 +16,12 @@ import { ARQUETIPOS } from '@analistas/estrategistas/arquetipos-defs.js';
 // NOTA: parseFileAST ainda não foi implementado no módulo de parsing
 // import { parseFileAST } from '@core/parsing/parser.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, ArquetiposExtraMensagens } = getMessages();
 import { SENSEI_ARQUIVOS } from '@core/registry/paths.js';
 import { lerEstado, salvarEstado } from '@shared/persistence/persistencia.js';
 
 import type { ArquetipoEstruturaDef, ArquetipoPersonalizado } from '@';
+
+const { log, ArquetiposExtraMensagens } = getMessages();
 
 // Nome do arquivo legado (para compatibilidade)
 const ARQUETIPO_PERSONALIZADO_FILENAME = 'sensei.repo.arquetipo.json';

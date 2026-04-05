@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-import { AnalystOrigens, AnalystTipos, CssMensagens, SeverityNiveis } from '@core/messages/core/plugin-messages.js';
+import { AnalystOrigens, AnalystTipos, CssMensagens, SeverityNiveis } from '@core/messages/pt/core/plugin-messages.js';
 import { isLikelyIntentionalDuplicate, lintCssLikeStylelint } from '@shared/impar/stylelint.js';
 import postcss, { type AtRule, type Container, type Declaration, type Root, type Rule, type Syntax } from 'postcss';
 import postcssSass from 'postcss-sass';

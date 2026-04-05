@@ -5,7 +5,7 @@ import type { NodePath } from '@babel/traverse';
 import type { ArrowFunctionExpression, BlockStatement, CallExpression, ClassDeclaration, ClassMethod, FunctionDeclaration, FunctionExpression, Identifier, ImportDeclaration, MemberExpression, NewExpression, Node, StringLiteral, VariableDeclaration, VariableDeclarator } from '@babel/types';
 import * as t from '@babel/types';
 import { traverse } from '@core/config/traverse.js';
-import { ComandosCliMensagens } from '@core/messages/analistas/analista-comandos-cli-messages.js';
+import { ComandosCliMensagens } from '@core/messages/pt/analistas/analista-comandos-cli-messages.js';
 import { detectarContextoProjeto, isRelevanteParaAnalise } from '@shared/contexto-projeto.js';
 
 import type { ComandoRegistro, ContextoExecucao, HandlerInfo, Ocorrencia, TecnicaAplicarResultado } from '@';

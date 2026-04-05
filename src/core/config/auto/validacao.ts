@@ -5,9 +5,10 @@
  */
 
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
 
 import type { ValidationResult } from '@';
+
+const { log } = getMessages();
 
 // Re-exporta o tipo para compatibilidade
 export type { ValidationResult };

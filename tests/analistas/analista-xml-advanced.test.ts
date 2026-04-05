@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { analistaXml } from '@analistas/plugins/analista-xml.js';
-import { XmlMensagens } from '@core/messages/core/plugin-messages.js';
+import { XmlMensagens } from '@core/messages/pt/core/plugin-messages.js';
 
 describe('analistaXml', () => {
   it('ignora arquivos que nao sao xml', () => {

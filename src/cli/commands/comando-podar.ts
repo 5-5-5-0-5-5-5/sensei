@@ -8,14 +8,15 @@ import { expandIncludePatterns, processPatternList } from '@cli/helpers/pattern-
 import chalk from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { iniciarInquisicao } from '@core/execution/inquisidor.js';
-import { CliComandoPodarMensagens } from '@core/messages/cli/cli-comando-podar-messages.js';
-import { ICONES_DIAGNOSTICO } from '@core/messages/shared/icons.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, logSistema } = getMessages();
+import { CliComandoPodarMensagens } from '@core/messages/pt/cli/cli-comando-podar-messages.js';
+import { ICONES_DIAGNOSTICO } from '@core/messages/shared/icons.js';
 import { Command } from 'commander';
 
 import type { ArquivoFantasma, ResultadoPoda, Tecnica } from '@';
 import { asTecnicas } from '@';
+
+const { log, logSistema } = getMessages();
 
 export function comandoPodar(aplicarFlagsGlobais: (opts: Record<string, unknown>) => void): Command {
   return new Command('podar').description('Remove arquivos órfãos e lixo do repositório.').option('-f, --force', 'Remove arquivos sem confirmação (CUIDADO!)', false).option('--include <padrao>', 'Glob pattern a INCLUIR (pode repetir a flag ou usar vírgulas / espaços para múltiplos)', (val: string, prev: string[]) => {

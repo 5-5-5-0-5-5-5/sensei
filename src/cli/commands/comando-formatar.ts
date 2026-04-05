@@ -9,7 +9,6 @@ import chalk from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { scanRepository } from '@core/execution/scanner.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, CliFormatarExtraMensagens } = getMessages();
 import {
   formatarComPrettierProjeto,
   formatarPrettierMinimo,
@@ -19,6 +18,8 @@ import { Command } from 'commander';
 import micromatch from 'micromatch';
 
 import type { FormatarCommandOpts, FormatResult } from '@';
+
+const { log, CliFormatarExtraMensagens } = getMessages();
 
 function isFormatavel(relPath: string): boolean {
   return /\.(json[c]?|md|markdown|ya?ml|ts|tsx|js|jsx|mjs|cjs|html?|css|py|xml|php|toml|ini|sql|dockerfile|sh|bash|java|properties|txt|log|lock|env|gradle|kts|svg|scss|less|go|kt)$/i.test(

@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 import { getMessages } from '@core/messages/index.js';
-const { logConselheiro } = getMessages();
 
 import type { ConselhoContextoSenseial } from '@';
+
+const { logConselheiro } = getMessages();
 
 // Re-exporta para compatibilidade com nome original
 export type ConselhoContexto = ConselhoContextoSenseial;

@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 import { mapaReversao } from '@analistas/corrections/mapa-reversao.js';
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
-import { CliComandoReverterMensagens } from '@core/messages/cli/cli-comando-reverter-messages.js';
-import { ICONES_DIAGNOSTICO } from '@core/messages/shared/icons.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, logAuto, logSistema } = getMessages();
+import { CliComandoReverterMensagens } from '@core/messages/pt/cli/cli-comando-reverter-messages.js';
+import { ICONES_DIAGNOSTICO } from '@core/messages/shared/icons.js';
 import { Command } from 'commander';
+
+const { log, logAuto, logSistema } = getMessages();
 
 export function registrarComandoReverter(program: Command): void {
   program.command('reverter').description('Gerencia mapa de reversão para moves aplicados').hook('preAction', async () => {

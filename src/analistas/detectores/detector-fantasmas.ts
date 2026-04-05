@@ -7,9 +7,8 @@ import { config } from '@core/config/config.js';
 import { LIMITES_PADRAO } from '@core/config/limites.js';
 import { isInsideSrc } from '@core/config/paths.js';
 import { scanRepository } from '@core/execution/scanner.js';
-import { isTestArquivo } from '@shared/helpers/rule-config.js';
 import { normalizePath } from '@shared/helpers/path.js';
-import { minimatch } from 'minimatch';
+import { isTestArquivo } from '@shared/helpers/rule-config.js';
 
 import type { ArquivoFantasma, FileMap } from '@';
 

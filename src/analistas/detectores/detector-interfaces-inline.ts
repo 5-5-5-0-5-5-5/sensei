@@ -13,9 +13,9 @@
 import type { NodePath } from '@babel/traverse';
 import type { Node } from '@babel/types';
 import { getTypesDirectoryDisplay, isInsideTypesDirectory } from '@core/config/conventions.js';
-import { DetectorInterfacesInlineMensagens } from '@core/messages/analistas/detector-interfaces-inline-messages.js';
-
+import { DetectorInterfacesInlineMensagens } from '@core/messages/pt/analistas/detector-interfaces-inline-messages.js';
 import { isInStringOrComment } from '@shared/helpers/context-utils.js';
+
 import type { Analista, InterfaceInlineDetection, Ocorrencia } from '@';
 
 import type { DuplicateEntry,InlineTypeOccurrence } from '../../types/analistas/detectores.js';

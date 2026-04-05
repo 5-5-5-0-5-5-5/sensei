@@ -3,9 +3,10 @@ import { estatisticasUsoGlobal } from '@analistas/js-ts/analista-padroes-uso.js'
 import chalk from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, logRelatorio, RelatorioMensagens, RelatorioZeladorSaudeMensagens } = getMessages();
 
 import type { LogComBloco, Ocorrencia } from '@';
+
+const { log, logRelatorio, RelatorioMensagens, RelatorioZeladorSaudeMensagens } = getMessages();
 
 /**
  * Emite um relatório sobre a saúde do código com base nas estatísticas gerais.

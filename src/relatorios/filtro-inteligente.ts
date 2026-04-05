@@ -5,9 +5,10 @@
 // Agrupa problemas similares e prioriza por impacto para evitar sobrecarga de informação
 
 import { getMessages } from '@core/messages/index.js';
-const { AGRUPAMENTOS_MENSAGEM, PRIORIDADES, RelatorioMensagens } = getMessages();
 
 import type { Ocorrencia, OcorrenciaNivel, ProblemaAgrupado, RelatorioResumo } from '@';
+
+const { AGRUPAMENTOS_MENSAGEM, PRIORIDADES, RelatorioMensagens } = getMessages();
 
 /**
  * Processa e filtra ocorrências para gerar um relatório resumido inteligente

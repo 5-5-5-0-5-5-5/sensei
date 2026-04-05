@@ -3,15 +3,15 @@
 // Justificativa: tipos inline para opções de comando CLI são locais e não precisam de extração
 import { optionsDiagnosticar } from '@cli/options-diagnosticar.js';
 import { processarDiagnostico } from '@cli/processamento-diagnostico.js';
-import { CliComandoDiagnosticarMensagens } from '@core/messages/cli/cli-comando-diagnosticar-messages.js';
-import { CABECALHOS } from '@core/messages/index.js';
-import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
+import { CABECALHOS , getMessages } from '@core/messages/index.js';
+import { CliComandoDiagnosticarMensagens } from '@core/messages/pt/cli/cli-comando-diagnosticar-messages.js';
 import { ativarModoJson } from '@shared/helpers/json-mode.js';
 import { Command } from 'commander';
 import ora from 'ora';
 
 import type { ParentWithOpts } from '@';
+
+const { log } = getMessages();
 
 export function comandoDiagnosticar(aplicarFlagsGlobais: (opts: Record<string, unknown>) => void): Command {
   const cmd = new Command('diagnosticar').alias('diag').description('Executa uma análise completa do repositório');

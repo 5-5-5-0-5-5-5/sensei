@@ -7,14 +7,15 @@ import { executarGuardian as executarGuardianModular, type GuardianOptions } fro
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import { config } from '@core/config/config.js';
 import { iniciarInquisicao } from '@core/execution/inquisidor.js';
-import { CliComandoGuardianMensagens } from '@core/messages/cli/cli-comando-guardian-messages.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, logGuardian } = getMessages();
+import { CliComandoGuardianMensagens } from '@core/messages/pt/cli/cli-comando-guardian-messages.js';
 import { acceptNewBaseline } from '@guardian/sentinela.js';
 import { Command } from 'commander';
 
 import type { FileEntry, FileEntryWithAst, Tecnica } from '@';
 import { asTecnicas, extrairMensagemErro, IntegridadeStatus } from '@';
+
+const { log, logGuardian } = getMessages();
 
 export function comandoGuardian(aplicarFlagsGlobais: (opts: Record<string, unknown>) => void): Command {
   return new Command('guardian').description('Gerencia e verifica a integridade do ambiente do Sensei.')

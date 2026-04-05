@@ -4,17 +4,6 @@
  */
 
 export {
-  type AgrupamentoConfig,
-  AGRUPAMENTOS_MENSAGEM,
-  type ConfigPrioridade,
-  contarPorPrioridade,
-  findAgrupamento,
-  getPrioridade,
-  ordenarPorPrioridade,
-  type PrioridadeNivel,
-  PRIORIDADES,
-} from './filtro-config.js';
-export {
   getIcone,
   type IconeAcao,
   type IconeArquivo,
@@ -39,6 +28,17 @@ export {
   type IconeZelador,
   suportaCores,
 } from '../../shared/icons.js';
+export {
+  type AgrupamentoConfig,
+  AGRUPAMENTOS_MENSAGEM,
+  type ConfigPrioridade,
+  contarPorPrioridade,
+  findAgrupamento,
+  getPrioridade,
+  ordenarPorPrioridade,
+  type PrioridadeNivel,
+  PRIORIDADES,
+} from './filtro-config.js';
 export {
   formatarSugestoes,
   gerarSugestoesContextuais,

@@ -18,8 +18,9 @@
  * Categoriza uso de unknown com nível de confiança
  * Retorna: 'legitimo' | 'melhoravel' | 'corrigir' + confiança (0-100)
  */
-export { isInString, isInComment, isInStringOrComment } from '@shared/helpers/context-utils.js';
 import type { CategorizacaoUnknown } from '@';
+
+export { isInComment, isInString, isInStringOrComment } from '@shared/helpers/context-utils.js';
 
 /**
  * Verifica se está em contexto TypeScript específico que deve ser ignorado

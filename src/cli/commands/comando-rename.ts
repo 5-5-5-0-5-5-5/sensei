@@ -8,10 +8,11 @@ import { getFilesWithExtension, getSourceFiles } from '@cli/helpers/get-files-sr
 import chalk from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, CliComandoRenameMensagens } = getMessages();
 import { Command } from 'commander';
 import * as fs from 'fs';
 import * as path from 'path';
+
+const { log, CliComandoRenameMensagens } = getMessages();
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- CJS default interop
 // @ts-ignore
@@ -42,7 +43,11 @@ function loadMappingsFromFile(
       const existing = mappings.get(parsed.oldName);
       if (existing !== undefined && existing !== parsed.newName && config.VERBOSE) {
         log.info(
-          `Conflito de mapeamento para "${parsed.oldName}": ${path.relative(raizDir, filePath)} usa "${parsed.newName}", anterior era "${existing}" (last wins).`,
+          CliComandoRenameMensagens.conflitoMapeamento
+            .replace('{nome}', parsed.oldName)
+            .replace('{arquivo}', path.relative(raizDir, filePath))
+            .replace('{novo}', parsed.newName)
+            .replace('{anterior}', existing),
         );
       }
       mappings.set(parsed.oldName, parsed.newName);

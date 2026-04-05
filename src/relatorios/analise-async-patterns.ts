@@ -12,12 +12,13 @@
 import path from 'node:path';
 
 import { getMessages } from '@core/messages/index.js';
-const { log, MENSAGENS_RELATORIOS_ANALISE, RelatorioAsyncPatternsMensagens } = getMessages();
 import { salvarEstado } from '@shared/persistence/persistencia.js';
 
 import type { Ocorrencia } from '@';
 
 import type { AsyncAnalysisOptions, AsyncAnalysisReport, AsyncArquivoRanqueado, AsyncCategoria, AsyncCategoriaStats, AsyncIssuesArquivo } from '../types/relatorios/async-analysis.js';
+
+const { log, MENSAGENS_RELATORIOS_ANALISE, RelatorioAsyncPatternsMensagens } = getMessages();
 
 /**
  * Categoriza arquivo baseado no path

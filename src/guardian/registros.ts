@@ -3,13 +3,14 @@ import path from 'node:path';
 
 import { config } from '@core/config/config.js';
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
-import { lerEstado, salvarEstado } from '@shared/persistence/persistencia.js';
 import { ensureDir } from '@shared/helpers/fs.js';
+import { lerEstado, salvarEstado } from '@shared/persistence/persistencia.js';
 
 import type { FileEntry, RegistroIntegridade } from '@';
 
 import { gerarSnapshotDoConteudo } from './hash.js';
+
+const { log } = getMessages();
 
 const DESTINO_PADRAO = path.join(config.STATE_DIR, 'integridade.json');
 

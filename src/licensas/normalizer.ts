@@ -4,8 +4,10 @@
  */
 
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
+
 import type { SpdxCorrectFn,SpdxParseFn } from '../types/core/config/config.js';
+
+const { log } = getMessages();
 
 export type { SpdxCorrectFn,SpdxParseFn };
 
@@ -21,17 +23,17 @@ async function tryLoadSpdx(): Promise<void> {
   try {
     spdxParse = (await import('spdx-expression-parse')).default || (await import('spdx-expression-parse'));
   } catch (err) {
-    log.debug('Erro ao carregar spdx-expression-parse: ' + (err instanceof Error ? err.message : String(err)));
+    log.debug(`Erro ao carregar spdx-expression-parse: ${  err instanceof Error ? err.message : String(err)}`);
   }
   try {
     spdxCorrect = (await import('spdx-correct')).default || (await import('spdx-correct'));
   } catch (err) {
-    log.debug('Erro ao carregar spdx-correct: ' + (err instanceof Error ? err.message : String(err)));
+    log.debug(`Erro ao carregar spdx-correct: ${  err instanceof Error ? err.message : String(err)}`);
   }
   try {
     spdxLicencaList = (await import('spdx-license-list')).default || (await import('spdx-license-list'));
   } catch (err) {
-    log.debug('Erro ao carregar spdx-license-list: ' + (err instanceof Error ? err.message : String(err)));
+    log.debug(`Erro ao carregar spdx-license-list: ${  err instanceof Error ? err.message : String(err)}`);
   }
 }
 
@@ -62,7 +64,7 @@ function fallbackNormalize(raw: unknown): string {
     try {
       if (spdxCorrect) token = spdxCorrect(token) ?? token;
     } catch (err) {
-      log.debug('Erro ao executar spdxCorrect em fallbackNormalize: ' + (err instanceof Error ? err.message : String(err)));
+      log.debug(`Erro ao executar spdxCorrect em fallbackNormalize: ${  err instanceof Error ? err.message : String(err)}`);
     }
     try {
       if (spdxLicencaList) {
@@ -74,7 +76,7 @@ function fallbackNormalize(raw: unknown): string {
         if (matchByNome) return matchByNome[0];
       }
     } catch (err) {
-      log.debug('Erro ao buscar na spdxLicencaList em fallbackNormalize: ' + (err instanceof Error ? err.message : String(err)));
+      log.debug(`Erro ao buscar na spdxLicencaList em fallbackNormalize: ${  err instanceof Error ? err.message : String(err)}`);
     }
     return token;
   }).join(' ');
@@ -96,7 +98,7 @@ export async function normalizeLicense(raw: unknown): Promise<string> {
       if (typeof raw === 'object') raw = (raw as Record<string, unknown>).type ?? raw;
       return awaitOrFallback(raw);
     } catch (err) {
-      log.debug('Erro ao normalizar licença complexa em normalizeLicense: ' + (err instanceof Error ? err.message : String(err)));
+      log.debug(`Erro ao normalizar licença complexa em normalizeLicense: ${  err instanceof Error ? err.message : String(err)}`);
       // fallthrough
     }
   }
@@ -110,13 +112,13 @@ export async function normalizeLicense(raw: unknown): Promise<string> {
           const parsed = spdxParse(corrected);
           return astToExpression(parsed);
         } catch (err) {
-          log.debug('Erro ao parsear licença corrigida em awaitOrFallback: ' + (err instanceof Error ? err.message : String(err)));
+          log.debug(`Erro ao parsear licença corrigida em awaitOrFallback: ${  err instanceof Error ? err.message : String(err)}`);
           return corrected;
         }
       }
       return corrected;
     } catch (err) {
-      log.debug('Erro em awaitOrFallback (' + String(value) + '): ' + (err instanceof Error ? err.message : String(err)));
+      log.debug(`Erro em awaitOrFallback (${  String(value)  }): ${  err instanceof Error ? err.message : String(err)}`);
       return fallbackNormalize(value);
     }
   }

@@ -9,7 +9,6 @@ import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import chalk from '@core/config/chalk-safe.js';
 import { aplicarConfigParcial, config, inicializarConfigDinamica } from '@core/config/config.js';
 import { getMessages, ICONES_NIVEL } from '@core/messages/index.js';
-const { log, CliBinMensagens } = getMessages();
 import type { ConversationMemory } from '@shared/memory.js';
 import { getDefaultMemory } from '@shared/memory.js';
 import { lerArquivoTexto } from '@shared/persistence/persistencia.js';
@@ -19,6 +18,8 @@ import { Command } from 'commander';
 // 🌐 Flags globais aplicáveis em todos os comandos
 import type { ErrorLike,SenseiGlobalFlags } from '@';
 import { extrairMensagemErro } from '@';
+
+const { log, CliBinMensagens } = getMessages();
 
 // caminho do módulo (usado para localizar arquivos de configuração)
 const __filename = fileURLToPath(import.meta.url);
@@ -36,7 +37,7 @@ async function getVersion(): Promise<string> {
       version?: string;
     }).version || '0.0.0';
   } catch (err) {
-    log.debug('Erro ao obter versão em getVersion: ' + (err instanceof Error ? err.message : String(err)));
+    log.debug(`Erro ao obter versão em getVersion: ${  err instanceof Error ? err.message : String(err)}`);
     return '0.0.0'; // fallback
   }
 }
@@ -117,7 +118,7 @@ export async function mainCli(): Promise<void> {
   try {
     memoria = await getDefaultMemory();
   } catch (err) {
-    log.debug('Erro ao carregar memória em mainCli: ' + (err instanceof Error ? err.message : String(err)));
+    log.debug(`Erro ao carregar memória em mainCli: ${  err instanceof Error ? err.message : String(err)}`);
   }
   // Aplica defaults de produção (se presentes) antes de inicializar a config dinâmica.
   try {
@@ -135,7 +136,7 @@ export async function mainCli(): Promise<void> {
         }
       } catch (err) {
         // ignore - arquivo safe pode não existir em todos os ambientes
-        log.debug('Erro ao carregar production defaults em mainCli: ' + (err instanceof Error ? err.message : String(err)));
+        log.debug(`Erro ao carregar production defaults em mainCli: ${  err instanceof Error ? err.message : String(err)}`);
       }
     }
     // Atualiza a versão do programa de forma assíncrona antes do parse
@@ -155,12 +156,12 @@ export async function mainCli(): Promise<void> {
         })._version = versionNumber;
       }
     } catch (err) {
-      log.debug('Erro ao aplicar versão no program em mainCli: ' + (err instanceof Error ? err.message : String(err)));
+      log.debug(`Erro ao aplicar versão no program em mainCli: ${  err instanceof Error ? err.message : String(err)}`);
     }
     await inicializarConfigDinamica();
   } catch (err) {
     // ignore: CLI continua com defaults
-    log.debug('Erro ao inicializar config dinâmica em mainCli: ' + (err instanceof Error ? err.message : String(err)));
+    log.debug(`Erro ao inicializar config dinâmica em mainCli: ${  err instanceof Error ? err.message : String(err)}`);
   }
   // Antes de parsear, trata flags de histórico simples
   const argv = process.argv.slice(2);
@@ -193,7 +194,7 @@ export async function mainCli(): Promise<void> {
       timestamp: new Date().toISOString()
     });
   } catch (err) {
-    log.debug('Erro ao registrar mensagem no histórico em mainCli: ' + (err instanceof Error ? err.message : String(err)));
+    log.debug(`Erro ao registrar mensagem no histórico em mainCli: ${  err instanceof Error ? err.message : String(err)}`);
   }
 
   // Intercepta erros de uso do Commander e mapeia para exit code 3

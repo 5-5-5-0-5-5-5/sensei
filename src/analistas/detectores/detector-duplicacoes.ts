@@ -2,7 +2,7 @@
 import type { NodePath } from '@babel/traverse';
 import type { ArrowFunctionExpression, ClassMethod, FunctionDeclaration, FunctionExpression, Node, ObjectMethod } from '@babel/types';
 import { traverse } from '@core/config/traverse.js';
-import { DetectorAgregadosMensagens } from '@core/messages/analistas/detector-agregados-messages.js';
+import { DetectorAgregadosMensagens } from '@core/messages/pt/analistas/detector-agregados-messages.js';
 import { createHash } from 'crypto';
 
 import type { Analista, BlocoFuncao, ContextoExecucao, DuplicacaoEncontrada, Ocorrencia } from '@';

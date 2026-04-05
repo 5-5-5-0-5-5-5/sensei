@@ -6,7 +6,7 @@
  * garantindo compatibilidade futura e evolução controlada dos formatos.
  */
 
-import { ExcecoesMensagens } from '@core/messages/core/excecoes-messages.js';
+import { ExcecoesMensagens } from '@core/messages/pt/core/excecoes-messages.js';
 
 import type { RelatorioComVersao, SchemaMetadata } from '@';
 

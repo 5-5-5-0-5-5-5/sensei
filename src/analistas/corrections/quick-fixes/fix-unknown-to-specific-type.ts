@@ -7,7 +7,6 @@
 import type { Node } from '@babel/types';
 import { buildTypesRelPathPosix, getTypesDirectoryDisplay } from '@core/config/conventions.js';
 import { getMessages } from '@core/messages/index.js';
-const { MENSAGENS_CORRECAO_TIPOS } = getMessages();
 
 import type { QuickFix, QuickFixResult, TypeSafetyWarning } from '@';
 
@@ -15,6 +14,8 @@ import { isInStringOrComment, isLegacyOrVendorFile, isUnknownInGenericContext } 
 import { analyzeUnknownUsage } from '../type-safety/type-analyzer.js';
 import { createTypeDefinition } from '../type-safety/type-creator.js';
 import { validateTypeReplacement } from '../type-safety/type-validator.js';
+
+const { MENSAGENS_CORRECAO_TIPOS } = getMessages();
 
 export const fixUnknownToSpecificTipo: QuickFix = {
   id: 'fix-unknown-to-specific-type',

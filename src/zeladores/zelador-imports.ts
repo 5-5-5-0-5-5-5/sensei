@@ -16,10 +16,11 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
-import { ERROS_IMPORTS, gerarResumoImports, MENSAGENS_IMPORTS, PROGRESSO_IMPORTS } from '@core/messages/zeladores/zelador-messages.js';
+import { ERROS_IMPORTS, gerarResumoImports, MENSAGENS_IMPORTS, PROGRESSO_IMPORTS } from '@core/messages/pt/zeladores/zelador-messages.js';
 
 import type { AliasConfig, ImportCorrecao, ImportCorrecaoArquivo, ImportCorrecaoOptions } from '@';
+
+const { log } = getMessages();
 
 /**
  * Configuração padrão de aliases baseada em tsconfig.json

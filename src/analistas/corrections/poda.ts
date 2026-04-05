@@ -4,13 +4,12 @@ import path from 'node:path';
 import { detectarFantasmas } from '@analistas/detectores/detector-fantasmas.js';
 import { config } from '@core/config/config.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, logAuto } = getMessages();
 import {
   gerarRelatorioPodaJson,
   gerarRelatorioPodaMarkdown,
 } from '@relatorios/relatorio-poda.js';
-import { lerEstado, salvarEstado } from '@shared/persistence/persistencia.js';
 import { ensureDir } from '@shared/helpers/fs.js';
+import { lerEstado, salvarEstado } from '@shared/persistence/persistencia.js';
 import pLimit from 'p-limit';
 
 import type {
@@ -19,6 +18,8 @@ import type {
   Pendencia,
   ResultadoPoda,
 } from '@';
+
+const { log, logAuto } = getMessages();
 
 export async function removerArquivosOrfaos(
   _fileEntries: FileEntryWithAst[] /*executarRealmente = false*/,

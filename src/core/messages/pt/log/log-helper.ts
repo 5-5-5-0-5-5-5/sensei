@@ -8,9 +8,10 @@
  */
 
 import { config } from '@core/config/config.js';
+import { ICONES_ARQUIVO, ICONES_DIAGNOSTICO, ICONES_FEEDBACK, ICONES_STATUS } from '@core/messages/shared/icons.js';
+
 import { logEngine } from './log-engine.js';
 import { LogMensagens } from './log-messages.js';
-import { ICONES_ARQUIVO, ICONES_DIAGNOSTICO, ICONES_FEEDBACK, ICONES_STATUS } from '@core/messages/shared/icons.js';
 
 /**
  * Sistema de logs para analistas com controle de spam unificado

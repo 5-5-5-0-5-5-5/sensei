@@ -101,7 +101,7 @@ export const analistaVazamentoMemoria: Analista = {
               severidade: 'alta',
               nivel: 'erro',
               mensagem: `Adição de evento global 'addEventListener' detectada em componente React, porém 'removeEventListener' não foi encontrado. Isso causará memory leaks no unmount.`,
-              relPath: relPath,
+              relPath,
           } as Ocorrencia);
       }
     }
@@ -111,7 +111,7 @@ export const analistaVazamentoMemoria: Analista = {
        nivel: o.nivel || 'aviso',
        mensagem: o.mensagem,
        linha: o.linha || 0,
-       relPath: relPath,
+       relPath,
        origem: 'vazamento-memoria'
     }));
   }

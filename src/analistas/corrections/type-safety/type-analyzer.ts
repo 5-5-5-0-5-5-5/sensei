@@ -7,13 +7,14 @@
 import type { Node } from '@babel/types';
 import { getTypesDirectoryDisplay } from '@core/config/conventions.js';
 import { getMessages } from '@core/messages/index.js';
-const { MENSAGENS_CORRECAO_TIPOS } = getMessages();
 
 import type { TypeAnalysis, TypeInferenceContext } from '@';
 
 import { extractVariableName, getDomainFromFilePath, isDefinitionFile, isLegacyOrVendorFile, isTypeScriptFile } from './context-analyzer.js';
 import { inferTypeFromUsage } from './type-inference.js';
 import { analyzeUsagePatterns, findVariableUsages } from './usage-analyzer.js';
+
+const { MENSAGENS_CORRECAO_TIPOS } = getMessages();
 
 /**
  * Analisa uso de any/unknown e infere tipo correto

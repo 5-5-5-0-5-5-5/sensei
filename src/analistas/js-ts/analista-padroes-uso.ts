@@ -4,7 +4,7 @@ import type { NodePath } from '@babel/traverse';
 import type { Node } from '@babel/types';
 import * as t from '@babel/types';
 import { traverse } from '@core/config/traverse.js';
-import { PadroesUsoMensagens } from '@core/messages/analistas/analista-padroes-uso-messages.js';
+import { PadroesUsoMensagens } from '@core/messages/pt/analistas/analista-padroes-uso-messages.js';
 import { detectarContextoProjeto } from '@shared/contexto-projeto.js';
 import { garantirArray, incrementar } from '@shared/helpers/helpers-analistas.js';
 

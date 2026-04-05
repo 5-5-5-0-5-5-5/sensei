@@ -6,10 +6,11 @@ import * as fsCb from 'node:fs';
 import path from 'node:path';
 
 import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
-import { ExcecoesMensagens } from '@core/messages/core/excecoes-messages.js';
+import { ExcecoesMensagens } from '@core/messages/pt/core/excecoes-messages.js';
 
 import type { GlobalComVitest, SalvarBinarioFn, SalvarEstadoFn, VitestSpyWrapper } from '@';
+
+const getLog = () => getMessages().log;
 
 const RAIZ = process.cwd();
 const IS_TEST = (process.env.VITEST ?? '') !== '';
@@ -18,7 +19,7 @@ function safeGet<T extends object, K extends PropertyKey>(obj: T, key: K): unkno
     // @ts-expect-error acesso dinâmico protegido
     return obj[key];
   } catch (err) {
-    log.debug('Erro em safeGet ao acessar chave ' + String(key) + ': ' + (err instanceof Error ? err.message : String(err)));
+    getLog().debug(`Erro em safeGet ao acessar chave ${  String(key)  }: ${  err instanceof Error ? err.message : String(err)}`);
     return undefined;
   }
 }
@@ -60,12 +61,12 @@ export async function lerEstado<T = unknown>(caminho: string, padrao?: T): Promi
     try {
       return JSON.parse(conteudo) as T; // sucesso JSON
     } catch (err) {
-      log.debug('Erro ao parsear JSON em lerEstado (' + caminho + '): ' + (err instanceof Error ? err.message : String(err)));
+      getLog().debug(`Erro ao parsear JSON em lerEstado (${  caminho  }): ${  err instanceof Error ? err.message : String(err)}`);
       // Compatibilidade com testes/versões antigas: se JSON inválido retorna []
       return padrao as T ?? [] as unknown as T;
     }
   } catch (err) {
-    log.debug('Erro ao ler arquivo em lerEstado (' + caminho + '): ' + (err instanceof Error ? err.message : String(err)));
+    getLog().debug(`Erro ao ler arquivo em lerEstado (${  caminho  }): ${  err instanceof Error ? err.message : String(err)}`);
     return padrao as T ?? [] as unknown as T;
   }
 }
@@ -78,7 +79,7 @@ async function salvarEstadoImpl<T = unknown>(caminho: string, dados: T): Promise
     recursive: true,
     mode: 0o700
   }).catch(err => {
-    log.debug('Erro em mkdirSafe em salvarEstadoImpl: ' + (err instanceof Error ? err.message : String(err)));
+    getLog().debug(`Erro em mkdirSafe em salvarEstadoImpl: ${  err instanceof Error ? err.message : String(err)}`);
   });
   const isString = typeof dados === 'string';
   const payload = isString ? dados as string : stableStringify(dados);
@@ -102,7 +103,7 @@ try {
     salvarEstado = (maybeVi.fn as unknown as VitestSpyWrapper<SalvarEstadoFn>)(async (...args: [string, unknown]) => salvarEstadoImpl(...(args as [string, unknown]))) as unknown as SalvarEstadoFn;
   }
 } catch (err) {
-  log.debug('Erro ao configurar spy em salvarEstado (Vitest): ' + (err instanceof Error ? err.message : String(err)));
+  getLog().debug(`Erro ao configurar spy em salvarEstado (Vitest): ${  err instanceof Error ? err.message : String(err)}`);
 }
 
 // Leitura bruta de arquivo de texto (sem parse JSON). Uso para conteúdo fonte.
@@ -111,7 +112,7 @@ export async function lerArquivoTexto(caminho: string): Promise<string> {
   try {
     return await readFileSafe(caminho, 'utf-8');
   } catch (err) {
-    log.debug('Erro em lerArquivoTexto (' + caminho + '): ' + (err instanceof Error ? err.message : String(err)));
+    getLog().debug(`Erro em lerArquivoTexto (${  caminho  }): ${  err instanceof Error ? err.message : String(err)}`);
     return '';
   }
 }
@@ -180,7 +181,7 @@ try {
     salvarBinario = (maybeVi2.fn as unknown as VitestSpyWrapper<SalvarBinarioFn>)(async (...args: [string, Buffer]) => salvarBinarioAtomico(...args)) as unknown as SalvarBinarioFn;
   }
 } catch (err) {
-  log.debug('Erro ao configurar spy em salvarBinario (Vitest): ' + (err instanceof Error ? err.message : String(err)));
+  getLog().debug(`Erro ao configurar spy em salvarBinario (Vitest): ${  err instanceof Error ? err.message : String(err)}`);
 }
 
 // --- Fallbacks resilientes a mocks parciais de fs.promises ---

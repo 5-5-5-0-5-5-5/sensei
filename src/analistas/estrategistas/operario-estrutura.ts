@@ -7,7 +7,6 @@ import { corrigirEstrutura } from '@analistas/corrections/corretor-estrutura.js'
 import { detectarArquetipos } from '@analistas/detectores/detector-arquetipos.js';
 import { config } from '@core/config/config.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, MENSAGENS_ARQUETIPOS_HANDLER } = getMessages();
 
 import type {
   FileEntryWithAst,
@@ -17,6 +16,8 @@ import type {
   PlanoSugestaoEstrutura,
   ResultadoPlanejamento,
 } from '@';
+
+const { log, MENSAGENS_ARQUETIPOS_HANDLER } = getMessages();
 
 // Re-exporta os tipos para compatibilidade
 export type { OpcoesPlanejamento, ResultadoPlanejamento };

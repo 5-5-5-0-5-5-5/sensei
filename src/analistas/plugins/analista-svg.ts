@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-import { AnalystOrigens, AnalystTipos, SeverityNiveis, SvgMensagens } from '@core/messages/core/plugin-messages.js';
+import { AnalystOrigens, AnalystTipos, SeverityNiveis, SvgMensagens } from '@core/messages/pt/core/plugin-messages.js';
 import { otimizarSvgLikeSvgo, shouldSugerirOtimizacaoSvg } from '@shared/impar/svgs.js';
 
 import type { Ocorrencia } from '@';

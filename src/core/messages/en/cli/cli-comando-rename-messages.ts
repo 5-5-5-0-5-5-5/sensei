@@ -5,6 +5,7 @@ export const CliComandoRenameMensagens = {
   nenhumArquivoMapeamento: 'No mapping file in {pasta}. Run the {comando} command first.',
   pastaNaoEncontrada: 'Mapping folder not found: {pasta}. Run the {comando} command first.',
   nenhumMapeamento: 'No translation mapping found (format: oldName = newName per line).',
+  conflitoMapeamento: 'Mapping conflict for "{nome}": {arquivo} uses "{novo}", previous was "{anterior}" (last wins).',
   iniciandoRenomeacao: 'Starting variable renaming ({total} mappings)...',
   arquivoAtualizado: 'Updated: {arquivo}',
   renomeacaoConcluida: 'Renaming complete! {total} files updated.',

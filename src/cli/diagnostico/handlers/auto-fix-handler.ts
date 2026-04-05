@@ -7,11 +7,12 @@
  * @see docs/REFACTOR-CLI-DIAGNOSTICAR.md - Sprint 2
  */
 
-import { ExcecoesMensagens } from '@core/messages/core/excecoes-messages.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, MENSAGENS_AUTOFIX, CliAutoFixHandlerMensagens } = getMessages();
+import { ExcecoesMensagens } from '@core/messages/pt/core/excecoes-messages.js';
 
 import type { AutoFixOptions, AutoFixResult, FileEntryWithAst } from '@';
+
+const { log, MENSAGENS_AUTOFIX, CliAutoFixHandlerMensagens } = getMessages();
 
 // Re-export para compatibilidade
 export type { AutoFixOptions, AutoFixResult };
@@ -30,9 +31,9 @@ export async function executarAutoFix(entries: FileEntryWithAst[], options: Auto
     // Log de início (se não silencioso)
     if (!options.silent) {
       const modoLabel = {
-        conservative: 'conservador',
-        balanced: 'balanceado',
-        aggressive: 'agressivo'
+        conservative: CliAutoFixHandlerMensagens.modoConservador,
+        balanced: CliAutoFixHandlerMensagens.modoBalanceado,
+        aggressive: CliAutoFixHandlerMensagens.modoAgressivo
       }[options.mode];
       if (options.dryRun) {
         console.log(`${MENSAGENS_AUTOFIX.iniciando(modoLabel)}`);

@@ -2,11 +2,12 @@
 import path from 'node:path';
 
 import { getMessages } from '@core/messages/index.js';
-const { RelatorioMensagens, log } = getMessages();
-import { ExcecoesMensagens } from '@core/messages/core/excecoes-messages.js';
+import { ExcecoesMensagens } from '@core/messages/pt/core/excecoes-messages.js';
 import { lerArquivoTexto, salvarEstado } from '@shared/persistence/persistencia.js';
 
 import type { ResultadoDeteccaoArquetipo } from '@';
+
+const { RelatorioMensagens, log } = getMessages();
 
 export async function exportarRelatorioArquetiposMarkdown(destino: string, candidatos: ResultadoDeteccaoArquetipo[], contexto?: {
   origem?: string;
@@ -104,10 +105,10 @@ export async function exportarRelatorioArquetiposMarkdown(destino: string, candi
             }
           }
         } catch (err) {
-          log.debug('Erro ao processar package.json em exportarRelatorioArquetiposMarkdown: ' + (err instanceof Error ? err.message : String(err)));
+          log.debug(`Erro ao processar package.json em exportarRelatorioArquetiposMarkdown: ${  err instanceof Error ? err.message : String(err)}`);
         }
       } catch (err) {
-        log.debug('Erro ao resolver package.json em exportarRelatorioArquetiposMarkdown: ' + (err instanceof Error ? err.message : String(err)));
+        log.debug(`Erro ao resolver package.json em exportarRelatorioArquetiposMarkdown: ${  err instanceof Error ? err.message : String(err)}`);
       }
       // Status do npm audit
       try {
@@ -130,7 +131,7 @@ export async function exportarRelatorioArquetiposMarkdown(destino: string, candi
           linhas.push('Nenhuma vulnerabilidade encontrada pelo npm audit.');
         }
       } catch (err) {
-        log.debug('Erro ao executar npm audit em exportarRelatorioArquetiposMarkdown: ' + (err instanceof Error ? err.message : String(err)));
+        log.debug(`Erro ao executar npm audit em exportarRelatorioArquetiposMarkdown: ${  err instanceof Error ? err.message : String(err)}`);
       }
       linhas.push('---');
     }

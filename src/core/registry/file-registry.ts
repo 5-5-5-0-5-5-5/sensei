@@ -15,12 +15,14 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
-import { ExcecoesMensagens } from '@core/messages/core/excecoes-messages.js';
+import { getMessages } from '@core/messages/index.js';
+import { ExcecoesMensagens } from '@core/messages/pt/core/excecoes-messages.js';
 
 import type { MigrationResult } from '@';
 
-import { log } from '../messages/log/log.js';
 import { MIGRACAO_MAPA,SENSEI_ARQUIVOS, SENSEI_DIRS, type SenseiFilePath } from './paths.js';
+
+const { log } = getMessages();
 
 /**
  * Opções para operações de leitura

@@ -7,7 +7,6 @@ import { processPatternList } from '@cli/helpers/pattern-helpers.js';
 import chalk from '@core/config/chalk-safe.js';
 import { scanRepository } from '@core/execution/scanner.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, CliOtimizarSvgExtraMensagens } = getMessages();
 import {
   otimizarSvgLikeSvgo,
   shouldSugerirOtimizacaoSvg,
@@ -17,6 +16,8 @@ import { Command } from 'commander';
 import micromatch from 'micromatch';
 
 import type { OtimizarSvgOptions } from '@';
+
+const { log, CliOtimizarSvgExtraMensagens } = getMessages();
 
 function formatBytes(bytes: number): string {
   if (!Number.isFinite(bytes) || bytes < 0) return String(bytes);
@@ -116,11 +117,19 @@ export function comandoOtimizarSvg(
             await salvarEstado(abs, opt.data);
             optimized++;
             log.info(
-              `${relPath} — ${formatBytes(opt.originalBytes)} → ${formatBytes(opt.optimizedBytes)} (−${formatBytes(saved)})`,
+              CliOtimizarSvgExtraMensagens.arquivoOtimizado
+                .replace('{arquivo}', relPath)
+                .replace('{original}', formatBytes(opt.originalBytes))
+                .replace('{otimizado}', formatBytes(opt.optimizedBytes))
+                .replace('{economia}', formatBytes(saved)),
             );
           } else {
             log.info(
-              `[dry] ${relPath} — ${formatBytes(opt.originalBytes)} → ${formatBytes(opt.optimizedBytes)} (−${formatBytes(saved)})`,
+              CliOtimizarSvgExtraMensagens.arquivoOtimizadoDry
+                .replace('{arquivo}', relPath)
+                .replace('{original}', formatBytes(opt.originalBytes))
+                .replace('{otimizado}', formatBytes(opt.optimizedBytes))
+                .replace('{economia}', formatBytes(saved)),
             );
           }
         }
@@ -132,12 +141,17 @@ export function comandoOtimizarSvg(
         }
 
         log.info(
-          `Candidatos: ${candidates} | Economia potencial: ${formatBytes(savedBytes)} | Total de SVGs lidos: ${total}`,
+          CliOtimizarSvgExtraMensagens.candidatosSvg
+            .replace('{candidatos}', String(candidates))
+            .replace('{economiaTotal}', formatBytes(savedBytes))
+            .replace('{total}', String(total)),
         );
 
         if (write) {
           log.sucesso(
-            `Otimização aplicada em ${optimized}/${candidates} arquivos.`,
+            CliOtimizarSvgExtraMensagens.otimizacaoAplicada
+              .replace('{aplicados}', String(optimized))
+              .replace('{candidatos}', String(candidates)),
           );
         } else {
           log.info(CliOtimizarSvgExtraMensagens.useWriteAplicar);
@@ -146,7 +160,7 @@ export function comandoOtimizarSvg(
         sair(ExitCode.Ok);
       } catch (err) {
         log.erro(
-          `Falha ao otimizar SVGs: ${err instanceof Error ? err.message : String(err)}`,
+          CliOtimizarSvgExtraMensagens.falhaOtimizarSvg.replace('{erro}', err instanceof Error ? err.message : String(err)),
         );
         sair(ExitCode.Failure);
       }

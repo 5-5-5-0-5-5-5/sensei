@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
+import type { Visitor } from '@babel/traverse';
 import { traverse } from '@core/config/traverse.js';
-import type { NodePath, Visitor } from '@babel/traverse';
-import type { Node } from '@babel/types';
+
 import type { Ocorrencia } from '@';
 
 /**

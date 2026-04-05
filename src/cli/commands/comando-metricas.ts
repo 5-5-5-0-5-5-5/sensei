@@ -6,14 +6,15 @@ import path from 'node:path';
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import { config } from '@core/config/config.js';
 import { formatMs } from '@core/config/format.js';
-import { CliComandoMetricasMensagens } from '@core/messages/cli/cli-comando-metricas-messages.js';
-import { ICONES_DIAGNOSTICO } from '@core/messages/shared/icons.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, logMetricas } = getMessages();
+import { CliComandoMetricasMensagens } from '@core/messages/pt/cli/cli-comando-metricas-messages.js';
+import { ICONES_DIAGNOSTICO } from '@core/messages/shared/icons.js';
 import { lerEstado, salvarEstado } from '@shared/persistence/persistencia.js';
 import { Command } from 'commander';
 
 import type { MetricaExecucao } from '@';
+
+const { log, logMetricas } = getMessages();
 
 interface RegistroHistorico extends MetricaExecucao {
   timestamp: number;

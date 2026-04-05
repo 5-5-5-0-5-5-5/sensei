@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 import { config } from '@core/config/config.js';
 import { resolverPluginSeguro } from '@core/config/seguranca.js';
-import { ExcecoesMensagens } from '@core/messages/core/excecoes-messages.js';
+import { ExcecoesMensagens } from '@core/messages/pt/core/excecoes-messages.js';
 
 export async function importarModuloSeguro(baseDir: string, pluginRel: string): Promise<unknown> {
   if (config.SAFE_MODE && !config.ALLOW_PLUGINS) {

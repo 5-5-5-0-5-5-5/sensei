@@ -3,9 +3,8 @@ import { promises as fs } from 'node:fs';
 
 import { config } from '@core/config/config.js';
 import { isMetaPath } from '@core/config/paths.js';
-import { InquisidorMensagens } from '@core/messages/core/inquisidor-messages.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, InquisidorExtraMensagens } = getMessages();
+import { InquisidorMensagens } from '@core/messages/pt/core/inquisidor-messages.js';
 import { lerEstado } from '@shared/persistence/persistencia.js';
 import * as path from 'path';
 
@@ -14,6 +13,8 @@ import { ocorrenciaParseErro } from '@';
 
 import { executarInquisicao as executarExecucao, registrarUltimasMetricas } from './executor.js';
 import { scanRepository } from './scanner.js';
+
+const { log, InquisidorExtraMensagens } = getMessages();
 // Fallback de símbolos para cenários de teste onde o mock de log não inclui `simbolos`.
 const SIMBOLOS_ALTERNATIVA: SimbolosLog = {
   info: 'ℹ️',

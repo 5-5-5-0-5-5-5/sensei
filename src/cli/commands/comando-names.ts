@@ -6,10 +6,11 @@ import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import { getSourceFiles } from '@cli/helpers/get-files-src.js';
 import chalk from '@core/config/chalk-safe.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, CliComandoNamesMensagens } = getMessages();
 import { Command } from 'commander';
 import * as fs from 'fs';
 import * as path from 'path';
+
+const { log, CliComandoNamesMensagens } = getMessages();
 
 const traverse = traverseModule.default || traverseModule;
 
@@ -97,11 +98,18 @@ export function comandoNames(
         const content = sortedNomes.map((name) => `${name} = `).join('\n');
         fs.writeFileSync(SAIDA_ARQUIVO, content);
         log.sucesso(
-          `Varredura concluída! ${sortedNomes.length} variáveis em ${arquivosComNomes} arquivos. Mapeamento fragmentado em ${chalk.bold('names/')} e agregado em ${chalk.bold(path.relative(RAIZ_DIR, SAIDA_ARQUIVO))}.`,
+          CliComandoNamesMensagens.varreduraConcluidaFragmentada
+            .replace('{variaveis}', String(sortedNomes.length))
+            .replace('{arquivos}', String(arquivosComNomes))
+            .replace('{pastaFragmentada}', chalk.bold('names/'))
+            .replace('{pastaAgregada}', chalk.bold(path.relative(RAIZ_DIR, SAIDA_ARQUIVO))),
         );
       } else {
         log.sucesso(
-          `Varredura concluída! ${allNomes.size} variáveis em ${arquivosComNomes} arquivos. Mapeamento em ${chalk.bold('names/')} (estrutura espelhada).`,
+          CliComandoNamesMensagens.varreduraConcluidaEspelhada
+            .replace('{variaveis}', String(allNomes.size))
+            .replace('{arquivos}', String(arquivosComNomes))
+            .replace('{pasta}', chalk.bold('names/')),
         );
       }
     });

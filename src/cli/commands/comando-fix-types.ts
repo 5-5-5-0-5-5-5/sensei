@@ -8,14 +8,14 @@ import { type CasoTipoInseguro, exportarRelatoriosFixTypes } from '@cli/handlers
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import { expandIncludePatterns, processPatternList } from '@cli/helpers/pattern-helpers.js';
 import { config } from '@core/config/config.js';
-import { DICAS, formatarTipoInseguro, gerarResumoCategoria, ICONES_FIX_TYPES as ICONES, MENSAGENS_AUTOFIX, MENSAGENS_CLI_CORRECAO_TIPOS, MENSAGENS_ERRO_FIX_TYPES as MENSAGENS_ERRO, MENSAGENS_INICIO_FIX_TYPES as MENSAGENS_INICIO, MENSAGENS_PROGRESSO_FIX_TYPES as MENSAGENS_PROGRESSO, MENSAGENS_RESUMO, MENSAGENS_SUCESSO_FIX_TYPES as MENSAGENS_SUCESSO, TEMPLATE_RESUMO_FINAL, TEXTOS_CATEGORIZACAO_CORRECAO_TIPOS } from '@core/messages/index.js';
-import { getMessages } from '@core/messages/index.js';
-const { log } = getMessages();
+import { DICAS, formatarTipoInseguro, gerarResumoCategoria, getMessages,ICONES_FIX_TYPES as ICONES, MENSAGENS_AUTOFIX, MENSAGENS_CLI_CORRECAO_TIPOS, MENSAGENS_ERRO_FIX_TYPES as MENSAGENS_ERRO, MENSAGENS_INICIO_FIX_TYPES as MENSAGENS_INICIO, MENSAGENS_PROGRESSO_FIX_TYPES as MENSAGENS_PROGRESSO, MENSAGENS_RESUMO, MENSAGENS_SUCESSO_FIX_TYPES as MENSAGENS_SUCESSO, TEMPLATE_RESUMO_FINAL, TEXTOS_CATEGORIZACAO_CORRECAO_TIPOS  } from '@core/messages/index.js';
 import { PROJETO_RAIZ } from '@core/registry/paths.js';
 import { Command } from 'commander';
 
 import type { FixTypesOptions, Ocorrencia } from '@';
 import { asTecnicas, extrairMensagemErro } from '@';
+
+const { log } = getMessages();
 
 export function criarComandoFixTypes(): Command {
   const cmd = new Command('fix-types');

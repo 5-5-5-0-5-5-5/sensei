@@ -123,7 +123,7 @@ export const analistaAntiPadroesAsync: Analista = {
        nivel: o.nivel || 'aviso',
        mensagem: o.mensagem,
        linha: o.linha || 0,
-       relPath: relPath,
+       relPath,
        origem: 'anti-padroes-async'
     }));
   }

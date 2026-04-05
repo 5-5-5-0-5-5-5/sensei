@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 
-import { CssMensagens } from '@core/messages/core/plugin-messages.js';
+import { CssMensagens } from '@core/messages/pt/core/plugin-messages.js';
 
 vi.mock('postcss-sass', () => ({
   default: {},

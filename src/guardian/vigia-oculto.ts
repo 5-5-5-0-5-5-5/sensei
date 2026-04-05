@@ -1,12 +1,13 @@
 // SPDX-License-Identifier: MIT
 import { getMessages } from '@core/messages/index.js';
-const { log, VigiaOcultaMensagens } = getMessages();
 
 import type { FileEntry } from '@';
 
 import { REGISTRO_VIGIA_CAMINHO_PADRAO } from './constantes.js';
 import { gerarSnapshotDoConteudo } from './hash.js';
 import { carregarRegistros, salvarRegistros } from './registros.js';
+
+const { log, VigiaOcultaMensagens } = getMessages();
 
 export async function vigiaOculta(
   arquivos: FileEntry[],

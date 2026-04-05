@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-import { AnalystOrigens, AnalystTipos, CssInJsMensagens, SeverityNiveis } from '@core/messages/core/plugin-messages.js';
+import { AnalystOrigens, AnalystTipos, CssInJsMensagens, SeverityNiveis } from '@core/messages/pt/core/plugin-messages.js';
 
 import type { Ocorrencia } from '@';
 import { criarAnalista, criarOcorrencia } from '@';

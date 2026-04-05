@@ -4,9 +4,8 @@ import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import chalk from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { iniciarInquisicao } from '@core/execution/inquisidor.js';
-import { ICONES_STATUS } from '@core/messages/shared/icons.js';
 import { getMessages } from '@core/messages/index.js';
-const { log, logSistema, CliAtualizarExtraMensagens } = getMessages();
+import { ICONES_STATUS } from '@core/messages/shared/icons.js';
 import { executarShellSeguro } from '@core/utils/exec-safe.js';
 import { scanSystemIntegrity } from '@guardian/sentinela.js';
 import { Command } from 'commander';
@@ -14,11 +13,13 @@ import { Command } from 'commander';
 import type { FileEntryWithAst, Tecnica } from '@';
 import { asTecnicas } from '@';
 
+const { log, logSistema, CliAtualizarExtraMensagens } = getMessages();
+
 export function comandoAtualizar(
   aplicarFlagsGlobais: (opts: Record<string, unknown>) => void,
 ): Command {
   return new Command('atualizar')
-    .description('Atualiza o Sensei se a integridade estiver preservada')
+    .description(CliAtualizarExtraMensagens.descricao)
     .option('--global', 'atualiza globalmente via npm i -g')
     .action(async function (this: Command, opts: { global?: boolean }) {
       try {
@@ -29,7 +30,7 @@ export function comandoAtualizar(
         );
       } catch (err) {
         log.erro(
-          `Falha ao aplicar flags: ${err instanceof Error ? err.message : String(err)}`,
+          CliAtualizarExtraMensagens.falhaAplicarFlags.replace('{erro}', err instanceof Error ? err.message : String(err)),
         );
         sair(ExitCode.Failure);
         return;
@@ -56,7 +57,7 @@ export function comandoAtualizar(
             ('baseline-aceito' as typeof guardianResultado.status)
         ) {
           log.sucesso(
-            `${ICONES_STATUS.ok} Guardian: integridade validada. Prosseguindo atualização.`,
+            CliAtualizarExtraMensagens.guardianIntegridadeValidada.replace('{icone}', ICONES_STATUS.ok),
           );
         } else {
           log.aviso(
