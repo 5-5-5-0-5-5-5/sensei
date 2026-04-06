@@ -2,7 +2,7 @@
   "$schema": "./node_modules/sensei/sensei.config.schema.json",
   "$comment": "Sensei Configuration - Complete Reference",
   "$comment_DOCS": "Este arquivo contém todas as configurações disponíveis do Sensei. Marque com false ou remova as que não deseja usar.",
-  "locales": "en",
+  "locale": "en",
   "$comment_LOCALE": "Idioma das mensagens: 'pt' (padrão) ou 'en'",
   "verbose": false,
   "$comment_VERBOSE": "Ativa output detalhado no terminal",
