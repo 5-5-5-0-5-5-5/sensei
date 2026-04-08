@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+import fs from 'node:fs';
 import path from 'node:path';
 
 import { lerArquivoTexto } from '@shared/persistence/persistencia.js';
@@ -301,6 +302,15 @@ function converterConfigSimplificada(config: Record<string, unknown>): Record<st
     ...config
   };
 
+  // Converte "locale" ou "locales" para "LOCALE"
+  if (config.locale) {
+    resultado.LOCALE = config.locale;
+    delete resultado.locale;
+  } else if (config.locales) {
+    resultado.LOCALE = config.locales;
+    delete resultado.locales;
+  }
+
   // Converte "exclude" para "INCLUDE_EXCLUDE_RULES.globalExcludeGlob"
   if (Array.isArray(config.exclude)) {
     resultado.INCLUDE_EXCLUDE_RULES = {
@@ -489,6 +499,48 @@ export function aplicarConfigParcial(partial: Record<string, unknown>): Record<s
     ...diffs
   };
   return diffs;
+}
+
+export function inicializarConfigSync(): Record<string, DiffRegistro> {
+  const diffs: Record<string, DiffRegistro> = {};
+
+  // Busca síncrona de arquivos de configuração (ex.: para detecção de locale imediata)
+  const candidatos = ['sensei.config.json', 'src/config.json'];
+  for (const nome of candidatos) {
+    try {
+      const caminho = path.join(process.cwd(), nome);
+      if (fs.existsSync(caminho)) {
+        const conteudo = fs.readFileSync(caminho, 'utf-8');
+        const json = conteudo && conteudo.trim() ? JSON.parse(conteudo) : null;
+        if (json) {
+          const arquivo = converterConfigSimplificada(json);
+          mesclarProfundo(config as unknown as Record<string, unknown>, arquivo as Record<string, unknown>, 'arquivo-sync', diffs);
+        }
+        break;
+      }
+    } catch {
+      /* ignore sync errors */
+    }
+  }
+
+  // Carrega env síncrono também
+  const envCfg = carregarEnvConfig();
+  if (Object.keys(envCfg).length) {
+    mesclarProfundo(config as unknown as Record<string, unknown>, envCfg, 'env-sync', diffs);
+  }
+
+  // Sincroniza estados derivados
+  if (config.ANALISE_SCAN_ONLY && !config.SCAN_ONLY) config.SCAN_ONLY = true;
+  else if (config.SCAN_ONLY && !config.ANALISE_SCAN_ONLY) config.ANALISE_SCAN_ONLY = true;
+  sincronizarIgnorados();
+
+  config.__OVERRIDES__ = { ...(config.__OVERRIDES__ || {}), ...diffs };
+  return diffs;
+}
+
+// Inicialização síncrona imediata para detectar flags críticas (ex.: locale) antes dos imports terminarem
+if (!process.env.VITEST) {
+  inicializarConfigSync();
 }
 
 // Inicialização automática (arquivo + env) sem CLI (CLI aplicará depois)

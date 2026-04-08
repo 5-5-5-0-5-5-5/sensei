@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
-import type { NodePath } from '@babel/traverse';
-import type { CatchClause, FunctionDeclaration, Node, NumericLiteral, TSAnyKeyword } from '@babel/types';
+import type { NodePath, Visitor } from '@babel/traverse';
+import type { CatchClause, FunctionDeclaration, Node, NumericLiteral } from '@babel/types';
 import { config } from '@core/config/config.js';
 import { LIMITES_PADRAO } from '@core/config/limites.js';
 import { traverse } from '@core/config/traverse.js';
@@ -31,10 +31,14 @@ const LIMITES = {
 /**
  * Visitor para travessia de AST - compartilhado para otimização
  */
-const visitorFragil = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  CatchClause(path: NodePath<CatchClause>, state: any): void {
-    const fragilidades = state.resultados.get('codigo-fragil') || [];
+type VisitorState = {
+  resultados: Map<string, Fragilidade[]>;
+};
+
+const visitorFragil: Visitor<unknown> = {
+  CatchClause(path: NodePath<CatchClause>, state: unknown): void {
+    const visitorState = state as VisitorState;
+    const fragilidades = visitorState.resultados.get('codigo-fragil') || [];
     const body = path.node.body.body;
     const linha = path.node.loc?.start.line || 0;
     if (body.length === 0) {
@@ -54,25 +58,11 @@ const visitorFragil = {
         contexto: 'Catch apenas com console.log'
       });
     }
-    state.resultados.set('codigo-fragil', fragilidades);
+    visitorState.resultados.set('codigo-fragil', fragilidades);
   },
-  // Uso explícito de 'any'
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  TSAnyKeyword(path: NodePath<TSAnyKeyword>, state: any): void {
-    const fragilidades = state.resultados.get('codigo-fragil') || [];
-    fragilidades.push({
-      tipo: 'any-explicito',
-      linha: path.node.loc?.start.line || 0,
-      coluna: path.node.loc?.start.column || 0,
-      severidade: 'media',
-      contexto: 'Tipo any explícito'
-    });
-    state.resultados.set('codigo-fragil', fragilidades);
-  },
-  // Aninhamento excessivo de IFs
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  IfStatement(path: NodePath<import('@babel/types').IfStatement>, state: any): void {
-    const fragilidades = state.resultados.get('codigo-fragil') || [];
+  IfStatement(path: NodePath<import('@babel/types').IfStatement>, state: unknown): void {
+    const visitorState = state as VisitorState;
+    const fragilidades = visitorState.resultados.get('codigo-fragil') || [];
     let depth = 0;
     let current: NodePath | null = path;
     while (current) {
@@ -88,12 +78,11 @@ const visitorFragil = {
         contexto: `Condicionais aninhadas demais (nível ${depth}, máx: ${LIMITES.MAX_ANINHAMENTO_IF})`
       });
     }
-    state.resultados.set('codigo-fragil', fragilidades);
+    visitorState.resultados.set('codigo-fragil', fragilidades);
   },
-  // Funções longas
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  FunctionDeclaration(path: NodePath<FunctionDeclaration>, state: any): void {
-    const fragilidades = state.resultados.get('codigo-fragil') || [];
+  FunctionDeclaration(path: NodePath<FunctionDeclaration>, state: unknown): void {
+    const visitorState = state as VisitorState;
+    const fragilidades = visitorState.resultados.get('codigo-fragil') || [];
     const maxLinhas = config.ANALISE_LIMITES?.CODIGO_FRAGIL?.MAX_LINHAS_FUNCAO ?? LIMITES.LINHAS_FUNCAO;
     const node = path.node;
     if (node.body?.type === 'BlockStatement') {
@@ -110,12 +99,11 @@ const visitorFragil = {
         });
       }
     }
-    state.resultados.set('codigo-fragil', fragilidades);
+    visitorState.resultados.set('codigo-fragil', fragilidades);
   },
-  // Números mágicos
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  NumericLiteral(path: NodePath<NumericLiteral>, state: any): void {
-    const fragilidades = state.resultados.get('codigo-fragil') || [];
+  NumericLiteral(path: NodePath<NumericLiteral>, state: unknown): void {
+    const visitorState = state as VisitorState;
+    const fragilidades = visitorState.resultados.get('codigo-fragil') || [];
     const value = path.node.value;
     if (isInVariableDeclarator(path) || isInArrayIndex(path)) return;
     if (!frameworksDetectados) {
@@ -129,7 +117,7 @@ const visitorFragil = {
       severidade: 'baixa',
       contexto: `Número mágico '${value}' detectado`
     });
-    state.resultados.set('codigo-fragil', fragilidades);
+    visitorState.resultados.set('codigo-fragil', fragilidades);
   }
 };
 

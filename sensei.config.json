@@ -1,33 +1,18 @@
 {
   "$schema": "./node_modules/sensei/sensei.config.schema.json",
-  "$comment": "Sensei Configuration - Complete Reference",
-  "$comment_DOCS": "Este arquivo contém todas as configurações disponíveis do Sensei. Marque com false ou remova as que não deseja usar.",
-  "locales": "en",
-  "$comment_LOCALE": "Idioma das mensagens: 'pt' (padrão) ou 'en'",
+  "locale": "en",
   "verbose": false,
-  "$comment_VERBOSE": "Ativa output detalhado no terminal",
   "dev": false,
-  "$comment_DEV": "Modo desenvolvimento com logs adicionais",
   "debug": false,
-  "$comment_DEBUG": "Ativa modo debug com stack traces completos",
   "logEstruturado": false,
-  "$comment_LOGESTRUTURADO": "Formata saída como JSON estruturado para CI/logging",
   "silence": false,
-  "$comment_SILENCE": "Suprime todos os logs de output",
   "scanOnly": false,
-  "$comment_SCANONLY": "Modo somente escaneamento - não executa técnicas de correção",
   "incremental": false,
-  "$comment_INCREMENTAL": "Usa cache de análise anterior para acelerar execuções",
   "metricas": false,
-  "$comment_METRICAS": "Coleta e salva métricas de análise para histórico",
   "export": false,
-  "$comment_EXPORT": "Exporta relatórios em JSON/Markdown para pasta reports/",
   "exportFull": false,
-  "$comment_EXPORTFULL": "Inclui dados completos nos relatórios exportados (pode ser grande)",
   "include": [],
-  "$comment_INCLUDE": "Array de glob patterns para INCLUIR na análise (sobrescreve excludes)",
   "exclude": [],
-  "$comment_EXCLUDE": "Array de glob patterns para EXCLUIR da análise",
   "INCLUDE_EXCLUDE_RULES": {
     "globalExcludeGlob": [
       "node_modules/**",
@@ -38,13 +23,10 @@
       "**/*.log",
       ".git/**"
     ],
-    "$comment_GLOBALEXCLUDEGLOB": "Padrões de exclusão aplicados globalmente a todos os comandos",
     "dirRules": {},
-    "$comment_DIRRULES": "Regras específicas por diretório",
     "defaultExcludes": null
   },
   "nameConventions": {
-    "$comment_NAMECONVENTIONS": "Convenções de nomenclatura de diretórios do projeto",
     "srcDirectory": "src",
     "testsDirectory": "tests",
     "docsDirectory": "docs",
@@ -66,61 +48,33 @@
     "localesDirectory": "locales"
   },
   "ESTRUTURA_ARQUIVOS_RAIZ_MAX": 60,
-  "$comment_ESTRUTURAARQUIVOSRAIZMAX": "Limite de arquivos na raiz do projeto antes de warnar",
   "REPO_ARQUETIPO": "cli-modular",
-  "$comment_REPOARQUETIPO": "Arquétipo de projeto usado para sugestões (cli-modular, node-community, ts-lib, etc.)",
   "STRUCTURE_AUTO_FIX": false,
-  "$comment_STRUCTUREAUTOFIX": "Aplica correções estruturais automaticamente no comando reestruturar",
   "STRUCTURE_CONCURRENCY": 5,
-  "$comment_STRUCTURECONCURRENCY": "Número de workers para processamento paralelo de estrutura",
   "ESTRUTURA_CAMADAS": {},
-  "$comment_ESTRUTURACAMADAS": "Mapeamento de camadas customizadas para arquitetura (ex: { \"handlers\": [\"src/handlers/*\"] })",
   "SAFE_MODE": true,
-  "$comment_SAFEMODE": "Modo seguro - pede confirmação antes de alterações no filesystem",
   "ALLOW_PLUGINS": false,
-  "$comment_ALLOWPLUGINS": "Permite carregamento de plugins externos",
   "ALLOW_EXEC": false,
-  "$comment_ALLOWEXEC": "Permite execução de comandos arbitrários via plugins",
   "ALLOW_MUTATE_FS": true,
-  "$comment_ALLOWMUTATEFS": "Permite mutações no filesystem (escrita de arquivos)",
   "AUTOANALISE_CONCURRENCY": 5,
-  "$comment_AUTOANALISECONCURRENCY": "Número de análises paralelas simultâneas",
   "LOG_LEVEL": "info",
-  "$comment_LOGLEVEL": "Nível de log: 'debug', 'info', 'aviso', 'erro'",
   "SUPPRESS_PARCIAL_LOGS": false,
-  "$comment_SUPPRESSPARCIALLOGS": "Suprime logs com 'parcial' para reduzir ruído em CI",
   "REPORT_SILENCE_LOGS": false,
-  "$comment_REPORTSILENCELOGS": "Suprime logs de progresso durante geração de relatórios",
   "REPORT_EXPORT_ENABLED": true,
-  "$comment_REPORTEXPORTENABLED": "Habilita exportação automática de relatórios após análise",
   "REPORT_OUTPUT_DIR": "reports",
-  "$comment_REPORTOUTPUTDIR": "Diretório onde relatórios são salvos",
   "REPORT_EXPORT_FULL": false,
-  "$comment_REPORTEXPORTFULL": "Inclui dados detalhados nos relatórios exportados",
   "REPORT_FRAGMENT_OCCURRENCES": 2000,
-  "$comment_REPORTFRAGMENTOCCURRENCES": "Tamanho máximo de.shard de ocorrências",
   "REPORT_FRAGMENT_FILEENTRIES": 500,
-  "$comment_REPORTFRAGMENTFILEENTRIES": "Tamanho máximo de.shard de entradas de arquivo",
   "REPORT_FRAGMENT_SUMMARY_TOPN": 5,
-  "$comment_REPORTFRAGMENTSUMMARYTOPN": "Quantidade de top-N no resumo por fragmento",
   "RELATORIO_SAUDE_TABELA_ENABLED": true,
-  "$comment_RELATORIOSAUDETABELAENABLED": "Usa tabela com moldura no relatório de saúde",
   "RELATORIO_SAUDE_DETALHADO_VERBOSE": true,
-  "$comment_RELATORIOSAUDEDETALHADOVERBOSE": "Exibe lista detalhada em modo verbose no relatório de saúde",
   "GUARDIAN_ENABLED": true,
-  "$comment_GUARDIANENABLED": "Habilita verificação de integridade do ambiente (Guardian)",
   "GUARDIAN_ENFORCE_PROTECTION": true,
-  "$comment_GUARDIANENFORCEPROTECTION": "Guardian bloqueia alterações que quebram baseline",
   "GUARDIAN_ALLOW_ADDS": false,
-  "$comment_GUARDIANALLOWADDS": "Guardian permite novos arquivos",
   "GUARDIAN_ALLOW_CHG": false,
-  "$comment_GUARDIANALLOWCHG": "Guardian permite alterações",
   "GUARDIAN_ALLOW_DELS": false,
-  "$comment_GUARDIANALLOWDELS": "Guardian permite deleções",
   "ZELADOR_GHOST_INACTIVITY_DAYS": 30,
-  "$comment_ZELADORGHOSTINACTIVITYDAYS": "Dias de inatividade para considerar arquivo órfão",
   "ZELADOR_LINE_THRESHOLD": 20,
-  "$comment_ZELADORLINETHRESHOLD": "Linhas mínimas para considerar arquivo órfão",
   "SCANNER_EXTENSOES_COM_AST": [
     ".js",
     ".jsx",
@@ -138,33 +92,21 @@
     ".htm",
     ".css"
   ],
-  "$comment_SCANNEREXTENSOESCOMAST": "Extensões que serão parseadas com AST",
   "VIGIA_TOP_N": 10,
-  "$comment_VIGIATOPN": "Quantidade de top arquivos monitorados pelo Vigilante",
   "ANALISE_AST_CACHE_ENABLED": true,
-  "$comment_ANALISEASTCACHEENABLED": "Habilita cache de AST para evitar re-parsing",
   "ANALISE_METRICAS_ENABLED": true,
-  "$comment_ANALISEMETRICASENABLED": "Coleta métricas detalhadas durante análise",
   "ANALISE_TIMEOUT_POR_ANALISTA_MS": 30000,
-  "$comment_ANALISETIMEOUTPORANALISTAMS": "Timeout por analista individual (ms)",
   "WORKER_POOL_ENABLED": true,
-  "$comment_WORKERPOOLENABLED": "Usa workers para processamento paralelo",
   "WORKER_POOL_MAX_WORKERS": 0,
-  "$comment_WORKERPOOLMAXWORKERS": "Máximo de workers (0 = automático baseado em CPUs)",
   "WORKER_POOL_BATCH_SIZE": 10,
-  "$comment_WORKERPOOLBATCHSIZE": "Tamanho do batch por worker",
   "ANALISE_METRICAS_HISTORICO_MAX": 200,
-  "$comment_ANALISEMETRICASHISTORICOMAX": "Máximo de registros no histórico de métricas",
   "ANALISE_PRIORIZACAO_ENABLED": true,
-  "$comment_ANALISEPRIORIZACAOENABLED": "Usa histórico para priorizar arquivos em análises futuras",
   "ANALISE_PRIORIZACAO_PESOS": {
     "duracaoMs": 1,
     "ocorrencias": 2,
     "penalidadeReuso": 0.5
   },
-  "$comment_ANALISEPRIORIZACAOPESOS": "Pesos para priorização de arquivos",
   "PERF_SNAPSHOT_DIR": "docs/perf",
-  "$comment_PERFSNAPSHOTDIR": "Diretório para snapshots de performance",
   "ESTRUTURA_TARGETS": {
     "TESTS_RAIZ_DIR": "src",
     "SCRIPTS_DIR": "src/scripts",
@@ -172,7 +114,6 @@
     "TYPES_DIR": "types",
     "DOCS_FRAGMENTS_DIR": "docs/fragments"
   },
-  "$comment_ESTRUTURATARGETS": "Diretórios alvo para análise estrutural",
   "detectorMarkdown": {
     "checkProveniencia": true,
     "checkLicenses": true,
@@ -185,14 +126,12 @@
     },
     "whitelistMode": "merge"
   },
-  "$comment_DETECTORMARKDOWN": "Configurações do detector de markdown",
   "coverageGate": {
     "lines": 90,
     "functions": 90,
     "branches": 90,
     "statements": 90
   },
-  "$comment_COVERAGEGATE": " thresholds de coverage para análise",
   "languageSupport": {
     "javascript": {
       "enabled": true,
@@ -230,7 +169,6 @@
       "plugin": "core"
     }
   },
-  "$comment_LANGUAGESUPPORT": "Configurações por linguagem (parser e plugin)",
   "suppress": {
     "rules": [
       "weak-crypto",
@@ -240,13 +178,9 @@
       "poor-naming",
       "problemas-teste"
     ],
-    "$comment_SUPPRESSRULES": "Regras com suppressed de warnings",
     "severity": {},
-    "$comment_SUPPRESSSEVERITY": "Sobrescrever severity por regra",
-    "paths": [],
-    "$comment_SUPPRESSPATHS": "Paths com suppressed total"
+    "paths": []
   },
-  "$comment_SUPPRESS": "Configurações de supressão de alertas",
   "rules": {
     "tipo-inseguro": {
       "severity": "error",
@@ -284,7 +218,6 @@
       ]
     }
   },
-  "$comment_RULES": "Configurações granulares por regra",
   "testPatterns": {
     "files": [
       "**/*.test.*",
@@ -296,7 +229,6 @@
     "excludeFromOrphanCheck": true,
     "allowAnyType": false
   },
-  "$comment_TESTPATTERNS": "Padrões para detecção de arquivos de teste",
   "ANALISE_LIMITES": {
     "FUNCOES_LONGAS": {
       "MAX_LINHAS": 20,
@@ -309,7 +241,6 @@
       "MAX_NESTED_CALLBACKS": 3
     }
   },
-  "$comment_ANALISELIMITES": "Limites para análise de código",
   "fastMode": {
     "analystsInclude": [
       "detector-dependencias",
@@ -331,7 +262,6 @@
       "typesDirectory": "src/types"
     }
   },
-  "$comment_FASTMODE": "Configurações do modo rápido (análise leve)",
   "autoFix": {
     "mode": "balanced",
     "minConfidence": 85,
@@ -345,6 +275,5 @@
     "maxFixesPerArquivo": 10,
     "createBackup": false,
     "validateAfterFix": true
-  },
-  "$comment_AUTOFIX": "Configurações do auto-fix automático"
+  }
 }
