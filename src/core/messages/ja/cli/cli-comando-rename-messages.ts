@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 
 export const CliComandoRenameMensagens = {
-  descricao: 'Aplica as renomeações de variáveis baseadas no arquivo(s) de mapeamento em names/.',
-  nenhumArquivoMapeamento: 'Nenhum arquivo de mapeamento em {pasta}. Execute o comando {comando} primeiro.',
-  pastaNaoEncontrada: 'Pasta de mapeamento não encontrada: {pasta}. Execute o comando {comando} primeiro.',
-  nenhumMapeamento: 'Nenhum mapeamento de tradução encontrado (formato: nomeAntigo = nomeNovo por linha).',
-  conflitoMapeamento: 'Conflito de mapeamento para "{nome}": {arquivo} usa "{novo}", anterior era "{anterior}" (last wins).',
-  iniciandoRenomeacao: 'Iniciando renomeação de variáveis ({total} mapeamentos)...',
-  arquivoAtualizado: 'Atualizado: {arquivo}',
-  renomeacaoConcluida: 'Renomeação concluída! {total} arquivos atualizados.',
+  descricao: 'Applies variable renames based on mapping file(s) in names/.',
+  nenhumArquivoMapeamento: 'No mapping file in {pasta}. Run the {comando} command first.',
+  pastaNaoEncontrada: 'Mapping folder not found: {pasta}. Run the {comando} command first.',
+  nenhumMapeamento: 'No translation mapping found (format: oldName = newName per line).',
+  conflitoMapeamento: 'Mapping conflict for "{nome}": {arquivo} uses "{novo}", previous was "{anterior}" (last wins).',
+  iniciandoRenomeacao: 'Starting variable renaming ({total} mappings)...',
+  arquivoAtualizado: 'Updated: {arquivo}',
+  renomeacaoConcluida: 'Renaming complete! {total} files updated.',
 } as const;

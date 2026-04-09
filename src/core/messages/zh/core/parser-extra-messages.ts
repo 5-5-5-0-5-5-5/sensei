@@ -1,5 +1,5 @@
 export const ParserExtraMensagens = {
-  phpParse: '🐘 PHP伪解析: {classes} 个类, {funcoes} 个函数',
-  pythonParse: '🐍 Python伪解析: {classes} 个类, {funcoes} 个函数',
-  pluginsRegistrados: '🔌 系统已注册标准插件',
+  phpParse: '🐘 PHP pseudo-parse: {classes} classes, {funcoes} functions',
+  pythonParse: '🐍 Python pseudo-parse: {classes} classes, {funcoes} functions',
+  pluginsRegistrados: '🔌 Default plugins registered in the system',
 } as const;

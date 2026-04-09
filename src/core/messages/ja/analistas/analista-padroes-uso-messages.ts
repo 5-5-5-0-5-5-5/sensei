@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * @fileoverview Mensagens de diagnóstico para o analista de padrões de uso de código.
- * Fornece templates de texto para detectar uso de `var`, `eval`, `require` em
- * TypeScript, funções anônimas e outras construções desencorajadas.
+ * @fileoverview Diagnostic messages for the code usage patterns analyst.
+ * Provides text templates to detect usage of `var`, `eval`, `require` in
+ * TypeScript, anonymous functions, and other discouraged constructs.
  */
 
 export const PadroesUsoMensagens = {
-  varUsage: "Uso de 'var' detectado. Prefira 'let' ou 'const'.",
-  letUsage: "Uso de 'let'. Considere 'const' se não houver reatribuição.",
-  requireInTs: "Uso de 'require' em arquivo TypeScript. Prefira 'import'.",
-  evalUsage: "Uso de 'eval' detectado. Evite por questões de segurança e performance.",
-  moduleExportsInTs: "Uso de 'module.exports' ou 'exports' em arquivo TypeScript. Prefira 'export'.",
-  withUsage: "Uso de 'with' detectado. Evite por questões de legibilidade e escopo.",
-  anonymousFunction: 'Função anônima detectada. Considere nomear funções para melhor rastreabilidade.',
-  arrowAsClassMethod: 'Arrow function usada como método de classe. Prefira método tradicional para melhor herança.',
-  erroAnalise: (relPath: string, erro: string) => `Falha ao analisar padrões de uso em ${relPath}: ${erro}`
+  varUsage: "Usage of 'var' detected. Prefer 'let' or 'const'.",
+  letUsage: "Usage of 'let'. Consider 'const' if there is no reassignment.",
+  requireInTs: "Usage of 'require' in TypeScript file. 好む 'import'.",
+  evalUsage: "Usage of 'eval' detected. Avoid for security and performance reasons.",
+  moduleExportsInTs: "Usage of 'module.exports' or 'exports' in TypeScript file. 好む 'export'.",
+  withUsage: "Usage of 'with' detected. Avoid for readability and scope reasons.",
+  anonymousFunction: 'Anonymous function detected. Consider naming functions for better traceability.',
+  arrowAsClassMethod: 'Arrow function used as a class method. Prefer traditional method for better inheritance.',
+  erroAnalise: (relPath: string, erro: string) => `Failed to analyze usage patterns in ${relPath}: ${erro}`
 } as const;

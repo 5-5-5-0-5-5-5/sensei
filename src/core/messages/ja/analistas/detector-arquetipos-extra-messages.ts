@@ -1,4 +1,4 @@
 export const DetectorArquetiposExtraMensagens = {
-  debugChamado: '🔍 detectarArquetipos chamado com',
-  debugContextual: '🔍 Tentando chamar detector contextual...',
+  debugChamado: '🔍 detectarArquetipos called with',
+  debugContextual: '🔍 Trying to call contextual detector...',
 } as const;

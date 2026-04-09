@@ -1,18 +1,17 @@
 // SPDX-License-Identifier: MIT
 
 export const CliBinMensagens = {
-  flagsInvalidas: '無効なフラグ: {error}',
-  unhandledRejection: 'Prometheus: 処理されていないリジェクション',
-  excecaoNaoCapturada: 'キャッチされていない例外: {mensagem}',
-  erroInicializacao: 'prometheusの初期化エラー:',
+  flagsInvalidas: 'Invalid flags: {erro}',
+  unhandledRejection: 'Prometheus: unhandled rejection',
+  excecaoNaoCapturada: 'Uncaught exception: {mensagem}',
   resumoConversa: {
-    titulo: '\n📊 会話の概要',
-    total: '合計: {total}',
-    usuario: 'ユーザー: {total}',
+    titulo: '\n📊 CONVERSATION SUMMARY',
+    total: 'Total: {total}',
+    usuario: 'User: {total}',
     prometheus: 'Prometheus: {total}',
-    primeira: '最初: {mensagem}',
-    ultima: '最後: {mensagem}',
+    primeira: 'First: {mensagem}',
+    ultima: 'Last: {mensagem}',
   },
-  historicoIndisponivel: '履歴が利用できません。',
-  historicoLimpo: '履歴がクリアされました。',
+  historicoIndisponivel: 'History unavailable.',
+  historicoLimpo: 'History cleared.',
 } as const;

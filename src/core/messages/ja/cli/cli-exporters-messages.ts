@@ -2,25 +2,25 @@
 
 import { ICONES_ACAO, ICONES_RELATORIO } from '../../shared/icons.js';
 
-export const CliExportersMensagens = {
+export const CliExportersMessages = {
   poda: {
-    relatoriosExportados: (dir: string) => `Relatórios de poda exportados para: ${dir}`,
-    falhaExportar: (erroMensagem: string) => `Falha ao exportar relatórios de poda: ${erroMensagem}`
+    reportsExported: (dir: string) => `Pruning レポートs exported to: ${dir}`,
+    exportFailed: (erroMensagem: string) => `Failed to export pruning レポートs: ${erroMensagem}`
   },
   guardian: {
-    relatoriosExportadosTitulo: `${ICONES_ACAO.export} ${ICONES_RELATORIO.detalhado} Relatórios Guardian exportados:`,
-    caminhoMarkdown: (caminhoMd: string) => `   Markdown: ${caminhoMd}`,
-    caminhoJson: (caminhoJson: string) => `   JSON: ${caminhoJson}`,
-    falhaExportar: (erroMensagem: string) => `Falha ao exportar relatórios Guardian: ${erroMensagem}`
+    reportsExportedTitle: `${ICONES_ACAO.export} ${ICONES_RELATORIO.detalhado} guardian reports exported:`,
+  markdownPath: (caminhoMd: string) => `   Markdown: ${caminhoMd}`,
+  jsonPath: (caminhoJson: string) => `   JSON: ${caminhoJson}`,
+  exportFailed: (erroMensagem: string) => `Failed to export guardian reports: ${erroMensagem}`
   },
   fixTypes: {
-    relatoriosExportadosTitulo: `${ICONES_ACAO.export} ${ICONES_RELATORIO.detalhado} Relatórios de fix-types exportados:`,
-    caminhoMarkdown: (caminhoMd: string) => `   Markdown: ${caminhoMd}`,
-    caminhoJson: (caminhoJson: string) => `   JSON: ${caminhoJson}`,
-    falhaExportar: (erroMensagem: string) => `Falha ao exportar relatórios de fix-types: ${erroMensagem}`
+    reportsExportedTitle: `${ICONES_ACAO.export} ${ICONES_RELATORIO.detalhado} Fix-types レポートs exported:`,
+    markdownPath: (caminhoMd: string) => `   Markdown: ${caminhoMd}`,
+    jsonPath: (caminhoJson: string) => `   JSON: ${caminhoJson}`,
+    exportFailed: (erroMensagem: string) => `Failed to export fix-types レポートs: ${erroMensagem}`
   },
   reestruturacao: {
-    relatoriosExportados: (modoPrefixo: string, dir: string) => `Relatórios de reestruturação ${modoPrefixo}exportados para: ${dir}`,
-    falhaExportar: (modoPrefixo: string, erroMensagem: string) => `Falha ao exportar relatórios ${modoPrefixo}de reestruturação: ${erroMensagem}`
+    reportsExported: (modoPrefixo: string, dir: string) => `Restructuring レポートs ${modoPrefixo}exported to: ${dir}`,
+    exportFailed: (modoPrefixo: string, erroMensagem: string) => `Failed to export ${modoPrefixo}restructuring レポートs: ${erroMensagem}`
   }
 } as const;

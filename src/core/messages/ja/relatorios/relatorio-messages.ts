@@ -1,258 +1,258 @@
 // SPDX-License-Identifier: MIT
 /**
- * レポート用メッセージ集中化管理（MarkdownとJSON）
- * タイトル、ヘッダー、説明、説明テキストのすべての文字列は、
- * メンテナンスと将来の国際化を容易にするためにここに定義する必要があります。
+ * Centralized messages for reports (Markdown and JSON)
+ * All title strings, headers, descriptions and explanatory texts
+ * must be defined here to facilitate maintenance and future internationalization.
  */
 
 import { ICONES_ACAO, ICONES_COMANDO, ICONES_DIAGNOSTICO, ICONES_RELATORIO } from '../../shared/icons.js';
 
 export const RelatorioMensagens = {
-  /* -------------------------- メインレポート（gerador-relatorio.ts） -------------------------- */
+  /* -------------------------- MAIN REPORT (gerador-relatorio.ts) -------------------------- */
   principal: {
-    titulo: `${ICONES_RELATORIO.resumo} Prometheusレポート`,
+    titulo: `${ICONES_RELATORIO.resumo} Prometheus レポート`,
     secoes: {
       metadados: {
-        data: '日付',
-        duracao: '所要時間',
-        arquivos: 'スキャンされたファイル',
-        ocorrencias: '発見された発生',
-        arquivoManifest: 'マニフェストファイル',
-        notaManifest: '完全なレポートを探索するには、マニフェストにリストされたシャードをダウンロード/展開してください。'
+        data: 'Date',
+        duracao: 'Duration',
+        arquivos: 'Scanned files',
+        ocorrencias: 'Occurrences found',
+        arquivoManifest: 'Manifest file',
+        notaManifest: 'To explore the full report, download/decompress the shards listed in the manifest.'
       },
       guardian: {
-        titulo: `${ICONES_DIAGNOSTICO.guardian} 整合性確認（Guardian）`,
-        status: 'ステータス',
-        timestamp: 'タイムスタンプ',
-        totalArquivos: '保護されたファイルの合計'
+        titulo: `${ICONES_DIAGNOSTICO.guardian} Integrity Verification (guardian)`,
+        status: 'Status',
+        timestamp: 'Timestamp',
+        totalArquivos: 'Total protected files'
       },
       resumoTipos: {
-        titulo: `${ICONES_DIAGNOSTICO.stats} 問題タイプの要約`,
-        tipo: 'タイプ',
-        quantidade: '数量'
+        titulo: `${ICONES_DIAGNOSTICO.stats} Problem types summary`,
+        tipo: 'Type',
+        quantidade: 'Quantity'
       },
       ocorrencias: {
-        titulo: `${ICONES_RELATORIO.lista} 発見された発生`,
+        titulo: `${ICONES_RELATORIO.lista} Occurrences found`,
         colunas: {
-          arquivo: 'ファイル',
-          linha: '行',
-          nivel: 'レベル',
-          mensagem: 'メッセージ'
+          arquivo: 'File',
+          linha: 'Line',
+          nivel: 'Level',
+          mensagem: 'Message'
         }
       },
       estatisticas: {
-        titulo: `${ICONES_RELATORIO.grafico} 全体統計`,
-        linhasAnalisadas: '分析された行',
-        padroesProgramacao: 'プログラミングパターン',
-        analiseInteligente: 'コードのインテリジェント分析'
+        titulo: `${ICONES_RELATORIO.grafico} General statistics`,
+        linhasAnalisadas: 'Analyzed lines',
+        padroesProgramacao: 'Programming patterns',
+        analiseInteligente: 'Intelligent code analysis'
       }
     }
   },
-  /* -------------------------- 要約レポート/インテリジェントフィルタ -------------------------- */
+  /* -------------------------- SUMMARY REPORT / SMART FILTER -------------------------- */
   resumo: {
-    titulo: `${ICONES_RELATORIO.resumo} 要約レポート - 優先問題`,
-    introducao: 'このレポートは類似の問題をグループ化し、影響度順に優先度を付けて分析を容易にします。',
+    titulo: `${ICONES_RELATORIO.resumo} Summary レポート - Priority Problems`,
+    introducao: 'This report groups similar problems and prioritizes by impact to facilitate analysis.',
     secoes: {
       criticos: {
-        titulo: `${ICONES_RELATORIO.error} 重大な問題`,
-        vazio: '重大な問題は検出されませんでした。'
+        titulo: `${ICONES_RELATORIO.error} Critical Problems`,
+        vazio: 'No critical problems detected.'
       },
       altos: {
-        titulo: `${ICONES_RELATORIO.warning} 高優先度問題`,
-        vazio: '高優先度の問題は検出されませんでした。'
+        titulo: `${ICONES_RELATORIO.warning} High Priority Problems`,
+        vazio: 'No high priority problems detected.'
       },
       outros: {
-        titulo: `${ICONES_RELATORIO.lista} その他の問題`,
-        vazio: 'その他の問題は検出されませんでした。'
+        titulo: `${ICONES_RELATORIO.lista} Other Problems`,
+        vazio: 'No other problems detected.'
       },
       estatisticas: {
-        titulo: `${ICONES_DIAGNOSTICO.stats} レポート統計`,
-        totalOcorrencias: '発生総数',
-        arquivosAfetados: '影響されたファイル',
-        problemasPrioritarios: '優先問題',
-        problemasAgrupados: 'グループ化された問題'
+        titulo: `${ICONES_DIAGNOSTICO.stats} レポート Statistics`,
+        totalOcorrencias: 'Total occurrences',
+        arquivosAfetados: 'Affected files',
+        problemasPrioritarios: 'Priority problems',
+        problemasAgrupados: 'Grouped problems'
       }
     },
     labels: {
-      quantidade: '数量',
-      arquivosAfetados: '影響されたファイル',
-      acaoSugerida: '提案されるアクション',
-      exemplos: '例'
+      quantidade: 'Quantity',
+      arquivosAfetados: 'Affected files',
+      acaoSugerida: 'Suggested Action',
+      exemplos: 'Examples'
     }
   },
-  /* -------------------------- コード健康レポート（zelador-saude.ts） -------------------------- */
+  /* -------------------------- CODE HEALTH REPORT (zelador-saude.ts) -------------------------- */
   saude: {
-    titulo: `${ICONES_ACAO.limpeza} コード健康レポート`,
-    introducao: `${ICONES_DIAGNOSTICO.stats} コード使用パターン`,
+    titulo: `${ICONES_ACAO.limpeza} Code Health レポート`,
+    introducao: `${ICONES_DIAGNOSTICO.stats} Code Usage patterns`,
     secoes: {
       funcoesLongas: {
-        titulo: 'ファイルごとの長い関数の詳細',
-        vazio: '制限を超えた関数はありません。',
+        titulo: 'Details of long functions per file',
+        vazio: 'No functions above the limit.',
         colunas: {
-          tipo: 'タイプ',
-          quantidade: '数量'
+          tipo: 'Type',
+          quantidade: 'Quantity'
         }
       },
       constantesDuplicadas: {
-        titulo: `${ICONES_RELATORIO.detalhado} 3回以上定義された定数`
+        titulo: `${ICONES_RELATORIO.detalhado} Constants defined more than 3 times`
       },
       modulosRequire: {
-        titulo: `${ICONES_RELATORIO.detalhado} 3回以上使用されたrequireモジュール`
+        titulo: `${ICONES_RELATORIO.detalhado} Require modules used more than 3 times`
       },
       fim: {
-        titulo: 'ゼラドールレポートの終わり'
+        titulo: 'End of caretaker report'
       }
     },
     instrucoes: {
-      diagnosticoDetalhado: '詳細な診断については、次を実行: prometheus diagnosticar --export',
-      tabelasVerbosas: 'ターミナルでフレーム付きテーブルを表示するには（非常に冗長）、--debugを使用'
+      diagnosticoDetalhado: 'For detailed diagnostics, run: prometheus diagnosticar --export',
+      tabelasVerbosas: 'To see framed tables in the terminal (very verbose), use: --debug'
     }
   },
-  /* -------------------------- 使用パターンレポート -------------------------- */
+  /* -------------------------- USAGE PATTERNS REPORT -------------------------- */
   padroesUso: {
-    titulo: `${ICONES_DIAGNOSTICO.stats} コード使用パターン`
+    titulo: `${ICONES_DIAGNOSTICO.stats} Code Usage patterns`
   },
-  /* -------------------------- アーキタイプレポート -------------------------- */
+  /* -------------------------- ARCHETYPES REPORT -------------------------- */
   arquetipos: {
-    titulo: `${ICONES_DIAGNOSTICO.arquetipos} アーキタイプレポート`,
+    titulo: `${ICONES_DIAGNOSTICO.arquetipos} Archetypes レポート`,
     secoes: {
       candidatos: {
-        titulo: '特定された候補',
-        nome: '名前',
-        score: 'スコア',
-        confianca: '信頼度',
-        descricao: '説明'
+        titulo: 'Identified Candidates',
+        nome: 'Name',
+        score: 'Score',
+        confianca: 'Confidence',
+        descricao: 'Description'
       },
       baseline: {
-        titulo: '保存されたベースライン',
-        snapshot: 'スナップショット',
-        arquivos: 'ファイル'
+        titulo: 'Saved Baseline',
+        snapshot: 'Snapshot',
+        arquivos: 'Files'
       },
       drift: {
-        titulo: '検出されたドリフト',
-        alterouArquetipo: 'アーキタイプを変更',
-        deltaConfianca: '信頼度の変化',
-        arquivosNovos: '新しいファイル',
-        arquivosRemovidos: '削除されたファイル'
+        titulo: 'Detected Drift',
+        alterouArquetipo: 'Archetype Changed',
+        deltaConfianca: 'Confidence Delta',
+        arquivosNovos: 'New Files',
+        arquivosRemovidos: 'Removed Files'
       }
     }
   },
-  /* -------------------------- 剪定レポート -------------------------- */
+  /* -------------------------- PRUNING REPORT -------------------------- */
   poda: {
-    titulo: `${ICONES_COMANDO.podar} Prometheus剪定レポート`,
+    titulo: `${ICONES_COMANDO.podar} Prometheus Pruning レポート`,
     secoes: {
       metadados: {
-        data: '日付',
-        execucao: '実行',
-        simulacao: 'シミュレーション',
-        real: ' реаль',
-        arquivosPodados: '剪定されたファイル',
-        arquivosMantidos: '維持されたファイル'
+        data: 'Date',
+        execucao: 'Execution',
+        simulacao: 'Simulation',
+        real: 'Real',
+        arquivosPodados: 'Pruned files',
+        arquivosMantidos: 'Kept files'
       },
       podados: {
-        titulo: '剪定されたファイル',
-        vazio: 'このサイクルで剪定されたファイルはありません。',
+        titulo: 'Pruned Files',
+        vazio: 'No files were pruned in this cycle.',
         colunas: {
-          arquivo: 'ファイル',
-          motivo: '理由',
-          diasInativo: '非アクティブ日数',
-          detectadoEm: '検出場所'
+          arquivo: 'File',
+          motivo: 'Reason',
+          diasInativo: 'Inactive Days',
+          detectadoEm: 'Detected on'
         }
       },
       mantidos: {
-        titulo: '維持されたファイル',
-        vazio: 'このサイクルで維持されたファイルはありません。',
+        titulo: 'Kept Files',
+        vazio: 'No files kept in this cycle.',
         colunas: {
-          arquivo: 'ファイル',
-          motivo: '理由'
+          arquivo: 'File',
+          motivo: 'Reason'
         }
       },
       pendencias: {
-        titulo: '削除保留',
-        total: '保留合計',
-        tipoArquivo: 'タイプ: ファイル',
-        tipoDiretorio: 'タイプ: ディレクトリ',
-        tamanhoTotal: '約合計サイズ'
+        titulo: 'Removal Pending Items',
+        total: 'Total pending items',
+        tipoArquivo: 'Type: File',
+        tipoDiretorio: 'Type: Directory',
+        tamanhoTotal: 'Approximate total size'
       },
       reativacao: {
-        titulo: '再活性化リスト',
-        total: '再活性化合計'
+        titulo: 'Reactivation List',
+        total: 'Total to reactivate'
       },
       historico: {
-        titulo: 'アクション履歴',
-        total: 'アクション合計',
+        titulo: 'Action History',
+        total: 'Total actions',
         colunas: {
-          acao: 'アクション',
-          caminho: 'パス',
-          timestamp: 'タイムスタンプ'
+          acao: 'Action',
+          caminho: 'Path',
+          timestamp: 'Timestamp'
         }
       }
     }
   },
-  /* -------------------------- 再構成レポート -------------------------- */
+  /* -------------------------- RESTRUCTURING REPORT -------------------------- */
   reestruturar: {
-    titulo: `${ICONES_COMANDO.reestruturar} Prometheus再構成レポート`,
+    titulo: `${ICONES_COMANDO.reestruturar} Prometheus Restructuring レポート`,
     secoes: {
       metadados: {
-        data: '日付',
-        execucao: '実行',
-        simulacao: 'シミュレーション',
-        real: ' реаль',
-        origemPlano: 'プランの起源',
-        preset: 'プリセット'
+        data: 'Date',
+        execucao: 'Execution',
+        simulacao: 'Simulation',
+        real: 'Real',
+        origemPlano: 'Plan origin',
+        preset: 'Preset'
       },
       movimentos: {
-        titulo: '移動',
-        total: '移動合計',
-        vazio: 'このサイクルで提案された移動はありません。',
+        titulo: 'Movements',
+        total: 'Total movements',
+        vazio: 'No movements suggested in this cycle.',
         status: {
-          zonVerde: 'グリーンゾーン（安全）',
-          bloqueados: 'ブロック済み'
+          zonVerde: 'Green Zone (safe)',
+          bloqueados: 'Blocked'
         },
         colunas: {
-          origem: '元',
-          destino: '先',
-          razao: '理由',
-          status: 'ステータス'
+          origem: 'From',
+          destino: 'To',
+          razao: 'Reason',
+          status: 'Status'
         }
       },
       conflitos: {
-        titulo: '検出された競合',
-        total: '検出された競合',
-        tipo: 'タイプ',
-        descricao: '説明'
+        titulo: 'Detected Conflicts',
+        total: 'Detected conflicts',
+        tipo: 'Type',
+        descricao: 'Description'
       },
       preview: {
-        titulo: '変更のプレビュー',
-        nota: `--applyで実行するまでファイルは移動しません`
+        titulo: 'Changes Preview',
+        nota: `No ファイル will be moved until executed with --apply`
       }
     }
   },
-  /* -------------------------- 共通メッセージ -------------------------- */
+  /* -------------------------- COMMON MESSAGES -------------------------- */
   comum: {
     separadores: {
       secao: '---',
       subsecao: '~~~'
     },
     vazios: {
-      nenhumResultado: '結果が見つかりません。',
-      nenhumaOcorrencia: '発生は検出されませんでした。',
-      semDatos: '数据がありません。'
+      nenhumResultado: 'No results found.',
+      nenhumaOcorrencia: 'No occurrences detected.',
+      semDados: 'No data available.'
     },
     acoes: {
-      verDetalhes: '詳細を見る',
-      executarComando: 'コマンドを実行',
-      aplicarMudancas: '変更を適用',
-      cancelar: 'キャンセル'
+      verDetalhes: 'View full details',
+      executarComando: 'Run command',
+      aplicarMudancas: 'Apply changes',
+      cancelar: 'Cancel'
     }
   }
 };
 
 /**
- * 変数でメッセージをフォーマットするヘルパー
+ * Helper to format messages with variables
  * @example
  * formatMessage(RelatorioMessages.principal.secoes.metadados.arquivos, { count: 42 })
- * // => "スキャンされたファイル: 42"
+ * // => "Scanned ファイル: 42"
  */
 export function formatMessage(template: string, vars: Record<string, string | number>): string {
   let result = template;
@@ -263,7 +263,7 @@ export function formatMessage(template: string, vars: Record<string, string | nu
 }
 
 /**
- * 単純な複数形化のヘルパー
+ * Helper for simple pluralization
  */
 export function pluralize(count: number, singular: string, plural: string, showCount = true): string {
   const word = count === 1 ? singular : plural;
@@ -271,7 +271,7 @@ export function pluralize(count: number, singular: string, plural: string, showC
 }
 
 /**
- * 区切り文字の行を作成するヘルパー
+ * Helper to create a separator line
  */
 export function separator(char = '-', length = 80): string {
   return char.repeat(length);

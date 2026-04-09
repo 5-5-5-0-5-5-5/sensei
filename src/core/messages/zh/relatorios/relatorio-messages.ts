@@ -1,258 +1,258 @@
 // SPDX-License-Identifier: MIT
 /**
- * 集中式报告消息 (Markdown 和 JSON)
- * 所有标题、标题、描述和解释性文本的字符串
- * 应在此处定义，以便于未来维护和国际化。
+ * Centralized messages for reports (Markdown and JSON)
+ * All title strings, headers, descriptions and explanatory texts
+ * must be defined here to facilitate maintenance and future internationalization.
  */
 
 import { ICONES_ACAO, ICONES_COMANDO, ICONES_DIAGNOSTICO, ICONES_RELATORIO } from '../../shared/icons.js';
 
 export const RelatorioMensagens = {
-  /* -------------------------- 主报告 (gerador-relatorio.ts) -------------------------- */
+  /* -------------------------- MAIN REPORT (gerador-relatorio.ts) -------------------------- */
   principal: {
     titulo: `${ICONES_RELATORIO.resumo} Prometheus 报告`,
     secoes: {
       metadados: {
-        data: '日期',
-        duracao: '持续时间',
-        arquivos: '扫描的文件',
-        ocorrencias: '发现的问题',
-        arquivoManifest: '清单文件',
-        notaManifest: '要探索完整报告，请下载/解压清单中列出的分片。'
+        data: 'Date',
+        duracao: 'Duration',
+        arquivos: 'Scanned files',
+        ocorrencias: 'Occurrences found',
+        arquivoManifest: 'Manifest file',
+        notaManifest: 'To explore the full report, download/decompress the shards listed in the manifest.'
       },
       guardian: {
-        titulo: `${ICONES_DIAGNOSTICO.guardian} 完整性检查 (Guardian)`,
-        status: '状态',
-        timestamp: '时间戳',
-        totalArquivos: '受保护的文件总数'
+        titulo: `${ICONES_DIAGNOSTICO.guardian} Integrity Verification (guardian)`,
+        status: 'Status',
+        timestamp: 'Timestamp',
+        totalArquivos: 'Total protected files'
       },
       resumoTipos: {
-        titulo: `${ICONES_DIAGNOSTICO.stats} 问题类型摘要`,
-        tipo: '类型',
-        quantidade: '数量'
+        titulo: `${ICONES_DIAGNOSTICO.stats} Problem types summary`,
+        tipo: 'Type',
+        quantidade: 'Quantity'
       },
       ocorrencias: {
-        titulo: `${ICONES_RELATORIO.lista} 发现的问题`,
+        titulo: `${ICONES_RELATORIO.lista} Occurrences found`,
         colunas: {
-          arquivo: '文件',
-          linha: '行',
-          nivel: '级别',
-          mensagem: '消息'
+          arquivo: 'File',
+          linha: 'Line',
+          nivel: 'Level',
+          mensagem: 'Message'
         }
       },
       estatisticas: {
-        titulo: `${ICONES_RELATORIO.grafico} 总体统计`,
-        linhasAnalisadas: '分析的代码行',
-        padroesProgramacao: '编程模式',
-        analiseInteligente: '智能代码分析'
+        titulo: `${ICONES_RELATORIO.grafico} General statistics`,
+        linhasAnalisadas: 'Analyzed lines',
+        padroesProgramacao: 'Programming patterns',
+        analiseInteligente: 'Intelligent code analysis'
       }
     }
   },
-  /* -------------------------- 摘要报告 / 智能过滤器 -------------------------- */
+  /* -------------------------- SUMMARY REPORT / SMART FILTER -------------------------- */
   resumo: {
-    titulo: `${ICONES_RELATORIO.resumo} 摘要报告 - 优先问题`,
-    introducao: '此报告将类似问题分组并按影响程度排序，以便于分析。',
+    titulo: `${ICONES_RELATORIO.resumo} Summary report - Priority Problems`,
+    introducao: 'This report groups similar problems and prioritizes by impact to facilitate analysis.',
     secoes: {
       criticos: {
-        titulo: `${ICONES_RELATORIO.error} 严重问题`,
-        vazio: '未检测到严重问题。'
+        titulo: `${ICONES_RELATORIO.error} Critical Problems`,
+        vazio: 'No critical problems detected.'
       },
       altos: {
-        titulo: `${ICONES_RELATORIO.warning} 高优先级问题`,
-        vazio: '未检测到高优先级问题。'
+        titulo: `${ICONES_RELATORIO.warning} High Priority Problems`,
+        vazio: 'No high priority problems detected.'
       },
       outros: {
-        titulo: `${ICONES_RELATORIO.lista} 其他问题`,
-        vazio: '未检测到其他问题。'
+        titulo: `${ICONES_RELATORIO.lista} Other Problems`,
+        vazio: 'No other problems detected.'
       },
       estatisticas: {
-        titulo: `${ICONES_DIAGNOSTICO.stats} 报告统计`,
-        totalOcorrencias: '总问题数',
-        arquivosAfetados: '受影响的文件',
-        problemasPrioritarios: '优先问题',
-        problemasAgrupados: '分组问题'
+        titulo: `${ICONES_DIAGNOSTICO.stats} Report Statistics`,
+        totalOcorrencias: 'Total occurrences',
+        arquivosAfetados: 'Affected files',
+        problemasPrioritarios: 'Priority problems',
+        problemasAgrupados: 'Grouped problems'
       }
     },
     labels: {
-      quantidade: '数量',
-      arquivosAfetados: '受影响的文件',
-      acaoSugerida: '建议操作',
-      exemplos: '示例'
+      quantidade: 'Quantity',
+      arquivosAfetados: 'Affected files',
+      acaoSugerida: 'Suggested Action',
+      exemplos: 'Examples'
     }
   },
-  /* -------------------------- 代码健康报告 (zelador-saude.ts) -------------------------- */
+  /* -------------------------- CODE HEALTH REPORT (zelador-saude.ts) -------------------------- */
   saude: {
-    titulo: `${ICONES_ACAO.limpeza} 代码健康报告`,
-    introducao: `${ICONES_DIAGNOSTICO.stats} 代码使用模式`,
+    titulo: `${ICONES_ACAO.limpeza} Code Health 报告`,
+    introducao: `${ICONES_DIAGNOSTICO.stats} Code Usage patterns`,
     secoes: {
       funcoesLongas: {
-        titulo: '每个文件的长函数详情',
-        vazio: '没有超过限制的函数。',
+        titulo: 'Details of long functions per file',
+        vazio: 'No functions above the limit.',
         colunas: {
-          tipo: '类型',
-          quantidade: '数量'
+          tipo: 'Type',
+          quantidade: 'Quantity'
         }
       },
       constantesDuplicadas: {
-        titulo: `${ICONES_RELATORIO.detalhado} 定义超过3次的常量`
+        titulo: `${ICONES_RELATORIO.detalhado} Constants defined more than 3 times`
       },
       modulosRequire: {
-        titulo: `${ICONES_RELATORIO.detalhado} 使用超过3次的 require 模块`
+        titulo: `${ICONES_RELATORIO.detalhado} Require modules used more than 3 times`
       },
       fim: {
-        titulo: '守护者报告结束'
+        titulo: 'End of caretaker report'
       }
     },
     instrucoes: {
-      diagnosticoDetalhado: '要获取详细诊断，请执行: prometheus diagnosticar --export',
-      tabelasVerbosas: '要查看带边框的表格(非常详细)，请使用: --debug'
+      diagnosticoDetalhado: 'For detailed diagnostics, run: prometheus diagnosticar --export',
+      tabelasVerbosas: 'To see framed tables in the terminal (very verbose), use: --debug'
     }
   },
-  /* -------------------------- 使用模式报告 -------------------------- */
+  /* -------------------------- USAGE PATTERNS REPORT -------------------------- */
   padroesUso: {
-    titulo: `${ICONES_DIAGNOSTICO.stats} 代码使用模式`
+    titulo: `${ICONES_DIAGNOSTICO.stats} Code Usage patterns`
   },
-  /* -------------------------- 原型报告 -------------------------- */
+  /* -------------------------- ARCHETYPES REPORT -------------------------- */
   arquetipos: {
-    titulo: `${ICONES_DIAGNOSTICO.arquetipos} 原型报告`,
+    titulo: `${ICONES_DIAGNOSTICO.arquetipos} Archetypes 报告`,
     secoes: {
       candidatos: {
-        titulo: '识别的候选人',
-        nome: '名称',
-        score: '评分',
-        confianca: '置信度',
-        descricao: '描述'
+        titulo: 'Identified Candidates',
+        nome: 'Name',
+        score: 'Score',
+        confianca: 'Confidence',
+        descricao: 'Description'
       },
       baseline: {
-        titulo: '保存的基线',
-        snapshot: '快照',
-        arquivos: '文件'
+        titulo: 'Saved Baseline',
+        snapshot: 'Snapshot',
+        arquivos: 'Files'
       },
       drift: {
-        titulo: '检测到的偏差',
-        alterouArquetipo: '更改了原型',
-        deltaConfianca: '置信度变化',
-        arquivosNovos: '新文件',
-        arquivosRemovidos: '删除的文件'
+        titulo: 'Detected Drift',
+        alterouArquetipo: 'Archetype Changed',
+        deltaConfianca: 'Confidence Delta',
+        arquivosNovos: 'New Files',
+        arquivosRemovidos: 'Removed Files'
       }
     }
   },
-  /* -------------------------- 修剪报告 -------------------------- */
+  /* -------------------------- PRUNING REPORT -------------------------- */
   poda: {
-    titulo: `${ICONES_COMANDO.podar} Prometheus 修剪报告`,
+    titulo: `${ICONES_COMANDO.podar} Prometheus Pruning 报告`,
     secoes: {
       metadados: {
-        data: '日期',
-        execucao: '执行',
-        simulacao: '模拟',
-        real: '真实',
-        arquivosPodados: '修剪的文件',
-        arquivosMantidos: '保留的文件'
+        data: 'Date',
+        execucao: 'Execution',
+        simulacao: 'Simulation',
+        real: 'Real',
+        arquivosPodados: 'Pruned files',
+        arquivosMantidos: 'Kept files'
       },
       podados: {
-        titulo: '修剪的文件',
-        vazio: '本次周期没有文件被修剪。',
+        titulo: 'Pruned Files',
+        vazio: 'No files were pruned in this cycle.',
         colunas: {
-          arquivo: '文件',
-          motivo: '原因',
-          diasInativo: '不活跃天数',
-          detectadoEm: '检测于'
+          arquivo: 'File',
+          motivo: 'Reason',
+          diasInativo: 'Inactive Days',
+          detectadoEm: 'Detected on'
         }
       },
       mantidos: {
-        titulo: '保留的文件',
-        vazio: '本次周期没有保留的文件。',
+        titulo: 'Kept Files',
+        vazio: 'No files kept in this cycle.',
         colunas: {
-          arquivo: '文件',
-          motivo: '原因'
+          arquivo: 'File',
+          motivo: 'Reason'
         }
       },
       pendencias: {
-        titulo: '待删除项目',
-        total: '待删除总数',
-        tipoArquivo: '类型: 文件',
-        tipoDiretorio: '类型: 目录',
-        tamanhoTotal: '大概总大小'
+        titulo: 'Removal Pending Items',
+        total: 'Total pending items',
+        tipoArquivo: 'Type: File',
+        tipoDiretorio: 'Type: Directory',
+        tamanhoTotal: 'Approximate total size'
       },
       reativacao: {
-        titulo: '重新激活列表',
-        total: '需要重新激活的总数'
+        titulo: 'Reactivation List',
+        total: 'Total to reactivate'
       },
       historico: {
-        titulo: '操作历史',
-        total: '操作总数',
+        titulo: 'Action History',
+        total: 'Total actions',
         colunas: {
-          acao: '操作',
-          caminho: '路径',
-          timestamp: '时间戳'
+          acao: 'Action',
+          caminho: 'Path',
+          timestamp: 'Timestamp'
         }
       }
     }
   },
-  /* -------------------------- 重构报告 -------------------------- */
+  /* -------------------------- RESTRUCTURING REPORT -------------------------- */
   reestruturar: {
-    titulo: `${ICONES_COMANDO.reestruturar} Prometheus 重构报告`,
+    titulo: `${ICONES_COMANDO.reestruturar} Prometheus Restructuring 报告`,
     secoes: {
       metadados: {
-        data: '日期',
-        execucao: '执行',
-        simulacao: '模拟',
-        real: '真实',
-        origemPlano: '计划来源',
-        preset: '预设'
+        data: 'Date',
+        execucao: 'Execution',
+        simulacao: 'Simulation',
+        real: 'Real',
+        origemPlano: 'Plan origin',
+        preset: 'Preset'
       },
       movimentos: {
-        titulo: '移动',
-        total: '移动总数',
-        vazio: '本次周期没有建议的移动。',
+        titulo: 'Movements',
+        total: 'Total movements',
+        vazio: 'No movements suggested in this cycle.',
         status: {
-          zonVerde: '绿色区域 (安全)',
-          bloqueados: '已阻止'
+          zonVerde: 'Green Zone (safe)',
+          bloqueados: 'Blocked'
         },
         colunas: {
-          origem: '从',
-          destino: '到',
-          razao: '原因',
-          status: '状态'
+          origem: 'From',
+          destino: 'To',
+          razao: 'Reason',
+          status: 'Status'
         }
       },
       conflitos: {
-        titulo: '检测到的冲突',
-        total: '冲突数量',
-        tipo: '类型',
-        descricao: '描述'
+        titulo: 'Detected Conflicts',
+        total: 'Detected conflicts',
+        tipo: 'Type',
+        descricao: 'Description'
       },
       preview: {
-        titulo: '更改预览',
-        nota: `执行 --apply 之前不会移动任何文件`
+        titulo: 'Changes Preview',
+        nota: `No 文件 will be moved until executed with --apply`
       }
     }
   },
-  /* -------------------------- 通用消息 -------------------------- */
+  /* -------------------------- COMMON MESSAGES -------------------------- */
   comum: {
     separadores: {
       secao: '---',
       subsecao: '~~~'
     },
     vazios: {
-      nenhumResultado: '未找到结果。',
-      nenhumaOcorrencia: '未检测到问题。',
-      semDados: '没有可用数据。'
+      nenhumResultado: 'No results found.',
+      nenhumaOcorrencia: 'No occurrences detected.',
+      semDados: 'No data available.'
     },
     acoes: {
-      verDetalhes: '查看完整详情',
-      executarComando: '执行命令',
-      aplicarMudancas: '应用更改',
-      cancelar: '取消'
+      verDetalhes: 'View full details',
+      executarComando: 'Run command',
+      aplicarMudancas: 'Apply changes',
+      cancelar: 'Cancel'
     }
   }
 };
 
 /**
- * 格式化带变量消息的辅助函数
+ * Helper to format messages with variables
  * @example
  * formatMessage(RelatorioMessages.principal.secoes.metadados.arquivos, { count: 42 })
- * // => "扫描的文件: 42"
+ * // => "Scanned 文件: 42"
  */
 export function formatMessage(template: string, vars: Record<string, string | number>): string {
   let result = template;
@@ -263,7 +263,7 @@ export function formatMessage(template: string, vars: Record<string, string | nu
 }
 
 /**
- * 简单复数辅助函数
+ * Helper for simple pluralization
  */
 export function pluralize(count: number, singular: string, plural: string, showCount = true): string {
   const word = count === 1 ? singular : plural;
@@ -271,7 +271,7 @@ export function pluralize(count: number, singular: string, plural: string, showC
 }
 
 /**
- * 创建分隔线的辅助函数
+ * Helper to create a separator line
  */
 export function separator(char = '-', length = 80): string {
   return char.repeat(length);

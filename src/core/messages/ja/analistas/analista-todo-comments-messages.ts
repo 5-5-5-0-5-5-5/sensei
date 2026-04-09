@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
 
 export const TodoComentariosMensagens = {
-  todoFound: 'TODOコメントが見つかりました'
+  todoFound: 'TODO comment found'
 } as const;

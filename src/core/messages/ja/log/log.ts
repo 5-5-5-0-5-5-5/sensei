@@ -6,14 +6,14 @@ import { config } from '@core/config/config.js';
 import { isJsonMode } from '@shared/helpers/json-mode.js';
 
 import type { FormatOptions, Nivel, StyleFn } from '@';
-// Reexport para testes configurarem flags sem importar cosmos diretamente
+// Reexport for tests to configure flags without importing cosmos directly
 export { config } from '@core/config/config.js';
 export const LOG_SIMBOLOS = {
-  // Prefixos de níveis de severidade com cores ANSI
+  // Severity level prefixes with ANSI colors
   info: '[INFO]',
   sucesso: '[OK]',
-  erro: '[ERRO]',
-  aviso: '[AVISO]',
+  erro: '[ERROR]',
+  aviso: '[WARNING]',
   debug: '[DEBUG]',
   fase: '[>]',
   passo: '[*]',
@@ -22,18 +22,18 @@ export const LOG_SIMBOLOS = {
   pasta: '[DIR]'
 };
 function shouldSilence(): boolean {
-  // Modo JSON sempre silencia logs visuais
+  // JSON mode always silences visual logs
   if (isJsonMode()) return true;
   if (process.env.PROMETHEUS_FORCE_SILENT_JSON === '1') return true;
   return config.REPORT_SILENCE_LOGS;
 }
 function shouldSuppressParcial(msg?: string): boolean {
   try {
-    // Permite override rápido via variável de ambiente curta PROMETHEUS_SUPPRESS_PARCIAL=1
+    // Allows quick override via short env variable PROMETHEUS_SUPPRESS_PARCIAL=1
     if (!config.SUPPRESS_PARCIAL_LOGS && process.env.PROMETHEUS_SUPPRESS_PARCIAL !== '1') return false;
     if (!msg || typeof msg !== 'string') return false;
-    // Suprime quando substring 'parcial' (case-insensitive) aparece em qualquer lugar.
-    // Isso cobre 'parcial' e variações como 'parcialmente'.
+    // Suppresses when substring 'partial' (case-insensitive) appears anywhere.
+    // This covers 'partial' and variations like 'partially'.
     return /parcial/i.test(msg);
   } catch {
     return false;
@@ -47,13 +47,13 @@ function shouldLogLevel(nivel: Nivel): boolean {
   const nivelAtual = niveis.indexOf(config.LOG_LEVEL);
   const nivelMensagem = niveis.indexOf(nivel);
 
-  // Erro e sucesso sempre são exibidos (high priority)
+  // Error and success are always displayed (high priority)
   if (nivel === 'erro' || nivel === 'sucesso') return true;
 
-  // Debug só é exibido em modo debug ou se LOG_LEVEL=debug
+  // Debug is only displayed in debug mode or if LOG_LEVEL=debug
   if (nivel === 'debug') return isDebugMode() || config.LOG_LEVEL === 'debug';
 
-  // Para outros níveis, verifica se está dentro do threshold
+  // For other levels, checks if within threshold
   return nivelMensagem <= nivelAtual;
 }
 function getTimestamp(): string {
@@ -68,11 +68,11 @@ function getTimestamp(): string {
 function stripLeadingSimbolos(msg: string): string {
   if (!msg) return msg;
   const ansiRegex = /[\u001B\u009B][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g;
-  // Remove ANSI para avaliar início; manteremos saída sem estilos
+  // Remove ANSI to evaluate beginning; we will keep output without styles
   let plain = msg.replace(ansiRegex, '');
-  // Normaliza quebras e espaços iniciais
+  // Normalizes line breaks and leading spaces
   plain = plain.replace(/^\s+/, '');
-  // candidatos: símbolos do mapa + extras frequentes usados em mensagens
+  // candidates: symbols from map + frequent extras used in messages
   const extras: string[] = [];
   const candidatos = Array.from(new Set([...Object.values(LOG_SIMBOLOS), ...extras])).filter(Boolean) as string[];
   let mudou = true;
@@ -87,11 +87,11 @@ function stripLeadingSimbolos(msg: string): string {
       }
     }
   }
-  // Espaços remanescentes após remoção
+  // Remaining spaces after removal
   return plain.trimStart();
 }
 
-// Exportado para testes de formatação; uso interno no logger.
+// Exported for formatting tests; internal use in logger.
 
 export function formatarLinha({
   nivel,
@@ -100,7 +100,7 @@ export function formatarLinha({
 }: FormatOptions): string {
   const ts = getTimestamp();
   const colNivelRaw = nivel.toUpperCase().padEnd(7);
-  // Resolver possíveis formas do 'chalk' (função ou objeto mockado com .bold)
+  // Resolve possible 'chalk' forms (function or mocked object with .bold)
   const hasBold = (v: unknown): v is {
     bold: StyleFn;
   } => !!v && typeof (v as {
@@ -132,11 +132,11 @@ export function formatarLinha({
   const boldFn = resolveStyle(chalk.bold);
   const colNivel = boldFn(colNivelRaw);
   const corpo = sanitize ? stripLeadingSimbolos(mensagem) : mensagem;
-  // Colorimos mensagens de destaque (erro/aviso/sucesso) para reforçar visibilidade.
+  // We highlight messages (error/warning/success) to reinforce visibility.
   const corpoFmt = nivel === 'info' || nivel === 'debug' ? corpo : cor(corpo);
   const grayFn: StyleFn = typeof chalk.gray === 'function' ? chalk.gray : (s: string) => String(s);
   const linha = `${grayFn(ts)} ${colNivel} ${corpoFmt}`;
-  // Centraliza linhas soltas somente com opt-in explícito (PROMETHEUS_CENTER=1)
+  // Centers loose lines only with explicit opt-in (PROMETHEUS_CENTER=1)
   if (!process.env.VITEST && process.env.PROMETHEUS_CENTER === '1') {
     try {
       const cols = obterColunasTerm();
@@ -149,25 +149,25 @@ export function formatarLinha({
         if (pad > 0) return ' '.repeat(pad) + linha;
       }
     } catch {
-      // Se centralização falhar, retorna linha normal
+      // If centering fails, return normal line
     }
   }
   return linha;
 }
 
 /**
- * Formata um bloco multi-linha com indentação consistente e moldura leve.
- * Útil para seções (fases) ou resumos compactos.
+ * Formats a multi-line block with consistent indentation and light frame.
+ * Useful for sections (phases) or compact summaries.
  */
 
 function obterColunasTerm(): number | undefined {
-  // Tenta obter largura do terminal de forma segura
+  // Tries to get terminal width safely
   try {
     const out: tty.WriteStream | undefined = process.stdout && typeof (process.stdout as tty.WriteStream).columns !== 'undefined' ? process.stdout as tty.WriteStream : undefined;
     const cols = out?.columns;
     if (typeof cols === 'number' && cols > 0) return cols;
   } catch {}
-  // Permite override explícito via env e fallback de variáveis comuns
+  // Allows explicit override via env and fallback of common variables
   const envOverride = Number(process.env.PROMETHEUS_FRAME_MAX_COLS || '0');
   if (Number.isFinite(envOverride) && envOverride > 0) return envOverride;
   const envCols = Number(process.env.COLUMNS || process.env.TERM_COLUMNS || '0');
@@ -181,10 +181,10 @@ function calcularLarguraInterna(titulo: string, linhas: string[], larguraMax?: n
 } {
   const ANSI_REGEX = /[\u001B\u009B][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g;
   const visLen = (s: string) => (s || '').replace(ANSI_REGEX, '').length;
-  // Largura desejada pelo conteúdo, com teto padrão (100) caso não especificado
+  // Desired width by content, with standard ceiling (100) if not specified
   const desejada = Math.min(100, Math.max(visLen(titulo) + 4, ...linhas.map(l => visLen(l) + 4), 20));
   const preferida = typeof larguraMax === 'number' ? Math.max(20, Math.min(larguraMax, 120)) : desejada;
-  // Limite superior pela largura do terminal (responsivo)
+  // Upper limit by terminal width (responsive)
   const cols = obterColunasTerm();
   const tetoTela = typeof cols === 'number' && cols > 0 ? Math.max(20, Math.min(cols, 120)) : 120;
   const width = Math.max(20, Math.min(preferida, tetoTela));
@@ -198,7 +198,7 @@ function calcularLarguraInterna(titulo: string, linhas: string[], larguraMax?: n
   };
 }
 export function formatarBloco(titulo: string, linhas: string[], corTitulo: StyleFn = typeof chalk.bold === 'function' ? chalk.bold : (s: string) => String(s), larguraMax?: number): string {
-  // Utilitários conscientes de ANSI para medir/compor por largura visível
+  // ANSI-aware utilities to measure/compose by visible width
   const {
     width,
     maxInner,
@@ -211,14 +211,14 @@ export function formatarBloco(titulo: string, linhas: string[], corTitulo: Style
   };
   const truncateVisible = (s: string, max: number) => {
     if (visLen(s) <= max) return s;
-    // Preserva sequências ANSI, contando apenas largura visível
+    // Preserves ANSI sequences, counting only visible width
     let out = '';
     let count = 0;
     let i = 0;
     while (i < s.length && count < max - 1) {
       const ch = s[i];
       if (ch === '\u001B' || ch === '\u009B') {
-        // Copia sequência ANSI inteira
+        // Copies entire ANSI sequence
         const m = s.slice(i).match(ANSI_REGEX);
         if (m && m.index === 0) {
           out += m[0];
@@ -238,13 +238,13 @@ export function formatarBloco(titulo: string, linhas: string[], corTitulo: Style
   const normalizar = (s: string) => truncateVisible(s, maxInner);
   const corpo = linhas.map(l => `│ ${padFimVisible(normalizar(l), maxInner)}│`).join('\n');
   const headTxt = `│ ${padFimVisible(normalizar(titulo), maxInner)}│`;
-  // Garantir que corTitulo funciona mesmo quando mockado como objeto
+  // Ensures corTitulo works even when mocked as object
   const corTituloFn = typeof corTitulo === 'function' ? corTitulo : (s: string) => String(s);
   const gray: StyleFn = typeof chalk.gray === 'function' ? chalk.gray : (x: string) => String(x);
   return [gray(topo), corTituloFn(headTxt), gray(corpo), gray(base)].filter(Boolean).join('\n');
 }
 
-// Fallback opcional de moldura ASCII (evita mojibake em redirecionamentos no Windows)
+// Optional ASCII frame fallback (avoids mojibake on Windows redirects)
 
 function deveUsarAsciiFrames(): boolean {
   return process.env.PROMETHEUS_ASCII_FRAMES === '1';
@@ -282,8 +282,8 @@ export const log = {
       mensagem: msg
     }));
   },
-  // Variante de INFO que preserva estilos/cores inline (sem sanitização de símbolos),
-  // útil para alinhar colunas mantendo números coloridos.
+  // INFO variant that preserves inline styles/colors (no symbol sanitization),
+  // useful for aligning columns while keeping colored numbers.
   infoSemSanitizar(msg: string): void {
     if (shouldSilence()) return;
     if (shouldSuppressParcial(msg)) return;
@@ -294,8 +294,8 @@ export const log = {
       sanitize: false
     }));
   },
-  // Mensagem INFO com corpo estilizado (negrito + azul) e sem sanitização,
-  // preservando cores dentro do corpo. Útil para títulos curtos e resumos.
+  // INFO message with styled body (bold + blue) and no sanitization,
+  // preserving colors within the body. Useful for short titles and summaries.
   infoDestaque(msg: string): void {
     if (shouldSilence()) return;
     if (shouldSuppressParcial(msg)) return;
@@ -346,24 +346,24 @@ export const log = {
   calcularLargura(titulo: string, linhas: string[], larguraMax?: number): number {
     return calcularLarguraInterna(titulo, linhas, larguraMax).width;
   },
-  // Imprime um bloco moldurado diretamente (sem prefixo de logger) e com fallback ASCII opcional
+  // Prints a framed block directly (without logger prefix) with optional ASCII fallback
   imprimirBloco(titulo: string, linhas: string[], corTitulo: StyleFn = typeof chalk.bold === 'function' ? chalk.bold : (s: string) => String(s), larguraMax?: number): void {
     if (shouldSilence()) return;
-    // Suprime blocos que contenham a palavra 'parcial' quando configurado
+    // Suppresses blocks containing the word 'partial' when configured
     if (config.SUPPRESS_PARCIAL_LOGS) {
       if (shouldSuppressParcial(titulo)) return;
       for (const l of linhas) if (shouldSuppressParcial(l)) return;
     }
     const bloco = formatarBloco(titulo, linhas, corTitulo, larguraMax);
     const out = deveUsarAsciiFrames() ? converterMolduraParaAscii(bloco) : bloco;
-    // Centraliza o bloco somente com opt-in explícito (PROMETHEUS_CENTER=1)
+    // Centers block only with explicit opt-in (PROMETHEUS_CENTER=1)
     if (!process.env.VITEST && process.env.PROMETHEUS_CENTER === '1') {
       try {
         const lines = out.split('\n');
         if (!lines.length) {
           return;
         }
-        // mede largura visível da moldura (linha do topo)
+        // measures visible width of frame (top line)
         const ANSI_REGEX = /[\u001B\u009B][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g;
         const visibleLen = (s: string) => s.replace(ANSI_REGEX, '').length;
         const frameWidth = Math.max(...lines.map(l => visibleLen(l)));
@@ -379,7 +379,7 @@ export const log = {
           }
         }
       } catch {
-        // Se centralização falhar, imprime normalmente
+        // If centering fails, print normally
       }
     }
   }

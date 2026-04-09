@@ -5,8 +5,8 @@ export const LicensasMensagens = {
   allIncludeDisclaimer: 'All markdown files include the disclaimer.',
   erroObterLicenca: 'Failed to obtain license information via cache, API or npx',
   disclaimerNaoEncontrado: 'Disclaimer not found: {caminho}',
-  validacaoContexto: '[Validação] Falhou{contexto}, usando fallback',
-  exclusaoInsegura: '⚠️ Alguns padrões de exclusão foram considerados inseguros e foram ignorados: {padroes}',
-  erroValidarSeguranca: '⚠️ Erro ao validar segurança da correção {fixId}: {erro}',
-  detectorMarkdownPath: 'detector-markdown: fullPath não fornecido para {arquivo}',
+  validacaoContexto: '[Validation] Failed{contexto}, using fallback',
+  exclusaoInsegura: '⚠️ Some exclusion patterns were considered unsafe and were ignored: {padroes}',
+  erroValidarSeguranca: '⚠️ Error validating correction safety {fixId}: {erro}',
+  detectorMarkdownPath: 'detector-markdown: fullPath not provided for {arquivo}',
 } as const;

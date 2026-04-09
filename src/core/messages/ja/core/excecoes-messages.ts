@@ -1,53 +1,53 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * @fileoverview コアの例外とエラーメッセージ。
- * CLI、プラグイン、アナリスト、検証、セキュリティ、永続化、
- * スキーマ、スキャナー、ロールバックに関連するエラーメッセージを一元化。
+ * @fileoverview Exception and error messages for Prometheus core.
+ * Centralizes error strings related to CLI, plugins, analysts,
+ * validation, security, persistence, schema, scanner, rollback, and reports.
  */
 
 export const ExcecoesMensagens = {
   // CLI
   exit1: 'exit:1',
-  requireMutateFsAutoFix: '自動修正は利用できません',
-  autoFixTimeout: (timeoutMs: number) => `自動修正が${timeoutMs}ms後にタイムアウトしました`,
-  // プラグイン/安全なインポート
-  pluginsDesabilitadosSafeMode: 'SAFE_MODEでプラグインの読み込みが無効です。PROMETHEUS_ALLOW_PLUGINS=1を設定して許可してください。',
-  pluginBloqueado: (erro: string) => `プラグインがブロックされました: ${erro}`,
-  caminhoPluginNaoResolvido: 'プラグインのパスが解決できません',
-  // プラグインレジストリ
-  pluginRegistradoNaoPodeSerObtido: (name: string) => `プラグイン${name}は登録されていますが取得できません`,
-  pluginCarregandoPromiseNaoPodeSerObtida: (name: string) => `プラグイン${name}は読み込み中ですがpromiseを取得できません`,
-  naoFoiPossivelCarregarPlugin: (name: string, errMsg: string) => `プラグイン'${name}'を読み込めませんでした: ${errMsg}`,
-  pluginDeveTerNomeValido: 'プラグインは有効な名前を持つ必要があります',
-  pluginDeveTerVersaoValida: 'プラグインは有効なバージョンを持つ必要があります',
-  pluginDeveDefinirPeloMenosUmaExtensao: 'プラグインは少なくとも1つの拡張子を定義する必要があります',
-  pluginDeveImplementarMetodoParse: 'プラグインはparse()メソッドを実装する必要があります',
-  // タイプ/アナリスト
-  definicaoAnalistaInvalida: 'アナリスト定義が無効です',
-  analistaSemFuncaoAplicar: (nome: string) => `アナリスト${nome}が適用関数を持っていません`,
-  // 検証/セキュリティ
-  caminhoForaDaCwdNaoPermitido: (p: string) => `CWD外のパスは許可されていません: ${p}`,
-  persistenciaNegadaForaRaizProjeto: (caminho: string) => `永続化が拒否されました: プロジェクトルート外のパス: ${caminho}`,
-  // 永続化（環境）
-  fsWriteFileBinaryIndisponivel: '現在の環境ではfs.writeFile (binary)が利用できません',
-  fsReadFileIndisponivel: 'fs.readFileが現在の環境で利用できません',
-  fsWriteFileIndisponivel: 'fs.writeFileが現在の環境で利用できません',
-  fsRenameIndisponivel: 'fs.renameが現在の環境で利用できません',
-  fsMkdirIndisponivel: 'fs.mkdirが現在の環境で利用できません',
-  // スキーマ
-  versaoSchemaDesconhecida: (versao: string) => `不明なスキーマバージョン: ${versao}`,
-  relatorioSchemaInvalido: (erros: string) => `無効なスキーマを持つレポート: ${erros}`,
-  // ファイルレジストリ
-  arquivoNaoEncontrado: (fileCaminho: string) => `ファイルが見つかりません: ${fileCaminho}`,
-  validacaoFalhouPara: (fileCaminho: string) => `検証が失敗しました: ${fileCaminho}`,
-  erroAoLer: (fileCaminho: string, errMsg: string) => `${fileCaminho}の読み取りエラー: ${errMsg}`,
-  erroAoEscrever: (fileCaminho: string, errMsg: string) => `${fileCaminho}の書き込みエラー: ${errMsg}`,
-  erroAoDeletar: (fileCaminho: string, errMsg: string) => `${fileCaminho}の削除エラー: ${errMsg}`,
-  // スキャナー
-  statIndefinidoPara: (fullCaminho: string) => `${fullCaminho}のStatが未定義です`,
-  // ロールバック
-  mapaReversaoCorrompido: 'ロールバックマップが破損しています',
-  // レポート
-  semPkg: 'pkgなし'
+  requireMutateFsAutoFix: 'Auto-fix unavailable',
+  autoFixTimeout: (timeoutMs: number) => `自動修復 timeout after ${timeoutMs}ms`,
+  // Plugins / safe import
+  pluginsDesabilitadosSafeMode: 'Plugin loading disabled in SAFE_MODE. Set PROMETHEUS_ALLOW_PLUGINS=1 to allow.',
+  pluginBloqueado: (erro: string) => `プラグイン blocked: ${erro}`,
+  caminhoPluginNaoResolvido: 'Plugin path not resolved',
+  // Plugin registry
+  pluginRegistradoNaoPodeSerObtido: (name: string) => `プラグイン ${name} is registered but cannot be obtained`,
+  pluginCarregandoPromiseNaoPodeSerObtida: (name: string) => `プラグイン ${name} is being loaded but promise cannot be obtained`,
+  naoFoiPossivelCarregarPlugin: (name: string, errMsg: string) => `Could not load プラグイン '${name}': ${errMsg}`,
+  pluginDeveTerNomeValido: 'Plugin must have a valid name',
+  pluginDeveTerVersaoValida: 'Plugin must have a valid version',
+  pluginDeveDefinirPeloMenosUmaExtensao: 'Plugin must define at least one extension',
+  pluginDeveImplementarMetodoParse: 'Plugin must implement parse() method',
+  // Types/Analysts
+  definicaoAnalistaInvalida: 'Invalid analyst definition',
+  analistaSemFuncaoAplicar: (nome: string) => `Analyst ${nome} has no apply function`,
+  // Validation / Security
+  caminhoForaDaCwdNaoPermitido: (p: string) => `Path outside CWD not allowed: ${p}`,
+  persistenciaNegadaForaRaizProjeto: (caminho: string) => `Persistence denied: path outside project root: ${caminho}`,
+  // Persistence (environment)
+  fsWriteFileBinaryIndisponivel: 'fs.writeFile (binary) unavailable in current environment',
+  fsReadFileIndisponivel: 'fs.readFile unavailable in current environment',
+  fsWriteFileIndisponivel: 'fs.writeFile unavailable in current environment',
+  fsRenameIndisponivel: 'fs.rename unavailable in current environment',
+  fsMkdirIndisponivel: 'fs.mkdir unavailable in current environment',
+  // Schema
+  versaoSchemaDesconhecida: (versao: string) => `Unknown schema version: ${versao}`,
+  relatorioSchemaInvalido: (erros: string) => `レポート with invalid schema: ${erros}`,
+  // File registry
+  arquivoNaoEncontrado: (fileCaminho: string) => `ファイル not found: ${fileCaminho}`,
+  validacaoFalhouPara: (fileCaminho: string) => `Validation failed for ${fileCaminho}`,
+  erroAoLer: (fileCaminho: string, errMsg: string) => `エラー reading ${fileCaminho}: ${errMsg}`,
+  erroAoEscrever: (fileCaminho: string, errMsg: string) => `エラー writing ${fileCaminho}: ${errMsg}`,
+  erroAoDeletar: (fileCaminho: string, errMsg: string) => `エラー deleting ${fileCaminho}: ${errMsg}`,
+  // Scanner
+  statIndefinidoPara: (fullCaminho: string) => `Stat undefined for ${fullCaminho}`,
+  // Rollback
+  mapaReversaoCorrompido: 'Corrupted rollback map',
+  // Reports
+  semPkg: 'no pkg'
 } as const;

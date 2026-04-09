@@ -1,4 +1,9 @@
 ---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
+---
 name: "Bug report"
 about: "Reportar um bug no Prometheus"
 title: "[bug] "
@@ -15,9 +20,9 @@ assignees: []
 - SO: (ex.: Ubuntu 22.04)
 
 **Como reproduzir**
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 **Comportamento esperado**
 
@@ -28,3 +33,4 @@ Cole a saída relevante ou anexe arquivos.
 
 **Prioridade**
 - high / medium / low
+

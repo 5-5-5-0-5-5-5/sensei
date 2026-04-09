@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
 
-export const CliComandoDesempMensagens = {
-  tituloComparacaoSnapshotsComIcone: (icone: string) => `${icone} Comparação entre snapshots:`
+export const CliComandoDesempMessages = {
+  titleSnapshotComparisonWithIcon: (icone: string) => `${icone} Comparison between snapshots:`
 } as const;

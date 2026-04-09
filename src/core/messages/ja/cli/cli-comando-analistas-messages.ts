@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: MIT
 
-export const CliComandoAnalistasMensagens = {
-  fastModeTitulo: '\n?? Analistas registrados (FAST MODE):\n',
+export const CliComandoAnalistasMessages = {
+  fastModeTitle: '\n?? Registered analysts (FAST MODE):\n',
   fastModeTotalZero: '\nTotal: 0',
-  docMdTitulo: 'CABECALHOS.analistas.mdTitulo',
-  docGeradoEm: (iso: string) => `Gerado em: ${iso}`,
-  docTabelaHeader: '| Nome | Categoria | Descrição | Limites |',
-  docTabelaSeparador: '| ---- | --------- | --------- | ------- |',
-  docLinhaAnalista: (nome: string, categoria: string, descricao: string, limitesStr: string) => `| ${nome} | ${categoria} | ${descricao} | ${limitesStr} |`,
-  docGerada: (destinoDoc: string) => `?? Documentação de analistas gerada em ${destinoDoc}`,
-  jsonExportado: (destino: string) => `?? Exportado JSON de analistas para ${destino}`,
-  titulo: '\n?? Analistas registrados:\n',
-  linhaAnalista: (nome: string, categoria: string, descricao?: string) => `- ${nome} (${categoria}) ${descricao ? `: ${descricao}` : ''}`,
-  tituloComIcone: (iconeInfo: string) => `${iconeInfo} Analistas registrados:`,
+  docMdTitle: 'CABECALHOS.analistas.mdTitulo',
+  docGeneratedAt: (iso: string) => `生成済み at: ${iso}`,
+  docTableHeader: '| Name | Category | Description | Limits |',
+  docTableSeparator: '| ---- | --------- | --------- | ------- |',
+  docAnalystLine: (nome: string, categoria: string, descricao: string, limitesStr: string) => `| ${nome} | ${categoria} | ${descricao} | ${limitesStr} |`,
+  docGenerated: (destinoDoc: string) => `?? Analyst documentation 生成済み at ${destinoDoc}`,
+  jsonExported: (destino: string) => `?? エクスポートed analysts JSON to ${destino}`,
+  title: '\n?? Registered analysts:\n',
+  analystLine: (nome: string, categoria: string, descricao?: string) => `- ${nome} (${categoria}) ${descricao ? `: ${descricao}` : ''}`,
+  titleWithIcon: (iconeInfo: string) => `${iconeInfo} Registered analysts:`,
   total: (n: number) => `\nTotal: ${n}`
 } as const;

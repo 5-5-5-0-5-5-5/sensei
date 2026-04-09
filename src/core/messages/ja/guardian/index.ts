@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 /**
- * Mensagens Guardian
+ * Guardian Messages
  */
 
 export { VigiaOcultaMensagens } from './vigia-oculta-messages.js';

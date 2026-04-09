@@ -1,58 +1,58 @@
 // SPDX-License-Identifier: MIT
 // @prometheus-disable tipo-literal-inline-complexo
-// Justificativa: tipos inline para mensagens de zeladores
+// Justification: inline types for caretaker messages
 
 import { ICONES_ACAO, ICONES_STATUS, ICONES_ZELADOR as ICONES_ZELADOR_CENTRAL } from '../../shared/icons.js';
 /**
- * Mensagens dos Zeladores
+ * Caretaker Messages
  *
- * Centraliza todas as mensagens relacionadas aos zeladores (auto-fix)
- * incluindo: imports, tipos, estrutura, etc.
+ * Centralizes all messages related to caretakers (auto-fix)
+ * including: imports, types, structure, etc.
  */
 
 /**
- * Ícones e emojis usados pelos zeladores
+ * Icons and emojis used by caretakers
  */
 export const ICONES_ZELADOR = {
   ...ICONES_ZELADOR_CENTRAL
 } as const;
 
 /**
- * Mensagens do Zelador de Imports
+ * Import Caretaker Messages
  */
 export const MENSAGENS_IMPORTS = {
-  titulo: `${ICONES_ACAO.correcao} Zelador de Imports - Iniciando correções...`,
-  resumo: `${ICONES_ZELADOR.resumo} Resumo:`,
-  dryRunAviso: `${ICONES_ZELADOR.dryRun} Modo dry-run: nenhum arquivo foi modificado`,
-  sucessoFinal: `${ICONES_STATUS.ok} Correções aplicadas com sucesso!`
+  titulo: `${ICONES_ACAO.correcao} Import Caretaker - Starting fixes...`,
+  resumo: `${ICONES_ZELADOR.resumo} Summary:`,
+  dryRunAviso: `${ICONES_ZELADOR.dryRun} Dry-run mode: no 文件 were modified`,
+  sucessoFinal: `${ICONES_STATUS.ok} Fixes applied 成功fully!`
 } as const;
 
 /**
- * Mensagens de progresso do zelador de imports
+ * Import caretaker progress messages
  */
 export const PROGRESSO_IMPORTS = {
-  diretorioNaoEncontrado: (dir: string) => `${ICONES_ZELADOR.aviso} Diretório não encontrado: ${dir}`,
-  arquivoProcessado: (arquivo: string, count: number) => `${ICONES_ZELADOR.sucesso} ${arquivo} (${count} correção${count !== 1 ? 'ões' : ''})`,
+  diretorioNaoEncontrado: (dir: string) => `${ICONES_ZELADOR.aviso} Directory not found: ${dir}`,
+  arquivoProcessado: (arquivo: string, count: number) => `${ICONES_ZELADOR.sucesso} ${arquivo} (${count} fix${count !== 1 ? 'es' : ''})`,
   arquivoErro: (arquivo: string, erro: string) => `${ICONES_ZELADOR.erro} ${arquivo}: ${erro}`,
-  lendoDiretorio: (dir: string) => `Lendo diretório: ${dir}`
+  lendoDiretorio: (dir: string) => `Reading directory: ${dir}`
 } as const;
 
 /**
- * Mensagens de erro do zelador de imports
+ * Import caretaker error messages
  */
 export const ERROS_IMPORTS = {
   lerDiretorio: (dir: string, error: unknown) => {
     const mensagem = error instanceof Error ? error.message : String(error);
-    return `Erro ao ler diretório ${dir}: ${mensagem}`;
+    return `错误 reading directory ${dir}: ${mensagem}`;
   },
   processar: (arquivo: string, error: unknown) => {
     const mensagem = error instanceof Error ? error.message : String(error);
-    return `Erro ao processar ${arquivo}: ${mensagem}`;
+    return `错误 processing ${arquivo}: ${mensagem}`;
   }
 } as const;
 
 /**
- * Formata linha de estatísticas de resumo
+ * Formats summary statistics line
  */
 export function formatarEstatistica(label: string, valor: number | string, icone?: string): string {
   const prefixo = icone ? `${icone} ` : '   ';
@@ -60,7 +60,7 @@ export function formatarEstatistica(label: string, valor: number | string, icone
 }
 
 /**
- * Gera resumo de correções de imports
+ * Generates import fixes summary
  */
 export function gerarResumoImports(stats: {
   processados: number;
@@ -69,9 +69,9 @@ export function gerarResumoImports(stats: {
   erros: number;
   dryRun: boolean;
 }): string[] {
-  const linhas: string[] = ['', MENSAGENS_IMPORTS.resumo, formatarEstatistica('Arquivos processados', stats.processados), formatarEstatistica('Arquivos modificados', stats.modificados), formatarEstatistica('Total de correções', stats.totalCorrecoes)];
+  const linhas: string[] = ['', MENSAGENS_IMPORTS.resumo, formatarEstatistica('Processed files', stats.processados), formatarEstatistica('Modified files', stats.modificados), formatarEstatistica('Total fixes', stats.totalCorrecoes)];
   if (stats.erros > 0) {
-    linhas.push(formatarEstatistica('Erros', stats.erros, ICONES_ZELADOR.aviso));
+    linhas.push(formatarEstatistica('Errors', stats.erros, ICONES_ZELADOR.aviso));
   }
   linhas.push('');
   if (stats.dryRun) {
@@ -83,34 +83,34 @@ export function gerarResumoImports(stats: {
 }
 
 /**
- * Mensagens do Zelador de Tipos (future)
+ * Type Caretaker Messages (future)
  */
 export const MENSAGENS_TIPOS = {
-  titulo: `${ICONES_ACAO.correcao} Zelador de Tipos - Iniciando correções...`,
-  analisandoTipo: (tipo: string) => `Analisando tipo: ${tipo}`,
-  tipoCorrigido: (antes: string, depois: string) => `Corrigido: ${antes} → ${depois}`
+  titulo: `${ICONES_ACAO.correcao} Type Caretaker - Starting fixes...`,
+  analisandoTipo: (tipo: string) => `Analyzing type: ${tipo}`,
+  tipoCorrigido: (antes: string, depois: string) => `Fixed: ${antes} → ${depois}`
 } as const;
 
 /**
- * Mensagens do Zelador de Estrutura (future)
+ * Structure Caretaker Messages (future)
  */
 export const MENSAGENS_ESTRUTURA = {
-  titulo: `${ICONES_ACAO.organizacao} Zelador de Estrutura - Reorganizando arquivos...`,
-  movendo: (origem: string, destino: string) => `Movendo: ${origem} → ${destino}`,
-  criandoDiretorio: (dir: string) => `Criando diretório: ${dir}`
+  titulo: `${ICONES_ACAO.organizacao} Structure Caretaker - Reorganizing 文件...`,
+  movendo: (origem: string, destino: string) => `Moving: ${origem} → ${destino}`,
+  criandoDiretorio: (dir: string) => `Creating directory: ${dir}`
 } as const;
 
 /**
- * Mensagens genéricas de zeladores
+ * Generic caretaker messages
  */
 export const MENSAGENS_ZELADOR_GERAL = {
-  iniciando: (zelador: string) => `${ICONES_ZELADOR.inicio} ${zelador} - Iniciando...`,
-  concluido: (zelador: string) => `${ICONES_ZELADOR.sucesso} ${zelador} - Concluído!`,
-  erro: (zelador: string, mensagem: string) => `${ICONES_ZELADOR.erro} ${zelador} - Erro: ${mensagem}`
+  iniciando: (zelador: string) => `${ICONES_ZELADOR.inicio} ${zelador} - Starting...`,
+  concluido: (zelador: string) => `${ICONES_ZELADOR.sucesso} ${zelador} - Completed!`,
+  erro: (zelador: string, mensagem: string) => `${ICONES_ZELADOR.erro} ${zelador} - 错误: ${mensagem}`
 } as const;
 
 /**
- * Templates de saída para diferentes modos
+ * Output templates for different modes
  */
 export const MODELOS_SAIDA = {
   compacto: {
@@ -124,12 +124,12 @@ export const MODELOS_SAIDA = {
     fim: (stats: {
       sucesso: number;
       falha: number;
-    }) => `\n${ICONES_ZELADOR.resumo} Sucesso: ${stats.sucesso}, Falha: ${stats.falha}`
+    }) => `\n${ICONES_ZELADOR.resumo} 成功: ${stats.sucesso}, Failure: ${stats.falha}`
   }
 } as const;
 
 /**
- * Códigos de saída para zeladores
+ * Exit codes for caretakers
  */
 export const SAIDA_CODIGOS = {
   SUCESSO: 0,
@@ -140,7 +140,7 @@ export const SAIDA_CODIGOS = {
 } as const;
 
 /**
- * Formata lista de arquivos modificados
+ * Formats modified file list
  */
 export function formatarListaArquivos(arquivos: string[], maxExibir: number = 10): string[] {
   const linhas: string[] = [];
@@ -150,13 +150,13 @@ export function formatarListaArquivos(arquivos: string[], maxExibir: number = 10
   }
   const restantes = arquivos.length - maxExibir;
   if (restantes > 0) {
-    linhas.push(`   ... e mais ${restantes} arquivo${restantes !== 1 ? 's' : ''}`);
+    linhas.push(`   ... and ${restantes} more 文件${restantes !== 1 ? 's' : ''}`);
   }
   return linhas;
 }
 
 /**
- * Formata duração de execução
+ * Formats execution duration
  */
 export function formatarDuracao(ms: number): string {
   if (ms < 1000) {
@@ -171,7 +171,7 @@ export function formatarDuracao(ms: number): string {
 }
 
 /**
- * Formata mensagem com timestamp
+ * Formats message with timestamp
  */
 export function formatarComTimestamp(mensagem: string): string {
   const timestamp = new Date().toISOString().substring(11, 19); // HH:MM:SS

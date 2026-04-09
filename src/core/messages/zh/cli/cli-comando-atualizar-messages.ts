@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 
 export const CliAtualizarExtraMensagens = {
-  descricao: 'Atualiza o Prometheus se a integridade estiver preservada',
-  iniciandoAtualizacao: '\n🔄 Iniciando processo de atualização...\n',
-  guardianIntegridadeValidada: '{icone} Guardian: integridade validada. Prosseguindo atualização.',
-  guardianBaselineAlterado: '🌀 Guardian gerou novo baseline ou detectou alterações. Prosseguindo com cautela.',
-  recomendadoGuardianDiff: 'Recomendado: `prometheus guardian --diff` e `prometheus guardian --accept-baseline` antes de atualizar.',
-  falhaAplicarFlags: 'Falha ao aplicar flags: {erro}',
+  descricao: 'Updates Prometheus if integrity is preserved',
+  iniciandoAtualizacao: '\n🔄 Starting update process...\n',
+  guardianIntegridadeValidada: '{icone} Guardian: integrity validated. Proceeding with update.',
+  guardianBaselineAlterado: '🌀 Guardian generated a new baseline or detected changes. Proceeding with caution.',
+  recomendadoGuardianDiff: 'Recommended: `prometheus guardian --diff` and `prometheus guardian --accept-baseline` before updating.',
+  falhaAplicarFlags: 'Failed to apply flags: {erro}',
 } as const;

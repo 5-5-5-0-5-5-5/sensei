@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * @fileoverview Mensagens de diagnóstico para o detector de código frágil.
- * Fornece templates de texto para reportar fragilidades no código com
- * resumo de severidade e detalhes estruturados.
+ * @fileoverview Diagnostic messages for the fragile code detector.
+ * Provides text templates to report code fragilities with severity
+ * summary and structured details.
  */
 
 import type { FragilidadesDetalhesArgs } from '../../../../types/core/config/config.js';
 
 type ErroUnknown = unknown;
 function erroToMessage(erro: ErroUnknown): string {
-  return erro instanceof Error ? erro.message : 'Erro desconhecido';
+  return erro instanceof Error ? erro.message : 'Unknown error';
 }
 export const DetectorCodigoFragilMensagens = {
-  fragilidadesResumo: (severidade: string, resumo: string, detalhes: FragilidadesDetalhesArgs) => `Fragilidades ${severidade}: ${resumo} | Detalhes: ${JSON.stringify(detalhes)}`,
-  erroAnalisarCodigoFragil: (erro: ErroUnknown) => `Erro ao analisar código frágil: ${erroToMessage(erro)}`
+  fragilidadesResumo: (severidade: string, resumo: string, detalhes: FragilidadesDetalhesArgs) => `${severidade} 脆弱性: ${resumo} | Details: ${JSON.stringify(detalhes)}`,
+  erroAnalisarCodigoFragil: (erro: ErroUnknown) => `分析错误 fragile code: ${erroToMessage(erro)}`
 } as const;

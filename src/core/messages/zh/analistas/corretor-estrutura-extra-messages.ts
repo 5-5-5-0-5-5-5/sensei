@@ -1,5 +1,5 @@
 export const CorretorEstruturaExtraMensagens = {
-  simular: '→ Simular: {arquivo} → {destino}',
-  safeMode: '→ SAFE_MODE: simulando escrita/movimento para {arquivo} → {destino}',
-  movido: '✅ Movido: {arquivo} → {destino}',
+  simular: '→ Simulate: {arquivo} → {destino}',
+  safeMode: '→ SAFE_MODE: simulating write/move for {arquivo} → {destino}',
+  movido: '✅ Moved: {arquivo} → {destino}',
 } as const;

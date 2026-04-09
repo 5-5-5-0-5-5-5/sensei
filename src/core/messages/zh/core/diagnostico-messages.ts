@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 // @prometheus-disable tipo-literal-inline-complexo
-// Justificativa: tipos inline para helpers de mensagens
+// Justification: inline types for message helpers
 /**
- * 诊断命令消息
+ * Diagnose Command Messages
  *
- * 集中所有与仓库诊断相关的消息
+ * Centralizes all messages related to repository diagnosis
  */
 
 import type { ModoOperacao } from '@';
 
 /**
- * 诊断图标
+ * Diagnosis icons
  */
 export const ICONES_DIAGNOSTICO = {
   inicio: '[SCAN]',
@@ -22,170 +22,170 @@ export const ICONES_DIAGNOSTICO = {
   autoFix: '[FIX]',
   export: '[EXP]',
   sucesso: '[OK]',
-  aviso: '[AVISO]',
-  erro: '[ERRO]',
+  aviso: '[WARN]',
+  erro: '[ERR]',
   info: '[i]',
-  dica: '[DICA]',
+  dica: '[TIP]',
   executive: '[STATS]',
   rapido: '[FAST]'
 } as const;
 
 /**
- * 按模式划分的启动消息
+ * Start messages by mode
  */
 export const MENSAGENS_INICIO: Record<ModoOperacao, string> = {
-  compact: `${ICONES_DIAGNOSTICO.inicio} 诊断(紧凑模式)`,
-  full: `${ICONES_DIAGNOSTICO.inicio} 启动完整诊断`,
-  executive: `${ICONES_DIAGNOSTICO.executive} 执行分析(仅严重项)`,
-  quick: `${ICONES_DIAGNOSTICO.rapido} 快速分析`
+  compact: `${ICONES_DIAGNOSTICO.inicio} Diagnosis (compact mode)`,
+  full: `${ICONES_DIAGNOSTICO.inicio} Starting full diagnosis`,
+  executive: `${ICONES_DIAGNOSTICO.executive} Executive 分析 (criticals only)`,
+  quick: `${ICONES_DIAGNOSTICO.rapido} Quick 分析`
 };
 
 /**
- * 进度消息
+ * Progress messages
  */
 export const MENSAGENS_PROGRESSO = {
-  varredura: (total: number) => `${ICONES_DIAGNOSTICO.arquivos} 扫描${total}个文件...`,
-  analise: (atual: number, total: number) => `${ICONES_DIAGNOSTICO.analise} 分析中: ${atual}/${total}`,
-  arquetipos: `${ICONES_DIAGNOSTICO.arquetipos} 检测项目结构...`,
-  guardian: `${ICONES_DIAGNOSTICO.guardian} 验证完整性...`,
-  autoFix: (modo: string) => `${ICONES_DIAGNOSTICO.autoFix} 应用修复 (模式: ${modo})...`,
-  export: (formato: string) => `${ICONES_DIAGNOSTICO.export} 导出报告 (${formato})...`
+  varredura: (total: number) => `${ICONES_DIAGNOSTICO.arquivos} Scanning ${total} 文件${total !== 1 ? 's' : ''}...`,
+  analise: (atual: number, total: number) => `${ICONES_DIAGNOSTICO.analise} Analyzing: ${atual}/${total}`,
+  arquetipos: `${ICONES_DIAGNOSTICO.arquetipos} Detecting project structure...`,
+  guardian: `${ICONES_DIAGNOSTICO.guardian} Checking integrity...`,
+  autoFix: (modo: string) => `${ICONES_DIAGNOSTICO.autoFix} Applying fixes (mode: ${modo})...`,
+  export: (formato: string) => `${ICONES_DIAGNOSTICO.export} 导出ing report (${formato})...`
 } as const;
 
 /**
- * 完成消息
+ * Completion messages
  */
 export const MENSAGENS_CONCLUSAO = {
-  sucesso: (ocorrencias: number) => `${ICONES_DIAGNOSTICO.sucesso} 诊断完成: 发现${ocorrencias}个问题`,
-  semProblemas: `${ICONES_DIAGNOSTICO.sucesso} 未发现问题！代码状态良好。`,
-  exportado: (caminho: string) => `${ICONES_DIAGNOSTICO.export} 报告已保存: ${caminho}`
+  sucesso: (ocorrencias: number) => `${ICONES_DIAGNOSTICO.sucesso} 诊断完成: ${ocorrencias} occurrence${ocorrencias !== 1 ? 's' : ''} found`,
+  semProblemas: `${ICONES_DIAGNOSTICO.sucesso} No problems found! 代码 is in great shape.`,
+  exportado: (caminho: string) => `${ICONES_DIAGNOSTICO.export} 报告 saved at: ${caminho}`
 } as const;
 
 /**
- * 错误消息
+ * Error messages
  */
 export const MENSAGENS_ERRO = {
-  falhaAnalise: (erro: string) => `${ICONES_DIAGNOSTICO.erro} 分析失败: ${erro}`,
-  falhaExport: (erro: string) => `${ICONES_DIAGNOSTICO.erro} 导出失败: ${erro}`,
-  falhaGuardian: (erro: string) => `${ICONES_DIAGNOSTICO.erro} Guardian失败: ${erro}`,
-  falhaAutoFix: (erro: string) => `${ICONES_DIAGNOSTICO.erro} 自动修复失败: ${erro}`,
-  flagsInvalidas: (erros: string[]) => `${ICONES_DIAGNOSTICO.erro} 无效标志:\n${erros.map(e => `  • ${e}`).join('\n')}`
+  falhaAnalise: (erro: string) => `${ICONES_DIAGNOSTICO.erro} 分析 failed: ${erro}`,
+  falhaExport: (erro: string) => `${ICONES_DIAGNOSTICO.erro} 导出 failed: ${erro}`,
+  falhaGuardian: (erro: string) => `${ICONES_DIAGNOSTICO.erro} guardian failed: ${erro}`,
+  falhaAutoFix: (erro: string) => `${ICONES_DIAGNOSTICO.erro} 自动修复 failed: ${erro}`,
+  flagsInvalidas: (erros: string[]) => `${ICONES_DIAGNOSTICO.erro} Invalid flags:\n${erros.map(e => `  • ${e}`).join('\n')}`
 } as const;
 
 /**
- * 警告消息
+ * Warning messages
  */
 export const MENSAGENS_AVISO = {
-  modoFast: `${ICONES_DIAGNOSTICO.info} 快速模式已激活 (PROMETHEUS_TEST_FAST=1)`,
-  semMutateFS: `${ICONES_DIAGNOSTICO.aviso} 自动修复已禁用。`,
-  guardianDesabilitado: `${ICONES_DIAGNOSTICO.info} Guardian未执行`,
-  arquetiposTimeout: `${ICONES_DIAGNOSTICO.aviso} 原型检测超时`
+  modoFast: `${ICONES_DIAGNOSTICO.info} Fast mode active (PROMETHEUS_TEST_FAST=1)`,
+  semMutateFS: `${ICONES_DIAGNOSTICO.aviso} 自动修复 disabled.`,
+  guardianDesabilitado: `${ICONES_DIAGNOSTICO.info} guardian not run`,
+  arquetiposTimeout: `${ICONES_DIAGNOSTICO.aviso} Archetype detection expired (timeout)`
 } as const;
 
 /**
- * 过滤器消息
+ * Filter messages
  */
 export const MENSAGENS_FILTROS = {
-  titulo: '活动过滤器',
-  include: (patterns: string[]) => `包含: ${patterns.length > 0 ? patterns.join(', ') : '无'}`,
-  exclude: (patterns: string[]) => `排除: ${patterns.length > 0 ? patterns.join(', ') : '默认模式'}`,
-  nodeModules: (incluido: boolean) => `node_modules: ${incluido ? `${ICONES_DIAGNOSTICO.sucesso} 已包含` : `${ICONES_DIAGNOSTICO.aviso} 已忽略(默认)`}`
+  titulo: 'Active Filters',
+  include: (patterns: string[]) => `Include: ${patterns.length > 0 ? patterns.join(', ') : 'none'}`,
+  exclude: (patterns: string[]) => `Exclude: ${patterns.length > 0 ? patterns.join(', ') : '默认 patterns'}`,
+  nodeModules: (incluido: boolean) => `node_modules: ${incluido ? `${ICONES_DIAGNOSTICO.sucesso} included` : `${ICONES_DIAGNOSTICO.aviso} ignored (default)`}`
 } as const;
 
 /**
- * 统计消息
+ * Statistics messages
  */
 export const MENSAGENS_ESTATISTICAS = {
-  titulo: '分析统计',
-  arquivos: (total: number) => `已分析文件: ${total}`,
-  ocorrencias: (total: number) => `发现的问题: ${total}`,
+  titulo: 'Analysis Statistics',
+  arquivos: (total: number) => `文件 analyzed: ${total}`,
+  ocorrencias: (total: number) => `Occurrences found: ${total}`,
   porTipo: (tipo: string, count: number) => `  • ${tipo}: ${count}`,
   duracao: (ms: number) => {
-    if (ms < 1000) return `耗时: ${ms}ms`;
-    if (ms < 60000) return `耗时: ${(ms / 1000).toFixed(1)}s`;
+    if (ms < 1000) return `Duration: ${ms}ms`;
+    if (ms < 60000) return `Duration: ${(ms / 1000).toFixed(1)}s`;
     const min = Math.floor(ms / 60000);
     const seg = Math.floor(ms % 60000 / 1000);
-    return `耗时: ${min}m ${seg}s`;
+    return `Duration: ${min}m ${seg}s`;
   }
 } as const;
 
 /**
- * Guardian消息
+ * Guardian messages
  */
 export const MENSAGENS_GUARDIAN = {
-  iniciando: `${ICONES_DIAGNOSTICO.guardian} 启动Guardian验证...`,
-  baseline: '使用现有baseline',
-  fullScan: '完整扫描已激活(忽略忽略项)',
-  saveBaseline: '保存新baseline...',
+  iniciando: `${ICONES_DIAGNOSTICO.guardian} Starting guardian verification...`,
+  baseline: 'Using existing baseline',
+  fullScan: 'Full scan active (ignoring ignores)',
+  saveBaseline: 'Saving new baseline...',
   status: {
-    verde: `${ICONES_DIAGNOSTICO.sucesso} Guardian: 状态绿色(完整性OK)`,
-    amarelo: `${ICONES_DIAGNOSTICO.aviso} Guardian: 状态黄色(需要关注)`,
-    vermelho: `${ICONES_DIAGNOSTICO.erro} Guardian: 状态红色(严重问题)`
+    verde: `${ICONES_DIAGNOSTICO.sucesso} guardian: Status GREEN (integrity OK)`,
+    amarelo: `${ICONES_DIAGNOSTICO.aviso} guardian: Status YELLOW (attention needed)`,
+    vermelho: `${ICONES_DIAGNOSTICO.erro} guardian: Status RED (critical problems)`
   },
-  drift: (count: number) => `检测到偏差: 相对于baseline有${count}个变更`
+  drift: (count: number) => `Drift detected: ${count} change${count !== 1 ? 's' : ''} from baseline`
 } as const;
 
-// MENSAGENS_AUTOFIX foi movido para correcoes-messages.ts para consolidação
+// MENSAGENS_AUTOFIX was moved to correcoes-messages.ts for consolidation
 
 /**
- * 原型消息
+ * Archetype messages
  */
 export const MENSAGENS_ARQUETIPOS = {
-  detectando: `${ICONES_DIAGNOSTICO.arquetipos} 检测项目结构...`,
-  identificado: (tipo: string, confianca: number) => `已识别原型: ${tipo} (${confianca}%置信度)`,
-  multiplos: (count: number) => `发现${count}个候选原型`,
-  salvando: '保存自定义原型...',
-  salvo: (caminho: string) => `${ICONES_DIAGNOSTICO.sucesso} 原型已保存: ${caminho}`
+  detectando: `${ICONES_DIAGNOSTICO.arquetipos} Detecting project structure...`,
+  identificado: (tipo: string, confianca: number) => `Archetype identified: ${tipo} (${confianca}% confidence)`,
+  multiplos: (count: number) => `${count} candidate archetype${count !== 1 ? 's' : ''} found`,
+  salvando: `Saving custom archetype...`,
+  salvo: (caminho: string) => `${ICONES_DIAGNOSTICO.sucesso} Archetype saved at: ${caminho}`
 } as const;
 
 /**
- * 块模板
+ * Block templates
  */
 export const MODELOS_BLOCO = {
   sugestoes: {
-    titulo: '快速建议',
+    titulo: 'Quick Suggestions',
     formatarFlag: (flag: string, descricao: string) => `${flag}: ${descricao}`,
     formatarDica: (dica: string) => `${ICONES_DIAGNOSTICO.dica} ${dica}`
   },
   resumo: {
-    titulo: '诊断摘要',
+    titulo: 'Diagnosis Summary',
     secoes: {
-      filtros: '应用的过滤器',
-      estatisticas: '统计',
-      arquetipos: '项目结构',
-      guardian: '完整性(Guardian)',
-      autoFix: '自动修复'
+      filtros: 'Applied Filters',
+      estatisticas: 'Statistics',
+      arquetipos: 'Project Structure',
+      guardian: 'Integrity (Guardian)',
+      autoFix: 'Automatic Fixes'
     }
   }
 } as const;
 
 /**
- * 格式化标志建议块
+ * Formats a flag suggestions block
  */
 export function formatarBlocoSugestoes(flagsAtivas: string[], dicas: string[]): string[] {
   const linhas: string[] = [];
-  linhas.push('');
+  linhas.push(''); // empty line
   linhas.push(`┌── ${MODELOS_BLOCO.sugestoes.titulo} ─────────────────────────────────────────`);
   if (flagsAtivas.length > 0) {
-    linhas.push(`活动标志: ${flagsAtivas.join(' ')}`);
+    linhas.push(`Active flags: ${flagsAtivas.join(' ')}`);
   } else {
-    linhas.push('未检测到特殊标志');
+    linhas.push('No special flags detected');
   }
   if (dicas.length > 0) {
     linhas.push('');
-    linhas.push('有用信息:');
+    linhas.push('Useful information:');
     for (const dica of dicas) {
       linhas.push(`  ${dica}`);
     }
   }
   linhas.push('└───────────────────────────────────────────────────────────────');
-  linhas.push('');
+  linhas.push(''); // empty line
 
   return linhas;
 }
 
 /**
- * 格式化统计摘要
+ * Formats a statistics summary
  */
 export function formatarResumoStats(stats: {
   arquivos: number;
@@ -194,49 +194,49 @@ export function formatarResumoStats(stats: {
   porTipo?: Record<string, number>;
 }): string[] {
   const linhas: string[] = [];
-  linhas.push('');
+  linhas.push(''); // empty line
   linhas.push(`┌── ${MODELOS_BLOCO.resumo.secoes.estatisticas} ─────────────────────────────────────────`);
   linhas.push(`  ${MENSAGENS_ESTATISTICAS.arquivos(stats.arquivos)}`);
   linhas.push(`  ${MENSAGENS_ESTATISTICAS.ocorrencias(stats.ocorrencias)}`);
   if (stats.porTipo && Object.keys(stats.porTipo).length > 0) {
     linhas.push('');
-    linhas.push('  按类型:');
+    linhas.push('  By type:');
     for (const [tipo, count] of Object.entries(stats.porTipo)) {
       linhas.push(`    ${MENSAGENS_ESTATISTICAS.porTipo(tipo, count)}`);
     }
   }
   linhas.push('');
   linhas.push(`  ${MENSAGENS_ESTATISTICAS.duracao(stats.duracao)}`);
-  linhas.push('└────────���─��────────────────────────────────────────────────────');
-  linhas.push('');
+  linhas.push('└───────────────────────────────────────────────────────────────');
+  linhas.push(''); // empty line
 
   return linhas;
 }
 
 /**
- * 格式化JSON模式消息
+ * Formats JSON mode message
  */
 export function formatarModoJson(ascii: boolean): string {
-  return `${ICONES_DIAGNOSTICO.info} 结构化JSON输出${ascii ? ' (ASCII转义)' : ''}已激活`;
+  return `${ICONES_DIAGNOSTICO.info} Structured JSON output${ascii ? ' (ASCII escape)' : ''} enabled`;
 }
 
 /**
- * 命令的标准标题和文本
+ * Default headers and texts for commands
  */
 export const CABECALHOS = {
- 分析师: {
-    tituloFast: `${ICONES_DIAGNOSTICO.info} 注册的分析器(快速模式)`,
-    titulo: `${ICONES_DIAGNOSTICO.info} 注册的分析器`,
-    mdTitulo: '# 注册的分析器'
+  analistas: {
+    tituloFast: `${ICONES_DIAGNOSTICO.info} Registered analysts (FAST MODE)`,
+    titulo: `${ICONES_DIAGNOSTICO.info} Registered analysts`,
+    mdTitulo: '# Registered Analysts'
   },
   diagnostico: {
-    flagsAtivas: '活动标志:',
-    informacoesUteis: '有用信息:'
+    flagsAtivas: 'Active flags:',
+    informacoesUteis: 'Useful information:'
   },
   reestruturar: {
-    prioridadeDomainsFlat: `${ICONES_DIAGNOSTICO.aviso} 指定了--domains和--flat。优先使用--domains。`,
-    planoVazioFast: `${ICONES_DIAGNOSTICO.info} 空计划: 无建议移动。(快速模式)`,
-    nenhumNecessarioFast: `${ICONES_DIAGNOSTICO.sucesso} 不需要结构修复。(快速模式)`,
-    conflitosDetectadosFast: (count: number) => `${ICONES_DIAGNOSTICO.aviso} 检测到冲突: ${count} (快速模式)`
+    prioridadeDomainsFlat: `${ICONES_DIAGNOSTICO.aviso} --domains and --flat provided. Prioritizing --domains.`,
+    planoVazioFast: `${ICONES_DIAGNOSTICO.info} Empty plan: no movements suggested. (FAST MODE)`,
+    nenhumNecessarioFast: `${ICONES_DIAGNOSTICO.sucesso} No structural corrections needed. (FAST MODE)`,
+    conflitosDetectadosFast: (count: number) => `${ICONES_DIAGNOSTICO.aviso} Conflicts 检测到: ${count} (FAST MODE)`
   }
 } as const;

@@ -1,22 +1,22 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * @fileoverview Mensagens para sugestões contextuais na interface do usuário.
- * Fornece templates de texto com ícones para feedback de identificação de
- * projetos, evidências de dependências, imports, padrões de código,
- * estrutura de diretórios e tecnologias alternativas.
+ * @fileoverview Messages for contextual suggestions in the user interface.
+ * Provides text templates with icons for feedback on project identification,
+ * dependency evidence, imports, code patterns,
+ * directory structure and alternative technologies.
  */
 
 import { ICONES_ACAO, ICONES_ARQUIVO, ICONES_FEEDBACK } from '../../shared/icons.js';
 
 export const SugestoesContextuaisMensagens = {
-  arquetipoNaoIdentificado: 'Não foi possível identificar um arquétipo específico. Considere adicionar mais estrutura ao projeto.',
-  projetoIdentificado: (tecnologia: string | undefined, confiancaPercent: number) => `${ICONES_FEEDBACK.info} Projeto identificado como: ${tecnologia} (confiança: ${confiancaPercent}%)`,
-  evidenciaDependencia: (dependencia: string, tecnologia: string | undefined) => `${ICONES_ARQUIVO.package} Dependência ${dependencia} confirma projeto ${tecnologia}`,
-  evidenciaImport: (valor: string, localizacao: string | undefined) => `${ICONES_ACAO.import} Import ${valor} detectado em ${localizacao}`,
-  evidenciaCodigo: (localizacao: string | undefined) => `${ICONES_ARQUIVO.codigo} Padrão de código específico detectado em ${localizacao}`,
-  evidenciaEstrutura: (valor: string, tecnologia: string | undefined) => `${ICONES_ARQUIVO.diretorio} Estrutura ${valor} típica de ${tecnologia}`,
-  tecnologiasAlternativas: (alternativas: string) => `${ICONES_ACAO.analise} Outras tecnologias detectadas: ${alternativas}`,
-  erroAnaliseContextual: (erro: string) => `Erro na análise contextual: ${erro}`,
-  erroDuranteAnalise: 'Erro durante análise contextual inteligente'
+  arquetipoNaoIdentificado: 'Could not identify a specific archetype. Consider adding more structure to the project.',
+  projetoIdentificado: (tecnologia: string | undefined, confiancaPercent: number) => `${ICONES_FEEDBACK.info} Project identified as: ${tecnologia} (confidence: ${confiancaPercent}%)`,
+  evidenciaDependencia: (dependencia: string, tecnologia: string | undefined) => `${ICONES_ARQUIVO.package} Dependency ${dependencia} confirms project ${tecnologia}`,
+  evidenciaImport: (valor: string, localizacao: string | undefined) => `${ICONES_ACAO.import} Import ${valor} 检测到 in ${localizacao}`,
+  evidenciaCodigo: (localizacao: string | undefined) => `${ICONES_ARQUIVO.codigo} Specific code pattern 检测到 in ${localizacao}`,
+  evidenciaEstrutura: (valor: string, tecnologia: string | undefined) => `${ICONES_ARQUIVO.diretorio} Structure ${valor} typical of ${tecnologia}`,
+  tecnologiasAlternativas: (alternativas: string) => `${ICONES_ACAO.analise} Other technologies 检测到: ${alternativas}`,
+  erroAnaliseContextual: (erro: string) => `Error in contextual 分析: ${erro}`,
+  erroDuranteAnalise: 'Error during intelligent contextual analysis'
 } as const;

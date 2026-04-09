@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * @fileoverview 診断用アナリストメッセージ（ASTパーサー）。
- * 解析失敗、ASTエラー、抑制された解析エラーの集約のテキストテンプレートを提供
+ * @fileoverview Diagnostic messages for the Inquisitor (AST parser).
+ * Provides text templates for reporting parsing failures, AST errors
+ * and aggregation of suppressed parsing errors.
  */
 
 export const InquisidorMensagens = {
-  parseAstNaoGerada: '解析エラー: ASTが生成されませんでした（コードが無効な可能性があります）。',
-  parseErro: (erro: string) => `解析エラー: ${erro}`,
-  parseErrosAgregados: (quantidade: number) => `集約解析エラー: このファイルで${quantidade}件の発生が抑制されました（1つを表示）。`,
-  falhaGerarAst: (relPath: string, erro: string) => `${relPath}のAST生成に失敗しました: ${erro}`
+  parseAstNaoGerada: 'Parsing error: AST not generated (code possibly invalid).',
+  parseErro: (erro: string) => `Parsing エラー: ${erro}`,
+  parseErrosAgregados: (quantidade: number) => `Aggregated parsing エラーs: ${quantidade} occurrences suppressed in this file (shows 1).`,
+  falhaGerarAst: (relPath: string, erro: string) => `Failed to generate AST for ${relPath}: ${erro}`
 } as const;

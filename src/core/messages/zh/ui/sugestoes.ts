@@ -1,191 +1,191 @@
 // SPDX-License-Identifier: MIT
 // @prometheus-disable tipo-literal-inline-complexo
-// Justificativa: tipos inline para sistema de sugestões
+// Justification: inline types for suggestion system
 /**
- * Sistema Centralizado de Sugestões e Dicas
+ * Centralized Suggestion and Tips System
  *
- * Centraliza TODAS as sugestões contextuais do Prometheus:
- * - Dicas de uso de comandos
- * - Sugestões baseadas em contexto
- * - Mensagens de ajuda rápida
- * - Call-to-action para diferentes cenários
+ * Centralizes ALL contextual suggestions from Prometheus:
+ * - Command usage tips
+ * - Context-based suggestions
+ * - Quick help messages
+ * - Call-to-action for different scenarios
  */
 
 import { ICONES } from '../../shared/icons.js';
 
 /**
- * Sugestões gerais de comandos
+ * General command suggestions
  */
 export const SUGESTOES_COMANDOS = {
-  usarFull: `${ICONES.feedback.dica} Use --full para relatório detalhado com todas as informações`,
-  usarJson: `${ICONES.feedback.dica} Use --json para saída estruturada em JSON`,
-  combinarJsonExport: `${ICONES.feedback.dica} Combine --json com --export para salvar o relatório`,
-  usarExport: `${ICONES.feedback.dica} Use --export <caminho> para salvar relatório em arquivo`,
-  usarInclude: `${ICONES.feedback.dica} Use --include <pattern> para focar em arquivos específicos`,
-  usarExclude: `${ICONES.feedback.dica} Use --exclude <pattern> para ignorar arquivos`,
-  usarDryRun: `${ICONES.feedback.dica} Use --dry-run para simular sem modificar arquivos`,
-  removerDryRun: `${ICONES.feedback.dica} Remova --dry-run para aplicar correções`,
-  usarInterativo: `${ICONES.feedback.dica} Use --interactive para confirmar cada correção`,
-  usarGuardian: `${ICONES.feedback.dica} Use --guardian para verificar integridade`,
-  usarBaseline: `${ICONES.feedback.dica} Use --baseline para gerar baseline de referência`,
-  usarAutoFix: `${ICONES.feedback.dica} Use --auto-fix para aplicar correções automáticas`,
+  usarFull: `${ICONES.feedback.dica} Use --full for a detailed 报告 with all information`,
+  usarJson: `${ICONES.feedback.dica} Use --json for structured JSON output`,
+  combinarJsonExport: `${ICONES.feedback.dica} Combine --json with --export to save the 报告`,
+  usarExport: `${ICONES.feedback.dica} Use --export <path> to save 报告 to file`,
+  usarInclude: `${ICONES.feedback.dica} Use --include <模式> to focus on specific files`,
+  usarExclude: `${ICONES.feedback.dica} Use --exclude <模式> to ignore files`,
+  usarDryRun: `${ICONES.feedback.dica} Use --dry-run to simulate without modifying 文件`,
+  removerDryRun: `${ICONES.feedback.dica} Remove --dry-run to apply fixes`,
+  usarInterativo: `${ICONES.feedback.dica} Use --interactive to confirm each fix`,
+  usarGuardian: `${ICONES.feedback.dica} Use --guardian to verify integrity`,
+  usarBaseline: `${ICONES.feedback.dica} Use --baseline to generate a reference baseline`,
+  usarAutoFix: `${ICONES.feedback.dica} Use --自动修复 to apply automatic fixes`,
 } as const;
 
 /**
- * Sugestões de diagnóstico
+ * Diagnostic suggestions
  */
 export const SUGESTOES_DIAGNOSTICO = {
-  modoExecutivo: `${ICONES.diagnostico.executive} Modo executivo: mostrando apenas problemas críticos`,
+  modoExecutivo: `${ICONES.diagnostico.executive} Executive mode: showing only critical problems`,
   primeiraVez: [
-    `${ICONES.feedback.dica} Primeira vez? Comece com: prometheus diagnosticar --full`,
-    `${ICONES.feedback.dica} Use --help para ver todas as opções disponíveis`,
+    `${ICONES.feedback.dica} First time? Start with: prometheus diagnosticar --full`,
+    `${ICONES.feedback.dica} Use --help to see all available 选项s`,
   ],
   projetoGrande: [
-    `${ICONES.feedback.dica} Projeto grande detectado - use --include para análise incremental`,
-    `${ICONES.feedback.dica} Use --quick para análise rápida inicial`,
+    `${ICONES.feedback.dica} Large project detected - use --include for incremental 分析`,
+    `${ICONES.feedback.dica} Use --quick for a fast initial 分析`,
   ],
-  poucoProblemas: `${ICONES.nivel.sucesso} Projeto em bom estado! Apenas {count} problemas menores encontrados.`,
+  poucoProblemas: `${ICONES.nivel.sucesso} Project in good shape! Only {count} minor problems found.`,
   muitosProblemas: [
-    `${ICONES.feedback.atencao} Muitos problemas encontrados - priorize os críticos primeiro`,
-    `${ICONES.feedback.dica} Use --executive para focar apenas no essencial`,
+    `${ICONES.feedback.atencao} Many problems found - prioritize critical ones first`,
+    `${ICONES.feedback.dica} Use --executive to focus only on the essentials`,
   ],
-  usarFiltros: `${ICONES.feedback.dica} Use filtros --include/--exclude para análise focada`,
+  usarFiltros: `${ICONES.feedback.dica} Use --include/--exclude filters for focused 分析`,
 } as const;
 
 /**
- * Sugestões de auto-fix
+ * Auto-fix suggestions
  */
 export const SUGESTOES_AUTOFIX = {
-  autoFixDisponivel: `${ICONES.feedback.dica} Correções automáticas disponíveis - use --auto-fix`,
-  autoFixAtivo: `${ICONES.feedback.atencao} Auto-fix ativo! Use --dry-run para simular sem modificar arquivos`,
-  dryRunRecomendado: `${ICONES.feedback.dica} Recomendado: teste primeiro com --dry-run`,
-  semMutateFS: `${ICONES.feedback.atencao} Auto-fix indisponível no momento`,
+  autoFixDisponivel: `${ICONES.feedback.dica} Automatic fixes available - use --自动修复`,
+  autoFixAtivo: `${ICONES.feedback.atencao} 自动修复 active! Use --dry-run to simulate without modifying files`,
+  dryRunRecomendado: `${ICONES.feedback.dica} Recommended: test first with --dry-run`,
+  semMutateFS: `${ICONES.feedback.atencao} 自动修复 currently unavailable`,
   validarDepois: [
-    `${ICONES.feedback.dica} Execute npm run lint para verificar as correções`,
-    `${ICONES.feedback.dica} Execute npm run build para verificar se o código compila`,
-    `${ICONES.feedback.dica} Execute npm test para validar funcionalidades`,
+    `${ICONES.feedback.dica} Run npm run lint to verify the fixes`,
+    `${ICONES.feedback.dica} Run npm run build to check if the 代码 compiles`,
+    `${ICONES.feedback.dica} Run npm test to validate functionality`,
   ],
 } as const;
 
 /**
- * Sugestões de Guardian
+ * Guardian suggestions
  */
 export const SUGESTOES_GUARDIAN = {
-  guardianDesabilitado: `${ICONES.comando.guardian} Guardian desativado. Use --guardian para verificar integridade`,
+  guardianDesabilitado: `${ICONES.comando.guardian} guardian disabled. Use --guardian to verify integrity`,
   primeiroBaseline: [
-    `${ICONES.feedback.dica} Primeira execução: gere um baseline com --baseline`,
-    `${ICONES.feedback.dica} O baseline serve como referência para mudanças futuras`,
+    `${ICONES.feedback.dica} First run: generate a baseline with --baseline`,
+    `${ICONES.feedback.dica} The baseline serves as a reference for future changes`,
   ],
   driftDetectado: [
-    `${ICONES.feedback.atencao} Mudanças detectadas em relação ao baseline`,
-    `${ICONES.feedback.dica} Revise as alterações antes de atualizar o baseline`,
-    `${ICONES.feedback.dica} Use --baseline para atualizar referência`,
+    `${ICONES.feedback.atencao} Changes 检测到 compared to baseline`,
+    `${ICONES.feedback.dica} Review the changes before updating the baseline`,
+    `${ICONES.feedback.dica} Use --baseline to update reference`,
   ],
-  integridadeOK: `${ICONES.nivel.sucesso} Integridade verificada - nenhuma mudança não autorizada`,
+  integridadeOK: `${ICONES.nivel.sucesso} Integrity verified - no unauthorized changes`,
 } as const;
 
 /**
- * Sugestões de tipos (fix-types)
+ * Type suggestions (fix-types)
  */
 export const SUGESTOES_TIPOS = {
   ajustarConfianca: (atual: number) =>
-    `${ICONES.feedback.dica} Use --confidence <num> para ajustar o limiar (atual: ${atual}%)`,
+    `${ICONES.feedback.dica} Use --confidence <num> to adjust the threshold (current: ${atual}%)`,
   revisar: (categoria: string) =>
-    `${ICONES.feedback.dica} Revise os casos ${categoria} manualmente`,
+    `${ICONES.feedback.dica} Review ${categoria} cases manually`,
   anyEncontrado: [
-    `${ICONES.feedback.atencao} Tipos 'any' detectados - reduzem segurança do código`,
-    `${ICONES.feedback.dica} Priorize substituir 'as any' e casts explícitos`,
+    `${ICONES.feedback.atencao} 'any' types 检测到 - they reduce code safety`,
+    `${ICONES.feedback.dica} Prioritize replacing 'as any' and explicit casts`,
   ],
-  unknownLegitimo: `${ICONES.nivel.sucesso} Usos legítimos de 'unknown' identificados`,
-  melhoravelDisponivel: `${ICONES.feedback.dica} Casos melhoráveis encontrados - revisar em refatoração futura`,
+  unknownLegitimo: `${ICONES.nivel.sucesso} Legitimate uses of 'unknown' identified`,
+  melhoravelDisponivel: `${ICONES.feedback.dica} Improvable cases found - review in future refactoring`,
 } as const;
 
 /**
- * Sugestões de arquetipos
+ * Archetype suggestions
  */
 export const SUGESTOES_ARQUETIPOS = {
   monorepo: [
-    `${ICONES.feedback.dica} Monorepo detectado: considere usar filtros por workspace`,
-    `${ICONES.feedback.dica} Use --include packages/* para analisar workspaces específicos`,
+    `${ICONES.feedback.dica} Monorepo 检测到: consider using workspace filters`,
+    `${ICONES.feedback.dica} Use --include packages/* to analyze specific workspaces`,
   ],
   biblioteca: [
-    `${ICONES.feedback.dica} Biblioteca detectada: foque em exports públicos e documentação`,
-    `${ICONES.feedback.dica} Use --guardian para verificar API pública`,
+    `${ICONES.feedback.dica} Library 检测到: focus on public exports and documentation`,
+    `${ICONES.feedback.dica} Use --guardian to verify public API`,
   ],
   cli: [
-    `${ICONES.feedback.dica} CLI detectado: priorize testes de comandos e flags`,
-    `${ICONES.feedback.dica} Valide tratamento de erros em comandos`,
+    `${ICONES.feedback.dica} CLI 检测到: prioritize command and flag tests`,
+    `${ICONES.feedback.dica} Validate error handling in 命令s`,
   ],
   api: [
-    `${ICONES.feedback.dica} API detectada: foque em endpoints e contratos`,
-    `${ICONES.feedback.dica} Considere testes de integração para rotas`,
-    `${ICONES.feedback.dica} Valide documentação de API (OpenAPI/Swagger)`,
+    `${ICONES.feedback.dica} API 检测到: focus on endpoints and contracts`,
+    `${ICONES.feedback.dica} Consider integration tests for routes`,
+    `${ICONES.feedback.dica} Validate API documentation (OpenAPI/Swagger)`,
   ],
   frontend: [
-    `${ICONES.feedback.dica} Frontend detectado: priorize componentes e state management`,
-    `${ICONES.feedback.dica} Valide acessibilidade e performance`,
+    `${ICONES.feedback.dica} Frontend 检测到: prioritize components and state management`,
+    `${ICONES.feedback.dica} Validate accessibility and performance`,
   ],
   confiancaBaixa: [
-    `${ICONES.feedback.atencao} Confiança baixa na detecção: estrutura pode ser híbrida`,
-    `${ICONES.feedback.dica} Use --criar-arquetipo --salvar-arquetipo para personalizar`,
+    `${ICONES.feedback.atencao} Low confidence in detection: structure may be hybrid`,
+    `${ICONES.feedback.dica} Use --criar-arquetipo --salvar-arquetipo to customize`,
   ],
 } as const;
 
 /**
- * Sugestões de reestruturação
+ * Restructuring suggestions
  */
 export const SUGESTOES_REESTRUTURAR = {
   backupRecomendado: [
-    `${ICONES.feedback.importante} IMPORTANTE: Faça backup antes de reestruturar!`,
-    `${ICONES.feedback.dica} Use git para versionar antes de mudanças estruturais`,
+    `${ICONES.feedback.importante} IMPORTANT: Make a backup before restructuring!`,
+    `${ICONES.feedback.dica} Use git to version before structural changes`,
   ],
   validarDepois: [
-    `${ICONES.feedback.dica} Execute testes após reestruturação`,
-    `${ICONES.feedback.dica} Valide imports e referências`,
+    `${ICONES.feedback.dica} Run tests after restructuring`,
+    `${ICONES.feedback.dica} Validate imports and references`,
   ],
-  usarDryRun: `${ICONES.feedback.dica} Primeira vez? Use --dry-run para ver mudanças propostas`,
+  usarDryRun: `${ICONES.feedback.dica} First time? Use --dry-run to see proposed changes`,
 } as const;
 
 /**
- * Sugestões de poda
+ * Pruning suggestions
  */
 export const SUGESTOES_PODAR = {
   cuidado: [
-    `${ICONES.feedback.atencao} Poda remove arquivos permanentemente!`,
-    `${ICONES.feedback.importante} Certifique-se de ter backup ou controle de versão`,
+    `${ICONES.feedback.atencao} Pruning permanently removes 文件!`,
+    `${ICONES.feedback.importante} Make sure you have backup or version control`,
   ],
-  revisar: `${ICONES.feedback.dica} Revise a lista de arquivos antes de confirmar`,
-  usarDryRun: `${ICONES.feedback.dica} Use --dry-run para simular poda sem deletar`,
+  revisar: `${ICONES.feedback.dica} Review the 文件 list before confirming`,
+  usarDryRun: `${ICONES.feedback.dica} Use --dry-run to simulate pruning without deleting`,
 } as const;
 
 /**
- * Sugestões de métricas
+ * Metrics suggestions
  */
 export const SUGESTOES_METRICAS = {
   baseline: [
-    `${ICONES.feedback.dica} Gere baseline para comparações futuras`,
-    `${ICONES.feedback.dica} Use --json para integração com CI/CD`,
+    `${ICONES.feedback.dica} Generate baseline for future comparisons`,
+    `${ICONES.feedback.dica} Use --json for CI/CD integration`,
   ],
-  tendencias: `${ICONES.feedback.dica} Execute regularmente para acompanhar tendências`,
-  comparacao: `${ICONES.feedback.dica} Compare com execuções anteriores`,
+  tendencias: `${ICONES.feedback.dica} Run regularly to track trends`,
+  comparacao: `${ICONES.feedback.dica} Compare with previous runs`,
 } as const;
 
 /**
- * Sugestões de zeladores
+ * Caretaker suggestions
  */
 export const SUGESTOES_ZELADOR = {
   imports: [
-    `${ICONES.feedback.dica} Zelador de imports corrige caminhos automaticamente`,
-    `${ICONES.feedback.dica} Use --dry-run para ver correções propostas`,
+    `${ICONES.feedback.dica} Import caretaker automatically fixes paths`,
+    `${ICONES.feedback.dica} Use --dry-run to see proposed fixes`,
   ],
   estrutura: [
-    `${ICONES.feedback.dica} Zelador de estrutura organiza arquivos por padrão`,
-    `${ICONES.feedback.dica} Configure padrões em prometheus.config.json`,
+    `${ICONES.feedback.dica} Structure caretaker organizes files by 模式`,
+    `${ICONES.feedback.dica} Configure patterns in prometheus.config.json`,
   ],
 } as const;
 
 /**
- * Sugestões contextuais - função helper
+ * Contextual suggestions - helper function
  */
 export function gerarSugestoesContextuais(contexto: {
   comando: string;
@@ -198,7 +198,7 @@ export function gerarSugestoesContextuais(contexto: {
 }): string[] {
   const sugestoes: string[] = [];
 
-  // Sugestões por comando
+  // Suggestions by command
   switch (contexto.comando) {
     case 'diagnosticar':
       if (!contexto.temProblemas) {
@@ -248,7 +248,7 @@ export function gerarSugestoesContextuais(contexto: {
       break;
   }
 
-  // Sugestões por arquétipo
+  // Suggestions by archetype
   if (contexto.arquetipo) {
     switch (contexto.arquetipo) {
       case 'monorepo':
@@ -273,11 +273,11 @@ export function gerarSugestoesContextuais(contexto: {
 }
 
 /**
- * Formata sugestões para exibição
+ * Formats suggestions for display
  */
 export function formatarSugestoes(
   sugestoes: string[],
-  titulo = 'Sugestões',
+  titulo = 'Suggestions',
 ): string[] {
   if (sugestoes.length === 0) return [];
 
@@ -294,7 +294,7 @@ export function formatarSugestoes(
 }
 
 /**
- * Export consolidado
+ * Consolidated export
  */
 export const SUGESTOES = {
   comandos: SUGESTOES_COMANDOS,

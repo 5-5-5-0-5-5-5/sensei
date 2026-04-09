@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
 
 export const TodoComentariosMensagens = {
-  todoFound: 'Comentário TODO encontrado'
+  todoFound: 'TODO comment found'
 } as const;

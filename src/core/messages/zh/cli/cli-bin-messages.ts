@@ -1,18 +1,17 @@
 // SPDX-License-Identifier: MIT
 
 export const CliBinMensagens = {
-  flagsInvalidas: 'Flags inválidas: {erro}',
+  flagsInvalidas: 'Invalid flags: {erro}',
   unhandledRejection: 'Prometheus: unhandled rejection',
-  excecaoNaoCapturada: 'Exceção não capturada: {mensagem}',
-  erroInicializacao: 'Erro ao inicializar o prometheus:',
+  excecaoNaoCapturada: 'Uncaught exception: {mensagem}',
   resumoConversa: {
-    titulo: '\n📊 RESUMO DA CONVERSA',
+    titulo: '\n📊 CONVERSATION SUMMARY',
     total: 'Total: {total}',
-    usuario: 'Usuário: {total}',
+    usuario: 'User: {total}',
     prometheus: 'Prometheus: {total}',
-    primeira: 'Primeira: {mensagem}',
-    ultima: 'Última: {mensagem}',
+    primeira: 'First: {mensagem}',
+    ultima: 'Last: {mensagem}',
   },
-  historicoIndisponivel: 'Histórico indisponível.',
-  historicoLimpo: 'Histórico limpo.',
+  historicoIndisponivel: 'History unavailable.',
+  historicoLimpo: 'History cleared.',
 } as const;

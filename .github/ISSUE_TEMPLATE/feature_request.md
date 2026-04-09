@@ -1,4 +1,9 @@
 ---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
+---
 name: "Feature request"
 about: "Propor uma nova funcionalidade ou melhoria"
 title: "[feat] "
@@ -13,10 +18,11 @@ assignees: []
 <!-- Resuma como a funcionalidade poderia funcionar -->
 
 **Casos de uso**
-- 
+-
 
 **Compatibilidade / Breaking changes**
 Sim / Não
 
 **Prioridade**
 - high / medium / low
+

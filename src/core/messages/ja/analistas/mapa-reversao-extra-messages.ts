@@ -1,9 +1,9 @@
 export const MapaReversaoExtraMensagens = {
-  mapaSalvo: '💾 Mapa de reversão salvo: {total} moves',
-  moveRegistrado: '📝 Move registrado: {origem} → {destino} ({motivo})',
-  arquivoRevertidoConteudo: '↩️ Arquivo revertido com conteúdo original: {destino} → {origem}',
-  arquivoRevertido: '↩️ Arquivo revertido: {destino} → {origem}',
-  nenhumMoveRegistrado: '📋 Nenhum move registrado no mapa de reversão.',
-  tituloMapa: '📋 Mapa de Reversão ({total} moves):\n\n',
-  mapaLimpo: '🧹 Mapa de reversão limpo',
+  mapaSalvo: '💾 Reversal map saved: {total} moves',
+  moveRegistrado: '📝 Move registered: {origem} → {destino} ({motivo})',
+  arquivoRevertidoConteudo: '↩️ File reverted with original content: {destino} → {origem}',
+  arquivoRevertido: '↩️ File reverted: {destino} → {origem}',
+  nenhumMoveRegistrado: '📋 No moves registered in the reversal map.',
+  tituloMapa: '📋 Reversal Map ({total} moves):\n\n',
+  mapaLimpo: '🧹 Reversal map cleared',
 } as const;

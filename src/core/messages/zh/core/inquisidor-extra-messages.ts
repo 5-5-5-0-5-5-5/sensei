@@ -1,6 +1,6 @@
 export const InquisidorExtraMensagens = {
-  iniciandoInquisicao: '{icone} 启动Prometheus调查: {diretorio}',
-  priorizacaoAplicada: '🧮 已应用优先级（前5个无meta）: {exibidos}',
-  arquivosMetaMovidos: '   ({icone} {total} 个meta文件移至队列末尾)',
-  inquisicaoConcluida: '🔮 调查完成。总计: {total}',
+  iniciandoInquisicao: '{icone} Starting the Prometheus Inquisition in: {diretorio}',
+  priorizacaoAplicada: '🧮 Prioritization applied (top 5 without meta): {exibidos}',
+  arquivosMetaMovidos: '   ({icone} {total} meta files moved to the end of the queue)',
+  inquisicaoConcluida: '🔮 Inquisition complete. Total occurrences: {total}',
 } as const;

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 
 export const CliReestruturarExtraMensagens = {
-  temCertezaAplicar: 'Tem certeza que deseja aplicar essas correções? (s/N) ',
-  falhaAtualizarSpinner: 'Falha ao atualizar spinner:',
-  falhaSpinnerReestruturacao: 'Falha ao atualizar spinner durante reestruturação.',
-  falhaReestruturacao: 'Falha durante reestruturação: {erro}',
+  temCertezaAplicar: 'Are you sure you want to apply these corrections? (y/N) ',
+  falhaAtualizarSpinner: 'Failed to update spinner:',
+  falhaSpinnerReestruturacao: 'Failed to update spinner during restructuring.',
+  falhaReestruturacao: 'Failure during restructuring: {erro}',
 } as const;

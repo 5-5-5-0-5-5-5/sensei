@@ -1,5 +1,5 @@
 export const DetectorContextoExtraMensagens = {
-  debugDependencias: '🔍 Analisando dependências:',
-  debugPackageCompleto: '🔍 Package.json completo:',
-  debugPackageVue: '🔍 Package.json tem Vue:',
+  debugDependencias: '🔍 Analyzing dependencies:',
+  debugPackageCompleto: '🔍 Complete package.json:',
+  debugPackageVue: '🔍 Package.json has Vue:',
 } as const;

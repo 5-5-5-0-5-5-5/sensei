@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 // @prometheus-disable tipo-literal-inline-complexo
-//  justificativa: メッセージヘルパー用のインラインタイプ
+// Justification: inline types for message helpers
 /**
- * 診断コマンドメッセージ
+ * Diagnose Command Messages
  *
- * リポジトリの診断に関連するすべてのメッセージを集中化管理
+ * Centralizes all messages related to repository diagnosis
  */
 
 import type { ModoOperacao } from '@';
 
 /**
- * 診断アイコン
+ * Diagnosis icons
  */
 export const ICONES_DIAGNOSTICO = {
   inicio: '[SCAN]',
@@ -22,170 +22,170 @@ export const ICONES_DIAGNOSTICO = {
   autoFix: '[FIX]',
   export: '[EXP]',
   sucesso: '[OK]',
-  aviso: '[AVISO]',
-  erro: '[ERRO]',
+  aviso: '[WARN]',
+  erro: '[ERR]',
   info: '[i]',
-  dica: '[DICA]',
+  dica: '[TIP]',
   executive: '[STATS]',
   rapido: '[FAST]'
 } as const;
 
 /**
- * モード別の開始メッセージ
+ * Start messages by mode
  */
 export const MENSAGENS_INICIO: Record<ModoOperacao, string> = {
-  compact: `${ICONES_DIAGNOSTICO.inicio} 診断（コンパクトモード）`,
-  full: `${ICONES_DIAGNOSTICO.inicio} 完全診断を開始`,
-  executive: `${ICONES_DIAGNOSTICO.executive} エグゼクティブ分析（重大のみ）`,
-  quick: `${ICONES_DIAGNOSTICO.rapido} クイック分析`
+  compact: `${ICONES_DIAGNOSTICO.inicio} Diagnosis (compact mode)`,
+  full: `${ICONES_DIAGNOSTICO.inicio} Starting full diagnosis`,
+  executive: `${ICONES_DIAGNOSTICO.executive} Executive 分析 (criticals only)`,
+  quick: `${ICONES_DIAGNOSTICO.rapido} Quick 分析`
 };
 
 /**
- * 進捗メッセージ
+ * Progress messages
  */
 export const MENSAGENS_PROGRESSO = {
-  varredura: (total: number) => `${ICONES_DIAGNOSTICO.arquivos} ${total}ファイルをスキャン中...`,
-  analise: (atual: number, total: number) => `${ICONES_DIAGNOSTICO.analise} 分析中: ${atual}/${total}`,
-  arquetipos: `${ICONES_DIAGNOSTICO.arquetipos} プロジェクト構造を検出中...`,
-  guardian: `${ICONES_DIAGNOSTICO.guardian} 整合性を確認中...`,
-  autoFix: (modo: string) => `${ICONES_DIAGNOSTICO.autoFix} 修正を適用（モード: ${modo}）...`,
-  export: (formato: string) => `${ICONES_DIAGNOSTICO.export} レポートをエクスポート（${formato}）...`
+  varredura: (total: number) => `${ICONES_DIAGNOSTICO.arquivos} Scanning ${total} ファイル${total !== 1 ? 's' : ''}...`,
+  analise: (atual: number, total: number) => `${ICONES_DIAGNOSTICO.analise} Analyzing: ${atual}/${total}`,
+  arquetipos: `${ICONES_DIAGNOSTICO.arquetipos} Detecting project structure...`,
+  guardian: `${ICONES_DIAGNOSTICO.guardian} Checking integrity...`,
+  autoFix: (modo: string) => `${ICONES_DIAGNOSTICO.autoFix} Applying fixes (mode: ${modo})...`,
+  export: (formato: string) => `${ICONES_DIAGNOSTICO.export} エクスポートing report (${formato})...`
 } as const;
 
 /**
- * 完了メッセージ
+ * Completion messages
  */
 export const MENSAGENS_CONCLUSAO = {
-  sucesso: (ocorrencias: number) => `${ICONES_DIAGNOSTICO.sucesso} 診断が完了しました: ${ocorrencias}件の発見`,
-  semProblemas: `${ICONES_DIAGNOSTICO.sucesso} 問題が見つかりませんでした！コードは最適な状態です。`,
-  exportado: (caminho: string) => `${ICONES_DIAGNOSTICO.export} レポートを保存: ${caminho}`
+  sucesso: (ocorrencias: number) => `${ICONES_DIAGNOSTICO.sucesso} 診断完了: ${ocorrencias} occurrence${ocorrencias !== 1 ? 's' : ''} found`,
+  semProblemas: `${ICONES_DIAGNOSTICO.sucesso} No problems found! コード is in great shape.`,
+  exportado: (caminho: string) => `${ICONES_DIAGNOSTICO.export} レポート saved at: ${caminho}`
 } as const;
 
 /**
- * エラーメッセージ
+ * Error messages
  */
 export const MENSAGENS_ERRO = {
-  falhaAnalise: (erro: string) => `${ICONES_DIAGNOSTICO.erro} 分析に失敗しました: ${erro}`,
-  falhaExport: (erro: string) => `${ICONES_DIAGNOSTICO.erro} エクスポートに失敗しました: ${erro}`,
-  falhaGuardian: (erro: string) => `${ICONES_DIAGNOSTICO.erro} Guardianが失敗しました: ${erro}`,
-  falhaAutoFix: (erro: string) => `${ICONES_DIAGNOSTICO.erro} 自動修正が失敗しました: ${erro}`,
-  flagsInvalidas: (erros: string[]) => `${ICONES_DIAGNOSTICO.erro} 無効なフラグ:\n${erros.map(e => `  • ${e}`).join('\n')}`
+  falhaAnalise: (erro: string) => `${ICONES_DIAGNOSTICO.erro} 分析 failed: ${erro}`,
+  falhaExport: (erro: string) => `${ICONES_DIAGNOSTICO.erro} エクスポート failed: ${erro}`,
+  falhaGuardian: (erro: string) => `${ICONES_DIAGNOSTICO.erro} guardian failed: ${erro}`,
+  falhaAutoFix: (erro: string) => `${ICONES_DIAGNOSTICO.erro} 自動修復 failed: ${erro}`,
+  flagsInvalidas: (erros: string[]) => `${ICONES_DIAGNOSTICO.erro} Invalid flags:\n${erros.map(e => `  • ${e}`).join('\n')}`
 } as const;
 
 /**
- * 警告メッセージ
+ * Warning messages
  */
 export const MENSAGENS_AVISO = {
-  modoFast: `${ICONES_DIAGNOSTICO.info} ファストモードアクティブ（PROMETHEUS_TEST_FAST=1）`,
-  semMutateFS: `${ICONES_DIAGNOSTICO.aviso} 自動修正が無効です。`,
-  guardianDesabilitado: `${ICONES_DIAGNOSTICO.info} Guardianが実行されませんでした`,
-  arquetiposTimeout: `${ICONES_DIAGNOSTICO.aviso} アーキタイプ検出がタイムアウトしました`
+  modoFast: `${ICONES_DIAGNOSTICO.info} Fast mode active (PROMETHEUS_TEST_FAST=1)`,
+  semMutateFS: `${ICONES_DIAGNOSTICO.aviso} 自動修復 disabled.`,
+  guardianDesabilitado: `${ICONES_DIAGNOSTICO.info} guardian not run`,
+  arquetiposTimeout: `${ICONES_DIAGNOSTICO.aviso} Archetype detection expired (timeout)`
 } as const;
 
 /**
- * フィルタメッセージ
+ * Filter messages
  */
 export const MENSAGENS_FILTROS = {
-  titulo: '有効なフィルタ',
-  include: (patterns: string[]) => `含める: ${patterns.length > 0 ? patterns.join(', ') : 'なし'}`,
-  exclude: (patterns: string[]) => `除外: ${patterns.length > 0 ? patterns.join(', ') : 'デフォルトパターン'}`,
-  nodeModules: (incluido: boolean) => `node_modules: ${incluido ? `${ICONES_DIAGNOSTICO.sucesso} 含める` : `${ICONES_DIAGNOSTICO.aviso} 無視（デフォルト）`}`
+  titulo: 'Active Filters',
+  include: (patterns: string[]) => `Include: ${patterns.length > 0 ? patterns.join(', ') : 'none'}`,
+  exclude: (patterns: string[]) => `Exclude: ${patterns.length > 0 ? patterns.join(', ') : 'デフォルト patterns'}`,
+  nodeModules: (incluido: boolean) => `node_modules: ${incluido ? `${ICONES_DIAGNOSTICO.sucesso} included` : `${ICONES_DIAGNOSTICO.aviso} ignored (default)`}`
 } as const;
 
 /**
- * 統計メッセージ
+ * Statistics messages
  */
 export const MENSAGENS_ESTATISTICAS = {
-  titulo: '分析統計',
-  arquivos: (total: number) => `分析されたファイル: ${total}`,
-  ocorrencias: (total: number) => `発見された発生数: ${total}`,
+  titulo: 'Analysis Statistics',
+  arquivos: (total: number) => `ファイル analyzed: ${total}`,
+  ocorrencias: (total: number) => `Occurrences found: ${total}`,
   porTipo: (tipo: string, count: number) => `  • ${tipo}: ${count}`,
   duracao: (ms: number) => {
-    if (ms < 1000) return `所要時間: ${ms}ms`;
-    if (ms < 60000) return `所要時間: ${(ms / 1000).toFixed(1)}s`;
+    if (ms < 1000) return `Duration: ${ms}ms`;
+    if (ms < 60000) return `Duration: ${(ms / 1000).toFixed(1)}s`;
     const min = Math.floor(ms / 60000);
     const seg = Math.floor(ms % 60000 / 1000);
-    return `所要時間: ${min}分 ${seg}秒`;
+    return `Duration: ${min}m ${seg}s`;
   }
 } as const;
 
 /**
- * Guardianメッセージ
+ * Guardian messages
  */
 export const MENSAGENS_GUARDIAN = {
-  initiating: `${ICONES_DIAGNOSTICO.guardian} Guardian確認を開始...`,
-  baseline: '既存のベースラインを使用',
-  fullScan: 'フルスキャンアクティブ（ignoreを無視）',
-  saveBaseline: '新しいベースラインを保存中...',
+  iniciando: `${ICONES_DIAGNOSTICO.guardian} Starting guardian verification...`,
+  baseline: 'Using existing baseline',
+  fullScan: 'Full scan active (ignoring ignores)',
+  saveBaseline: 'Saving new baseline...',
   status: {
-    verde: `${ICONES_DIAGNOSTICO.sucesso} Guardian: ステータス GREEN（整合性OK）`,
-    amarelo: `${ICONES_DIAGNOSTICO.aviso} ステータス YELLOW（注意が必要）`,
-    vermelho: `${ICONES_DIAGNOSTICO.erro} ステータス RED（重大問題）`
+    verde: `${ICONES_DIAGNOSTICO.sucesso} guardian: Status GREEN (integrity OK)`,
+    amarelo: `${ICONES_DIAGNOSTICO.aviso} guardian: Status YELLOW (attention needed)`,
+    vermelho: `${ICONES_DIAGNOSTICO.erro} guardian: Status RED (critical problems)`
   },
-  drift: (count: number) => `ドリフトを検出: ベースラインからの${count}件の変更`
+  drift: (count: number) => `Drift detected: ${count} change${count !== 1 ? 's' : ''} from baseline`
 } as const;
 
-// MENSAGENS_AUTOFIXは統合のためcorrecoes-messages.tsに移動しました
+// MENSAGENS_AUTOFIX was moved to correcoes-messages.ts for consolidation
 
 /**
- * アーキタイプメッセージ
+ * Archetype messages
  */
 export const MENSAGENS_ARQUETIPOS = {
-  detectando: `${ICONES_DIAGNOSTICO.arquetipos} プロジェクト構造を検出中...`,
-  identificado: (tipo: string, confianca: number) => `特定されたアーキタイプ: ${tipo}（${confianca}%信頼度）`,
-  multiplos: (count: number) => `${count}件のアーキタイプ候補が見つかりました`,
-  salvando: 'カスタムアーキタイプを保存中...',
-  salvo: (caminho: string) => `${ICONES_DIAGNOSTICO.sucesso} アーキタイプを保存: ${caminho}`
+  detectando: `${ICONES_DIAGNOSTICO.arquetipos} Detecting project structure...`,
+  identificado: (tipo: string, confianca: number) => `Archetype identified: ${tipo} (${confianca}% confidence)`,
+  multiplos: (count: number) => `${count} candidate archetype${count !== 1 ? 's' : ''} found`,
+  salvando: `Saving custom archetype...`,
+  salvo: (caminho: string) => `${ICONES_DIAGNOSTICO.sucesso} Archetype saved at: ${caminho}`
 } as const;
 
 /**
- * ブロックテンプレート
+ * Block templates
  */
 export const MODELOS_BLOCO = {
   sugestoes: {
-    titulo: 'クイック提案',
+    titulo: 'Quick Suggestions',
     formatarFlag: (flag: string, descricao: string) => `${flag}: ${descricao}`,
     formatarDica: (dica: string) => `${ICONES_DIAGNOSTICO.dica} ${dica}`
   },
   resumo: {
-    titulo: '診断サマリー',
+    titulo: 'Diagnosis Summary',
     secoes: {
-      filtros: '適用されたフィルタ',
-      estatisticas: '統計',
-      arquetipos: 'プロジェクト構造',
-      guardian: '整合性（Guardian）',
-      autoFix: '自動修正'
+      filtros: 'Applied Filters',
+      estatisticas: 'Statistics',
+      arquetipos: 'Project Structure',
+      guardian: 'Integrity (Guardian)',
+      autoFix: 'Automatic Fixes'
     }
   }
 } as const;
 
 /**
- * フラグ提案ブロックをフォーマット
+ * Formats a flag suggestions block
  */
 export function formatarBlocoSugestoes(flagsAtivas: string[], dicas: string[]): string[] {
   const linhas: string[] = [];
-  linhas.push(''); // 空行
+  linhas.push(''); // empty line
   linhas.push(`┌── ${MODELOS_BLOCO.sugestoes.titulo} ─────────────────────────────────────────`);
   if (flagsAtivas.length > 0) {
-    linhas.push(`アクティブなフラグ: ${flagsAtivas.join(' ')}`);
+    linhas.push(`Active flags: ${flagsAtivas.join(' ')}`);
   } else {
-    linhas.push('特別なフラグは検出されませんでした');
+    linhas.push('No special flags detected');
   }
   if (dicas.length > 0) {
     linhas.push('');
-    linhas.push('有用的情報:');
+    linhas.push('Useful information:');
     for (const dica of dicas) {
       linhas.push(`  ${dica}`);
     }
   }
   linhas.push('└───────────────────────────────────────────────────────────────');
-  linhas.push(''); // 空行
+  linhas.push(''); // empty line
 
   return linhas;
 }
 
 /**
- * 統計サマリーをフォーマット
+ * Formats a statistics summary
  */
 export function formatarResumoStats(stats: {
   arquivos: number;
@@ -194,13 +194,13 @@ export function formatarResumoStats(stats: {
   porTipo?: Record<string, number>;
 }): string[] {
   const linhas: string[] = [];
-  linhas.push(''); // 空行
+  linhas.push(''); // empty line
   linhas.push(`┌── ${MODELOS_BLOCO.resumo.secoes.estatisticas} ─────────────────────────────────────────`);
   linhas.push(`  ${MENSAGENS_ESTATISTICAS.arquivos(stats.arquivos)}`);
   linhas.push(`  ${MENSAGENS_ESTATISTICAS.ocorrencias(stats.ocorrencias)}`);
   if (stats.porTipo && Object.keys(stats.porTipo).length > 0) {
     linhas.push('');
-    linhas.push('  タイプ別:');
+    linhas.push('  By type:');
     for (const [tipo, count] of Object.entries(stats.porTipo)) {
       linhas.push(`    ${MENSAGENS_ESTATISTICAS.porTipo(tipo, count)}`);
     }
@@ -208,35 +208,35 @@ export function formatarResumoStats(stats: {
   linhas.push('');
   linhas.push(`  ${MENSAGENS_ESTATISTICAS.duracao(stats.duracao)}`);
   linhas.push('└───────────────────────────────────────────────────────────────');
-  linhas.push(''); // 空行
+  linhas.push(''); // empty line
 
   return linhas;
 }
 
 /**
- * JSONモードメッセージをフォーマット
+ * Formats JSON mode message
  */
 export function formatarModoJson(ascii: boolean): string {
-  return `${ICONES_DIAGNOSTICO.info} 構造化JSON出力${ascii ? ' (ASCIIエスケープ)' : ''} アクティブ`;
+  return `${ICONES_DIAGNOSTICO.info} Structured JSON output${ascii ? ' (ASCII escape)' : ''} enabled`;
 }
 
 /**
- * コマンド用のヘッダーと標準テキスト
+ * Default headers and texts for commands
  */
 export const CABECALHOS = {
   analistas: {
-    tituloFast: `${ICONES_DIAGNOSTICO.info} 登録されたアナリスト（FAST MODE）`,
-    titulo: `${ICONES_DIAGNOSTICO.info} 登録されたアナリスト`,
-    mdTitulo: '# 登録されたアナリスト'
+    tituloFast: `${ICONES_DIAGNOSTICO.info} Registered analysts (FAST MODE)`,
+    titulo: `${ICONES_DIAGNOSTICO.info} Registered analysts`,
+    mdTitulo: '# Registered Analysts'
   },
   diagnostico: {
-    flagsAtivas: 'アクティブなフラグ:',
-    informacoesUteis: '有益な情報:'
+    flagsAtivas: 'Active flags:',
+    informacoesUteis: 'Useful information:'
   },
   reestruturar: {
-    prioridadeDomainsFlat: `${ICONES_DIAGNOSTICO.aviso} --domainsと--flatの両方が指定されました。--domainsを優先します。`,
-    planoVazioFast: `${ICONES_DIAGNOSTICO.info} 空のプラン: 移動の提案なし。（FAST MODE）`,
-    nenhumNecessarioFast: `${ICONES_DIAGNOSTICO.sucesso} 構造修正は不要です。（FAST MODE）`,
-    conflitosDetectadosFast: (count: number) => `${ICONES_DIAGNOSTICO.aviso} 検出された競合: ${count} （FAST MODE）`
+    prioridadeDomainsFlat: `${ICONES_DIAGNOSTICO.aviso} --domains and --flat provided. Prioritizing --domains.`,
+    planoVazioFast: `${ICONES_DIAGNOSTICO.info} Empty plan: no movements suggested. (FAST MODE)`,
+    nenhumNecessarioFast: `${ICONES_DIAGNOSTICO.sucesso} No structural corrections needed. (FAST MODE)`,
+    conflitosDetectadosFast: (count: number) => `${ICONES_DIAGNOSTICO.aviso} Conflicts detected: ${count} (FAST MODE)`
   }
 } as const;

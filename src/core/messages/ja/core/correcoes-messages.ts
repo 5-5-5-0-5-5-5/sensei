@@ -1,142 +1,142 @@
 // SPDX-License-Identifier: MIT
 /**
- * 自動修正メッセージ
+ * Automatic Fix Messages
  *
- * 次に関連するすべてのメッセージを一元化:
- * - クイックフィックス（fix-any-to-proper-type、fix-unknownなど）
- * - ゼラドール（インポート、構造、タイプ）
- * - 一般的な自動修正
+ * Centralizes all messages related to:
+ * - Quick Fixes (fix-any-to-proper-type, fix-unknown, etc)
+ * - Caretakers (imports, structure, types)
+ * - Auto-fix in general
  */
 
-import { buildTypesRelPathPosix, getTypesDirectoryDisplay } from '../../../config/conventions.js';
+import { buildTypesRelPathPosix, getTypesDirectoryDisplay } from '../../../../core/config/conventions.js';
 import { ICONES } from '../../shared/icons.js';
 
 /**
- * クイックフィックス - Any/Unknownメッセージ
+ * Quick Fix Messages - Any/Unknown
  */
 export const MENSAGENS_CORRECAO_TIPOS = {
-  // クイックフィックスのタイトルと説明
+  // Titles and descriptions of quick fixes
   fixAny: {
-    title: 'anyを安全なタイプに置き換え',
-    get description() { return `${getTypesDirectoryDisplay()}でanyの使用を分析して正しいタイプを推論/作成します` }
+    title: 'Replace any with safe types',
+    get description() { return `Analyzes use of any and infers/creates correct types in ${getTypesDirectoryDisplay()}` }
   },
   fixUnknown: {
-    title: 'unknownを具体的なタイプに置き換え',
-    description: 'タイプガードパターンを検出し専用のタイプを作成'
+    title: 'Replace unknown with specific types',
+    description: 'Detects type guard patterns and creates dedicated types'
   },
-  // 検証メッセージ
+  // Validation messages
   validacao: {
-    falha: (erros: string[]) => `検証が失敗しました: ${erros.join(', ')}`,
-    revisar: '手動でレビュー'
+    falha: (erros: string[]) => `Validation failed: ${erros.join(', ')}`,
+    revisar: 'Review manually'
   },
-  // 警告と提案
+  // Warnings and suggestions
   warnings: {
-    confiancaBaixa: (confianca: number) => `安全でないタイプ（any）が自動修正するには信頼度が低すぎます（${confianca}%）`,
-    confiancaMedia: (confianca: number, tipoSugerido: string) => `安全でないタイプが検出されました。提案: ${tipoSugerido}（信頼度: ${confianca}%）`,
-    unknownApropriado: 'unknownはここでは適切です（ジェネリック入力または低信頼度）',
-    useTiposCentralizados: () => `専用ディレクトリに集中化されたタイプを使用（${getTypesDirectoryDisplay()}）`,
-    criarTipoDedicado: (caminho: string) => `${buildTypesRelPathPosix(caminho)}に専用のタイプを作成することを検討`,
-    adicioneTypeGuards: () => ` возможноの場合、タイプガードを追加または${getTypesDirectoryDisplay()}に専用のタイプを作成`
+    confiancaBaixa: (confianca: number) => `Unsafe type (any) with very low confidence (${confianca}%) for automatic fix`,
+    confiancaMedia: (confianca: number, tipoSugerido: string) => `Unsafe type detected. Suggestion: ${tipoSugerido} (confidence: ${confianca}%)`,
+    unknownApropriado: 'unknown is appropriate here (generic input or low confidence)',
+    useTiposCentralizados: () => `Use centralized types in dedicated directory (${getTypesDirectoryDisplay()})`,
+    criarTipoDedicado: (caminho: string) => `Consider creating a dedicated type in ${buildTypesRelPathPosix(caminho)}`,
+    adicioneTypeGuards: () => `If possible, add type guards or create a dedicated type in ${getTypesDirectoryDisplay()}`
   },
-  // エラーメッセージ
+  // Error messages
   erros: {
-    extrairNome: '変数名を抽出できませんでした',
-    variavelNaoUsada: '変数が使用されていません - タイプを推論できません',
-    analise: (erro: string) => `分析エラー: ${erro}`
+    extrairNome: 'Could not extract variable name',
+    variavelNaoUsada: 'Unused variable - impossible to infer type',
+    analise: (erro: string) => `分析 error: ${erro}`
   }
 } as const;
 
 /**
- * 自動修正メッセージ
+ * Auto-Fix Messages
  */
 export const MENSAGENS_AUTOFIX = {
-  // ステータスメッセージ
-  initiating: (modo: string) => `${ICONES.acao.correcao} 自動修正を開始（モード: ${modo}）`,
-  dryRun: `${ICONES.feedback.info} Dry-run: 修正をシミュレート（変更は適用されません）`,
-  applying: (count: number) => `${count}件の修正を適用中...`,
-  concluded: (aplicadas: number, falhas: number) => `${ICONES.nivel.sucesso} 自動修正完了: ${aplicadas}件適用、${falhas}件失敗`,
-  naoDisponivel: `${ICONES.feedback.info} 利用可能な自動修正はありません`,
-  // フラグとモード
+  // Status messages
+  iniciando: (modo: string) => `${ICONES.acao.correcao} Starting 自動修復 (mode: ${modo})`,
+  dryRun: `${ICONES.feedback.info} Dry-run: simulating fixes (no changes will be applied)`,
+  aplicando: (count: number) => `Applying ${count} fix${count !== 1 ? 'es' : ''}...`,
+  concluido: (aplicadas: number, falhas: number) => `${ICONES.nivel.sucesso} 自動修復 completed: ${aplicadas} applied, ${falhas} failed`,
+  naoDisponivel: `${ICONES.feedback.info} No automatic fix available`,
+  // Flags and modes
   flags: {
-    fixSafe: `${ICONES.comando.guardian} --fix-safeフラグを検出: コンサervativeモードをアクティブ化`,
-    requireMutateFS: `${ICONES.status.falha} 現在自動修正は利用できません。`
+    fixSafe: `${ICONES.comando.guardian} Flag --fix-safe detected: enabling 保守的 mode`,
+    requireMutateFS: `${ICONES.status.falha} 自動修復 unavailable at this time.`
   },
-  // 進捗ログ
+  // Progress logs
   logs: {
-    modoConservador: `${ICONES.comando.guardian} コンサervativeモードがアクティブ - 高信頼度の修正のみ適用`,
-    validacaoEslint: `${ICONES.acao.analise} 自動修正後にESLint検証を実行中...`,
-    arquivoMovido: (origem: string, destino: string) => `${ICONES.status.ok} 移動: ${origem} → ${destino}`,
-    arquivoRevertido: (origem: string, destino: string) => `↩️ ファイルが元に戻されました: ${destino} → ${origem}`,
-    arquivoRevertidoConteudo: (origem: string, destino: string) => `↩️ 元のコンテンツでファイルが元に戻されました: ${destino} → ${origem}`
+    modoConservador: `${ICONES.comando.guardian} Conservative mode activated - applying only high-confidence fixes`,
+    validacaoEslint: `${ICONES.acao.analise} Running ESLint validation post-自動修復...`,
+    arquivoMovido: (origem: string, destino: string) => `${ICONES.status.ok} 移動済み: ${origem} → ${destino}`,
+    arquivoRevertido: (origem: string, destino: string) => `↩️ ファイル reverted: ${destino} → ${origem}`,
+    arquivoRevertidoConteudo: (origem: string, destino: string) => `↩️ ファイル reverted with original content: ${destino} → ${origem}`
   },
-  // 結果
+  // Results
   resultados: {
-    sucesso: (count: number) => `${ICONES.status.ok} ${count}ファイルが修正されました`,
-    falhas: (count: number) => `${ICONES.status.falha} ${count}ファイルでエラー`,
+    sucesso: (count: number) => `${ICONES.status.ok} ${count} ファイル(s) fixed`,
+    falhas: (count: number) => `${ICONES.status.falha} ${count} file(s) with エラー`,
     erroArquivo: (arquivo: string, erro: string) => `${ICONES.status.falha} ${arquivo}: ${erro}`
   },
-  // 修正後のヒント
+  // Post-fix tips
   dicas: {
-    executarLint: `${ICONES.feedback.dica} 修正を確認するには\`npm run lint\`を実行`,
-    executarBuild: `${ICONES.feedback.dica} コードがコンパイルされるか確認するには\`npm run build\`を実行`,
-    removerDryRun: `${ICONES.feedback.dica} 修正を自動的に適用するには--dry-runを削除`,
-    ajustarConfianca: `${ICONES.feedback.dica} --confidence <num>でしきい値を調整（現在: 85%）`
+    executarLint: `${ICONES.feedback.dica} Run \`npm run lint\` to verify the fixes`,
+    executarBuild: `${ICONES.feedback.dica} Run \`npm run build\` to verify the コード compiles`,
+    removerDryRun: `${ICONES.feedback.dica} Remove --dry-run to apply fixes automatically`,
+    ajustarConfianca: `${ICONES.feedback.dica} Use --confidence <num> to adjust the threshold (current: 85%)`
   }
 } as const;
 
 /**
- * 分析レポートメッセージ
+ * Analysis Report Messages
  */
 export const MENSAGENS_RELATORIOS_ANALISE = {
   asyncPatterns: {
-    titulo: `${ICONES.relatorio.resumo} Async/Awaitパターン分析`,
-    padroes: `\n${ICONES.relatorio.resumo} コード使用パターン:`,
-    recomendacoes: `\n${ICONES.feedback.dica} 修正推奨:\n`,
-    critico: `${ICONES.nivel.erro} 重要（即座にレビュー）:`,
-    alto: `\n${ICONES.feedback.atencao} 高（現在のスプリントでレビュー）:`,
-    salvo: (caminho: string) => `${ICONES.nivel.sucesso} 非同期レポートを保存: ${caminho}`
+    titulo: `${ICONES.relatorio.resumo} Async/Await Patterns 分析`,
+    padroes: `\n${ICONES.relatorio.resumo} Code Usage patterns:`,
+    recomendacoes: `\n${ICONES.feedback.dica} Fix Recommendations:\n`,
+    critico: `${ICONES.nivel.erro} CRITICAL (Review Immediately):`,
+    alto: `\n${ICONES.feedback.atencao} HIGH (Review in Current Sprint):`,
+    salvo: (caminho: string) => `${ICONES.nivel.sucesso} Async レポート saved at: ${caminho}`
   },
   fixTypes: {
-    analiseSalva: `${ICONES.arquivo.json} 詳細な分析を保存: .prometheus/fix-types-analise.json`,
-    possibilidades: `└─ ${ICONES.acao.analise} 代替の可能性:`,
+    analiseSalva: `${ICONES.arquivo.json} Detailed 分析 saved at: .prometheus/fix-types-analise.json`,
+    possibilidades: `└─ ${ICONES.acao.analise} Alternative possibilities:`,
     sugestao: (texto: string) => `└─ ${ICONES.feedback.dica} ${texto}`,
-    exportado: `${ICONES.arquivo.doc} fix-typesレポートをエクスポート:`
+    exportado: `${ICONES.arquivo.doc} Fix-types レポートs exported:`
   },
   guardian: {
-    baselineAceito: `${ICONES.status.ok} Guardian: ベースラインが手動で承認されました（--aceitar）。`,
-    exportado: `${ICONES.arquivo.doc} Guardianレポートをエクスポート:`
+    baselineAceito: `${ICONES.status.ok} guardian: baseline manually accepted (--aceitar).`,
+    exportado: `${ICONES.arquivo.doc} guardian reports exported:`
   }
 } as const;
 
 /**
- * アーキタイプメッセージ
+ * Archetypes Messages
  */
 export const MENSAGENS_ARQUETIPOS_HANDLER = {
-  timeout: `${ICONES.feedback.atencao} アーキタイプ検出がタイムアウトしました`,
-  salvo: (caminho: string) => `${ICONES.status.ok} カスタムアーキタイプを保存 ${caminho}`,
-  falha: `${ICONES.feedback.atencao} アーキタイプ経由でプランの生成に失敗しました。`,
-  falhaEstrategista: `${ICONES.feedback.atencao} ストラテジストがプランの提案に失敗しました。`,
-  falhaGeral: `${ICONES.feedback.atencao} 計画全体の失敗。`
+  timeout: `${ICONES.feedback.atencao} Archetype detection expired (timeout)`,
+  salvo: (caminho: string) => `${ICONES.status.ok} Custom archetype saved at ${caminho}`,
+  falha: `${ICONES.feedback.atencao} Failed to generate plan via archetypes.`,
+  falhaEstrategista: `${ICONES.feedback.atencao} Strategist failed to suggest plan.`,
+  falhaGeral: `${ICONES.feedback.atencao} General planning failure.`
 } as const;
 
 /**
- * プラグイン消息
+ * Plugin Messages
  */
 export const MENSAGENS_PLUGINS = {
-  registrado: (nome: string, extensoes: string[]) => `${ICONES.status.ok} プラグイン${nome}が拡張子で登録されました: ${extensoes.join(', ')}`,
-  configAtualizada: `${ICONES.acao.correcao} レジストリ設定が更新されました`,
-  erroParsear: (linguagem: string, erro: string) => `${ICONES.feedback.atencao} ${linguagem}の解析エラー: ${erro}`
+  registrado: (nome: string, extensoes: string[]) => `${ICONES.status.ok} プラグイン ${nome} registered with extensions: ${extensoes.join(', ')}`,
+  configAtualizada: `${ICONES.acao.correcao} Registry configuration updated`,
+  erroParsear: (linguagem: string, erro: string) => `${ICONES.feedback.atencao} エラー parsing ${linguagem}: ${erro}`
 } as const;
 
 /**
- *  Executorメッセージ
+ * Executor Messages
  */
 export const MENSAGENS_EXECUTOR = {
-  analiseCompleta: (tecnica: string, arquivo: string, duracao: string) => `${ICONES.arquivo.arquivo} '${tecnica}'が${arquivo}を${duracao}で分析しました`
+  analiseCompleta: (tecnica: string, arquivo: string, duracao: string) => `${ICONES.arquivo.arquivo} '${tecnica}' analyzed ${arquivo} in ${duracao}`
 } as const;
 
 /**
- * エクスポート統合
+ * Consolidated export
  */
 export const MENSAGENS_CORRECOES = {
   fixTypes: MENSAGENS_CORRECAO_TIPOS,

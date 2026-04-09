@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 /**
- * Configurações centralizadas para o filtro inteligente de relatórios
- * Define prioridades, agrupamentos e categorização de problemas
+ * Centralized settings for the intelligent report filter
+ * Defines priorities, groupings and problem categorization
  */
 
 import type { AgrupamentoConfig, ConfigPrioridade, PrioridadeNivel } from '@';
@@ -12,267 +12,267 @@ import {
   ICONES_FEEDBACK,
 } from '../../shared/icons.js';
 
-// Re-exporta os tipos para compatibilidade
+// Re-exports types for compatibility
 export type { AgrupamentoConfig, ConfigPrioridade, PrioridadeNivel };
 
-  /* -------------------------- PRIORIDADES POR TIPO DE PROBLEMA -------------------------- */
+  /* -------------------------- PRIORITIES BY PROBLEM TYPE -------------------------- */
 
 export const PRIORIDADES: Record<string, ConfigPrioridade> = {
-  // Críticos - Segurança e dados
+  // Critical - Security and data
   PROBLEMA_SEGURANCA: {
     prioridade: 'critica',
     icone: '[LOCK]',
-    descricao: 'Vulnerabilidade de segurança detectada',
+    descricao: 'Security vulnerability detected',
   },
   VULNERABILIDADE_SEGURANCA: {
     prioridade: 'critica',
     icone: '[ERRO]',
-    descricao: 'Falha de segurança grave',
+    descricao: 'Critical security flaw',
   },
   CREDENCIAIS_EXPOSTAS: {
     prioridade: 'critica',
     icone: '[LOCK]',
-    descricao: 'Credenciais hardcoded ou expostas',
+    descricao: 'Hardcoded or exposed credentials',
   },
 
-  // Altos - Código frágil e bugs
+  // High - Fragile code and bugs
   CODIGO_FRAGIL: {
     prioridade: 'alta',
     icone: '[AVISO]',
-    descricao: 'Código suscetível a falhas',
+    descricao: 'Code susceptible to failures',
   },
   'tipo-inseguro-any': {
     prioridade: 'alta',
     icone: '[HIGH]',
-    descricao: 'Uso de tipo any que pode ser substituído',
+    descricao: 'Use of any type that can be replaced',
   },
   'tipo-inseguro-unknown': {
     prioridade: 'media',
     icone: '[WARN]',
-    descricao: 'Uso de tipo unknown que pode ser específico',
+    descricao: 'Use of unknown type that can be made specific',
   },
   PROBLEMA_TESTE: {
     prioridade: 'alta',
     icone: '[TEST]',
-    descricao: 'Problemas com testes',
+    descricao: 'Testing issues',
   },
   'estrutura-suspeita': {
     prioridade: 'alta',
     icone: '[SCAN]',
-    descricao: 'Estrutura de código suspeita',
+    descricao: 'Suspicious code structure',
   },
   COMPLEXIDADE_ALTA: {
     prioridade: 'alta',
     icone: '[STATS]',
-    descricao: 'Complexidade ciclomática alta',
+    descricao: 'High cyclomatic complexity',
   },
 
-  // Médios - Manutenibilidade e padrões
+  // Medium - Maintainability and patterns
   PROBLEMA_DOCUMENTACAO: {
     prioridade: 'media',
     icone: '[DOC]',
-    descricao: 'Documentação ausente ou inadequada',
+    descricao: 'Missing or inadequate documentation',
   },
   'padrao-ausente': {
     prioridade: 'media',
     icone: '[GOAL]',
-    descricao: 'Padrão recomendado ausente',
+    descricao: 'Recommended pattern absent',
   },
   'estrutura-config': {
     prioridade: 'media',
     icone: '[CONFIG]',
-    descricao: 'Problemas de configuração',
+    descricao: 'Configuration issues',
   },
   'estrutura-entrypoints': {
     prioridade: 'media',
     icone: '[ENTRY]',
-    descricao: 'Entrypoints mal definidos',
+    descricao: 'Poorly defined entrypoints',
   },
   ANALISE_ARQUITETURA: {
     prioridade: 'media',
     icone: '[BUILD]',
-    descricao: 'Análise arquitetural',
+    descricao: 'Architectural analysis',
   },
 
-  // Baixos - Informativo e melhorias
+  // Low - Informational and improvements
   CONSTRUCOES_SINTATICAS: {
     prioridade: 'baixa',
     icone: '[SYNTAX]',
-    descricao: 'Padrões sintáticos detectados',
+    descricao: 'Syntactic patterns detected',
   },
   CARACTERISTICAS_ARQUITETURA: {
     prioridade: 'baixa',
     icone: '[ARCH]',
-    descricao: 'Características arquiteturais',
+    descricao: 'Architectural characteristics',
   },
   METRICAS_ARQUITETURA: {
     prioridade: 'baixa',
     icone: '[SIZE]',
-    descricao: 'Métricas arquiteturais',
+    descricao: 'Architectural metrics',
   },
   TODO_PENDENTE: {
     prioridade: 'baixa',
     icone: ICONES_FEEDBACK.dica,
-    descricao: 'TODOs e tarefas pendentes',
+    descricao: 'TODOs and pending tasks',
   },
   IDENTIFICACAO_PROJETO: {
     prioridade: 'baixa',
     icone: '[TAG]',
-    descricao: 'Identificação do tipo de projeto',
+    descricao: 'Project type identification',
   },
   SUGESTAO_MELHORIA: {
     prioridade: 'baixa',
     icone: '[DICA]',
-    descricao: 'Sugestão de melhoria',
+    descricao: 'Improvement suggestion',
   },
   EVIDENCIA_CONTEXTO: {
     prioridade: 'baixa',
     icone: '[SCAN]',
-    descricao: 'Evidência de contexto',
+    descricao: 'Context evidence',
   },
   TECNOLOGIAS_ALTERNATIVAS: {
     prioridade: 'baixa',
     icone: '[ALT]',
-    descricao: 'Tecnologias alternativas sugeridas',
+    descricao: 'Alternative technologies suggested',
   },
 };
 
-  /* -------------------------- AGRUPAMENTOS INTELIGENTES POR PADRÃO DE MENSAGEM -------------------------- */
+  /* -------------------------- INTELLIGENT GROUPINGS BY MESSAGE PATTERN -------------------------- */
 
 export const AGRUPAMENTOS_MENSAGEM: AgrupamentoConfig[] = [
-  // Segurança Crítica
+  // Critical Security
   {
     padrao:
       /token hardcoded|senha hardcoded|chave hardcoded|api.*key.*hardcoded/i,
     categoria: 'SEGURANCA_HARDCODED',
-    titulo: 'Credenciais Hardcoded Detectadas',
+    titulo: 'Hardcoded Credentials Detected',
     prioridade: 'critica',
     icone: ICONES_ARQUIVO.lock,
-    acaoSugerida: 'Mover credenciais para variáveis de ambiente (.env)',
+    acaoSugerida: 'Move credentials to environment variables (.env)',
   },
   {
     padrao: /sql.*injection|xss|csrf|path.*traversal|command.*injection/i,
     categoria: 'VULNERABILIDADES_WEB',
-    titulo: 'Vulnerabilidades Web Detectadas',
+    titulo: 'Web Vulnerabilities Detected',
     prioridade: 'critica',
     icone: '[ERRO]',
-    acaoSugerida: 'Aplicar sanitização e validação de entrada',
+    acaoSugerida: 'Apply input sanitization and validation',
   },
 
-  // Código Frágil (Alta)
+  // Fragile Code (High)
   {
     padrao: /tipo.*inseguro.*any|any.*inseguro|unsafe.*any/i,
     categoria: 'TIPOS_ANY_INSEGUROS',
-    titulo: 'Tipos Any Inseguros Detectados',
+    titulo: 'Unsafe Any Types Detected',
     prioridade: 'alta',
     icone: '[HIGH]',
     acaoSugerida:
-      'Substituir any por tipos específicos para melhorar type safety',
+      'Replace any with specific types to improve type safety',
   },
   {
     padrao: /tipo.*inseguro.*unknown|unknown.*inseguro|unsafe.*unknown/i,
     categoria: 'TIPOS_UNKNOWN_GENERICOS',
-    titulo: 'Tipos Unknown Genéricos',
+    titulo: 'Generic Unknown Types',
     prioridade: 'media',
     icone: '[WARN]',
-    acaoSugerida: 'Adicionar type guards ou substituir por tipos específicos',
+    acaoSugerida: 'Add type guards or replace with specific types',
   },
   {
     padrao: /missing-tests|missing tests|sem testes|no.*tests/i,
     categoria: 'TESTES_AUSENTES',
-    titulo: 'Arquivos Sem Testes',
+    titulo: 'Files Without Tests',
     prioridade: 'alta',
     icone: '[TEST]',
-    acaoSugerida: 'Implementar testes unitários para melhorar cobertura',
+    acaoSugerida: 'Implement unit tests to improve coverage',
   },
   {
     padrao: /complexidade.*alta|complex.*high|cyclomatic.*complexity/i,
     categoria: 'COMPLEXIDADE_ALTA',
-    titulo: 'Código com Alta Complexidade',
+    titulo: 'Code with High Complexity',
     prioridade: 'alta',
     icone: '[STATS]',
-    acaoSugerida: 'Refatorar em funções menores para melhorar legibilidade',
+    acaoSugerida: 'Refactor into smaller functions to improve readability',
   },
   {
     padrao: /acoplamento.*alto|coupling.*high|tight.*coupling/i,
     categoria: 'ACOPLAMENTO_ALTO',
-    titulo: 'Alto Acoplamento Entre Módulos',
+    titulo: 'High Coupling Between Modules',
     prioridade: 'alta',
     icone: '[LINK]',
-    acaoSugerida: 'Revisar dependências e aplicar padrões de desacoplamento',
+    acaoSugerida: 'Review dependencies and apply decoupling patterns',
   },
 
-  // Manutenibilidade (Média)
+  // Maintainability (Medium)
   {
     padrao:
       /missing-jsdoc|missing documentation|sem documentação|no.*documentation/i,
     categoria: 'DOCUMENTACAO_AUSENTE',
-    titulo: 'Documentação Ausente',
+    titulo: 'Missing Documentation',
     prioridade: 'media',
     icone: '[DOC]',
-    acaoSugerida: 'Adicionar JSDoc/comentários para melhorar manutenibilidade',
+    acaoSugerida: 'Add JSDoc/comments to improve maintainability',
   },
   {
     padrao: /console\.log|console-log|debug.*statement/i,
     categoria: 'CONSOLE_LOGS',
-    titulo: 'Console.log em Código de Produção',
+    titulo: 'Console.log in Production Code',
     prioridade: 'media',
     icone: '[LOG]',
-    acaoSugerida: 'Remover ou substituir por sistema de logging adequado',
+    acaoSugerida: 'Remove or replace with a proper logging system',
   },
   {
     padrao: /código.*duplicado|duplicate.*code|copy.*paste/i,
     categoria: 'DUPLICACAO_CODIGO',
-    titulo: 'Código Duplicado Detectado',
+    titulo: 'Duplicated Code Detected',
     prioridade: 'media',
     icone: '[COPY]',
-    acaoSugerida: 'Extrair para funções/módulos reutilizáveis',
+    acaoSugerida: 'Extract into reusable functions/modules',
   },
   {
     padrao: /função.*longa|long.*function|function.*too.*large/i,
     categoria: 'FUNCOES_LONGAS',
-    titulo: 'Funções Muito Longas',
+    titulo: 'Very Long Functions',
     prioridade: 'media',
     icone: '[SIZE]',
-    acaoSugerida: 'Dividir em funções menores e mais coesas',
+    acaoSugerida: 'Split into smaller, more cohesive functions',
   },
 
-  // Baixa prioridade
+  // Low priority
   {
     padrao: /todo|fixme|hack|workaround/i,
     categoria: 'TAREFAS_PENDENTES',
-    titulo: 'Tarefas Pendentes no Código',
+    titulo: 'Pending Tasks in Code',
     prioridade: 'baixa',
     icone: ICONES_FEEDBACK.dica,
-    acaoSugerida: 'Revisar e resolver TODOs/FIXMEs pendentes',
+    acaoSugerida: 'Review and resolve pending TODOs/FIXMEs',
   },
   {
     padrao: /magic.*number|número.*mágico/i,
     categoria: 'NUMEROS_MAGICOS',
-    titulo: 'Números Mágicos no Código',
+    titulo: 'Magic Numbers in Code',
     prioridade: 'baixa',
     icone: ICONES_DIAGNOSTICO.stats,
-    acaoSugerida: 'Substituir por constantes nomeadas',
+    acaoSugerida: 'Replace with named constants',
   },
 ];
 
   /* -------------------------- HELPERS -------------------------- */
 
 /**
- * Obtém a prioridade de um tipo de problema
+ * Gets the priority of a problem type
  */
 export function getPrioridade(tipo: string): ConfigPrioridade {
   return (
     PRIORIDADES[tipo] || {
       prioridade: 'baixa',
       icone: ICONES_ARQUIVO.arquivo,
-      descricao: 'Problema não categorizado',
+      descricao: 'Uncategorized problem',
     }
   );
 }
 
 /**
- * Encontra agrupamento por mensagem
+ * Finds grouping by message
  */
 export function findAgrupamento(mensagem: string): AgrupamentoConfig | null {
   for (const grupo of AGRUPAMENTOS_MENSAGEM) {
@@ -284,7 +284,7 @@ export function findAgrupamento(mensagem: string): AgrupamentoConfig | null {
 }
 
 /**
- * Ordena problemas por prioridade
+ * Sorts problems by priority
  */
 export function ordenarPorPrioridade<
   T extends { prioridade?: PrioridadeNivel },
@@ -304,7 +304,7 @@ export function ordenarPorPrioridade<
 }
 
 /**
- * Conta problemas por prioridade
+ * Counts problems by priority
  */
 export function contarPorPrioridade<T extends { prioridade?: PrioridadeNivel }>(
   problemas: T[],

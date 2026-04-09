@@ -1,23 +1,23 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * @fileoverview 依存関係検出器用の診断メッセージ。
- * 外部依存関係へのimport/require、長い相対パス、存在しないファイル、
- * require/importの混合使用、循環import以及其他不好的インポート慣行を
- * 検出するためのテキストテンプレートを提供します。
+ * @fileoverview Diagnostic messages for the dependencies detector.
+ * Provides text templates to detect imports/requires of external dependencies,
+ * long relative paths, non-existent files, mixed require/import usage,
+ * circular imports, and other import bad practices.
  */
 
 export const DetectorDependenciasMensagens = {
-  importDependenciaExterne: (val: string) => `外部依存関係のインポート: '${val}'`,
-  importRelativoLongo: (val: string) => `相対インポートが多くのディレクトリを上がっています: '${val}'`,
-  importJsEmTs: (val: string) => `TypeScriptでの.jsファイルのインポート: '${val}'`,
-  importArquivoInexistente: (val: string) => `存在しないファイルのインポート: '${val}'`,
-  requireDependenciaExterne: (val: string) => `外部依存関係のrequire: '${val}'`,
-  requireRelativoLongo: (val: string) => `相対requireが多くのディレクトリを上がっています: '${val}'`,
-  requireJsEmTs: (val: string) => `TypeScriptでの.jsファイルのrequire: '${val}'`,
-  requireArquivoInexistente: (val: string) => `存在しないファイルのrequire: '${val}'`,
-  importUsadoRegistroDinamico: (nome: string) => `インポート'${nome}'が動的レジストリ経由で使われています（ヒューリスティック）`,
-  usoMistoRequireImport: '同じファイルでrequireとimportが混合使われています。1つのスタイルに標準化してください。',
-  importCircularSelf: '循環インポートが検出されました: ファイルが自分自身をインポートしています。',
-  dependenciaCircular: (totalArquivos: number, caminhoCompleto: string) => `循環依存関係が検出されました（${totalArquivos}ファイル）: ${caminhoCompleto}`
+  importDependenciaExterna: (val: string) => `External dependency import: '${val}'`,
+  importRelativoLongo: (val: string) => `Relative import goes up too many directories: '${val}'`,
+  importJsEmTs: (val: string) => `Import of .js ファイル in TypeScript: '${val}'`,
+  importArquivoInexistente: (val: string) => `Import of non-existent ファイル: '${val}'`,
+  requireDependenciaExterna: (val: string) => `Require of external dependency: '${val}'`,
+  requireRelativoLongo: (val: string) => `Relative require goes up too many directories: '${val}'`,
+  requireJsEmTs: (val: string) => `Require of .js ファイル in TypeScript: '${val}'`,
+  requireArquivoInexistente: (val: string) => `Require of non-existent ファイル: '${val}'`,
+  importUsadoRegistroDinamico: (nome: string) => `Import '${nome}' used via dynamic registration (heuristic)`,
+  usoMistoRequireImport: 'Mixed usage of require and import in the same file. Standardize to a single style.',
+  importCircularSelf: 'Circular import detected: the file imports itself.',
+  dependenciaCircular: (totalArquivos: number, caminhoCompleto: string) => `Circular dependency detected (${totalArquivos} file(s)): ${caminhoCompleto}`
 } as const;

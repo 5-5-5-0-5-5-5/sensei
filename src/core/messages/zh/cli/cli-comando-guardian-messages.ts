@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 
-export const CliComandoGuardianMensagens = {
-  baselineNaoPermitidoFullScan: 'Não é permitido aceitar baseline em modo --full-scan. Remova a flag e repita.',
-  diffMudancasDetectadas: (drift: number) => `Detectadas ${drift} mudança(s) desde o baseline.`,
-  diffComoAceitarMudancas: 'Execute `prometheus guardian --accept-baseline` para aceitar essas mudanças.',
-  baselineCriadoComoAceitar: 'Execute `prometheus guardian --accept-baseline` para aceitá-lo ou `prometheus diagnosticar` novamente.'
+export const CliComandoGuardianMessages = {
+  baselineNotAllowedFullScan: 'Accepting baseline is not allowed in --full-scan mode. Remove the flag and retry.',
+  diffChangesDetected: (drift: number) => `检测到 ${drift} change(s) since baseline.`,
+  diffHowToAcceptChanges: 'Run `prometheus guardian --accept-baseline` to accept these changes.',
+  baselineCreatedHowToAccept: 'Run `prometheus guardian --accept-baseline` to accept it or `prometheus diagnosticar` again.'
 } as const;

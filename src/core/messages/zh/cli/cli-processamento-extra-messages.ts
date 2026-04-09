@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 export const CliProcessamentoExtraMensagens = {
-  falhaSalvarAnalise: 'Não foi possível salvar análise detalhada: {erro}',
-  erroAplicarCorrecoes: 'Erro ao aplicar correções: {erro}',
-  erroExportarRelatorios: 'Erro ao exportar relatórios: {erro}',
+  falhaSalvarAnalise: 'Could not save detailed analysis: {erro}',
+  erroAplicarCorrecoes: 'Error applying corrections: {erro}',
+  erroExportarRelatorios: 'Error exporting reports: {erro}',
 } as const;

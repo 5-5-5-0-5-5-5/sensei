@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * @fileoverview 询问者(AST解析器)的诊断消息。
- * 提供用于报告解析失败、AST错误和聚合的隐藏解析错误的文本模板。
+ * @fileoverview Diagnostic messages for the Inquisitor (AST parser).
+ * Provides text templates for reporting parsing failures, AST errors
+ * and aggregation of suppressed parsing errors.
  */
 
 export const InquisidorMensagens = {
-  parseAstNaoGerada: '解析错误: AST未生成(代码可能无效)。',
-  parseErro: (erro: string) => `解析错误: ${erro}`,
-  parseErrosAgregados: (quantidade: number) => `聚合解析错误: ${quantidade}个隐藏问题(显示1个)`,
-  falhaGerarAst: (relPath: string, erro: string) => `为${relPath}生成AST失败: ${erro}`
+  parseAstNaoGerada: 'Parsing error: AST not generated (code possibly invalid).',
+  parseErro: (erro: string) => `Parsing 错误: ${erro}`,
+  parseErrosAgregados: (quantidade: number) => `Aggregated parsing 错误s: ${quantidade} occurrences suppressed in this file (shows 1).`,
+  falhaGerarAst: (relPath: string, erro: string) => `Failed to generate AST for ${relPath}: ${erro}`
 } as const;

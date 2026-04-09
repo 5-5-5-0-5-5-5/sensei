@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-export const CliComandoReverterMensagens = {
-  mapaLimpoComSucesso: (iconeSucesso: string) => `${iconeSucesso} Mapa de reversão limpo com sucesso`,
-  ultimoMove: (dataPtBr: string) => `Último move: ${dataPtBr}`
+export const CliComandoReverterMessages = {
+  mapCleanedSuccessfully: (iconeSucesso: string) => `${iconeSucesso} Reversal map cleaned 成功fully`,
+  lastMove: (dataPtBr: string) => `Last move: ${dataPtBr}`
 } as const;

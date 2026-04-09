@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 /**
- * Mensagens de Relatórios MD/JSON
+ * MD/JSON Report Messages
  */
 
 export { getDescricaoCampo, JsonMensagens, wrapComMetadados } from './json-messages.js';

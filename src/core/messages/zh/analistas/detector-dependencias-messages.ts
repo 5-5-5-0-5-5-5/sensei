@@ -1,23 +1,23 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * @fileoverview Mensagens de diagnóstico para o detector de dependências.
- * Fornece templates de texto para detectar imports/requires de dependências
- * externas, caminhos relativos longos, arquivos inexistentes, uso misto de
- * require/import, imports circulares e outras más práticas de importação.
+ * @fileoverview Diagnostic messages for the dependencies detector.
+ * Provides text templates to detect imports/requires of external dependencies,
+ * long relative paths, non-existent files, mixed require/import usage,
+ * circular imports, and other import bad practices.
  */
 
 export const DetectorDependenciasMensagens = {
-  importDependenciaExterna: (val: string) => `Importação de dependência externa: '${val}'`,
-  importRelativoLongo: (val: string) => `Import relativo sobe muitos diretórios: '${val}'`,
-  importJsEmTs: (val: string) => `Importação de arquivo .js em TypeScript: '${val}'`,
-  importArquivoInexistente: (val: string) => `Importação de arquivo inexistente: '${val}'`,
-  requireDependenciaExterna: (val: string) => `Require de dependência externa: '${val}'`,
-  requireRelativoLongo: (val: string) => `Require relativo sobe muitos diretórios: '${val}'`,
-  requireJsEmTs: (val: string) => `Require de arquivo .js em TypeScript: '${val}'`,
-  requireArquivoInexistente: (val: string) => `Require de arquivo inexistente: '${val}'`,
-  importUsadoRegistroDinamico: (nome: string) => `Import '${nome}' usado via registro dinâmico (heurística)`,
-  usoMistoRequireImport: 'Uso misto de require e import no mesmo arquivo. Padronize para um só estilo.',
-  importCircularSelf: 'Importação circular detectada: o arquivo importa a si mesmo.',
-  dependenciaCircular: (totalArquivos: number, caminhoCompleto: string) => `Dependência circular detectada (${totalArquivos} arquivo(s)): ${caminhoCompleto}`
+  importDependenciaExterna: (val: string) => `External dependency import: '${val}'`,
+  importRelativoLongo: (val: string) => `Relative import goes up too many directories: '${val}'`,
+  importJsEmTs: (val: string) => `Import of .js 文件 in TypeScript: '${val}'`,
+  importArquivoInexistente: (val: string) => `Import of non-existent 文件: '${val}'`,
+  requireDependenciaExterna: (val: string) => `Require of external dependency: '${val}'`,
+  requireRelativoLongo: (val: string) => `Relative require goes up too many directories: '${val}'`,
+  requireJsEmTs: (val: string) => `Require of .js 文件 in TypeScript: '${val}'`,
+  requireArquivoInexistente: (val: string) => `Require of non-existent 文件: '${val}'`,
+  importUsadoRegistroDinamico: (nome: string) => `Import '${nome}' used via dynamic registration (heuristic)`,
+  usoMistoRequireImport: 'Mixed usage of require and import in the same file. Standardize to a single style.',
+  importCircularSelf: 'Circular import detected: the file imports itself.',
+  dependenciaCircular: (totalArquivos: number, caminhoCompleto: string) => `Circular dependency 检测到 (${totalArquivos} file(s)): ${caminhoCompleto}`
 } as const;

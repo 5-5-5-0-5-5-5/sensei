@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 /**
- * Mensagens Core: Correções, Diagnóstico, Exceções, Fix-Types, Inquisidor, Plugins
+ * Core Messages: Fixes, Diagnosis, Exceptions, Fix-Types, Inquisitor, Plugins
  */
 
 export { MENSAGENS_ARQUETIPOS_HANDLER, MENSAGENS_AUTOFIX, MENSAGENS_CORRECAO_TIPOS, MENSAGENS_CORRECOES, MENSAGENS_EXECUTOR, MENSAGENS_PLUGINS, MENSAGENS_RELATORIOS_ANALISE } from './correcoes-messages.js';

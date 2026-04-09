@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * @fileoverview Mensagens de diagnóstico para o detector de estrutura de projeto.
- * Fornece templates de texto para detectar monorepos, estruturas fullstack,
- * sinais de backend/frontend, múltiplos entrypoints, arquivos de configuração
- * e convenções de nomenclatura de diretórios.
+ * @fileoverview Diagnostic messages for the project structure detector.
+ * Provides text templates to detect monorepos, fullstack structures,
+ * backend/frontend signals, multiple entrypoints, configuration files,
+ * and directory naming conventions.
  */
 
 type EntrypointsAgrupadosArgs = {
@@ -12,20 +12,20 @@ type EntrypointsAgrupadosArgs = {
   sufixoOcultos?: string;
 };
 export const DetectorEstruturaMensagens = {
-  monorepoDetectado: 'Estrutura de monorepo detectada.',
-  monorepoSemPackages: 'Monorepo sem pasta packages/.',
-  fullstackDetectado: 'Estrutura fullstack detectada.',
-  pagesSemApi: 'Projeto possui pages/ mas não possui api/.',
-  estruturaMista: 'Projeto possui src/ e packages/ (monorepo) ao mesmo tempo. Avalie a organização.',
-  muitosArquivosRaiz: 'Muitos arquivos na raiz do projeto. Considere organizar em pastas.',
-  sinaisBackend: 'Sinais de backend detectados (controllers/, prisma/, api/).',
-  sinaisFrontend: 'Sinais de frontend detectados (components/, pages/).',
-  projetoGrandeSemSrc: 'Projeto grande sem pasta src/. Considere organizar o código fonte.',
-  arquivosConfigDetectados: (detectados: string[]) => `Arquivos de configuração detectados: ${detectados.join(', ')}`,
+  monorepoDetectado: 'Monorepo structure detected.',
+  monorepoSemPackages: 'Monorepo without packages/ folder.',
+  fullstackDetectado: 'Fullstack structure detected.',
+  pagesSemApi: 'Project has pages/ but does not have api/.',
+  estruturaMista: 'Project has both src/ and packages/ (monorepo) at the same time. Review the organization.',
+  muitosArquivosRaiz: 'Too many files at the project root. Consider organizing into folders.',
+  sinaisBackend: 'Backend signals detected (controllers/, prisma/, api/).',
+  sinaisFrontend: 'Frontend signals detected (components/, pages/).',
+  projetoGrandeSemSrc: 'Large project without src/ folder. Consider organizing the source code.',
+  arquivosConfigDetectados: (detectados: string[]) => `Configuration files 检测到: ${detectados.join(', ')}`,
   multiplosEntrypointsAgrupados: ({
     previewGrupos,
     sufixoOcultos
-  }: EntrypointsAgrupadosArgs) => sufixoOcultos && sufixoOcultos.length > 0 ? `Projeto possui múltiplos entrypoints (agrupados por diretório): ${previewGrupos} … (${sufixoOcultos} ocultos)` : `Projeto possui múltiplos entrypoints (agrupados por diretório): ${previewGrupos}`,
-  multiplosEntrypointsLista: (preview: string[], resto: number) => resto > 0 ? `Projeto possui múltiplos entrypoints: ${preview.join(', ')} … (+${resto} ocultos)` : `Projeto possui múltiplos entrypoints: ${preview.join(', ')}`,
-  nomeDiretorioNaoConforme: (atual: string, esperado: string) => `Diretório '${atual}' não segue a convenção de nomes. Nome esperado: '${esperado}'.`
+  }: EntrypointsAgrupadosArgs) => sufixoOcultos && sufixoOcultos.length > 0 ? `Project has multiple entrypoints (grouped by directory): ${previewGrupos} … (${sufixoOcultos} hidden)` : `Project has multiple entrypoints (grouped by directory): ${previewGrupos}`,
+  multiplosEntrypointsLista: (preview: string[], resto: number) => resto > 0 ? `Project has multiple entrypoints: ${preview.join(', ')} … (+${resto} hidden)` : `Project has multiple entrypoints: ${preview.join(', ')}`,
+  nomeDiretorioNaoConforme: (atual: string, esperado: string) => `Directory '${atual}' does not follow the naming convention. Expected name: '${esperado}'.`
 } as const;

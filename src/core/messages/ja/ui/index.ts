@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 /**
- * UI: Ícones, Sugestões, Filtros
+ * UI: Icons, Suggestions, Filters
  */
 
 export {

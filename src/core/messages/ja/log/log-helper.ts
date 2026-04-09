@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 // @prometheus-disable tipo-literal-inline-complexo
-// Justificativa: tipos inline para sistema de logs
+// Justification: inline types for logging system
 /**
- * Sistema unificado de helpers de log
- * Consolidação de log-helpers.ts e log-helpers-inteligente.ts
- * Remove duplicação e centraliza lógica via log-engine
+ * Unified log helper system
+ * Consolidation of log-helpers.ts and log-helpers-inteligente.ts
+ * Removes duplication and centralizes logic via log-engine
  */
 
 import { config } from '@core/config/config.js';
@@ -14,31 +14,31 @@ import { logEngine } from './log-engine.js';
 import { LogMensagens } from './log-messages.js';
 
 /**
- * Sistema de logs para analistas com controle de spam unificado
+ * Logging system for analysts with unified spam control
  */
 export const logAnalistas = {
   ultimoProgressoGlobal: 0,
   contadorArquivos: 0,
   totalArquivos: 0,
   ultimoEmitMs: 0,
-  /** Inicializa batch de análise */
+  /** Initializes analysis batch */
   iniciarBatch(totalArquivos: number): void {
     this.totalArquivos = totalArquivos;
     this.contadorArquivos = 0;
     this.ultimoProgressoGlobal = 0;
     this.ultimoEmitMs = 0;
 
-    // Usa logEngine para formatação consistente apenas em modo complexo/verbose
+    // Uses logEngine for consistent formatting only in complex/verbose mode
     if (logEngine.contexto === 'complexo' || config.VERBOSE) {
       logEngine.log('info', LogMensagens.analistas.execucao.inicio_detalhado, {
         totalArquivos: totalArquivos.toString()
       });
     }
-    // Em modo simples, não emite mensagem redundante (o progresso já mostra)
+    // In simple mode, do not emit redundant message (progress already shows it)
   },
-  /** Log de inicio de analista (agora apenas registra) */
+  /** Analyst start log (now only registers) */
   iniciandoAnalista(nomeAnalista: string, arquivo: string, tamanho: number): void {
-    // 🔕 ANTI-SPAM: Só loga analistas individuais em contextos específicos
+    // 🔕 ANTI-SPAM: Only logs individual analysts in specific contexts
     const deveLogarIndividual = logEngine.contexto === 'complexo' || config.DEV_MODE || process.env.VERBOSE === 'true';
     if (deveLogarIndividual) {
       logEngine.log('debug', LogMensagens.analistas.execucao.inicio_detalhado, {
@@ -48,14 +48,14 @@ export const logAnalistas = {
       });
     }
   },
-  /** Incrementa contador quando arquivo é processado */
+  /** Increments counter when file is processed */
   arquivoProcessado(): void {
     this.contadorArquivos++;
     if (logEngine.contexto !== 'complexo' && !config.DEV_MODE) {
       this.logProgressoGrupado();
     }
   },
-  /** Log de conclusão de analista */
+  /** Analyst completion log */
   concluido(nomeAnalista: string, arquivo: string, ocorrencias: number, duracao: number): void {
     const deveLogarIndividual = logEngine.contexto === 'complexo' || config.DEV_MODE || process.env.VERBOSE === 'true';
     if (deveLogarIndividual) {
@@ -66,20 +66,20 @@ export const logAnalistas = {
       });
     }
   },
-  /** Log de progresso inteligente e agrupado */
+  /** Smart and grouped progress log */
   logProgressoGrupado(): void {
     const porcentagem = Math.round(this.contadorArquivos / this.totalArquivos * 100);
     const agora = Date.now();
 
-    // Densidade adaptativa: 5% para projetos pequenos, 10% para grandes
+    // Adaptive density: 5% for small projects, 10% for large ones
     const passo = this.totalArquivos < 200 ? 5 : 10;
-    // Limite de frequência: no máximo 2 atualizações por segundo
+    // Frequency limit: at most 2 updates per second
     const minIntervalMs = 500;
 
-    // Atualiza o progresso em intervalos adaptativos com anti-spam
+    // Updates progress at adaptive intervals with anti-spam
     if (porcentagem - this.ultimoProgressoGlobal >= passo || this.contadorArquivos === this.totalArquivos) {
       if (agora - this.ultimoEmitMs >= minIntervalMs || this.contadorArquivos === this.totalArquivos) {
-        logEngine.log('info', `${ICONES_DIAGNOSTICO.progresso} Progresso: {arquivosProcessados}/{totalArquivos} ({percentual}%)`, {
+        logEngine.log('info', `${ICONES_DIAGNOSTICO.progresso} Progress: {arquivosProcessados}/{totalArquivos} ({percentual}%)`, {
           arquivosProcessados: this.contadorArquivos.toString(),
           totalArquivos: this.totalArquivos.toString(),
           percentual: porcentagem.toString()
@@ -89,34 +89,34 @@ export const logAnalistas = {
       }
     }
   },
-  /** Finaliza batch de análise */
+  /** Finalizes analysis batch */
   finalizarBatch(totalOcorrencias: number, duracaoTotal: number): void {
     if (logEngine.contexto === 'simples') {
-      logEngine.log('info', `${ICONES_STATUS.ok} Análise concluída - {totalOcorrencias} problemas encontrados`, {
+      logEngine.log('info', `${ICONES_STATUS.ok} 分析 completed - {totalOcorrencias} problems found`, {
         totalOcorrencias: totalOcorrencias.toString()
       });
     } else {
-      logEngine.log('info', `${ICONES_STATUS.ok} Verificações concluídas - {totalOcorrencias} problemas detectados em {duracao}s`, {
+      logEngine.log('info', `${ICONES_STATUS.ok} Checks completed - {totalOcorrencias} problems detected in {duracao}s`, {
         totalOcorrencias: totalOcorrencias.toString(),
         duracao: (duracaoTotal / 1000).toFixed(1)
       });
     }
   },
-  /** Timeout sempre é importante - usa logEngine */
+  /** Timeout is always important - uses logEngine */
   timeout(nomeAnalista: string, duracao: number): void {
     logEngine.log('aviso', LogMensagens.analistas.execucao.timeout, {
       analista: nomeAnalista,
       tempo: duracao.toString()
     });
   },
-  /** Erros sempre são importantes - usa logEngine */
+  /** Errors are always important - uses logEngine */
   erro(nomeAnalista: string, erro: string): void {
     logEngine.log('erro', LogMensagens.analistas.execucao.erro, {
       analista: nomeAnalista,
       erro
     });
   },
-  /** Performance para projetos complexos */
+  /** Performance for complex projects */
   performance(dados: {
     analistas: number;
     media: number;
@@ -132,7 +132,7 @@ export const logAnalistas = {
 };
 
 /**
- * Sistema de logs para scanner (agora via logEngine)
+ * Logging system for scanner (now via logEngine)
  */
 export const logVarredor = {
   iniciarVarredura(diretorio: string): void {
@@ -168,7 +168,7 @@ export const logVarredor = {
 };
 
 /**
- * Sistema de logs para o sistema principal (via logEngine)
+ * Logging system for the main system (via logEngine)
  */
 export const logSistema = {
   inicializacao(): void {
@@ -183,9 +183,9 @@ export const logSistema = {
   },
   erro(mensagem: string, detalhes?: string): void {
     const detalhesStr = detalhes ? ` - ${detalhes}` : '';
-    logEngine.log('erro', `${ICONES_STATUS.falha} Erro: ${mensagem}${detalhesStr}`, {});
+    logEngine.log('erro', `${ICONES_STATUS.falha} エラー: ${mensagem}${detalhesStr}`, {});
   },
-  // Correções automáticas
+  // Auto fixes
   autoFixNenhumaCorrecao(): void {
     logEngine.log('info', LogMensagens.sistema.correcoes.nenhuma_disponivel, {});
   },
@@ -239,7 +239,7 @@ export const logSistema = {
       erro
     });
   },
-  // Processamento de diagnóstico
+  // Diagnostic processing
   processamentoFixDetectada(): void {
     logEngine.log('info', LogMensagens.sistema.processamento.fix_detectada, {});
   },
@@ -312,7 +312,7 @@ export const logSistema = {
       quantidade: quantidade.toString()
     });
   },
-  // Atualização do sistema
+  // System update
   atualizacaoExecutando(comando: string): void {
     logEngine.log('info', LogMensagens.sistema.atualizacao.executando, {
       comando
@@ -338,14 +338,14 @@ export const logSistema = {
   performanceSemRegressoes(): void {
     logEngine.log('info', LogMensagens.sistema.performance.sem_regressoes, {});
   },
-  // Poda
+  // Pruning
   podaCancelada(): void {
     logEngine.log('info', LogMensagens.sistema.poda.cancelada, {});
   },
   podaConcluida(): void {
     logEngine.log('info', LogMensagens.sistema.poda.concluida, {});
   },
-  // Reversão
+  // Reversal
   reversaoNenhumMove(arquivo: string): void {
     logEngine.log('erro', LogMensagens.sistema.reversao.nenhum_move, {
       arquivo
@@ -369,7 +369,7 @@ export const logSistema = {
 };
 
 /**
- * Sistema de logs para filtros (via logEngine)
+ * Logging system for filters (via logEngine)
  */
 export const logFiltros = {
   incluindo(pattern: string, matches: number): void {
@@ -399,7 +399,7 @@ export const logFiltros = {
 };
 
 /**
- * Sistema de logs para projeto (via logEngine)
+ * Logging system for project (via logEngine)
  */
 export const logProjeto = {
   detectado(tipo: string, confianca: number): void {
@@ -435,8 +435,8 @@ export const logProjeto = {
     throughput?: number;
   }): void {
     if (logEngine.contexto === 'complexo' || config.DEV_MODE) {
-      const throughput = dados.throughput ? ` (${dados.throughput.toFixed(1)} arq/s)` : '';
-      logEngine.log('info', `${ICONES_DIAGNOSTICO.stats} Performance: {analistas} analistas em {duracao}s{throughput}`, {
+      const throughput = dados.throughput ? ` (${dados.throughput.toFixed(1)} ファイル/s)` : '';
+      logEngine.log('info', `${ICONES_DIAGNOSTICO.stats} Performance: {analistas} analysts in {duracao}s{throughput}`, {
         analistas: dados.analistas.toString(),
         duracao: (dados.duracao / 1000).toFixed(1),
         throughput
@@ -446,7 +446,7 @@ export const logProjeto = {
 };
 
 /**
- * Sistema de logs para ocorrências (via logEngine)
+ * Logging system for occurrences (via logEngine)
  */
 export const logOcorrencias = {
   critica(mensagem: string, arquivo: string, linha?: number): void {
@@ -466,14 +466,14 @@ export const logOcorrencias = {
 };
 
 /**
- * Sistema de logs para relatórios (via logEngine)
+ * Logging system for reports (via logEngine)
  */
 export const logRelatorio = {
   gerado(caminho: string, formato: string): void {
-    logEngine.log('info', `${ICONES_ARQUIVO.arquivo} Relatório ${formato} gerado: ${caminho}`, {});
+    logEngine.log('info', `${ICONES_ARQUIVO.arquivo} ${formato} report 生成済み: ${caminho}`, {});
   },
   erro(erro: string): void {
-    logEngine.log('erro', `${ICONES_STATUS.falha} Erro ao gerar relatório: ${erro}`, {});
+    logEngine.log('erro', `${ICONES_STATUS.falha} Error generating レポート: ${erro}`, {});
   },
   repositorioImpecavel(): void {
     logEngine.log('info', LogMensagens.relatorio.repositorio_impecavel, {});
@@ -492,10 +492,10 @@ export const logRelatorio = {
 };
 
 /**
- * Sistema de logs para automação (via logEngine)
+ * Logging system for automation (via logEngine)
  */
 export const logAuto = {
-  // Mapa de reversão
+  // Reversal map
   mapaReversaoErroCarregar(erro: string): void {
     logEngine.log('erro', LogMensagens.sistema.auto.mapa_reversao.erro_carregar, {
       erro
@@ -554,7 +554,7 @@ export const logAuto = {
   mapaReversaoNenhumEncontrado(): void {
     logEngine.log('info', LogMensagens.sistema.auto.mapa_reversao.nenhum_encontrado, {});
   },
-  // Poda
+  // Pruning
   podaNenhumArquivo(): void {
     logEngine.log('info', LogMensagens.sistema.auto.poda.nenhum_arquivo, {});
   },
@@ -573,7 +573,7 @@ export const logAuto = {
       arquivo
     });
   },
-  // Corretor de estrutura
+  // Structure corrector
   corretorErroCriarDiretorio(destino: string, erro: string): void {
     logEngine.log('erro', LogMensagens.sistema.auto.corretor.erro_criar_diretorio, {
       destino,
@@ -592,7 +592,7 @@ export const logAuto = {
       erro
     });
   },
-  // Plugin específico
+  // Specific plugin
   pluginIgnorado(plugin: string, erro: string): void {
     logEngine.log('aviso', LogMensagens.auto.plugin_ignorado, {
       plugin,
@@ -618,7 +618,7 @@ export const logAuto = {
 };
 
 /**
- * Sistema de logs para Guardian (via logEngine)
+ * Logging system for Guardian (via logEngine)
  */
 export const logGuardian = {
   integridadeOk(): void {
@@ -647,7 +647,7 @@ export const logGuardian = {
   avisosEncontrados(): void {
     logEngine.log('aviso', LogMensagens.guardian.avisos_encontrados, {});
   },
-  // Comando Guardian específico
+  // Guardian command specific
   fullScanAviso(): void {
     logEngine.log('aviso', LogMensagens.guardian.full_scan_aviso, {});
   },
@@ -694,7 +694,7 @@ export const logGuardian = {
       erro
     });
   },
-  // Método genérico para outras mensagens Guardian
+  // Generic method for other Guardian messages
   info(mensagem: string): void {
     logEngine.log('info', `${ICONES_FEEDBACK.info} ${mensagem}`, {});
   },
@@ -704,7 +704,7 @@ export const logGuardian = {
 };
 
 /**
- * Conselheiro prometheusal para bem-estar do desenvolvedor
+ * Wise advisor for developer well-being
  */
 export const logConselheiro = {
   volumeAlto(): void {
@@ -724,7 +724,7 @@ export const logConselheiro = {
 };
 
 /**
- * Sistema de logs para Métricas
+ * Logging system for Metrics
  */
 export const logMetricas = {
   execucoesRegistradas(quantidade: number): void {
@@ -738,37 +738,37 @@ export const logMetricas = {
 };
 
 /**
- * Sistema de logs para Core (parsing, etc.)
+ * Logging system for Core (parsing, etc.)
  */
 export const logCore = {
   erroBabel(erro: string, arquivo?: string): void {
     logEngine.log('debug', LogMensagens.core.parsing.erro_babel, {
       erro,
-      arquivo: arquivo || 'desconhecido'
+      arquivo: arquivo || 'unknown'
     });
   },
   erroTs(erro: string, arquivo?: string): void {
     logEngine.log('debug', LogMensagens.core.parsing.erro_ts, {
       erro,
-      arquivo: arquivo || 'desconhecido'
+      arquivo: arquivo || 'unknown'
     });
   },
   erroCss(erro: string, arquivo?: string): void {
     logEngine.log('debug', LogMensagens.core.parsing.erro_css, {
       erro,
-      arquivo: arquivo || 'desconhecido'
+      arquivo: arquivo || 'unknown'
     });
   },
   erroXml(erro: string, arquivo?: string): void {
     logEngine.log('debug', LogMensagens.core.parsing.erro_xml, {
       erro,
-      arquivo: arquivo || 'desconhecido'
+      arquivo: arquivo || 'unknown'
     });
   },
   erroHtml(erro: string, arquivo?: string): void {
     logEngine.log('debug', LogMensagens.core.parsing.erro_html, {
       erro,
-      arquivo: arquivo || 'desconhecido'
+      arquivo: arquivo || 'unknown'
     });
   },
   nenhumParser(extensao: string): void {
