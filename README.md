@@ -5,7 +5,28 @@ Proveniência e Autoria: Este documento integra o projeto Prometheus (licença M
 
 # Prometheus
 
+[![CI](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/ci.yml) [![Build](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/build.yml) [![CodeQL](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/codeql.yml) [![perf-gate](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/perf-gate.yml/badge.svg?branch=main)](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/perf-gate.yml) ![version](https://img.shields.io/badge/version-0.4.2-blue) ![node](https://img.shields.io/badge/node-%3E%3D24.14.1-brightgreen) ![license](https://img.shields.io/badge/license-MIT--0-blue) [![issues](https://img.shields.io/github/issues/5-5-5-5-5-5-5/prometheus)](https://github.com/5-5-5-5-5-5-5/prometheus/issues)
+
 CLI modular para análise, diagnóstico e manutenção de projetos JavaScript/TypeScript com suporte heurístico adicional para HTML, CSS, XML, Python e PHP.
+
+## Sumário
+
+- [Visão Geral](#visão-geral)
+- [Instalação](#instalação)
+- [Fluxo Recomendado](#fluxo-recomendado)
+- [Configuração](#configuração)
+- [Documentação Completa](#documentação)
+- [Contribuir](#desenvolvimento)
+- [Issues / Checklist](#issues--checklist)
+
+## Arquivos Principais
+
+- [CHANGELOG.md](CHANGELOG.md)
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- [SECURITY.md](SECURITY.md)
+- [LICENSE](LICENSE)
+- [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt)
 
 ## Visão Geral
 

@@ -1,1 +1,0 @@
-Vou deixar esses scripts aqui que depois vou usar eles pra refinar o analista de python e sh

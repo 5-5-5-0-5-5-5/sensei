@@ -244,6 +244,8 @@ chore(deps): atualiza dependências para Node.js 25
 - [ ] Commits seguem conventional commits
 - [ ] Não há logs de debug ou código comentado
 
+- [ ] Consultou o checklist de issues (`docs/ISSUES-CHECKLIST.md`)
+
 ### Template de PR
 
 Use o template padrão do repositório e inclua:
