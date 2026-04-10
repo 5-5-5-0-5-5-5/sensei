@@ -32,7 +32,7 @@ async function getVersion(): Promise<string> {
     // Ao compilar, este arquivo vai para dist/bin; o package.json fica na raiz (subir dois níveis)
     const packageCaminho = join(__dirname, '..', '..', 'package.json');
     const raw = await lerArquivoTexto(packageCaminho);
-    const pkg = raw ? JSON.parse(raw) : {};
+    const pkg = raw ? JSON.parse(raw) : ({} as Record<string, unknown>);
     return pkg && (pkg as {
       version?: string;
     }).version || '0.0.0';
@@ -127,7 +127,7 @@ export async function mainCli(): Promise<void> {
         // Em dist/bin, o safe config está na raiz do pacote: subir dois níveis
         const safeCfgCaminho = join(__dirname, '..', '..', 'prometheus.config.safe.json');
         const raw = await lerArquivoTexto(safeCfgCaminho);
-        const safeCfg = raw ? JSON.parse(raw) : {};
+        const safeCfg = raw ? JSON.parse(raw) : ({} as Record<string, unknown>);
         const prod = safeCfg?.productionDefaults;
         if (prod && typeof prod === 'object') {
           for (const [k, v] of Object.entries(prod)) {

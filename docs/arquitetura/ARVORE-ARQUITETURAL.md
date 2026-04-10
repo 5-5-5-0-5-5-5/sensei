@@ -1,3 +1,8 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
 # Árvore Arquitetural - Prometheus 🏗️
 
 Estrutura completa de diretórios e componentes do Prometheus.
@@ -319,3 +324,4 @@ Veja também:
 - [Como Criar Analistas](../desenvolvimento/analistas/CRIAR-ANALISTA.md)
 - [Padrões de Desenvolvimento](../desenvolvimento/PADROES.md)
 - [Sistema de Plugins](../desenvolvimento/SISTEMA-PLUGINS.md)
+

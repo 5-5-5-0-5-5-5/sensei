@@ -1405,7 +1405,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
             });
             const relatorioResumo = {
               timestamp: new Date().toISOString(),
-              totalOcorrencias,
+              totalOcorrencias: ocorrenciasLimpas.length,
               baselineModificado: Boolean(guardianResultado && (guardianResultado as unknown as {
                 baselineModificado?: boolean;
               }).baselineModificado),
@@ -1424,7 +1424,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
             if (config.REPORT_EXPORT_FULL) {
               const relatorioFull = {
                 timestamp: new Date().toISOString(),
-                totalOcorrencias,
+                totalOcorrencias: ocorrenciasLimpas.length,
                 baselineModificado: Boolean(guardianResultado && (guardianResultado as unknown as {
                   baselineModificado?: boolean;
                 }).baselineModificado),

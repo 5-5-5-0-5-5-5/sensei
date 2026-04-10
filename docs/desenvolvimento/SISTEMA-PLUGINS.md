@@ -1,3 +1,8 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
 # Sistema de Plugins - Prometheus 🔌
 
 Guia completo sobre como funciona o sistema de plugins e registry do Prometheus.
@@ -576,3 +581,4 @@ analisar(arquivo: Arquivo, conteudo: string): ResultadoOcorrencia[] {
 - Visitor Pattern: https://en.wikipedia.org/wiki/Visitor_pattern
 - Registry Pattern: https://en.wikipedia.org/wiki/Registry_pattern
 - Plugin Architecture: https://en.wikipedia.org/wiki/Plug-in_(computing)
+

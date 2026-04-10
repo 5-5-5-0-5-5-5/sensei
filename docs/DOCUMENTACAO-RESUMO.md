@@ -1,3 +1,8 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
 # 📊 Resumo Executivo - Documentação Completa
 
 **Data**: 2026-02-15
@@ -371,3 +376,4 @@ Esta documentação foi criada com cuidado ("capricho") para refletir o projeto 
 **Última atualização**: 2026-02-15
 **Criador**: GitHub Copilot
 **Forma**: Documentação Completa do Prometheus
+

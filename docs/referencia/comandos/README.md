@@ -1,3 +1,8 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
 # Referência de Comandos - Prometheus 📖
 
 Guia completo e detalhado de todos os comandos disponíveis no Prometheus.
@@ -608,3 +613,4 @@ prometheus diagnosticar | less
 - [Exemplos de Uso](../exemplos/EXEMPLOS-USO.md)
 - [Documentação Completa](../INDICE.md)
 - [Criar Analista](../desenvolvimento/analistas/CRIAR-ANALISTA.md)
+

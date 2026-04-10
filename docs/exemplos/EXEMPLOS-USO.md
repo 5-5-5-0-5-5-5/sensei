@@ -1,3 +1,8 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
 # Exemplos de Uso - Prometheus 🚀
 
 Exemplos práticos e casos de uso reais do Prometheus.
@@ -479,3 +484,4 @@ prometheus guardian --comparar semana
 - 🏗️ [Arquitetura](./arquitetura/ARVORE-ARQUITETURAL.md)
 - 👨‍💻 [Criar Analista](./desenvolvimento/analistas/CRIAR-ANALISTA.md)
 - 🔧 [Referência de Comandos](./referencia/comandos/)
+

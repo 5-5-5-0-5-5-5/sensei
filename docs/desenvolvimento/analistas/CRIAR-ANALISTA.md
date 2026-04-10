@@ -1,3 +1,8 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
 # Como Criar Analistas no Prometheus 🔬
 
 Guia completo para desenvolvedores que desejam criar novos analistas para o Prometheus.
@@ -460,3 +465,4 @@ R: Sim, mas retorne `Promise<ResultadoAnalise>` apropriadamente.
 - [Padrões de Desenvolvimento](../PADROES.md)
 - [Sistema de Plugins](../SISTEMA-PLUGINS.md)
 - [Type Safety no Prometheus](../../arquitetura/TYPE-SAFETY.md)
+

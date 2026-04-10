@@ -1,3 +1,8 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
 # Estrutura de Código - Prometheus 🧬
 
 Guia detalhado da organização e estrutura do código do Prometheus.
@@ -653,3 +658,4 @@ Ver [Criar Analista](./desenvolvimento/analistas/CRIAR-ANALISTA.md) para detalhe
 - [Typescript Handbook](https://www.typescriptlang.org/docs/)
 - [Node.js API](https://nodejs.org/api/)
 - [Vitest](https://vitest.dev/)
+

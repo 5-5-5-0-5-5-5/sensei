@@ -1,3 +1,8 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
 # Roadmap - Prometheus 🗺️
 
 ## Versão Atual: 0.4.2
@@ -119,3 +124,4 @@ Tem uma ideia? Abra uma [issue no GitHub](https://github.com/5-5-5-5-5-5-5/prome
 3. Complexidade de implementação
 4. Demanda da comunidade
 5. Recursos disponíveis
+

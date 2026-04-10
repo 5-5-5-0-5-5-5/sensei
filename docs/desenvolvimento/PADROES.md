@@ -1,3 +1,8 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
 # Padrões de Desenvolvimento - Prometheus 📋
 
 Convenções e padrões utilizados no desenvolvimento do Prometheus.
@@ -520,3 +525,4 @@ Antes de submeter código:
 - [ESLint Rules](https://eslint.org/docs/rules/)
 - [Vitest Documentation](https://vitest.dev/)
 - [Node.js Best Practices](https://nodejs.org/en/docs/guides/)
+

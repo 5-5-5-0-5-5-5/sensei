@@ -13,13 +13,13 @@ import { criarOcorrencia, ocorrenciaErroAnalista } from '@';
 
 // Estatísticas globais (mantidas)
 export const estatisticasUsoGlobal: Estatisticas = {
-  requires: {},
-  consts: {},
-  exports: {},
-  vars: {},
-  lets: {},
-  evals: {},
-  withs: {}
+  requires: {} as Record<string, number>,
+  consts: {} as Record<string, number>,
+  exports: {} as Record<string, number>,
+  vars: {} as Record<string, number>,
+  lets: {} as Record<string, number>,
+  evals: {} as Record<string, number>,
+  withs: {} as Record<string, number>
 };
 export const analistaPadroesUso = {
   nome: 'analista-padroes-uso',

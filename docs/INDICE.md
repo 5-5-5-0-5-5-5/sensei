@@ -1,3 +1,8 @@
+---
+Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
+---
+
+
 # Índice Completo de Documentação - Prometheus 📚
 
 Mapa completo e navegação de toda a documentação do Prometheus.
@@ -317,3 +322,4 @@ Todos os tópicos principais documentados:
 **Questões técnicas?** → [Arquitetura](arquitetura/README.md)
 
 **Referência rápida?** → [Guia de Comandos](guias/GUIA-COMANDOS.md)
+
