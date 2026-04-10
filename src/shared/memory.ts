@@ -7,7 +7,7 @@ import type { MemoryMessage,PrometheusContextState, PrometheusRunRecord } from '
 import type { RunEndUpdate,RunStartInput } from '../types/shared/memory.js';
 
 // Re-exporta para compatibilidade com código existente
-export type { MemoryMessage,RunEndUpdate,RunStartInput, PrometheusContextState, PrometheusRunRecord };
+export type { MemoryMessage,PrometheusContextState, PrometheusRunRecord,RunEndUpdate,RunStartInput };
 export class ConversationMemory {
   private history: MemoryMessage[] = [];
   constructor(private maxHistory = 10, private persistCaminho?: string) {}

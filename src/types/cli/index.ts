@@ -15,8 +15,8 @@ export type {
   NivelLog,
   OpcoesProcessamentoFiltros,
   OtimizarSvgOptions,
-  ResultadoValidacao,
   PrometheusGlobalFlags,
+  ResultadoValidacao,
 } from './options.js';
 
 // Handlers

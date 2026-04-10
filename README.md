@@ -6,10 +6,13 @@ Proveniência e Autoria: Este documento integra o projeto Prometheus (licença M
 
 # ❤️‍🔥 Prometheus
 
-<div align="center">
+---
+
 <img src="svg/badge-analitico.svg"/>
 <img src="svg/badge-colaborador.svg"/>
 <img src="svg/badge-persistente.svg"/>
+
+---
 
 <img src="svg/badge-open-source.svg"/>
 <img src="svg/badge-security.svg"/>
@@ -22,13 +25,19 @@ Proveniência e Autoria: Este documento integra o projeto Prometheus (licença M
 [![CodeQL](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/codeql.yml)
 [![perf-gate](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/perf-gate.yml/badge.svg?branch=main)](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/perf-gate.yml)
 
-![version](https://img.shields.io/badge/version-0.5.0-brightblue?style=flat-square)
+---
+
+![version](https://img.shields.io/badge/version-0.4.2-brightblue?style=flat-square)
 ![node](https://img.shields.io/badge/node-%3E%3D24.14.1-brightgreen?style=flat-square)
-![license](https://img.shields.io/badge/license-MIT--0-blue?style=flat-square)
+![license](https://img.shields.io/badge/license-MIT--0-red?style=flat-square)
 [![issues](https://img.shields.io/github/issues/5-5-5-5-5-5-5/prometheus?style=flat-square)](https://github.com/5-5-5-5-5-5-5/prometheus/issues)
-![TypeScript](https://img.shields.io/badge/typescript-%3E%3D5.0-informational?style=flat-square)
+![TypeScript](https://img.shields.io/badge/typescript-%3E%3D6.0.2-informational?style=flat-square)
 
 </div>
+
+---
+
+<div align="center">
 
 CLI modular para **análise, diagnóstico e manutenção** de projetos JavaScript/TypeScript com suporte extensível para HTML, CSS, XML, Python, PHP e mais.
 
@@ -717,8 +726,6 @@ O Prometheus é mantido em altos padrões de qualidade:
 - ✅ Performance benchmarked
 - ✅ Segurança auditada
 
-Veja CI/CD em: [![CI](https://github.com/5-5-5-5-5-5-5/prometheus/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/5-5-5-5-5-5-5/prometheus/actions)
-
 ---
 
 ## 📄 Licença & Atribuição
@@ -735,6 +742,6 @@ Dependências de terceiros listadas em [THIRD-PARTY-NOTICES.txt](./THIRD-PARTY-N
 
 <div align="center">
 
-**Made with ❤️ by the Prometheus Community**
+**Feito com ❤️‍🩹 para os iniciantes**
 
 [⬆ Topo](#prometheus)

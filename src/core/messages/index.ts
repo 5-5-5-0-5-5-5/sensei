@@ -21,14 +21,13 @@
  *   messages.ExcecoesMensagens
  */
 
-import { getLocale, setLocale, t, initLocale } from './i18n.js';
-
-export { getLocale, setLocale, t, initLocale };
-
-import * as ptMessages from './pt/index.js';
 import * as enMessages from './en/index.js';
-import * as zhMessages from './zh/index.js';
+import { getLocale, initLocale,setLocale, t } from './i18n.js';
 import * as jaMessages from './ja/index.js';
+import * as ptMessages from './pt/index.js';
+import * as zhMessages from './zh/index.js';
+
+export { getLocale, initLocale,setLocale, t };
 
 const localeModules: Record<string, any> = {
   pt: ptMessages,
