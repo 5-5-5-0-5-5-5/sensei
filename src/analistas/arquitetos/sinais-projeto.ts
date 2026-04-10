@@ -4,7 +4,7 @@ import type { ClassDeclaration, ImportDeclaration, Program, Statement, TSEnumDec
 
 import type { FileEntryWithAst, PackageJson, SinaisProjetoAvancados } from '@';
 
-export function extrairSinaisAvancados(fileEntries: FileEntryWithAst[], packageJson?: PackageJson): SinaisProjetoAvancados {
+export function extrairSinaisProjeto(fileEntries: FileEntryWithAst[], packageJson?: PackageJson): SinaisProjetoAvancados {
   // Auxiliar para checar se o nó possui id.name string
   const hasIdNome = (node: unknown): node is {
     id: {
@@ -84,3 +84,4 @@ export function extrairSinaisAvancados(fileEntries: FileEntryWithAst[], packageJ
   sinais.tipos = Array.from(new Set(sinais.tipos));
   return sinais;
 }
+export const extrairSinais = extrairSinaisProjeto;

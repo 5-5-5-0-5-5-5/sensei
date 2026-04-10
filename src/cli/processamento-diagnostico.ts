@@ -6,7 +6,7 @@ import { detectarArquetipos } from '@analistas/detectores/detector-arquetipos.js
 import { normalizarOcorrenciaParaJson } from '@cli/diagnostico/normalizar-ocorrencias-json.js';
 import { exibirBlocoFiltros, listarAnalistas } from '@cli/processing/display.js';
 import { configurarFiltros, expandIncludes, processPatternGroups, processPatternListAchatado } from '@cli/processing/filters.js';
-import chalk from '@core/config/chalk-safe.js';
+import { chalk } from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { isInsideConfigDirectory, isInsideTestsDirectory } from '@core/config/conventions.js';
 import { isInsideSrc } from '@core/config/paths.js';
@@ -16,7 +16,7 @@ import { aplicarSupressaoOcorrencias } from '@core/parsing/filters.js';
 import { scanSystemIntegrity } from '@guardian/sentinela.js';
 import { emitirConselhoPrometheus } from '@relatorios/conselheiro-prometheus.js';
 import { gerarRelatorioMarkdown } from '@relatorios/gerador-relatorio.js';
-import fragmentarRelatorio from '@shared/data-processing/fragmentar-relatorio.js';
+import { fragmentarRelatorio } from '@shared/data-processing/fragmentar-relatorio.js';
 import { stringifyJsonEscaped } from '@shared/data-processing/json.js';
 import { dedupeOcorrencias } from '@shared/data-processing/ocorrencias.js';
 

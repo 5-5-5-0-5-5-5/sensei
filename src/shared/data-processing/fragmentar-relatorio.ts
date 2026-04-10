@@ -176,4 +176,3 @@ export async function fragmentarRelatorio(relatorioFull: RelatorioCompleto, dir:
     manifest
   };
 }
-export default fragmentarRelatorio;

@@ -1,3 +1,3 @@
-export { registrarComandos } from './comandos.js';
-export { optionsDiagnosticar } from './options-diagnosticar.js';
-export { processarDiagnostico } from './processamento-diagnostico.js';
+export * from './comandos.js';
+export * from './options-diagnosticar.js';
+export * from './processamento-diagnostico.js';

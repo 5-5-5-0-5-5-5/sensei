@@ -42,7 +42,6 @@ export const AGRESSIVA_AUTO_CORRECAO_CONFIGURACAO: AutoFixConfig = {
 
 // Backwards compat constant name used elsewhere in the codebase
 export const AUTO_CORRECAO_CONFIGURACAO_PADROES = PADRAO_AUTO_CORRECAO_CONFIGURACAO;
-export default AUTO_CORRECAO_CONFIGURACAO_PADROES;
 export function shouldExcludeFile(fileCaminho: string, config: AutoFixConfig): boolean {
   if (!config || !config.excludePadroes) return false;
   return config.excludePadroes.some(pattern => {

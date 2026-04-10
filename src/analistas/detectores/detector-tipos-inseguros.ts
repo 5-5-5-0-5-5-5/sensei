@@ -334,4 +334,4 @@ const ANALISTA: Analista = {
     return ocorrencias;
   }
 };
-export default ANALISTA;
+export const detectorTiposInseguros = ANALISTA;

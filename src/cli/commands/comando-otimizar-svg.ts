@@ -4,7 +4,7 @@ import path from 'node:path';
 
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import { processPatternList } from '@cli/helpers/pattern-helpers.js';
-import chalk from '@core/config/chalk-safe.js';
+import { chalk } from '@core/config/chalk-safe.js';
 import { scanRepository } from '@core/execution/scanner.js';
 import { getMessages } from '@core/messages/index.js';
 import {

@@ -24,3 +24,4 @@ export const CliExportersMessages = {
     exportFailed: (modoPrefixo: string, erroMensagem: string) => `Failed to export ${modoPrefixo}restructuring reports: ${erroMensagem}`
   }
 } as const;
+export const CliExportersMensagens = CliExportersMessages;

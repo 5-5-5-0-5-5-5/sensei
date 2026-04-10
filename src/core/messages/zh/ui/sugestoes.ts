@@ -308,5 +308,3 @@ export const SUGESTOES = {
   metricas: SUGESTOES_METRICAS,
   zelador: SUGESTOES_ZELADOR,
 } as const;
-
-export default SUGESTOES;

@@ -403,4 +403,3 @@ export const analistaTailwind = criarAnalista({
     return msgs.length ? msgs : null;
   }
 });
-export default analistaTailwind;

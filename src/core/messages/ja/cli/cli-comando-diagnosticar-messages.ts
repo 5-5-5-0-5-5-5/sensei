@@ -27,3 +27,4 @@ export const CliComandoDiagnosticarMessages = {
   spinnerConcluido: 'Diagnosis completed.',
   spinnerFalhou: 'Diagnosis failed.'
 } as const;
+export const CliComandoDiagnosticarMensagens = CliComandoDiagnosticarMessages;

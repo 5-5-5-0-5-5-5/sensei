@@ -3,4 +3,4 @@
  * Guardian Messages
  */
 
-export { VigiaOcultaMensagens } from './vigia-oculta-messages.js';
+export * from './vigia-oculta-messages.js';

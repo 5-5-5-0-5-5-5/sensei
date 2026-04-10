@@ -5,7 +5,7 @@ import { parse } from '@babel/parser';
 import traverseModule from '@babel/traverse';
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import { getFilesWithExtension, getSourceFiles } from '@cli/helpers/get-files-src.js';
-import chalk from '@core/config/chalk-safe.js';
+import { chalk } from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { getMessages } from '@core/messages/index.js';
 import { Command } from 'commander';

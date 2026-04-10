@@ -128,4 +128,3 @@ export const analistaXml = criarAnalista({
     return msgs.length ? msgs : null;
   }
 });
-export default analistaXml;

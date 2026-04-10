@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import analistaTiposInseguros from '@analistas/detectores/detector-tipos-inseguros.js';
+import { detectorTiposInseguros as analistaTiposInseguros } from '@analistas/detectores/detector-tipos-inseguros.js';
 
 describe('analistaTiposInseguros', () => {
   it('seleciona apenas arquivos TypeScript', () => {

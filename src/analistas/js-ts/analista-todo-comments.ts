@@ -55,4 +55,3 @@ export const analistaTodoComentarios: Analista = {
     }));
   }
 };
-export default analistaTodoComentarios;

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { extrairSinaisAvancados } from '@analistas/arquitetos/sinais-projeto.js';
+import { extrairSinaisProjeto } from '@analistas/arquitetos/sinais-projeto.js';
 
 describe('sinais-projeto', () => {
   it('extrai sinais agregados a partir de file entries e package json', () => {
@@ -56,7 +56,7 @@ describe('sinais-projeto', () => {
       },
     ] as never;
 
-    const sinais = extrairSinaisAvancados(fileEntries, {
+    const sinais = extrairSinaisProjeto(fileEntries, {
       dependencies: { react: '^19.0.0', express: '^5.0.0' },
       scripts: { dev: 'vite', build: 'tsc' },
     } as never);
@@ -83,7 +83,7 @@ describe('sinais-projeto', () => {
   });
 
   it('normaliza duplicidades e tolera ast ausente', () => {
-    const sinais = extrairSinaisAvancados(
+    const sinais = extrairSinaisProjeto(
       [
         {
           relPath: 'src/api/main.js',

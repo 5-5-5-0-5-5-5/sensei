@@ -10,3 +10,4 @@ export const CliComandoMetricasMessages = {
   topAnalystLine: (nome: string, total: string, media: string, execucoes: number, ocorrencias: number) => `  • ${nome} total=${total} avg=${media} exec=${execucoes} occ=${ocorrencias}`,
   averages: (mediaAnalise: string, mediaParsing: string) => `\nAverages: 分析=${mediaAnalise} parsing=${mediaParsing}`
 } as const;
+export const CliComandoMetricasMensagens = CliComandoMetricasMessages;

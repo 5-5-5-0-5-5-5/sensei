@@ -182,4 +182,3 @@ export const analistaReactHooks = criarAnalista({
     return msgs.length ? msgs : null;
   }
 });
-export default analistaReactHooks;

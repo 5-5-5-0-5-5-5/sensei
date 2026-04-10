@@ -15,7 +15,7 @@ export * from './detector-tipos-inseguros.js';
 export * from './detector-vazamentos-memoria.js';
 
 // Default export para compatibilidade
-const detectores = {
+export const detectores = {
   detectorDependencias: (): null => null,
   detectorEstrutura: (): null => null,
   analyserArquitetura: (): null => null,
@@ -32,5 +32,3 @@ const detectores = {
   detectorFantasmas: (): null => null,
   detectorArquetipos: (): null => null,
 };
-
-export default detectores;

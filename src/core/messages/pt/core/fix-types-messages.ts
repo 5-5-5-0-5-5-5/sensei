@@ -35,7 +35,7 @@ export const CATEGORIAS_TIPOS = {
 /**
  * Mensagens de início/header do comando
  */
-export const MENSAGENS_INICIO = {
+const MENSAGENS_INICIO = {
   titulo: `${ICONES_COMANDO.fixTypes} Iniciando análise de tipos inseguros...`,
   analisando: (target: string) => `${ICONES_ARQUIVO.diretorio} Analisando: ${target}`,
   confianciaMin: (min: number) => `${ICONES_DIAGNOSTICO.stats} Confiança mínima: ${min}%`,
@@ -45,7 +45,7 @@ export const MENSAGENS_INICIO = {
 /**
  * Mensagens de progresso/status
  */
-export const MENSAGENS_PROGRESSO = {
+const MENSAGENS_PROGRESSO = {
   processandoArquivos: (count: number) => `${ICONES_ARQUIVO.diretorio} Processando ${count} arquivos...`,
   arquivoAtual: (arquivo: string, count: number) => `${ICONES_ARQUIVO.arquivo} ${arquivo}: ${count} ocorrência${count !== 1 ? 's' : ''}`
 } as const;
@@ -85,7 +85,7 @@ export const ACOES_SUGERIDAS = {
 /**
  * Mensagens de erro/aviso
  */
-export const MENSAGENS_ERRO = {
+const MENSAGENS_ERRO = {
   correcaoNaoImplementada: 'Correção automática completa ainda não implementada',
   sistemaDesenvolvimento: `${ICONES_FEEDBACK.foguete} Sistema de correção automática avançada em desenvolvimento`,
   requisitoAnalise: 'Requer análise de AST e inferência de tipos para ser seguro',
@@ -167,7 +167,7 @@ export const TEMPLATE_RESUMO_FINAL = {
 /**
  * Emojis e ícones usados no comando
  */
-export const ICONES = {
+const ICONES = {
   inicio: ICONES_COMANDO.fixTypes,
   aplicando: '[>]',
   analise: '[>]',
@@ -183,6 +183,11 @@ export const ICONES = {
   setinha: '└─',
   ...CATEGORIAS_TIPOS
 } as const;
+export const ICONES_FIX_TYPES = ICONES;
+export const MENSAGENS_ERRO_FIX_TYPES = MENSAGENS_ERRO;
+export const MENSAGENS_INICIO_FIX_TYPES = MENSAGENS_INICIO;
+export const MENSAGENS_PROGRESSO_FIX_TYPES = MENSAGENS_PROGRESSO;
+export const MENSAGENS_SUCESSO_FIX_TYPES = MENSAGENS_SUCESSO;
 
 /**
  * Formata mensagem de tipo inseguro com ícone e contador

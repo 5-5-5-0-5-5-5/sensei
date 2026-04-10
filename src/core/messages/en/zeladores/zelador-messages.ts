@@ -13,7 +13,7 @@ import { ICONES_ACAO, ICONES_STATUS, ICONES_ZELADOR as ICONES_ZELADOR_CENTRAL } 
 /**
  * Icons and emojis used by caretakers
  */
-export const ICONES_ZELADOR = {
+const ICONES_ZELADOR = {
   ...ICONES_ZELADOR_CENTRAL
 } as const;
 

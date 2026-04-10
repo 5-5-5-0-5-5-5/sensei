@@ -6,3 +6,4 @@ export const CliComandoGuardianMessages = {
   diffHowToAcceptChanges: 'Run `prometheus guardian --accept-baseline` to accept these changes.',
   baselineCreatedHowToAccept: 'Run `prometheus guardian --accept-baseline` to accept it or `prometheus diagnosticar` again.'
 } as const;
+export const CliComandoGuardianMensagens = CliComandoGuardianMessages;

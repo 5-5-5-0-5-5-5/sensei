@@ -7,22 +7,22 @@
  */
 
 // Comandos principais
-export { comandoAnalistas } from './comando-analistas.js';
-export { comandoAtualizar } from './comando-atualizar.js';
-export { comandoDiagnosticar } from './comando-diagnosticar.js';
-export { criarComandoFixTypes } from './comando-fix-types.js';
-export { comandoFormatar } from './comando-formatar.js';
-export { comandoGuardian } from './comando-guardian.js';
-export { comandoLicencas } from './comando-licensas.js';
-export { comandoMetricas } from './comando-metricas.js';
-export { comandoOtimizarSvg } from './comando-otimizar-svg.js';
-export { comandoPerf } from './comando-perf.js';
-export { comandoPodar } from './comando-podar.js';
-export { comandoReestruturar } from './comando-reestruturar.js';
+export * from './comando-analistas.js';
+export * from './comando-atualizar.js';
+export * from './comando-diagnosticar.js';
+export * from './comando-fix-types.js';
+export * from './comando-formatar.js';
+export * from './comando-guardian.js';
+export * from './comando-licensas.js';
+export * from './comando-metricas.js';
+export * from './comando-otimizar-svg.js';
+export * from './comando-perf.js';
+export * from './comando-podar.js';
+export * from './comando-reestruturar.js';
 
 // Comando de reversão (diferente padrão de export)
-export { registrarComandoReverter } from './comando-reverter.js';
+export * from './comando-reverter.js';
 
 // Comandos de manutenção de nomes
-export { comandoNames } from './comando-names.js';
-export { comandoRename } from './comando-rename.js';
+export * from './comando-names.js';
+export * from './comando-rename.js';

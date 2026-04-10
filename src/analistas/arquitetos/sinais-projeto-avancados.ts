@@ -199,3 +199,4 @@ export function extrairSinaisAvancados(fileEntries: FileEntryWithAst[], packageJ
   sinais.tipos = Array.from(new Set(sinais.tipos));
   return sinais;
 }
+export const scoreArquetipoAvancado = scoreArquetipo;

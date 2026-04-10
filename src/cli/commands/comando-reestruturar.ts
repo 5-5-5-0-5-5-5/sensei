@@ -7,7 +7,7 @@ import { exportarRelatoriosReestruturacao } from '@cli/handlers/reestruturacao-e
 import { exibirMolduraConflitos, exibirMolduraPlano } from '@cli/helpers/exibir-moldura.js';
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import { parsearCategorias } from '@cli/helpers/flags-helpers.js';
-import chalk from '@core/config/chalk-safe.js';
+import { chalk } from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { executarInquisicao, prepararComAst } from '@core/execution/inquisidor.js';
 import { CABECALHOS, messages } from '@core/messages/index.js';

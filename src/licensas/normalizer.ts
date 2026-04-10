@@ -133,4 +133,3 @@ export async function normalizeLicense(raw: unknown): Promise<string> {
     return JSON.stringify(ast);
   }
 }
-export default normalizeLicense;

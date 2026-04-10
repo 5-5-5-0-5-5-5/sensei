@@ -164,4 +164,3 @@ export async function generateNotices({
     packages: entries.length
   };
 }
-export default generateNotices;

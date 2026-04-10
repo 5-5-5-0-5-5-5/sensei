@@ -3,4 +3,4 @@
  * Licenses Messages
  */
 
-export { LicensasMensagens } from './licensas-messages.js';
+export * from './licensas-messages.js';

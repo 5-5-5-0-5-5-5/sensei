@@ -15,3 +15,4 @@ export const CliComandoAnalistasMessages = {
   titleWithIcon: (iconeInfo: string) => `${iconeInfo} Registered analysts:`,
   total: (n: number) => `\nTotal: ${n}`
 } as const;
+export const CliComandoAnalistasMensagens = CliComandoAnalistasMessages;

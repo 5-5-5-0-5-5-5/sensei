@@ -55,5 +55,3 @@ export const analistaCorrecaoAutomatica: Analista = {
     return ocorrencias;
   },
 };
-
-export default analistaCorrecaoAutomatica;

@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { registrarComandos } from '@cli/comandos.js';
 import { comandoPerf } from '@cli/commands/index.js';
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
-import chalk from '@core/config/chalk-safe.js';
+import { chalk } from '@core/config/chalk-safe.js';
 import { aplicarConfigParcial, config, inicializarConfigDinamica } from '@core/config/config.js';
 import { getMessages, ICONES_NIVEL } from '@core/messages/index.js';
 import type { ConversationMemory } from '@shared/memory.js';

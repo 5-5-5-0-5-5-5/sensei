@@ -171,4 +171,3 @@ export const analistaPython = criarAnalista({
     return msgs.length ? msgs : null;
   }
 });
-export default analistaPython;

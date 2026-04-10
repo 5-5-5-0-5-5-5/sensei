@@ -75,4 +75,3 @@ export const analistaSvg = criarAnalista({
     return ocorrencias.length ? ocorrencias : null;
   }
 });
-export default analistaSvg;

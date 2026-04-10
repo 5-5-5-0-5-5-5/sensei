@@ -128,5 +128,3 @@ export const analistaAntiPadroesAsync: Analista = {
     }));
   }
 };
-
-export default analistaAntiPadroesAsync;

@@ -146,4 +146,3 @@ export const MENSAGENS_CORRECOES = {
   plugins: MENSAGENS_PLUGINS,
   executor: MENSAGENS_EXECUTOR
 } as const;
-export default MENSAGENS_CORRECOES;

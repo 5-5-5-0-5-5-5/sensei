@@ -86,4 +86,3 @@ const resolvedUnknown: unknown =
  * Em ambientes sem chalk nativo, fornece fallback de identidade (sem cores).
  */
 export const chalk: ChalkLike = makeChalkLike(getSourceFns(resolvedUnknown));
-export default chalk;

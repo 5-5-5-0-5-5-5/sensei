@@ -5,7 +5,7 @@ import { registroAnalistas } from '@analistas/registry/registry.js';
 import { exportarRelatoriosPoda } from '@cli/handlers/poda-exporter.js';
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
 import { expandIncludePatterns, processPatternList } from '@cli/helpers/pattern-helpers.js';
-import chalk from '@core/config/chalk-safe.js';
+import { chalk } from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { iniciarInquisicao } from '@core/execution/inquisidor.js';
 import { messages } from '@core/messages/index.js';

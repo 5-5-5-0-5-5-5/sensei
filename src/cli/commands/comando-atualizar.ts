@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 import { registroAnalistas } from '@analistas/registry/registry.js';
 import { ExitCode, sair } from '@cli/helpers/exit-codes.js';
-import chalk from '@core/config/chalk-safe.js';
+import { chalk } from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { iniciarInquisicao } from '@core/execution/inquisidor.js';
 import { getMessages } from '@core/messages/index.js';

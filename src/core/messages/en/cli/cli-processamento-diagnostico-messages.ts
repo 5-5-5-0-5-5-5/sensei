@@ -88,3 +88,4 @@ export const CliProcessamentoDiagnosticoMessages = {
   falhaExportarRelatorios: (errMsg: string) => `Failed to export reports: ${errMsg}`,
   erroFatalDiagnostico: (errMsg: string) => `Fatal error during diagnosis: ${errMsg}`
 } as const;
+export const CliProcessamentoDiagnosticoMensagens = CliProcessamentoDiagnosticoMessages;

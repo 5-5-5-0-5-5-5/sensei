@@ -101,7 +101,7 @@ export function comandoDiagnosticar(aplicarFlagsGlobais: (opts: Record<string, u
     if (!opts.json && isVerbose) {
       try {
         const {
-          default: chalk
+          chalk
         } = await import('@core/config/chalk-safe.js');
         const {
           config

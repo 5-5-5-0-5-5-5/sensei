@@ -399,5 +399,4 @@ export class CorePlugin implements ParserPlugin {
 }
 
 // Instância singleton do plugin core
-const corePlugin = new CorePlugin();
-export default corePlugin;
+export const corePlugin = new CorePlugin();

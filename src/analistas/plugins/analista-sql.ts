@@ -115,5 +115,3 @@ export const analistaSql = criarAnalista({
   },
   global: false
 });
-
-export default analistaSql;

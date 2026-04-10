@@ -10,3 +10,4 @@ export const CliComandoPodarMessages = {
   confirmRemoval: 'Are you sure you want to remove these files? (y/N) ',
   errorDuringPruning: (erroMensagem: string) => `[ERROR] エラー during pruning: ${erroMensagem}`
 } as const;
+export const CliComandoPodarMensagens = CliComandoPodarMessages;

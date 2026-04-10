@@ -391,4 +391,3 @@ export const analistaReact = criarAnalista({
     return merged.length ? merged : null;
   }
 });
-export default analistaReact;

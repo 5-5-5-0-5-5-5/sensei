@@ -216,6 +216,7 @@ const ANALISTA: Analista = {
     return ocorrencias;
   }
 };
+export const detectorInterfacesInline = ANALISTA;
 
 /**
  * Analisa uma interface inline e determina se deve ser extraída
@@ -499,5 +500,3 @@ function extractTypeDefinition(afterEquals: string): string | null {
   }
   return null;
 }
-
-export default ANALISTA;

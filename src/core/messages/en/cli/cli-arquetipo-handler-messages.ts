@@ -8,3 +8,4 @@ export const CliArquetipoHandlerMessages = {
   devErrorPrefix: '[Archetype Handler] Error:',
   saveFailure: (mensagem: string) => `Failed to save archetype: ${mensagem}`
 } as const;
+export const CliArquetipoHandlerMensagens = CliArquetipoHandlerMessages;

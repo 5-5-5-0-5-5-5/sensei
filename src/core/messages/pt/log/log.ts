@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 import type tty from 'node:tty';
 
-import chalk from '@core/config/chalk-safe.js';
+import { chalk } from '@core/config/chalk-safe.js';
 import { config } from '@core/config/config.js';
 import { isJsonMode } from '@shared/helpers/json-mode.js';
 

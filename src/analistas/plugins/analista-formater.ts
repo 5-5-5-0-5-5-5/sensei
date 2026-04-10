@@ -51,4 +51,3 @@ export const analistaFormatador = criarAnalista({
     return [msg(messages.FormatadorMensagens.naoFormatado(res.parser, detalhes || undefined), relPath, messages.SeverityNiveis.warning, linha)];
   }
 });
-export default analistaFormatador;

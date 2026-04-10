@@ -123,7 +123,7 @@ export interface GlobalComVitest {
 /**
  * Pendência processável (estende Pendencia base)
  */
-export interface PendenciaProcessavel {
+interface PendenciaProcessavel {
   arquivo: string;
   motivo: string;
   detectedAt: number;
@@ -152,7 +152,7 @@ export interface ConfigPlugin {
 /**
  * Item de movimentação de plano
  */
-export interface PlanoMoverItem {
+interface PlanoMoverItem {
   de: string;
   para: string;
   motivo?: string;
@@ -161,7 +161,7 @@ export interface PlanoMoverItem {
 /**
  * Plano de sugestão estrutural
  */
-export interface PlanoSugestaoEstrutura {
+interface PlanoSugestaoEstrutura {
   mover: PlanoMoverItem[];
   conflitos?: Array<{ alvo: string; motivo: string }>;
   resumo?: {
@@ -206,7 +206,7 @@ export interface EntradaMapaReversao {
 /**
  * Contexto de relatório
  */
-export interface ContextoRelatorio {
+interface ContextoRelatorio {
   total: number;
   processados: number;
   erros: number;
@@ -260,7 +260,7 @@ export function isGlobalComVitest(obj: unknown): obj is GlobalComVitest {
   return typeof obj === 'object' && obj !== null && 'vi' in obj;
 }
 
-export function isPendenciaProcessavel(
+function isPendenciaProcessavel(
   obj: unknown,
 ): obj is PendenciaProcessavel {
   return (

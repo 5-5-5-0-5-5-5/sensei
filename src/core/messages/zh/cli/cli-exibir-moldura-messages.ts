@@ -15,3 +15,4 @@ export const CliExibirMolduraMessages = {
   conflictsFallbackLine: (alvo: string, motivo: string) => `  - ${alvo} :: ${motivo}`,
   conflictsFallbackOverflow: (restantes: number) => `  ... +${restantes} remaining`
 } as const;
+export const CliExibirMolduraMensagens = CliExibirMolduraMessages;

@@ -26,22 +26,22 @@
  */
 
 // Analistas de linguagem/framework
-export { analistaCss } from './analista-css.js';
-export { analistaCssInJs } from './analista-css-in-js.js';
-export { analistaFormatador } from './analista-formater.js';
-export { analistaHtml } from './analista-html.js';
-export { analistaPython } from './analista-python.js';
-export { analistaReact } from './analista-react.js';
-export { analistaReactHooks } from './analista-react-hooks.js';
-export { analistaShell } from './analista-shell.js';
-export { analistaSql } from './analista-sql.js';
-export { analistaSvg } from './analista-svg.js';
-export { analistaTailwind } from './analista-tailwind.js';
-export { analistaXml } from './analista-xml.js';
+export * from './analista-css.js';
+export * from './analista-css-in-js.js';
+export * from './analista-formater.js';
+export * from './analista-html.js';
+export * from './analista-python.js';
+export * from './analista-react.js';
+export * from './analista-react-hooks.js';
+export * from './analista-shell.js';
+export * from './analista-sql.js';
+export * from './analista-svg.js';
+export * from './analista-tailwind.js';
+export * from './analista-xml.js';
 
 // Detectores especializados
-export { analistaDocumentacao } from './detector-documentacao.js';
-export { detectorMarkdown } from './detector-markdown.js';
-export { detectarArquetipoNode } from './detector-node.js';
-export { analistaQualidadeTestes } from './detector-qualidade-testes.js';
-export { detectarArquetipoXML } from './detector-xml.js';
+export * from './detector-documentacao.js';
+export * from './detector-markdown.js';
+export * from './detector-node.js';
+export * from './detector-qualidade-testes.js';
+export * from './detector-xml.js';

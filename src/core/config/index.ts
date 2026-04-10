@@ -14,6 +14,4 @@ export * from './paths.js';
 export * from './seguranca.js';
 export * from './traverse.js';
 
-const configDefault = { config, chalk };
-
-export default configDefault;
+export const configDefault = { config, chalk };

@@ -116,5 +116,3 @@ export const analistaVazamentoMemoria: Analista = {
     }));
   }
 };
-
-export default analistaVazamentoMemoria;

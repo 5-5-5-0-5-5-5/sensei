@@ -443,4 +443,3 @@ export const analistaCss = criarAnalista({
     return fallback.length ? fallback : null;
   }
 });
-export default analistaCss;

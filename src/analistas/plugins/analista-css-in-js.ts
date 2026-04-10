@@ -116,4 +116,3 @@ export const analistaCssInJs = criarAnalista({
     return ocorrencias.length ? ocorrencias : null;
   }
 });
-export default analistaCssInJs;

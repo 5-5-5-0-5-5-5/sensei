@@ -420,4 +420,3 @@ export const analistaHtml = criarAnalista({
     return msgs.length ? msgs : null;
   }
 });
-export default analistaHtml;

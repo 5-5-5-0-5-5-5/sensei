@@ -128,5 +128,3 @@ export const analistaShell = criarAnalista({
   },
   global: false
 });
-
-export default analistaShell;

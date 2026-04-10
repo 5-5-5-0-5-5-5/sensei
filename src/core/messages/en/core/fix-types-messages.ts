@@ -35,7 +35,7 @@ export const CATEGORIAS_TIPOS = {
 /**
  * Start/header messages for the command
  */
-export const MENSAGENS_INICIO = {
+const MENSAGENS_INICIO = {
   titulo: `${ICONES_COMANDO.fixTypes} Starting unsafe type analysis...`,
   analisando: (target: string) => `${ICONES_ARQUIVO.diretorio} Analyzing: ${target}`,
   confianciaMin: (min: number) => `${ICONES_DIAGNOSTICO.stats} Minimum confidence: ${min}%`,
@@ -45,7 +45,7 @@ export const MENSAGENS_INICIO = {
 /**
  * Progress/status messages
  */
-export const MENSAGENS_PROGRESSO = {
+const MENSAGENS_PROGRESSO = {
   processandoArquivos: (count: number) => `${ICONES_ARQUIVO.diretorio} Processing ${count} files...`,
   arquivoAtual: (arquivo: string, count: number) => `${ICONES_ARQUIVO.arquivo} ${arquivo}: ${count} occurrence${count !== 1 ? 's' : ''}`
 } as const;
@@ -85,7 +85,7 @@ export const ACOES_SUGERIDAS = {
 /**
  * Error/warning messages
  */
-export const MENSAGENS_ERRO = {
+const MENSAGENS_ERRO = {
   correcaoNaoImplementada: 'Complete automatic fix not yet implemented',
   sistemaDesenvolvimento: `${ICONES_FEEDBACK.foguete} Advanced automatic fix system under development`,
   requisitoAnalise: 'Requires AST analysis and type inference to be safe',
@@ -167,7 +167,7 @@ export const TEMPLATE_RESUMO_FINAL = {
 /**
  * Emojis and icons used in the command
  */
-export const ICONES = {
+const ICONES = {
   inicio: ICONES_COMANDO.fixTypes,
   aplicando: '[>]',
   analise: '[>]',
@@ -183,6 +183,11 @@ export const ICONES = {
   setinha: '└─',
   ...CATEGORIAS_TIPOS
 } as const;
+export const ICONES_FIX_TYPES = ICONES;
+export const MENSAGENS_ERRO_FIX_TYPES = MENSAGENS_ERRO;
+export const MENSAGENS_INICIO_FIX_TYPES = MENSAGENS_INICIO;
+export const MENSAGENS_PROGRESSO_FIX_TYPES = MENSAGENS_PROGRESSO;
+export const MENSAGENS_SUCESSO_FIX_TYPES = MENSAGENS_SUCESSO;
 
 /**
  * Formats an unsafe type message with icon and counter

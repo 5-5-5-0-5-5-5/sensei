@@ -12,7 +12,7 @@ import type { ModoOperacao } from '@';
 /**
  * Ícones do diagnóstico
  */
-export const ICONES_DIAGNOSTICO = {
+const ICONES_DIAGNOSTICO = {
   inicio: '[SCAN]',
   progresso: '[...]',
   arquivos: '[DIR]',

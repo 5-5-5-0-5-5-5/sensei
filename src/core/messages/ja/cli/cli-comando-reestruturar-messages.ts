@@ -25,3 +25,4 @@ export const CliComandoReestruturarMessages = {
   reestruturacaoConcluida: (qtd: number, frase: string) => `Restructuring completed: ${qtd} ${frase}.`,
   falhaReestruturacao: 'Restructuring failed.'
 } as const;
+export const CliComandoReestruturarMensagens = CliComandoReestruturarMessages;
