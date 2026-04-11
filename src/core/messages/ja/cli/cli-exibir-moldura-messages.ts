@@ -1,18 +1,17 @@
 // SPDX-License-Identifier: MIT
 
-export const CliExibirMolduraMessages = {
-  fallbackLine: (linha: string) => `  ${linha}`,
-  planTitle: 'Restructuring plan',
-  planHeaderLine1: 'From                              → To',
-  planHeaderLine2: '----------------------------------  ---------------------------------------',
-  planOverflow: (restantes: number) => `... +${restantes} remaining`,
-  planFallbackLine: (de: string, para: string) => `  - ${de} → ${para}`,
-  planFallbackOverflow: (restantes: number) => `  ... +${restantes} remaining`,
-  conflictsTitle: 'Destination conflicts',
-  conflictsHeaderLine1: 'Destination                       Reason',
-  conflictsHeaderLine2: '-------------------------------   ------------------------------',
-  conflictsOverflow: (restantes: number) => `... +${restantes} remaining`,
-  conflictsFallbackLine: (alvo: string, motivo: string) => `  - ${alvo} :: ${motivo}`,
-  conflictsFallbackOverflow: (restantes: number) => `  ... +${restantes} remaining`
+export const CliExibirMolduraMensagens = {
+  fallbackLinha: (linha: string) => `  ${linha}`,
+  planoTitulo: '再構築プラン',
+  planoCabecalhoLinha1: '从                                → 至',
+  planoCabecalhoLinha2: '----------------------------------  ---------------------------------------',
+  planoOverflow: (restantes: number) => `... 残り+${restantes}件`,
+  planoFallbackLinha: (de: string, para: string) => `  - ${de} → ${para}`,
+  planoFallbackOverflow: (restantes: number) => `  ... 残り+${restantes}件`,
+  conflitosTitulo: '宛先の競合',
+  conflitosCabecalhoLinha1: '宛先                             理由',
+  conflitosCabecalhoLinha2: '-------------------------------   ------------------------------',
+  conflitosOverflow: (restantes: number) => `... 残り+${restantes}件`,
+  conflitosFallbackLinha: (alvo: string, motivo: string) => `  - ${alvo} :: ${motivo}`,
+  conflitosFallbackOverflow: (restantes: number) => `  ... 残り+${restantes}件`
 } as const;
-export const CliExibirMolduraMensagens = CliExibirMolduraMessages;

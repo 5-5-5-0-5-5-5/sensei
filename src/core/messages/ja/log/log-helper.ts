@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 // @prometheus-disable tipo-literal-inline-complexo
-// Justification: inline types for logging system
+// 正当化: ロギングシステム用のインライン型
 /**
- * Unified log helper system
- * Consolidation of log-helpers.ts and log-helpers-inteligente.ts
- * Removes duplication and centralizes logic via log-engine
+ * 統合ログヘルパーシステム
+ * log-helpers.tsとlog-helpers-inteligente.tsの統合
+ * 重複を排除し、logEngine経由でロジックを集中化
  */
 
 import { config } from '@core/config/config.js';
@@ -14,31 +14,31 @@ import { logEngine } from './log-engine.js';
 import { LogMensagens } from './log-messages.js';
 
 /**
- * Logging system for analysts with unified spam control
+ * アナリスト用統一スパム制御ロギングシステム
  */
 export const logAnalistas = {
   ultimoProgressoGlobal: 0,
   contadorArquivos: 0,
   totalArquivos: 0,
   ultimoEmitMs: 0,
-  /** Initializes analysis batch */
+  /** 分析バッチを初期化 */
   iniciarBatch(totalArquivos: number): void {
     this.totalArquivos = totalArquivos;
     this.contadorArquivos = 0;
     this.ultimoProgressoGlobal = 0;
     this.ultimoEmitMs = 0;
 
-    // Uses logEngine for consistent formatting only in complex/verbose mode
+    // 複雑/冗長モードのみ一貫したフォーマットでlogEngineを使用
     if (logEngine.contexto === 'complexo' || config.VERBOSE) {
       logEngine.log('info', LogMensagens.analistas.execucao.inicio_detalhado, {
         totalArquivos: totalArquivos.toString()
       });
     }
-    // In simple mode, do not emit redundant message (progress already shows it)
+    // 簡易モードでは冗長なメッセージを出力しない（進行状況がすでに表示）
   },
-  /** Analyst start log (now only registers) */
+  /** アナリスト開始ログ（現在は登録のみ） */
   iniciandoAnalista(nomeAnalista: string, arquivo: string, tamanho: number): void {
-    // 🔕 ANTI-SPAM: Only logs individual analysts in specific contexts
+    // 🔕 アンチスパム: 特定のコンテキストでのみ個別アナリストをログに記録
     const deveLogarIndividual = logEngine.contexto === 'complexo' || config.DEV_MODE || process.env.VERBOSE === 'true';
     if (deveLogarIndividual) {
       logEngine.log('debug', LogMensagens.analistas.execucao.inicio_detalhado, {
@@ -48,14 +48,14 @@ export const logAnalistas = {
       });
     }
   },
-  /** Increments counter when file is processed */
+  /** ファイル処理時にカウンターをインクリメント */
   arquivoProcessado(): void {
     this.contadorArquivos++;
     if (logEngine.contexto !== 'complexo' && !config.DEV_MODE) {
       this.logProgressoGrupado();
     }
   },
-  /** Analyst completion log */
+  /** アナリスト完了ログ */
   concluido(nomeAnalista: string, arquivo: string, ocorrencias: number, duracao: number): void {
     const deveLogarIndividual = logEngine.contexto === 'complexo' || config.DEV_MODE || process.env.VERBOSE === 'true';
     if (deveLogarIndividual) {
@@ -66,20 +66,20 @@ export const logAnalistas = {
       });
     }
   },
-  /** Smart and grouped progress log */
+  /** スマートかつグループ化された進行状況ログ */
   logProgressoGrupado(): void {
     const porcentagem = Math.round(this.contadorArquivos / this.totalArquivos * 100);
     const agora = Date.now();
 
-    // Adaptive density: 5% for small projects, 10% for large ones
+    // 適応密度: 小規模プロジェクトは5%、大規模プロジェクトは10%
     const passo = this.totalArquivos < 200 ? 5 : 10;
-    // Frequency limit: at most 2 updates per second
+    // 頻度制限: 1秒あたり最大2回の更新
     const minIntervalMs = 500;
 
-    // Updates progress at adaptive intervals with anti-spam
+    // アンチスパム付き適応間隔で進行状況を更新
     if (porcentagem - this.ultimoProgressoGlobal >= passo || this.contadorArquivos === this.totalArquivos) {
       if (agora - this.ultimoEmitMs >= minIntervalMs || this.contadorArquivos === this.totalArquivos) {
-        logEngine.log('info', `${ICONES_DIAGNOSTICO.progresso} Progress: {arquivosProcessados}/{totalArquivos} ({percentual}%)`, {
+        logEngine.log('info', `${ICONES_DIAGNOSTICO.progresso} 進行状況: {arquivosProcessados}/{totalArquivos} ({percentual}%)`, {
           arquivosProcessados: this.contadorArquivos.toString(),
           totalArquivos: this.totalArquivos.toString(),
           percentual: porcentagem.toString()
@@ -89,34 +89,34 @@ export const logAnalistas = {
       }
     }
   },
-  /** Finalizes analysis batch */
+  /** 分析バッチを完了 */
   finalizarBatch(totalOcorrencias: number, duracaoTotal: number): void {
     if (logEngine.contexto === 'simples') {
-      logEngine.log('info', `${ICONES_STATUS.ok} 分析 completed - {totalOcorrencias} problems found`, {
+      logEngine.log('info', `${ICONES_STATUS.ok} 分析が完了しました - {totalOcorrencias}件の問題が見つかりました`, {
         totalOcorrencias: totalOcorrencias.toString()
       });
     } else {
-      logEngine.log('info', `${ICONES_STATUS.ok} Checks completed - {totalOcorrencias} problems detected in {duracao}s`, {
+      logEngine.log('info', `${ICONES_STATUS.ok} チェックが完了しました - {duracao}秒で{totalOcorrencias}件の問題が検出されました`, {
         totalOcorrencias: totalOcorrencias.toString(),
         duracao: (duracaoTotal / 1000).toFixed(1)
       });
     }
   },
-  /** Timeout is always important - uses logEngine */
+  /** タイムアウトは常に重要 - logEngineを使用 */
   timeout(nomeAnalista: string, duracao: number): void {
     logEngine.log('aviso', LogMensagens.analistas.execucao.timeout, {
       analista: nomeAnalista,
       tempo: duracao.toString()
     });
   },
-  /** Errors are always important - uses logEngine */
+  /** エラーは常に重要 - logEngineを使用 */
   erro(nomeAnalista: string, erro: string): void {
     logEngine.log('erro', LogMensagens.analistas.execucao.erro, {
       analista: nomeAnalista,
       erro
     });
   },
-  /** Performance for complex projects */
+  /** 複雑なプロジェクトのパフォーマンス */
   performance(dados: {
     analistas: number;
     media: number;
@@ -132,7 +132,7 @@ export const logAnalistas = {
 };
 
 /**
- * Logging system for scanner (now via logEngine)
+ * スキャナー用ロギングシステム（現在はlogEngine経由）
  */
 export const logVarredor = {
   iniciarVarredura(diretorio: string): void {
@@ -168,7 +168,7 @@ export const logVarredor = {
 };
 
 /**
- * Logging system for the main system (via logEngine)
+ * メインシステム用ロギングシステム（logEngine経由）
  */
 export const logSistema = {
   inicializacao(): void {
@@ -185,7 +185,7 @@ export const logSistema = {
     const detalhesStr = detalhes ? ` - ${detalhes}` : '';
     logEngine.log('erro', `${ICONES_STATUS.falha} エラー: ${mensagem}${detalhesStr}`, {});
   },
-  // Auto fixes
+  // 自動修正
   autoFixNenhumaCorrecao(): void {
     logEngine.log('info', LogMensagens.sistema.correcoes.nenhuma_disponivel, {});
   },
@@ -239,7 +239,7 @@ export const logSistema = {
       erro
     });
   },
-  // Diagnostic processing
+  // 診断処理
   processamentoFixDetectada(): void {
     logEngine.log('info', LogMensagens.sistema.processamento.fix_detectada, {});
   },
@@ -312,7 +312,7 @@ export const logSistema = {
       quantidade: quantidade.toString()
     });
   },
-  // System update
+  // システムアップデート
   atualizacaoExecutando(comando: string): void {
     logEngine.log('info', LogMensagens.sistema.atualizacao.executando, {
       comando
@@ -329,7 +329,7 @@ export const logSistema = {
       detalhe
     });
   },
-  // Performance
+  // パフォーマンス
   performanceRegressaoDetectada(limite: number): void {
     logEngine.log('aviso', LogMensagens.sistema.performance.regressao_detectada, {
       limite: limite.toString()
@@ -338,14 +338,14 @@ export const logSistema = {
   performanceSemRegressoes(): void {
     logEngine.log('info', LogMensagens.sistema.performance.sem_regressoes, {});
   },
-  // Pruning
+  // プルーニング
   podaCancelada(): void {
     logEngine.log('info', LogMensagens.sistema.poda.cancelada, {});
   },
   podaConcluida(): void {
     logEngine.log('info', LogMensagens.sistema.poda.concluida, {});
   },
-  // Reversal
+  // 復元
   reversaoNenhumMove(arquivo: string): void {
     logEngine.log('erro', LogMensagens.sistema.reversao.nenhum_move, {
       arquivo
@@ -369,7 +369,7 @@ export const logSistema = {
 };
 
 /**
- * Logging system for filters (via logEngine)
+ * フィルター用ロギングシステム（logEngine経由）
  */
 export const logFiltros = {
   incluindo(pattern: string, matches: number): void {
@@ -399,7 +399,7 @@ export const logFiltros = {
 };
 
 /**
- * Logging system for project (via logEngine)
+ * プロジェクト用ロギングシステム（logEngine経由）
  */
 export const logProjeto = {
   detectado(tipo: string, confianca: number): void {
@@ -435,8 +435,8 @@ export const logProjeto = {
     throughput?: number;
   }): void {
     if (logEngine.contexto === 'complexo' || config.DEV_MODE) {
-      const throughput = dados.throughput ? ` (${dados.throughput.toFixed(1)} ファイル/s)` : '';
-      logEngine.log('info', `${ICONES_DIAGNOSTICO.stats} Performance: {analistas} analysts in {duracao}s{throughput}`, {
+      const throughput = dados.throughput ? ` (${dados.throughput.toFixed(1)} ファイル/秒)` : '';
+      logEngine.log('info', `${ICONES_DIAGNOSTICO.stats} パフォーマンス: {analistas}アナリストが{duracao}秒{throughput}`, {
         analistas: dados.analistas.toString(),
         duracao: (dados.duracao / 1000).toFixed(1),
         throughput
@@ -446,7 +446,7 @@ export const logProjeto = {
 };
 
 /**
- * Logging system for occurrences (via logEngine)
+ * 発生用ロギングシステム（logEngine経由）
  */
 export const logOcorrencias = {
   critica(mensagem: string, arquivo: string, linha?: number): void {
@@ -466,14 +466,14 @@ export const logOcorrencias = {
 };
 
 /**
- * Logging system for reports (via logEngine)
+ * レポート用ロギングシステム（logEngine経由）
  */
 export const logRelatorio = {
   gerado(caminho: string, formato: string): void {
-    logEngine.log('info', `${ICONES_ARQUIVO.arquivo} ${formato} report 生成済み: ${caminho}`, {});
+    logEngine.log('info', `${ICONES_ARQUIVO.arquivo} ${formato}レポートが生成されました: ${caminho}`, {});
   },
   erro(erro: string): void {
-    logEngine.log('erro', `${ICONES_STATUS.falha} Error generating レポート: ${erro}`, {});
+    logEngine.log('erro', `${ICONES_STATUS.falha} レポート生成エラー: ${erro}`, {});
   },
   repositorioImpecavel(): void {
     logEngine.log('info', LogMensagens.relatorio.repositorio_impecavel, {});
@@ -492,10 +492,10 @@ export const logRelatorio = {
 };
 
 /**
- * Logging system for automation (via logEngine)
+ * 自動化用ロギングシステム（logEngine経由）
  */
 export const logAuto = {
-  // Reversal map
+  // 復元マップ
   mapaReversaoErroCarregar(erro: string): void {
     logEngine.log('erro', LogMensagens.sistema.auto.mapa_reversao.erro_carregar, {
       erro
@@ -554,7 +554,7 @@ export const logAuto = {
   mapaReversaoNenhumEncontrado(): void {
     logEngine.log('info', LogMensagens.sistema.auto.mapa_reversao.nenhum_encontrado, {});
   },
-  // Pruning
+  // プルーニング
   podaNenhumArquivo(): void {
     logEngine.log('info', LogMensagens.sistema.auto.poda.nenhum_arquivo, {});
   },
@@ -573,7 +573,7 @@ export const logAuto = {
       arquivo
     });
   },
-  // Structure corrector
+  // 構造修正
   corretorErroCriarDiretorio(destino: string, erro: string): void {
     logEngine.log('erro', LogMensagens.sistema.auto.corretor.erro_criar_diretorio, {
       destino,
@@ -592,7 +592,7 @@ export const logAuto = {
       erro
     });
   },
-  // Specific plugin
+  // 固有プラグイン
   pluginIgnorado(plugin: string, erro: string): void {
     logEngine.log('aviso', LogMensagens.auto.plugin_ignorado, {
       plugin,
@@ -618,7 +618,7 @@ export const logAuto = {
 };
 
 /**
- * Logging system for Guardian (via logEngine)
+ * ガーディアン用ロギングシステム（logEngine経由）
  */
 export const logGuardian = {
   integridadeOk(): void {
@@ -647,7 +647,7 @@ export const logGuardian = {
   avisosEncontrados(): void {
     logEngine.log('aviso', LogMensagens.guardian.avisos_encontrados, {});
   },
-  // Guardian command specific
+  // ガーディアンコマンド固有
   fullScanAviso(): void {
     logEngine.log('aviso', LogMensagens.guardian.full_scan_aviso, {});
   },
@@ -694,7 +694,7 @@ export const logGuardian = {
       erro
     });
   },
-  // Generic method for other Guardian messages
+  // その他のガーディアンメッセージ用汎用メソッド
   info(mensagem: string): void {
     logEngine.log('info', `${ICONES_FEEDBACK.info} ${mensagem}`, {});
   },
@@ -704,7 +704,7 @@ export const logGuardian = {
 };
 
 /**
- * Wise advisor for developer well-being
+ * 開発者ウェルビーイングのための賢いアドバイザー
  */
 export const logConselheiro = {
   volumeAlto(): void {
@@ -724,7 +724,7 @@ export const logConselheiro = {
 };
 
 /**
- * Logging system for Metrics
+ * メトリクス用ロギングシステム
  */
 export const logMetricas = {
   execucoesRegistradas(quantidade: number): void {
@@ -738,7 +738,7 @@ export const logMetricas = {
 };
 
 /**
- * Logging system for Core (parsing, etc.)
+ * コア用ロギングシステム（解析など）
  */
 export const logCore = {
   erroBabel(erro: string, arquivo?: string): void {
@@ -792,7 +792,7 @@ export const logCore = {
       erro
     });
   },
-  // Plugins
+  // プラグイン
   erroCarregarPlugin(nome: string, erro: string): void {
     logEngine.log('debug', LogMensagens.core.plugins.erro_carregar, {
       nome,

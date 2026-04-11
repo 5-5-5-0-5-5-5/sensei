@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 
 export const CliOtimizarSvgExtraMensagens = {
-  titulo: 'OPTIMIZE SVG',
-  nenhumSvgAcimaLimiar: 'No SVG above the optimization threshold.',
+  titulo: 'SVG最適化',
+  nenhumSvgAcimaLimiar: '最適化の閾値を超えるSVGはありません。',
   arquivoOtimizado: '{arquivo} — {original} → {otimizado} (−{economia})',
   arquivoOtimizadoDry: '[dry] {arquivo} — {original} → {otimizado} (−{economia})',
-  candidatosSvg: 'Candidates: {candidatos} | Potential savings: {economiaTotal} | Total SVGs read: {total}',
-  otimizacaoAplicada: 'Optimization applied to {aplicados}/{candidatos} files.',
-  useWriteAplicar: 'Use --write to apply optimizations.',
-  falhaOtimizarSvg: 'Failed to optimize SVGs: {erro}',
+  candidatosSvg: '候補: {candidatos}件 | 削減可能な容量: {economiaTotal} | 読み込んだSVG合計: {total}',
+  otimizacaoAplicada: '{aplicados}/{candidatos}ファイルの最適化を適用しました。',
+  useWriteAplicar: '最適化を適用するには --write を使用してください。',
+  falhaOtimizarSvg: 'SVGの最適化に失敗しました: {erro}',
 } as const;

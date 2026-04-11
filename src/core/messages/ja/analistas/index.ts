@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 /**
- * Mensagens de Analistas e Detectores
+ * アナリストおよびデテクターメッセージ
  */
 
 export * from './analista-comandos-cli-messages.js';

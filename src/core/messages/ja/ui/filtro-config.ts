@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 /**
- * Centralized settings for the intelligent report filter
- * Defines priorities, groupings and problem categorization
+ * インテリジェントレポートフィルターの集中化設定
+ * 優先度、グループ化、問題のカテゴリ分けを定義
  */
 
 import type { AgrupamentoConfig, ConfigPrioridade, PrioridadeNivel } from '@';
@@ -12,267 +12,267 @@ import {
   ICONES_FEEDBACK,
 } from '../../shared/icons.js';
 
-// Re-exports types for compatibility
+// 互換性のための型を再エクスポート
 export type { AgrupamentoConfig, ConfigPrioridade, PrioridadeNivel };
 
-  /* -------------------------- PRIORITIES BY PROBLEM TYPE -------------------------- */
+  /* -------------------------- 問題タイプ別優先度 -------------------------- */
 
 export const PRIORIDADES: Record<string, ConfigPrioridade> = {
-  // Critical - Security and data
+  // 致命的 - セキュリティとデータ
   PROBLEMA_SEGURANCA: {
     prioridade: 'critica',
     icone: '[LOCK]',
-    descricao: 'Security vulnerability detected',
+    descricao: 'セキュリティ脆弱性が検出されました',
   },
   VULNERABILIDADE_SEGURANCA: {
     prioridade: 'critica',
     icone: '[ERRO]',
-    descricao: 'Critical security flaw',
+    descricao: '重大なセキュリティ欠陥',
   },
   CREDENCIAIS_EXPOSTAS: {
     prioridade: 'critica',
     icone: '[LOCK]',
-    descricao: 'Hardcoded or exposed credentials',
+    descricao: 'ハードコードされたまたは露出した認証情報',
   },
 
-  // High - Fragile code and bugs
+  // 高 - 脆弱なコードとバグ
   CODIGO_FRAGIL: {
     prioridade: 'alta',
     icone: '[AVISO]',
-    descricao: 'Code susceptible to failures',
+    descricao: '障害が発生しやすいコード',
   },
   'tipo-inseguro-any': {
     prioridade: 'alta',
     icone: '[HIGH]',
-    descricao: 'Use of any type that can be replaced',
+    descricao: '置き換え可能なany型の使用',
   },
   'tipo-inseguro-unknown': {
     prioridade: 'media',
     icone: '[WARN]',
-    descricao: 'Use of unknown type that can be made specific',
+    descricao: '固有型にできるunknown型の使用',
   },
   PROBLEMA_TESTE: {
     prioridade: 'alta',
     icone: '[TEST]',
-    descricao: 'Testing issues',
+    descricao: 'テストの問題',
   },
   'estrutura-suspeita': {
     prioridade: 'alta',
     icone: '[SCAN]',
-    descricao: 'Suspicious code structure',
+    descricao: '疑わしいコード構造',
   },
   COMPLEXIDADE_ALTA: {
     prioridade: 'alta',
     icone: '[STATS]',
-    descricao: 'High cyclomatic complexity',
+    descricao: '高い循環的複雑度',
   },
 
-  // Medium - Maintainability and patterns
+  // 中 - 保守性とパターン
   PROBLEMA_DOCUMENTACAO: {
     prioridade: 'media',
     icone: '[DOC]',
-    descricao: 'Missing or inadequate documentation',
+    descricao: 'ドキュメントが不足または不適切',
   },
   'padrao-ausente': {
     prioridade: 'media',
     icone: '[GOAL]',
-    descricao: 'Recommended pattern absent',
+    descricao: '推奨パターンが存在しない',
   },
   'estrutura-config': {
     prioridade: 'media',
     icone: '[CONFIG]',
-    descricao: 'Configuration issues',
+    descricao: '設定の問題',
   },
   'estrutura-entrypoints': {
     prioridade: 'media',
     icone: '[ENTRY]',
-    descricao: 'Poorly defined entrypoints',
+    descricao: 'エントリポイントが不明確',
   },
   ANALISE_ARQUITETURA: {
     prioridade: 'media',
     icone: '[BUILD]',
-    descricao: 'Architectural analysis',
+    descricao: 'アーキテクチャ分析',
   },
 
-  // Low - Informational and improvements
+  // 低 - 情報と改善
   CONSTRUCOES_SINTATICAS: {
     prioridade: 'baixa',
     icone: '[SYNTAX]',
-    descricao: 'Syntactic patterns detected',
+    descricao: '構文パターンが検出されました',
   },
   CARACTERISTICAS_ARQUITETURA: {
     prioridade: 'baixa',
     icone: '[ARCH]',
-    descricao: 'Architectural characteristics',
+    descricao: 'アーキテクチャ特性',
   },
   METRICAS_ARQUITETURA: {
     prioridade: 'baixa',
     icone: '[SIZE]',
-    descricao: 'Architectural metrics',
+    descricao: 'アーキテクチャメトリクス',
   },
   TODO_PENDENTE: {
     prioridade: 'baixa',
     icone: ICONES_FEEDBACK.dica,
-    descricao: 'TODOs and pending tasks',
+    descricao: 'TODOと保留中のタスク',
   },
   IDENTIFICACAO_PROJETO: {
     prioridade: 'baixa',
     icone: '[TAG]',
-    descricao: 'Project type identification',
+    descricao: 'プロジェクトタイプの識別',
   },
   SUGESTAO_MELHORIA: {
     prioridade: 'baixa',
     icone: '[DICA]',
-    descricao: 'Improvement suggestion',
+    descricao: '改善提案',
   },
   EVIDENCIA_CONTEXTO: {
     prioridade: 'baixa',
     icone: '[SCAN]',
-    descricao: 'Context evidence',
+    descricao: 'コンテキストの証拠',
   },
   TECNOLOGIAS_ALTERNATIVAS: {
     prioridade: 'baixa',
     icone: '[ALT]',
-    descricao: 'Alternative technologies suggested',
+    descricao: '代替技術が提案されました',
   },
 };
 
-  /* -------------------------- INTELLIGENT GROUPINGS BY MESSAGE PATTERN -------------------------- */
+  /* -------------------------- メッセージパターン別のインテリジェントグループ化 -------------------------- */
 
 export const AGRUPAMENTOS_MENSAGEM: AgrupamentoConfig[] = [
-  // Critical Security
+  // 致命的セキュリティ
   {
     padrao:
       /token hardcoded|senha hardcoded|chave hardcoded|api.*key.*hardcoded/i,
     categoria: 'SEGURANCA_HARDCODED',
-    titulo: 'Hardcoded Credentials Detected',
+    titulo: 'ハードコードされた認証情報が検出されました',
     prioridade: 'critica',
     icone: ICONES_ARQUIVO.lock,
-    acaoSugerida: 'Move credentials to environment variables (.env)',
+    acaoSugerida: '認証情報を環境変数（.env）に移動',
   },
   {
     padrao: /sql.*injection|xss|csrf|path.*traversal|command.*injection/i,
     categoria: 'VULNERABILIDADES_WEB',
-    titulo: 'Web Vulnerabilities Detected',
+    titulo: 'Web脆弱性が検出されました',
     prioridade: 'critica',
     icone: '[ERRO]',
-    acaoSugerida: 'Apply input sanitization and validation',
+    acaoSugerida: '入力サニタイゼーションと検証を適用',
   },
 
-  // Fragile Code (High)
+  // 脆弱なコード（高）
   {
     padrao: /tipo.*inseguro.*any|any.*inseguro|unsafe.*any/i,
     categoria: 'TIPOS_ANY_INSEGUROS',
-    titulo: 'Unsafe Any Types Detected',
+    titulo: '安全でないAny型が検出されました',
     prioridade: 'alta',
     icone: '[HIGH]',
     acaoSugerida:
-      'Replace any with specific types to improve type safety',
+      '型の安全性を向上させるために、anyを固有型に置き換えてください',
   },
   {
     padrao: /tipo.*inseguro.*unknown|unknown.*inseguro|unsafe.*unknown/i,
     categoria: 'TIPOS_UNKNOWN_GENERICOS',
-    titulo: 'Generic Unknown Types',
+    titulo: '汎用的なUnknown型',
     prioridade: 'media',
     icone: '[WARN]',
-    acaoSugerida: 'Add type guards or replace with specific types',
+    acaoSugerida: '型ガードを追加するか、固有型に置き換えてください',
   },
   {
     padrao: /missing-tests|missing tests|sem testes|no.*tests/i,
     categoria: 'TESTES_AUSENTES',
-    titulo: 'Files Without Tests',
+    titulo: 'テストのないファイル',
     prioridade: 'alta',
     icone: '[TEST]',
-    acaoSugerida: 'Implement unit tests to improve coverage',
+    acaoSugerida: 'カバレッジを向上させるために単体テストを実装',
   },
   {
     padrao: /complexidade.*alta|complex.*high|cyclomatic.*complexity/i,
     categoria: 'COMPLEXIDADE_ALTA',
-    titulo: 'Code with High Complexity',
+    titulo: '高複雑度のコード',
     prioridade: 'alta',
     icone: '[STATS]',
-    acaoSugerida: 'Refactor into smaller functions to improve readability',
+    acaoSugerida: '可読性を向上させるために小さな関数にリファクタリング',
   },
   {
     padrao: /acoplamento.*alto|coupling.*high|tight.*coupling/i,
     categoria: 'ACOPLAMENTO_ALTO',
-    titulo: 'High Coupling Between Modules',
+    titulo: 'モジュール間の高い結合',
     prioridade: 'alta',
     icone: '[LINK]',
-    acaoSugerida: 'Review dependencies and apply decoupling patterns',
+    acaoSugerida: '依存関係を見直し、結合解除パターンを適用',
   },
 
-  // Maintainability (Medium)
+  // 保守性（中）
   {
     padrao:
       /missing-jsdoc|missing documentation|sem documentação|no.*documentation/i,
     categoria: 'DOCUMENTACAO_AUSENTE',
-    titulo: 'Missing Documentation',
+    titulo: 'ドキュメントが不足',
     prioridade: 'media',
     icone: '[DOC]',
-    acaoSugerida: 'Add JSDoc/comments to improve maintainability',
+    acaoSugerida: '保守性を向上させるためにJSDoc/コメントを追加',
   },
   {
     padrao: /console\.log|console-log|debug.*statement/i,
     categoria: 'CONSOLE_LOGS',
-    titulo: 'Console.log in Production Code',
+    titulo: '本番コード内のConsole.log',
     prioridade: 'media',
     icone: '[LOG]',
-    acaoSugerida: 'Remove or replace with a proper logging system',
+    acaoSugerida: '適切なロギングシステムに削除または置換',
   },
   {
     padrao: /código.*duplicado|duplicate.*code|copy.*paste/i,
     categoria: 'DUPLICACAO_CODIGO',
-    titulo: 'Duplicated Code Detected',
+    titulo: '重複コードが検出されました',
     prioridade: 'media',
     icone: '[COPY]',
-    acaoSugerida: 'Extract into reusable functions/modules',
+    acaoSugerida: '再利用可能な関数/モジュールに抽出',
   },
   {
     padrao: /função.*longa|long.*function|function.*too.*large/i,
     categoria: 'FUNCOES_LONGAS',
-    titulo: 'Very Long Functions',
+    titulo: '非常に長い関数',
     prioridade: 'media',
     icone: '[SIZE]',
-    acaoSugerida: 'Split into smaller, more cohesive functions',
+    acaoSugerida: 'より凝集度の高い小さな関数に分割',
   },
 
-  // Low priority
+  // 低優先度
   {
     padrao: /todo|fixme|hack|workaround/i,
     categoria: 'TAREFAS_PENDENTES',
-    titulo: 'Pending Tasks in Code',
+    titulo: 'コード内の保留中のタスク',
     prioridade: 'baixa',
     icone: ICONES_FEEDBACK.dica,
-    acaoSugerida: 'Review and resolve pending TODOs/FIXMEs',
+    acaoSugerida: '保留中のTODO/FIXMEを確認して解決',
   },
   {
     padrao: /magic.*number|número.*mágico/i,
     categoria: 'NUMEROS_MAGICOS',
-    titulo: 'Magic Numbers in Code',
+    titulo: 'コード内のマジックナンバー',
     prioridade: 'baixa',
     icone: ICONES_DIAGNOSTICO.stats,
-    acaoSugerida: 'Replace with named constants',
+    acaoSugerida: '名前付き定数に置き換え',
   },
 ];
 
-  /* -------------------------- HELPERS -------------------------- */
+  /* -------------------------- ヘルパー -------------------------- */
 
 /**
- * Gets the priority of a problem type
+ * 問題タイプの優先度を取得
  */
 export function getPrioridade(tipo: string): ConfigPrioridade {
   return (
     PRIORIDADES[tipo] || {
       prioridade: 'baixa',
       icone: ICONES_ARQUIVO.arquivo,
-      descricao: 'Uncategorized problem',
+      descricao: 'カテゴリ未分類の問題',
     }
   );
 }
 
 /**
- * Finds grouping by message
+ * メッセージによるグループ化を検索
  */
 export function findAgrupamento(mensagem: string): AgrupamentoConfig | null {
   for (const grupo of AGRUPAMENTOS_MENSAGEM) {
@@ -284,7 +284,7 @@ export function findAgrupamento(mensagem: string): AgrupamentoConfig | null {
 }
 
 /**
- * Sorts problems by priority
+ * 問題を優先度順にソート
  */
 export function ordenarPorPrioridade<
   T extends { prioridade?: PrioridadeNivel },
@@ -304,7 +304,7 @@ export function ordenarPorPrioridade<
 }
 
 /**
- * Counts problems by priority
+ * 優先度別に問題をカウント
  */
 export function contarPorPrioridade<T extends { prioridade?: PrioridadeNivel }>(
   problemas: T[],

@@ -2,10 +2,9 @@
 
 import { ICONES_FEEDBACK } from '../../shared/icons.js';
 
-export const CliArquetipoHandlerMessages = {
-  timeoutDetection: `${ICONES_FEEDBACK.atencao} Archetype detection timed out`,
-  detectionError: (mensagem: string) => `エラー in archetype detection: ${mensagem}`,
-  devErrorPrefix: '[Archetype Handler] Error:',
-  saveFailure: (mensagem: string) => `Failed to save archetype: ${mensagem}`
+export const CliArquetipoHandlerMensagens = {
+  timeoutDeteccao: `${ICONES_FEEDBACK.atencao} アーキタイプの検出がタイムアウトしました`,
+  erroDeteccao: (mensagem: string) => `アーキタイプの検出中にエラーが発生しました: ${mensagem}`,
+  devErroPrefixo: '[アーキタイプハンドラー] エラー:',
+  falhaSalvar: (mensagem: string) => `アーキタイプの保存に失敗しました: ${mensagem}`
 } as const;
-export const CliArquetipoHandlerMensagens = CliArquetipoHandlerMessages;

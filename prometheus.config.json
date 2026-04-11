@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/prometheus/dist/types/core/config/config.schema.json",
-  "locale": "pt-br",
+  "locale": "zh",
   "verbose": true,
   "logLevel": "debug",
   "logEstruturado": true,

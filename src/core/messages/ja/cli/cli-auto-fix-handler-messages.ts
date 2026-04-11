@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 
 export const CliAutoFixHandlerMensagens = {
-  correcoesSugeridas: 'Suggested corrections: {correcoes} in {arquivos} file(s)',
-  modoConservador: 'conservative',
-  modoBalanceado: 'balanced',
-  modoAgressivo: 'aggressive',
+  correcoesSugeridas: '修正案: {arquivos}ファイル中{correcoes}件',
+  modoConservador: '保守的',
+  modoBalanceado: 'バランス型',
+  modoAgressivo: '攻撃的',
 } as const;

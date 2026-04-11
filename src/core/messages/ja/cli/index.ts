@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 /**
- * CLI Commands and Handlers Messages
+ * CLIコマンドおよびハンドラーのメッセージ
  */
 
 export * from './cli-arquetipo-handler-messages.js';

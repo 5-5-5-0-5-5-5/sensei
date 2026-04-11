@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 /**
- * Shared Messages: Plugin Registry, Plugin Core
+ * 共有メッセージ: プラグインレジストリ、プラグインコア
  */
 
 export * from './plugin-core-messages.js';

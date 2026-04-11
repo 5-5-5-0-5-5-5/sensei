@@ -1,6 +1,6 @@
 export const PluginCoreMensagens = {
-  phpParse: '🐘 PHP pseudo-parse: {classes} classes, {funcoes} functions',
-  phpErro: '⚠️ Error parsing PHP: {erro}',
-  pythonParse: '🐍 Python pseudo-parse: {classes} classes, {funcoes} functions',
-  pythonErro: '⚠️ Error parsing Python: {erro}',
+  phpParse: '🐘 PHP疑似解析: {classes}クラス、{funcoes}関数',
+  phpErro: '⚠️ PHP解析エラー: {erro}',
+  pythonParse: '🐍 Python疑似解析: {classes}クラス、{funcoes}関数',
+  pythonErro: '⚠️ Python解析エラー: {erro}',
 } as const;

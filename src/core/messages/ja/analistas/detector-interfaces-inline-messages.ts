@@ -1,16 +1,17 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * @fileoverview Diagnostic messages for the inline interfaces detector.
- * Provides text templates to suggest extracting inline types and interfaces
- * to dedicated type files, as well as detecting duplicated types.
+ * @fileoverview インラインインターフェース検出器向けの診断メッセージ。
+ * インライン型およびインターフェースを専用の型ファイルへ
+ * 抽出することを提案するためのテキストテンプレートと、
+ * 重複型の検出機能を提供します。
  */
 
 import type { TipoDuplicadoArgs } from '../../../../types/analistas/detectores.js';
 
 export const DetectorInterfacesInlineMensagens = {
-  moverTipoParaTipos: (nomeTipo: string, tiposDir = 'src/tipos') => `Move type '${nomeTipo}' to ${tiposDir.endsWith('/') ? tiposDir : `${tiposDir}/`}`,
-  interfaceExportadaParaTipos: (nomeInterface: string, tiposDir = 'src/tipos') => `エクスポートed interface '${nomeInterface}' should be in ${tiposDir.endsWith('/') ? tiposDir : `${tiposDir}/`}`,
-  interfaceComplexaParaTipos: (nomeInterface: string, tiposDir = 'src/tipos') => `Complex interface '${nomeInterface}' should be に移動 ${tiposDir.endsWith('/') ? tiposDir : `${tiposDir}/`}`,
-  tipoDuplicado: (args: TipoDuplicadoArgs) => `Type {${args.propriedades.join(', ')}...} duplicated ${args.totalOcorrencias}x ${args.contextoDesc} - extract as '${args.nomesSugeridos}Type'`
+  moverTipoParaTipos: (nomeTipo: string, tiposDir = 'src/tipos') => `型 '${nomeTipo}' を ${tiposDir.endsWith('/') ? tiposDir : `${tiposDir}/`} に移動してください`,
+  interfaceExportadaParaTipos: (nomeInterface: string, tiposDir = 'src/tipos') => `エクスポートされたインターフェース '${nomeInterface}' は ${tiposDir.endsWith('/') ? tiposDir : `${tiposDir}/`} に配置する必要があります`,
+  interfaceComplexaParaTipos: (nomeInterface: string, tiposDir = 'src/tipos') => `複雑なインターフェース '${nomeInterface}' は ${tiposDir.endsWith('/') ? tiposDir : `${tiposDir}/`} に移動する必要があります`,
+  tipoDuplicado: (args: TipoDuplicadoArgs) => `型 {${args.propriedades.join(', ')}...} が${args.totalOcorrencias}回重複 ${args.contextoDesc} - '${args.nomesSugeridos}Type'として抽出してください`
 } as const;

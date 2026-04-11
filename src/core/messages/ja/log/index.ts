@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 /**
- * Logging System
+ * ロギングシステム
  */
 
 export * from './log.js';

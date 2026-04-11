@@ -2,12 +2,11 @@
 
 import { ICONES_COMANDO } from '../../shared/icons.js';
 
-export const CliComandoPodarMessages = {
-  start: `\n${ICONES_COMANDO.podar} Starting pruning process...\n`,
-  noDebris: (iconeSucesso: string) => `${iconeSucesso} No debris detected. Clean repository!`,
-  orphansDetected: (qtd: number) => `\n${qtd} orphan files detected:`,
-  orphanFileLine: (arquivo: string) => `- ${arquivo}`,
-  confirmRemoval: 'Are you sure you want to remove these files? (y/N) ',
-  errorDuringPruning: (erroMensagem: string) => `[ERROR] エラー during pruning: ${erroMensagem}`
+export const CliComandoPodarMensagens = {
+  inicio: `\n${ICONES_COMANDO.podar} 整理プロセスを開始します...\n`,
+  nenhumaSujeira: (iconeSucesso: string) => `${iconeSucesso} ゴミは検出されませんでした。リポジトリはクリーンです！`,
+  orfaosDetectados: (qtd: number) => `\n${qtd}個の孤立ファイルが検出されました:`,
+  linhaArquivoOrfao: (arquivo: string) => `- ${arquivo}`,
+  confirmarRemocao: 'これらのファイルを削除してもよろしいですか？ (y/N) ',
+  erroDurantePoda: (erroMensagem: string) => `[エラー] 整理中にエラーが発生しました: ${erroMensagem}`
 } as const;
-export const CliComandoPodarMensagens = CliComandoPodarMessages;

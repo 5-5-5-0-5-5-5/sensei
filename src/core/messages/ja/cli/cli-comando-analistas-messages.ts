@@ -1,18 +1,17 @@
 // SPDX-License-Identifier: MIT
 
-export const CliComandoAnalistasMessages = {
-  fastModeTitle: '\n?? Registered analysts (FAST MODE):\n',
-  fastModeTotalZero: '\nTotal: 0',
-  docMdTitle: 'CABECALHOS.analistas.mdTitulo',
-  docGeneratedAt: (iso: string) => `生成済み at: ${iso}`,
-  docTableHeader: '| Name | Category | Description | Limits |',
-  docTableSeparator: '| ---- | --------- | --------- | ------- |',
-  docAnalystLine: (nome: string, categoria: string, descricao: string, limitesStr: string) => `| ${nome} | ${categoria} | ${descricao} | ${limitesStr} |`,
-  docGenerated: (destinoDoc: string) => `?? Analyst documentation 生成済み at ${destinoDoc}`,
-  jsonExported: (destino: string) => `?? エクスポートed analysts JSON to ${destino}`,
-  title: '\n?? Registered analysts:\n',
-  analystLine: (nome: string, categoria: string, descricao?: string) => `- ${nome} (${categoria}) ${descricao ? `: ${descricao}` : ''}`,
-  titleWithIcon: (iconeInfo: string) => `${iconeInfo} Registered analysts:`,
-  total: (n: number) => `\nTotal: ${n}`
+export const CliComandoAnalistasMensagens = {
+  fastModeTitulo: '\n👤 登録済みアナリスト（高速モード）:\n',
+  fastModeTotalZero: '\n合計: 0',
+  docMdTitulo: 'CABECALHOS.analistas.mdTitulo',
+  docGeradoEm: (iso: string) => `生成日: ${iso}`,
+  docTabelaHeader: '| 名前 | カテゴリ | 説明 | 制限 |',
+  docTabelaSeparador: '| ---- | --------- | --------- | ------- |',
+  docLinhaAnalista: (nome: string, categoria: string, descricao: string, limitesStr: string) => `| ${nome} | ${categoria} | ${descricao} | ${limitesStr} |`,
+  docGerada: (destinoDoc: string) => `✅ アナリストドキュメントが ${destinoDoc} に生成されました`,
+  jsonExportado: (destino: string) => `📦 アナリストJSONを ${destino} にエクスポートしました`,
+  titulo: '\n👤 登録済みアナリスト:\n',
+  linhaAnalista: (nome: string, categoria: string, descricao?: string) => `- ${nome} (${categoria}) ${descricao ? `: ${descricao}` : ''}`,
+  tituloComIcone: (iconeInfo: string) => `${iconeInfo} 登録済みアナリスト:`,
+  total: (n: number) => `\n合計: ${n}`
 } as const;
-export const CliComandoAnalistasMensagens = CliComandoAnalistasMessages;

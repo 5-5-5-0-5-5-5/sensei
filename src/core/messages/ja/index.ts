@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 /**
- * Messages in English
+ * 日本語メッセージ
  */
 
 export * from './analistas/index.js';

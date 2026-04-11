@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 
 /**
- * @fileoverview Diagnostic messages for the project structure detector.
- * Provides text templates to detect monorepos, fullstack structures,
- * backend/frontend signals, multiple entrypoints, configuration files,
- * and directory naming conventions.
+ * @fileoverview プロジェクト構造検出器向けの診断メッセージ。
+ * モノレポ、フルスタック構造、
+ * バックエンド/フロントエンドの兆候、複数のエントリポイント、設定ファイル、
+ * ディレクトリ命名規則を検出するためのテキストテンプレートを提供します。
  */
 
 type EntrypointsAgrupadosArgs = {
@@ -12,20 +12,20 @@ type EntrypointsAgrupadosArgs = {
   sufixoOcultos?: string;
 };
 export const DetectorEstruturaMensagens = {
-  monorepoDetectado: 'Monorepo structure detected.',
-  monorepoSemPackages: 'Monorepo without packages/ folder.',
-  fullstackDetectado: 'Fullstack structure detected.',
-  pagesSemApi: 'Project has pages/ but does not have api/.',
-  estruturaMista: 'Project has both src/ and packages/ (monorepo) at the same time. Review the organization.',
-  muitosArquivosRaiz: 'Too many files at the project root. Consider organizing into folders.',
-  sinaisBackend: 'Backend signals detected (controllers/, prisma/, api/).',
-  sinaisFrontend: 'Frontend signals detected (components/, pages/).',
-  projetoGrandeSemSrc: 'Large project without src/ folder. Consider organizing the source code.',
-  arquivosConfigDetectados: (detectados: string[]) => `Configuration files detected: ${detectados.join(', ')}`,
+  monorepoDetectado: 'モノレポ構造が検出されました。',
+  monorepoSemPackages: 'packages/フォルダのないモノレポ。',
+  fullstackDetectado: 'フルスタック構造が検出されました。',
+  pagesSemApi: 'プロジェクトにpages/はありますがapi/がありません。',
+  estruturaMista: 'プロジェクトにsrc/とpackages/（モノレポ）の両方が同時に存在します。整理を検討してください。',
+  muitosArquivosRaiz: 'プロジェクトルートにファイルが多すぎます。フォルダへの整理を検討してください。',
+  sinaisBackend: 'バックエンドの兆候が検出されました（controllers/、prisma/、api/）。',
+  sinaisFrontend: 'フロントエンドの兆候が検出されました（components/、pages/）。',
+  projetoGrandeSemSrc: 'src/フォルダのない大規模プロジェクト。ソースコードの整理を検討してください。',
+  arquivosConfigDetectados: (detectados: string[]) => `設定ファイルが検出されました: ${detectados.join(', ')}`,
   multiplosEntrypointsAgrupados: ({
     previewGrupos,
     sufixoOcultos
-  }: EntrypointsAgrupadosArgs) => sufixoOcultos && sufixoOcultos.length > 0 ? `Project has multiple entrypoints (grouped by directory): ${previewGrupos} … (${sufixoOcultos} hidden)` : `Project has multiple entrypoints (grouped by directory): ${previewGrupos}`,
-  multiplosEntrypointsLista: (preview: string[], resto: number) => resto > 0 ? `Project has multiple entrypoints: ${preview.join(', ')} … (+${resto} hidden)` : `Project has multiple entrypoints: ${preview.join(', ')}`,
-  nomeDiretorioNaoConforme: (atual: string, esperado: string) => `Directory '${atual}' does not follow the naming convention. Expected name: '${esperado}'.`
+  }: EntrypointsAgrupadosArgs) => sufixoOcultos && sufixoOcultos.length > 0 ? `プロジェクトには複数のエントリポイントがあります（ディレクトリ別にグループ化）: ${previewGrupos} … (${sufixoOcultos}件を非表示)` : `プロジェクトには複数のエントリポイントがあります（ディレクトリ別にグループ化）: ${previewGrupos}`,
+  multiplosEntrypointsLista: (preview: string[], resto: number) => resto > 0 ? `プロジェクトには複数のエントリポイントがあります: ${preview.join(', ')} … (他+${resto}件を非表示)` : `プロジェクトには複数のエントリポイントがあります: ${preview.join(', ')}`,
+  nomeDiretorioNaoConforme: (atual: string, esperado: string) => `ディレクトリ '${atual}' は命名規則に従っていません。期待される名前: '${esperado}'。`
 } as const;
