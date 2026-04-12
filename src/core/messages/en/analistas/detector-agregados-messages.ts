@@ -3,7 +3,7 @@
 /**
  * @fileoverview Diagnostic messages for the aggregated findings detector.
  * Provides summarized text templates for security, performance, documentation,
- * duplication, and test quality issues, with pagination support for results.
+ * and duplication issues, with pagination support for results.
  */
 
 type ErroUnknown = unknown;
@@ -18,7 +18,5 @@ export const DetectorAgregadosMensagens = {
   problemasDocumentacaoResumo: (prioridade: string, resumo: string, total: number) => `Documentation issues (${prioridade}): ${resumo}${total > 3 ? ` (+${total - 3} more)` : ''}`,
   erroAnalisarDocumentacao: (erro: ErroUnknown) => `Error analyzing documentation: ${erroToMessage(erro)}`,
   duplicacoesResumo: (tipo: string, resumo: string, total: number) => `${tipo} duplications: ${resumo}${total > 3 ? ` (+${total - 3} more)` : ''}`,
-  erroAnalisarDuplicacoes: (erro: ErroUnknown) => `Error analyzing duplications: ${erroToMessage(erro)}`,
-  problemasTesteResumo: (severidade: string, resumo: string, total: number) => `Test issues (${severidade}): ${resumo}${total > 3 ? ` (+${total - 3} more)` : ''}`,
-  erroAnalisarQualidadeTestes: (erro: ErroUnknown) => `Error analyzing test quality: ${erroToMessage(erro)}`
+  erroAnalisarDuplicacoes: (erro: ErroUnknown) => `Error analyzing duplications: ${erroToMessage(erro)}`
 } as const;

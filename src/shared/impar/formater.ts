@@ -598,9 +598,9 @@ function formatarCodeMinimo(code: string, opts: {
     relPath: opts.relPath,
     protectedLines
   }) : {
-    code: semEspacosFinais,
-    changed: false
-  };
+      code: semEspacosFinais,
+      changed: false
+    };
   const {
     code: semBlanks,
     changed: changedBlanks
@@ -661,16 +661,197 @@ function formatarMarkdownMinimo(code: string): FormatadorMinimoResult {
     changed: changedHeadings
   } = assegurarLinhaVaziaAposTitulosMarkdown(markdownCorrigido);
   const {
+    code: comListasFormatadas,
+    changed: changedListas
+  } = formatarListasMarkdown(comEspacoTitulos);
+  const {
+    code: comTabelasFormatadas,
+    changed: changedTabelas
+  } = formatarTabelasMarkdown(comListasFormatadas);
+  const {
     code: semBlanks,
     changed: changedBlanks
-  } = limitarLinhasEmBrancoMarkdown(comEspacoTitulos, 2);
+  } = limitarLinhasEmBrancoMarkdown(comTabelasFormatadas, 2);
   const formatted = normalizarNewlinesFinais(semBlanks);
   return {
     ok: true,
     parser: 'markdown',
     formatted,
     changed: formatted !== normalizarNewlinesFinais(normalized),
-    reason: changedFences || changedInline || changedHeadings || changedBlanks ? 'estilo-prometheus-markdown' : 'normalizacao-basica'
+    reason: changedFences || changedInline || changedHeadings || changedListas || changedTabelas || changedBlanks ? 'estilo-prometheus-markdown' : 'normalizacao-basica'
+  };
+}
+
+function formatarListasMarkdown(code: string): {
+  code: string;
+  changed: boolean;
+} {
+  const lines = normalizarFimDeLinha(code).split('\n');
+  const out: string[] = [];
+  let changed = false;
+  let inFence = false;
+  let fenceChar: '`' | '~' | null = null;
+  let fenceLen = 0;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i] ?? '';
+    const fence = matchMarkdownFence(line);
+
+    if (!inFence && fence) {
+      inFence = true;
+      fenceChar = fence.ch;
+      fenceLen = fence.len;
+      out.push(line);
+      continue;
+    }
+    if (inFence && fence && isMarkdownFenceCloser(fence, fenceChar, fenceLen)) {
+      inFence = false;
+      fenceChar = null;
+      fenceLen = 0;
+      out.push(line);
+      continue;
+    }
+    if (inFence) {
+      out.push(line);
+      continue;
+    }
+
+    // Normaliza marcadores de lista para uso consistente
+    // Converte * ou + para - em itens de lista
+    const listMatch = line.match(/^(\s*)([*+\-])\s+(.*)$/);
+    if (listMatch) {
+      const indent = listMatch[1] ?? '';
+      const content = listMatch[3] ?? '';
+      const normalized = `${indent}- ${content}`;
+      if (normalized !== line) {
+        changed = true;
+      }
+      out.push(normalized);
+      continue;
+    }
+
+    out.push(line);
+  }
+
+  return {
+    code: out.join('\n'),
+    changed
+  };
+}
+
+function formatarTabelasMarkdown(code: string): {
+  code: string;
+  changed: boolean;
+} {
+  const lines = normalizarFimDeLinha(code).split('\n');
+  const out: string[] = [];
+  let changed = false;
+  let inFence = false;
+  let fenceChar: '`' | '~' | null = null;
+  let fenceLen = 0;
+  let inTable = false;
+  let tableRows: string[][] = [];
+  let tableHeaderLine = -1;
+
+  const processTable = () => {
+    if (tableRows.length === 0) return;
+
+    // Calcula o tamanho máximo de cada coluna
+    const colCount = Math.max(...tableRows.map(r => r.length));
+    const colWidths: number[] = [];
+    for (let c = 0; c < colCount; c++) {
+      const maxWidth = Math.max(...tableRows.map(row => {
+        const cell = row[c] ?? '';
+        return cell.length;
+      }));
+      colWidths.push(maxWidth);
+    }
+
+    // Formata cada linha da tabela
+    for (let r = 0; r < tableRows.length; r++) {
+      const row = tableRows[r] ?? [];
+      const cells = row.map((cell, c) => {
+        const width = colWidths[c] ?? 0;
+        return ` ${cell.padEnd(width)} `;
+      });
+
+      let line = `|${cells.join('|')}|`;
+
+      // Se é a linha do separador (segunda linha)
+      if (r === 1) {
+        const separators = colWidths.map(w => ` ${'-'.repeat(Math.max(w, 3))} `);
+        line = `|${separators.join('|')}|`;
+      }
+
+      out.push(line);
+    }
+
+    tableRows = [];
+    inTable = false;
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i] ?? '';
+    const fence = matchMarkdownFence(line);
+
+    if (!inFence && fence) {
+      if (inTable) {
+        processTable();
+      }
+      inFence = true;
+      fenceChar = fence.ch;
+      fenceLen = fence.len;
+      out.push(line);
+      continue;
+    }
+    if (inFence && fence && isMarkdownFenceCloser(fence, fenceChar, fenceLen)) {
+      if (inTable) {
+        processTable();
+      }
+      inFence = false;
+      fenceChar = null;
+      fenceLen = 0;
+      out.push(line);
+      continue;
+    }
+    if (inFence) {
+      out.push(line);
+      continue;
+    }
+
+    // Detecta linhas de tabela (começam e terminam com |)
+    const tableMatch = line.match(/^\s*\|(.+)\|\s*$/);
+    if (tableMatch || (inTable && line.trim().startsWith('|'))) {
+      if (!inTable) {
+        inTable = true;
+        tableRows = [];
+      }
+
+      if (tableMatch) {
+        const content = tableMatch[1] ?? '';
+        const cells = content.split('|').map(cell => cell.trim());
+        tableRows.push(cells);
+      } else {
+        // Linha de tabela mal formatada
+        const content = line.trim();
+        const cells = content.replace(/^\|/, '').replace(/\|$/, '').split('|').map(cell => cell.trim());
+        tableRows.push(cells);
+      }
+      continue;
+    } else if (inTable) {
+      processTable();
+    }
+
+    out.push(line);
+  }
+
+  if (inTable) {
+    processTable();
+  }
+
+  return {
+    code: out.join('\n'),
+    changed
   };
 }
 function formatarYamlMinimo(code: string): FormatadorMinimoResult {
@@ -2029,10 +2210,28 @@ export function formatarPrettierMinimo(params: {
     return formatarPhpMinimo(code);
   }
   if (relPath.endsWith('.kt')) {
-    return formatarCodeMinimo(code, { normalizarSeparadoresDeSecao: false, parser: 'code' });
+    return formatarKotlinMinimo(code);
+  }
+  if (relPath.endsWith('.kts')) {
+    return formatarKotlinMinimo(code);
   }
   if (relPath.endsWith('.go')) {
     return formatarGoMinimo(code);
+  }
+  if (relPath.endsWith('.gitignore') || path.basename(relPath).toLowerCase() === '.gitignore') {
+    return formatarGitignoreMinimo(code);
+  }
+  if (path.basename(relPath).toLowerCase() === '.editorconfig') {
+    return formatarEditorconfigMinimo(code);
+  }
+  if (path.basename(relPath).toLowerCase() === '.npmrc' || relPath.endsWith('.npmrc')) {
+    return formatarNpmrcMinimo(code);
+  }
+  if (path.basename(relPath).toLowerCase() === '.nvmrc' || relPath.endsWith('.nvmrc')) {
+    return formatarNvmrcMinimo(code);
+  }
+  if (relPath.endsWith('.json5')) {
+    return formatarJson5Minimo(code);
   }
   if (relPath.endsWith('.txt') || relPath.endsWith('.log') || relPath.endsWith('.env') || relPath.includes('ignore')) {
     return formatarCodeMinimo(code, {
@@ -2254,7 +2453,7 @@ function formatarGoMinimo(code: string): FormatadorMinimoResult {
     }
     if (inString) {
       out.push(`${'  '.repeat(indent)}${trimmed}`);
-      if (trimmed.endsWith(stringChar) && !trimmed.endsWith(`\\${  stringChar}`)) inString = false;
+      if (trimmed.endsWith(stringChar) && !trimmed.endsWith(`\\${stringChar}`)) inString = false;
       continue;
     }
     const closeBraces = (trimmed.match(/}/g) || []).length;
@@ -2278,6 +2477,244 @@ function formatarGoMinimo(code: string): FormatadorMinimoResult {
     formatted,
     changed: formatted !== baseline,
     reason: 'estilo-prometheus-go',
+  };
+}
+
+function formatarGitignoreMinimo(code: string): FormatadorMinimoResult {
+  const normalized = normalizarFimDeLinha(removerBom(code));
+  const lines = normalized.split('\n');
+  const out: string[] = [];
+  let prevBlank = false;
+
+  for (const raw of lines) {
+    const trimmed = raw.trimEnd();
+    // Remove espaços em branco à direita
+    if (!trimmed) {
+      // Evita múltiplas linhas em branco consecutivas
+      if (!prevBlank) {
+        out.push('');
+      }
+      prevBlank = true;
+      continue;
+    }
+    prevBlank = false;
+    // Mantém comentários e padrões como estão, só normaliza
+    out.push(trimmed);
+  }
+
+  const formatted = normalizarNewlinesFinais(out.join('\n'));
+  const baseline = normalizarNewlinesFinais(normalized);
+  return {
+    ok: true,
+    parser: 'gitignore',
+    formatted,
+    changed: formatted !== baseline,
+    reason: 'estilo-prometheus-gitignore',
+  };
+}
+
+function formatarEditorconfigMinimo(code: string): FormatadorMinimoResult {
+  const normalized = normalizarFimDeLinha(removerBom(code));
+  const lines = normalized.split('\n');
+  const out: string[] = [];
+  let currentSection = '';
+  let currentEntries: Array<{ key: string; value: string; comment?: string }> = [];
+
+  const flushSection = () => {
+    if (currentSection) {
+      out.push(`[${currentSection}]`);
+      if (currentEntries.length > 0) {
+        const maxKeyLen = Math.max(...currentEntries.map(e => e.key.length));
+        for (const entry of currentEntries) {
+          const paddedKey = entry.key.padEnd(maxKeyLen);
+          const commentPart = entry.comment ? ` ${entry.comment}` : '';
+          out.push(`${paddedKey} = ${entry.value}${commentPart}`);
+        }
+      }
+      out.push('');
+      currentEntries = [];
+      currentSection = '';
+    }
+  };
+
+  for (const raw of lines) {
+    const trimmed = raw.trim();
+    if (!trimmed) {
+      continue;
+    }
+    if (trimmed.startsWith('#') || trimmed.startsWith(';')) {
+      // Comentário dentro de seção
+      if (currentSection && currentEntries.length > 0) {
+        currentEntries[currentEntries.length - 1].comment = trimmed;
+      } else {
+        out.push(trimmed);
+      }
+      continue;
+    }
+    const sectionMatch = trimmed.match(/^\[(.+)\]$/);
+    if (sectionMatch) {
+      flushSection();
+      currentSection = sectionMatch[1]?.trim() ?? '';
+      continue;
+    }
+    const eqIdx = trimmed.indexOf('=');
+    if (eqIdx > 0 && currentSection) {
+      const key = trimmed.slice(0, eqIdx).trim().toLowerCase();
+      const val = trimmed.slice(eqIdx + 1).trim();
+      currentEntries.push({ key, value: val });
+      continue;
+    }
+    // Linha fora de seção ou inválida
+    out.push(trimmed);
+  }
+
+  flushSection();
+  const formatted = normalizarNewlinesFinais(out.join('\n').replace(/\n{3,}/g, '\n\n'));
+  const baseline = normalizarNewlinesFinais(normalized);
+  return {
+    ok: true,
+    parser: 'editorconfig',
+    formatted,
+    changed: formatted !== baseline,
+    reason: 'estilo-prometheus-editorconfig',
+  };
+}
+
+function formatarKotlinMinimo(code: string): FormatadorMinimoResult {
+  const normalized = normalizarFimDeLinha(removerBom(code));
+  const lines = normalized.split('\n');
+  const out: string[] = [];
+  let indent = 0;
+  let inMultilineString = false;
+  let inMultilineComment = false;
+
+  for (const raw of lines) {
+    const trimmed = raw.trimEnd();
+
+    // Strings multiline (triple-quoted)
+    if (inMultilineString) {
+      out.push(trimmed);
+      if (trimmed.includes('"""')) {
+        inMultilineString = false;
+      }
+      continue;
+    }
+    if (trimmed.includes('"""') && !trimmed.endsWith('"""')) {
+      out.push(trimmed);
+      inMultilineString = true;
+      continue;
+    }
+
+    // Comentários multiline
+    if (inMultilineComment) {
+      out.push(trimmed);
+      if (trimmed.includes('*/')) {
+        inMultilineComment = false;
+      }
+      continue;
+    }
+    if (trimmed.startsWith('/*')) {
+      out.push(trimmed);
+      if (!trimmed.includes('*/')) {
+        inMultilineComment = true;
+      }
+      continue;
+    }
+
+    // Comentários de linha única
+    if (trimmed.startsWith('//')) {
+      out.push(trimmed);
+      continue;
+    }
+
+    // Linha vazia
+    if (!trimmed.trim()) {
+      if (out.length > 0 && out[out.length - 1] !== '') {
+        out.push('');
+      }
+      continue;
+    }
+
+    // Ajusta indentação baseada em chaves/parênteses
+    const closeCount = (trimmed.match(/[})\]]/g) || []).length;
+    const openCount = (trimmed.match(/[{(\[]/g) || []).length;
+
+    if (trimmed.startsWith('}') || trimmed.startsWith(')') || trimmed.startsWith(']')) {
+      indent = Math.max(0, indent - 1);
+    }
+
+    const line = `${'    '.repeat(indent)}${trimmed}`;
+    out.push(line);
+
+    // Incrementa indent se abrir bloco
+    if (openCount > closeCount) {
+      indent += openCount - closeCount;
+    }
+  }
+
+  const { code: limitado } = limitarLinhasEmBranco(out.join('\n'), 2);
+  const formatted = normalizarNewlinesFinais(limitado);
+  const baseline = normalizarNewlinesFinais(normalized);
+  return {
+    ok: true,
+    parser: 'kotlin',
+    formatted,
+    changed: formatted !== baseline,
+    reason: 'estilo-prometheus-kotlin',
+  };
+}
+
+function formatarNpmrcMinimo(code: string): FormatadorMinimoResult {
+  const normalized = normalizarFimDeLinha(removerBom(code));
+  const lines = normalized.split('\n');
+  const out: string[] = [];
+
+  for (const raw of lines) {
+    const trimmed = raw.trimEnd();
+    if (!trimmed) {
+      if (out.length > 0 && out[out.length - 1] !== '') {
+        out.push('');
+      }
+      continue;
+    }
+    if (trimmed.startsWith('#') || trimmed.startsWith(';')) {
+      out.push(trimmed);
+      continue;
+    }
+    // Mantém configurações key=value
+    out.push(trimmed);
+  }
+
+  const formatted = normalizarNewlinesFinais(out.join('\n'));
+  const baseline = normalizarNewlinesFinais(normalized);
+  return {
+    ok: true,
+    parser: 'npmrc',
+    formatted,
+    changed: formatted !== baseline,
+    reason: 'estilo-prometheus-npmrc',
+  };
+}
+
+function formatarJson5Minimo(code: string): FormatadorMinimoResult {
+  // JSON5 suporta comentários e trailing commas, então tratamos como código genérico
+  // mantendo formatação básica
+  return formatarCodeMinimo(code, {
+    normalizarSeparadoresDeSecao: false,
+    parser: 'json5',
+  });
+}
+
+function formatarNvmrcMinimo(code: string): FormatadorMinimoResult {
+  const normalized = normalizarFimDeLinha(removerBom(code)).trim();
+  // .nvmrc deve conter apenas uma linha com versão do Node
+  const formatted = `${normalized}\n`;
+  return {
+    ok: true,
+    parser: 'nvmrc',
+    formatted,
+    changed: formatted !== `${code.trim()}\n`,
+    reason: 'estilo-prometheus-nvmrc',
   };
 }
 
@@ -2354,6 +2791,13 @@ registerFormatter('.txt', (code, _relPath) => formatarCodeMinimo(code, { normali
 registerFormatter('.log', (code, _relPath) => formatarCodeMinimo(code, { normalizarSeparadoresDeSecao: false, parser: 'code' }));
 registerFormatter('.env', (code, _relPath) => formatarCodeMinimo(code, { normalizarSeparadoresDeSecao: false, parser: 'code' }));
 registerFormatter('.go', (code, _relPath) => formatarGoMinimo(code));
+registerFormatter('.gitignore', (code, _relPath) => formatarGitignoreMinimo(code));
+registerFormatter('.editorconfig', (code, _relPath) => formatarEditorconfigMinimo(code));
+registerFormatter('.npmrc', (code, _relPath) => formatarNpmrcMinimo(code));
+registerFormatter('.nvmrc', (code, _relPath) => formatarNvmrcMinimo(code));
+registerFormatter('.json5', (code, _relPath) => formatarJson5Minimo(code));
+registerFormatter('.kt', (code, _relPath) => formatarKotlinMinimo(code));
+registerFormatter('.kts', (code, _relPath) => formatarKotlinMinimo(code));
 registerFormatter('.ts', (code, relPath) => formatarTypeScriptMinimo(code, relPath));
 registerFormatter('.tsx', (code, relPath) => formatarTypeScriptMinimo(code, relPath));
 registerFormatter('.cts', (code, relPath) => formatarTypeScriptMinimo(code, relPath));

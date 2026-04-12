@@ -4,6 +4,7 @@
  */
 
 export * from './analista-comandos-cli-messages.js';
+export * from './analista-github-actions-messages.js';
 export * from './analista-padroes-uso-messages.js';
 export * from './analista-todo-comments-messages.js';
 export * from './arquetipos-extra-messages.js';

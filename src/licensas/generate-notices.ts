@@ -5,8 +5,9 @@ import path from 'node:path';
 import { promisify } from 'node:util';
 
 import type { GenerateNoticesOptions, RenderPackageMeta } from '../types/licensas/licensas.js';
+import type { HeaderOptions } from '../types/licensas/header-options.js';
 
-export type { GenerateNoticesOptions, RenderPackageMeta };
+export type { GenerateNoticesOptions, RenderPackageMeta, HeaderOptions };
 
 const exec = promisify(_exec);
 const execFile = promisify(_execFile);
@@ -15,11 +16,6 @@ function s(v: string | string[] | number | boolean | null | undefined): string {
 }
 function nl(txt: string): string {
   return txt.replace(/\r\n?|\n/g, '\n');
-}
-interface HeaderOptions {
-  projectNome: string;
-  license: string;
-  ptBr: boolean;
 }
 function header({
   projectNome,

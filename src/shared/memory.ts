@@ -2,15 +2,15 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 
-import type { MemoryMessage,PrometheusContextState, PrometheusRunRecord } from '@';
+import type { MemoryMessage, PrometheusContextState, PrometheusRunRecord } from '@';
 
-import type { RunEndUpdate,RunStartInput } from '../types/shared/memory.js';
+import type { RunEndUpdate, RunStartInput } from '../types/shared/memory.js';
 
 // Re-exporta para compatibilidade com código existente
-export type { MemoryMessage,PrometheusContextState, PrometheusRunRecord,RunEndUpdate,RunStartInput };
+export type { MemoryMessage, PrometheusContextState, PrometheusRunRecord, RunEndUpdate, RunStartInput };
 export class ConversationMemory {
   private history: MemoryMessage[] = [];
-  constructor(private maxHistory = 10, private persistCaminho?: string) {}
+  constructor(private maxHistory = 10, private persistCaminho?: string) { }
   async init(): Promise<void> {
     if (!this.persistCaminho) return;
     try {
@@ -67,9 +67,9 @@ export class PrometheusContextMemory {
   private state: PrometheusContextState = {
     schemaVersion: 1,
     lastRuns: [],
-    preferences: {}
+    preferences: {} as Record<string, unknown>
   };
-  constructor(private maxRuns = 20, private persistCaminho?: string) {}
+  constructor(private maxRuns = 20, private persistCaminho?: string) { }
   async init(): Promise<void> {
     if (!this.persistCaminho) return;
     try {
@@ -80,7 +80,7 @@ export class PrometheusContextMemory {
           // @prometheus-disable: tipo-literal-inline-complexo
           schemaVersion: 1,
           lastRuns: Array.isArray(parsed.lastRuns) ? parsed.lastRuns as PrometheusRunRecord[] : [],
-          preferences: parsed.preferences && typeof parsed.preferences === 'object' ? parsed.preferences as Record<string, unknown> : {}
+          preferences: parsed.preferences && typeof parsed.preferences === 'object' ? parsed.preferences as Record<string, unknown> : {} as Record<string, unknown>
         };
       }
     } catch {
@@ -108,7 +108,7 @@ export class PrometheusContextMemory {
     await this.persist();
   }
   async recordRunStart(
-  input: RunStartInput): Promise<string> {
+    input: RunStartInput): Promise<string> {
     const id = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
     const record: PrometheusRunRecord = {
       id,
@@ -125,7 +125,7 @@ export class PrometheusContextMemory {
     return id;
   }
   async recordRunEnd(id: string,
-  update: RunEndUpdate): Promise<void> {
+    update: RunEndUpdate): Promise<void> {
     const idx = this.state.lastRuns.findIndex(r => r.id === id);
     if (idx === -1) return;
     const prev = this.state.lastRuns[idx];
@@ -140,7 +140,7 @@ export class PrometheusContextMemory {
   }
   async clear(): Promise<void> {
     this.state.lastRuns = [];
-    this.state.preferences = {};
+    this.state.preferences = {} as Record<string, unknown>;
     await this.persist();
   }
   private async persist(): Promise<void> {

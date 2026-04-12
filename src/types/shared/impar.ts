@@ -6,6 +6,7 @@
 
 export type FormatadorMinimoParser =
   | 'json'
+  | 'json5'
   | 'markdown'
   | 'yaml'
   | 'code'
@@ -24,9 +25,14 @@ export type FormatadorMinimoParser =
   | 'gradle'
   | 'properties'
   | 'java'
+  | 'kotlin'
   | 'go'
   | 'typescript'
   | 'babel'
+  | 'gitignore'
+  | 'editorconfig'
+  | 'npmrc'
+  | 'nvmrc'
   | 'unknown';
 
 export type FormatadorMinimoResultOk = {

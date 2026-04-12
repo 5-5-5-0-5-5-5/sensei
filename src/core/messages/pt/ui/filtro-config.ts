@@ -178,14 +178,6 @@ export const AGRUPAMENTOS_MENSAGEM: AgrupamentoConfig[] = [
     acaoSugerida: 'Adicionar type guards ou substituir por tipos específicos',
   },
   {
-    padrao: /missing-tests|missing tests|sem testes|no.*tests/i,
-    categoria: 'TESTES_AUSENTES',
-    titulo: 'Arquivos Sem Testes',
-    prioridade: 'alta',
-    icone: '[TEST]',
-    acaoSugerida: 'Implementar testes unitários para melhorar cobertura',
-  },
-  {
     padrao: /complexidade.*alta|complex.*high|cyclomatic.*complexity/i,
     categoria: 'COMPLEXIDADE_ALTA',
     titulo: 'Código com Alta Complexidade',

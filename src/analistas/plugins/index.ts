@@ -21,7 +21,6 @@
  * - detector-documentacao.ts     - Qualidade de documentação
  * - detector-markdown.ts         - Análise de Markdown
  * - detector-node.ts             - Padrões Node.js
- * - detector-qualidade-testes.ts - Qualidade de testes
  * - detector-xml.ts              - Análise de XML
  */
 
@@ -29,6 +28,7 @@
 export * from './analista-css.js';
 export * from './analista-css-in-js.js';
 export * from './analista-formater.js';
+export * from './analista-github-actions.js';
 export * from './analista-html.js';
 export * from './analista-python.js';
 export * from './analista-react.js';
@@ -43,5 +43,4 @@ export * from './analista-xml.js';
 export * from './detector-documentacao.js';
 export * from './detector-markdown.js';
 export * from './detector-node.js';
-export * from './detector-qualidade-testes.js';
 export * from './detector-xml.js';

@@ -27,11 +27,14 @@ jobs:
   validate:
     name: ✅ Validate Release
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Get Version
         id: version
@@ -51,16 +54,27 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Build
         run: npm run build
 
   build:
     name: 🔨 Build Release
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     needs: validate
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -70,6 +84,14 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Build
         run: npm run build
@@ -93,12 +115,15 @@ jobs:
   release:
     name: 🚀 Create Release
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     needs: [validate, build]
     permissions:
       contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Download Artifacts
         uses: actions/download-artifact@v8

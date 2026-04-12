@@ -101,13 +101,12 @@ export function comandoOtimizarSvg(
           const src = typeof e.content === 'string' ? e.content : '';
           if (!src || !/<svg\b/i.test(src)) continue;
 
-          const opt = otimizarSvgLikeSvgo({ svg: src });
+          // Modo pretty por padrão para manter legibilidade com quebras de linha
+          const opt = otimizarSvgLikeSvgo({ svg: src, pretty: true });
           if (!opt.changed) continue;
-          if (
-            !shouldSugerirOtimizacaoSvg(opt.originalBytes, opt.optimizedBytes)
-          )
-            continue;
 
+          // Em pretty mode, aplicamos mesmo que aumente o tamanho (legibilidade > tamanho)
+          // Sempre aplica pretty mode independente do tamanho
           candidates++;
           const saved = opt.originalBytes - opt.optimizedBytes;
           savedBytes += saved;
@@ -158,11 +157,13 @@ export function comandoOtimizarSvg(
         }
 
         sair(ExitCode.Ok);
+        return;
       } catch (err) {
         log.erro(
           CliOtimizarSvgExtraMensagens.falhaOtimizarSvg.replace('{erro}', err instanceof Error ? err.message : String(err)),
         );
         sair(ExitCode.Failure);
+        return;
       }
     });
 }

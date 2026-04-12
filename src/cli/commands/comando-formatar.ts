@@ -22,9 +22,10 @@ import type { FormatarCommandOpts, FormatResult } from '@';
 const { log, CliFormatarExtraMensagens } = getMessages();
 
 function isFormatavel(relPath: string): boolean {
-  return /\.(json[c]?|md|markdown|ya?ml|ts|tsx|js|jsx|mjs|cjs|html?|css|py|xml|php|toml|ini|sql|dockerfile|sh|bash|java|properties|txt|log|lock|env|gradle|kts|svg|scss|less|go|kt)$/i.test(
+  const basename = relPath.split('/').pop()?.toLowerCase() || '';
+  return /\.(json[c5]?|md|markdown|ya?ml|ts|tsx|js|jsx|mjs|cjs|html?|css|py|xml|php|toml|ini|sql|dockerfile|sh|bash|java|properties|txt|log|lock|env|gradle|kts|svg|scss|less|go|k[mt])$/i.test(
     relPath,
-  );
+  ) || /^(\.gitignore|\.editorconfig|\.npmrc|\.nvmrc)$/i.test(basename);
 }
 
 function detectaNodeModulesExplicito(
@@ -86,8 +87,8 @@ export function comandoFormatar(
         ).trim();
         const engine =
           engineRaw === 'interno' ||
-          engineRaw === 'prettier' ||
-          engineRaw === 'auto'
+            engineRaw === 'prettier' ||
+            engineRaw === 'auto'
             ? engineRaw
             : 'auto';
 
@@ -119,7 +120,7 @@ export function comandoFormatar(
         log.info(chalk.bold(CliFormatarExtraMensagens.titulo));
         if (config.SCAN_ONLY) {
           log.aviso(
-          CliFormatarExtraMensagens.scanOnlyAtivo,
+            CliFormatarExtraMensagens.scanOnlyAtivo,
           );
         }
 
@@ -156,22 +157,22 @@ export function comandoFormatar(
           const resolved =
             engine === 'auto'
               ? await (async () => {
-                  const r = await formatarComPrettierProjeto({
-                    code: src,
-                    relPath,
-                    baseDir,
-                  });
-                  if (!r.ok) return r;
-                  if (r.parser !== 'unknown') return r;
-                  return formatarPrettierMinimo({ code: src, relPath });
-                })()
+                const r = await formatarComPrettierProjeto({
+                  code: src,
+                  relPath,
+                  baseDir,
+                });
+                if (!r.ok) return r;
+                if (r.parser !== 'unknown') return r;
+                return formatarPrettierMinimo({ code: src, relPath });
+              })()
               : engine === 'interno'
                 ? formatarPrettierMinimo({ code: src, relPath })
                 : await formatarComPrettierProjeto({
-                    code: src,
-                    relPath,
-                    baseDir,
-                  });
+                  code: src,
+                  relPath,
+                  baseDir,
+                });
 
           if (!resolved.ok) {
             result.erros++;
@@ -207,7 +208,7 @@ export function comandoFormatar(
         if (check) {
           if (result.mudaram > 0) {
             log.aviso(
-            CliFormatarExtraMensagens.precisaFormatacao.replace('{total}', String(result.mudaram)),
+              CliFormatarExtraMensagens.precisaFormatacao.replace('{total}', String(result.mudaram)),
             );
             sair(ExitCode.Failure);
             return;

@@ -63,7 +63,7 @@ export function asTecnicas(items: (Tecnica | Analista)[]): import('@').Tecnica[]
       // Chamamos usando a assinatura esperada da Técnica, sem `any`.
       const aplicarFn = item.aplicar as unknown as Tecnica['aplicar'];
       return await aplicarFn(conteudo, relPath, astParam, fullCaminho, contextoGlobal);
-    } : async () => [];
+    } : async (): Promise<import('@').Ocorrencia[]> => [];
     return {
       nome,
       global,

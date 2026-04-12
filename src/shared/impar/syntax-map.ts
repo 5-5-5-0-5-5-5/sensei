@@ -15,6 +15,8 @@ export const syntaxMap: Record<string, SyntaxInfo> = {
   '.mjs': { parser: 'babel', formatavel: true },
   '.cjs': { parser: 'babel', formatavel: true },
   '.json': { parser: 'json', formatavel: true },
+  '.json5': { parser: 'json5', formatavel: true },
+  '.jsonc': { parser: 'json', formatavel: true },
   '.md': { parser: 'markdown', formatavel: true },
   '.markdown': { parser: 'markdown', formatavel: true },
   '.yml': { parser: 'yaml', formatavel: true },
@@ -26,10 +28,17 @@ export const syntaxMap: Record<string, SyntaxInfo> = {
   '.htm': { parser: 'html', formatavel: true },
   '.php': { parser: 'php', formatavel: true },
   '.xml': { parser: 'xml', formatavel: true },
-  // Linguagens que o projeto formata internamente, mas que normalmente
-  // o formatador não deve ser aplicado (ex.: Python). Marcar formatavel:false
+  // Linguagens de programação
   '.py': { parser: 'python', formatavel: true },
   '.java': { parser: 'java', formatavel: true },
+  '.kt': { parser: 'kotlin', formatavel: true },
+  '.kts': { parser: 'kotlin', formatavel: true },
+  '.go': { parser: 'go', formatavel: true },
+  // Arquivos de configuração e sistema
+  '.gitignore': { parser: 'gitignore', formatavel: true },
+  '.editorconfig': { parser: 'editorconfig', formatavel: true },
+  '.npmrc': { parser: 'npmrc', formatavel: true },
+  '.nvmrc': { parser: 'nvmrc', formatavel: true },
   '.svg': { parser: 'xml', formatavel: true },
   '.sql': { parser: 'sql', formatavel: true },
   '.properties': { parser: 'properties', formatavel: true },
@@ -40,10 +49,7 @@ export const syntaxMap: Record<string, SyntaxInfo> = {
   '.dockerfile': { parser: 'dockerfile', formatavel: true },
   '.sh': { parser: 'shell', formatavel: true },
   '.bash': { parser: 'shell', formatavel: true },
-  '.kt': { parser: 'kotlin', formatavel: true },
-  '.kts': { parser: 'kotlin', formatavel: true },
-  '.go': { parser: 'go', formatavel: true },
-  '.jsonc': { parser: 'json', formatavel: true },
+  // Arquivos de texto e logs
   '.txt': { parser: 'code', formatavel: true },
   '.log': { parser: 'code', formatavel: true },
   '.env': { parser: 'code', formatavel: true },

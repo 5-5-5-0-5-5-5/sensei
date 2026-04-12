@@ -216,8 +216,7 @@ Exemplo atual:
       "documentacao",
       "duplicacoes",
       "xml",
-      "performance",
-      "qualidade-testes"
+      "performance"
     ]
   }
 }

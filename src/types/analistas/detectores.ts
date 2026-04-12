@@ -60,13 +60,13 @@ export interface AnaliseArquitetural {
   violacoes?: string[];
   recomendacoes?: string[];
   metricas?:
-    | Record<string, number>
-    | {
-        modularidade?: number;
-        acoplamento?: number;
-        coesao?: number;
-        complexidadeMedia?: number;
-      };
+  | Record<string, number>
+  | {
+    modularidade?: number;
+    acoplamento?: number;
+    coesao?: number;
+    complexidadeMedia?: number;
+  };
 }
 
 export interface BlocoFuncao {
@@ -137,20 +137,32 @@ export interface InterfaceInlineDetection {
 }
 
 /**
- * Problema detectado em testes
+ * Problema detectado em workflows do GitHub Actions
  */
-export interface ProblemaTeste {
+export interface ProblemaWorkflow {
   tipo:
-    | 'missing-tests'
-    | 'poor-coverage'
-    | 'flaky-test'
-    | 'slow-test'
-    | 'test-smells'
-    | 'mock-abuse';
+  | 'action-desatualizada'
+  | 'permissoes-excessivas'
+  | 'secret-hardcoded'
+  | 'falta-timeout'
+  | 'run-inseguro'
+  | 'checkout-inseguro'
+  | 'branch-instavel'
+  | 'falta-cache'
+  | 'estrutura-workflow';
   descricao: string;
-  severidade: 'baixa' | 'media' | 'alta';
+  severidade: 'baixa' | 'media' | 'alta' | 'critica';
   linha: number;
   sugestao: string;
+}
+
+/**
+ * Resultado da análise de workflows
+ */
+export interface ResultadoAnalise {
+  problemas: ProblemaWorkflow[];
+  score: number;
+  resumo: string;
 }
 
 /**
@@ -158,23 +170,23 @@ export interface ProblemaTeste {
  */
 export interface ProblemaSeguranca {
   tipo:
-    | 'eval-usage'
-    | 'dangerous-html'
-    | 'weak-crypto'
-    | 'unsafe-regex'
-    | 'prototype-pollution'
-    | 'path-traversal'
-    | 'hardcoded-secrets'
-    | 'unhandled-async'
-    | 'unhandled-async-event'
-    | 'sql-injection'
-    | 'command-injection'
-    | 'insecure-cookie'
-    | 'no-csrf-token'
-    | 'xss-vulnerability'
-    | 'dangerously-set-inner-html'
-    | 'sensitive-env-exposure'
-    | 'unsafe-regex-literal';
+  | 'eval-usage'
+  | 'dangerous-html'
+  | 'weak-crypto'
+  | 'unsafe-regex'
+  | 'prototype-pollution'
+  | 'path-traversal'
+  | 'hardcoded-secrets'
+  | 'unhandled-async'
+  | 'unhandled-async-event'
+  | 'sql-injection'
+  | 'command-injection'
+  | 'insecure-cookie'
+  | 'no-csrf-token'
+  | 'xss-vulnerability'
+  | 'dangerously-set-inner-html'
+  | 'sensitive-env-exposure'
+  | 'unsafe-regex-literal';
   descricao: string;
   severidade: 'baixa' | 'media' | 'alta' | 'critica';
   linha: number;
@@ -240,4 +252,4 @@ export interface MemoriaVisitorState {
   hasGlobalListeners: boolean;
 }
 
-export {};
+export { };

@@ -1,6 +1,6 @@
 {
   "name": "prometheus",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "type": "module",
   "description": "C.L.I modular para análise, diagnóstico e manutenção de projetos JavaScript/TypeScript e multi-stack leve",
   "author": "5 5 5",
@@ -88,7 +88,7 @@
     "micromatch": "^4.0.8",
     "ora": "^9.3.0",
     "p-limit": "^7.3.0",
-    "prometheus": "file:prometheus-0.4.3.tgz",
+    "prometheus": "file:prometheus-0.4.4.tgz",
     "xxhashjs": "^0.2.2"
   },
   "devDependencies": {

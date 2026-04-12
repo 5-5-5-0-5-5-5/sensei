@@ -2,7 +2,7 @@
 
 /**
  * @fileoverview 集約結果検出器向けの診断メッセージ。
- * セキュリティ、パフォーマンス、ドキュメント、重複、テスト品質の問題に対する
+ * セキュリティ、パフォーマンス、ドキュメント、重複の問題に対する
  * 要約テキストテンプレートを結果のページネーションサポート付きで提供します。
  */
 
@@ -18,7 +18,5 @@ export const DetectorAgregadosMensagens = {
   problemasDocumentacaoResumo: (prioridade: string, resumo: string, total: number) => `ドキュメントの問題 (${prioridade}): ${resumo}${total > 3 ? ` (他+${total - 3}件)` : ''}`,
   erroAnalisarDocumentacao: (erro: ErroUnknown) => `ドキュメント分析エラー: ${erroToMessage(erro)}`,
   duplicacoesResumo: (tipo: string, resumo: string, total: number) => `${tipo}の重複: ${resumo}${total > 3 ? ` (他+${total - 3}件)` : ''}`,
-  erroAnalisarDuplicacoes: (erro: ErroUnknown) => `重複分析エラー: ${erroToMessage(erro)}`,
-  problemasTesteResumo: (severidade: string, resumo: string, total: number) => `テストの問題 (${severidade}): ${resumo}${total > 3 ? ` (他+${total - 3}件)` : ''}`,
-  erroAnalisarQualidadeTestes: (erro: ErroUnknown) => `テスト品質分析エラー: ${erroToMessage(erro)}`
+  erroAnalisarDuplicacoes: (erro: ErroUnknown) => `重複分析エラー: ${erroToMessage(erro)}`
 } as const;

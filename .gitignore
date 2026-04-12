@@ -9,6 +9,7 @@ scripts
 
 # Node modules
 node_modules
+planejamento
 
 # pnpm store  pnp
 .pnpm-store
@@ -16,7 +17,6 @@ node_modules
 .pnp.loader.mjs
 
 # Pacotes npm empacotados
-
 
 # build output
 build

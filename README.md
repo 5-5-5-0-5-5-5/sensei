@@ -2,9 +2,11 @@
 Proveniência e Autoria: Este documento integra o projeto Prometheus (licença MIT-0).
 ---
 
-<div align="center">
+<img src="svg/banner-prometheus.svg" width="100%"/>
 
-# ❤️‍🔥 Prometheus
+---
+
+<div align="center">
 
 ---
 
@@ -320,16 +322,16 @@ O arquivo principal de configuração é [`prometheus.config.json`](./prometheus
 
 ### Blocos de Configuração
 
-| Bloco | Descrição | Exemplo |
-|-------|-----------|---------|
-| `INCLUDE_EXCLUDE_RULES` | Globs para incluir/excluir | `"globalExcludeGlob": ["node_modules/**"]` |
-| `nameConventions` | Convenções de nomenclatura | Validar padrões de nomes |
-| `coverageGate` | Limites de cobertura | Mínimo 80% cobertura |
-| `languageSupport` | Linguagens a analisar | TypeScript, JavaScript, Python, etc |
-| `suppress` | Suprimir avisos | IDs de avisos a ignorar |
-| `rules` | Regras customizadas | Rules específicas do projeto |
-| `testPatterns` | Padrões de arquivos de teste | `**/*.test.ts`, `**/*.spec.ts` |
-| `fastMode` | Otimizações de performance | Skip de checagens caras |
+| Bloco                   | Descrição                    | Exemplo                                    |
+| ----------------------- | ---------------------------- | ------------------------------------------ |
+| `INCLUDE_EXCLUDE_RULES` | Globs para incluir/excluir   | `"globalExcludeGlob": ["node_modules/**"]` |
+| `nameConventions`       | Convenções de nomenclatura   | Validar padrões de nomes                   |
+| `coverageGate`          | Limites de cobertura         | Mínimo 80% cobertura                       |
+| `languageSupport`       | Linguagens a analisar        | TypeScript, JavaScript, Python, etc        |
+| `suppress`              | Suprimir avisos              | IDs de avisos a ignorar                    |
+| `rules`                 | Regras customizadas          | Rules específicas do projeto               |
+| `testPatterns`          | Padrões de arquivos de teste | `**/*.test.ts`, `**/*.spec.ts`             |
+| `fastMode`              | Otimizações de performance   | Skip de checagens caras                    |
 
 ### Configuração Mínima
 
@@ -374,44 +376,44 @@ Para configuração completa, veja [GUIA-CONFIGURACAO.md](./docs/guias/GUIA-CONF
 
 ### Comandos Principais
 
-| Comando | Descrição | Exemplo de Uso |
-|---------|-----------|----------------|
-| `diagnosticar` | Análise completa do projeto | `prometheus diagnosticar --verbose` |
-| `corrigir` | Auto-fix com validação de segurança | `prometheus corrigir --auto` |
-| `guardian` | Monitoramento contínuo de integridade | `prometheus guardian --baseline` |
-| `reestruturar` | Reorganizar estrutura do código | `prometheus reestruturar` |
-| `podar` | Remover código morto/arquivos órfãos | `prometheus podar` |
-| `fix-types` | Corrigir tipos inseguros (`any`, `unknown`) | `prometheus fix-types --auto` |
-| `formatar` | Formatação automática do código | `prometheus formatar --write` |
-| `analistas` | Listar/info sobre analistas | `prometheus analistas --listar` |
+| Comando        | Descrição                                   | Exemplo de Uso                      |
+| -------------- | ------------------------------------------- | ----------------------------------- |
+| `diagnosticar` | Análise completa do projeto                 | `prometheus diagnosticar --verbose` |
+| `corrigir`     | Auto-fix com validação de segurança         | `prometheus corrigir --auto`        |
+| `guardian`     | Monitoramento contínuo de integridade       | `prometheus guardian --baseline`    |
+| `reestruturar` | Reorganizar estrutura do código             | `prometheus reestruturar`           |
+| `podar`        | Remover código morto/arquivos órfãos        | `prometheus podar`                  |
+| `fix-types`    | Corrigir tipos inseguros (`any`, `unknown`) | `prometheus fix-types --auto`       |
+| `formatar`     | Formatação automática do código             | `prometheus formatar --write`       |
+| `analistas`    | Listar/info sobre analistas                 | `prometheus analistas --listar`     |
 
 ### Comandos de Nomes e Renomeação
 
-| Comando | Descrição | Exemplo de Uso |
-|---------|-----------|----------------|
-| `names` | Extrair nomes de variáveis | `prometheus names` |
-| `rename` | Aplicar renomeações em massa | `prometheus rename --apply` |
-| `reverter` | Gerenciar mapa de reversão | `prometheus reverter listar` |
+| Comando    | Descrição                    | Exemplo de Uso               |
+| ---------- | ---------------------------- | ---------------------------- |
+| `names`    | Extrair nomes de variáveis   | `prometheus names`           |
+| `rename`   | Aplicar renomeações em massa | `prometheus rename --apply`  |
+| `reverter` | Gerenciar mapa de reversão   | `prometheus reverter listar` |
 
 ### Comandos de Métricas e Performance
 
-| Comando | Descrição | Exemplo de Uso |
-|---------|-----------|----------------|
-| `metricas` | Histórico de execuções | `prometheus metricas` |
-| `perf` | Baseline e comparação de performance | `prometheus perf snapshot --baseline` |
+| Comando    | Descrição                            | Exemplo de Uso                        |
+| ---------- | ------------------------------------ | ------------------------------------- |
+| `metricas` | Histórico de execuções               | `prometheus metricas`                 |
+| `perf`     | Baseline e comparação de performance | `prometheus perf snapshot --baseline` |
 
 ### Comandos de Licenças
 
-| Comando | Descrição | Exemplo de Uso |
-|---------|-----------|----------------|
+| Comando    | Descrição                        | Exemplo de Uso             |
+| ---------- | -------------------------------- | -------------------------- |
 | `licencas` | Scan de licenças de dependências | `prometheus licencas scan` |
 
 ### Comandos Utilitários
 
-| Comando | Descrição | Exemplo de Uso |
-|---------|-----------|----------------|
+| Comando        | Descrição             | Exemplo de Uso            |
+| -------------- | --------------------- | ------------------------- |
 | `otimizar-svg` | Otimizar arquivos SVG | `prometheus otimizar-svg` |
-| `atualizar` | Atualizar Prometheus | `prometheus atualizar` |
+| `atualizar`    | Atualizar Prometheus  | `prometheus atualizar`    |
 
 ### Ajuda Detalhada
 
@@ -657,19 +659,19 @@ prometheus-dev/
 
 ### Parsers e Linguagens Suportadas
 
-| Linguagem | Parser | Status |
-|-----------|--------|--------|
-| JavaScript | Babel | ✅ Nativo |
-| TypeScript | Babel | ✅ Nativo |
-| HTML | htmlparser2 | ✅ Nativo |
-| CSS | css-tree | ✅ Nativo |
-| XML | fast-xml-parser | ✅ Nativo |
-| Python | Heurístico | ✅ Nativo |
-| PHP | Heurístico | ✅ Nativo |
-| Shell | Heurístico | ✅ Plugin |
-| SQL | Heurístico | ✅ Plugin |
-| Java | java-parser | ⚙️ Disponível (desabilitado) |
-| Kotlin | Heurístico | ⚙️ Disponível (desabilitado) |
+| Linguagem   | Parser          | Status                       |
+| ----------- | --------------- | ---------------------------- |
+| JavaScript  | Babel           | ✅ Nativo                     |
+| TypeScript  | Babel           | ✅ Nativo                     |
+| HTML        | htmlparser2     | ✅ Nativo                     |
+| CSS         | css-tree        | ✅ Nativo                     |
+| XML         | fast-xml-parser | ✅ Nativo                     |
+| Python      | Heurístico      | ✅ Nativo                     |
+| PHP         | Heurístico      | ✅ Nativo                     |
+| Shell       | Heurístico      | ✅ Plugin                     |
+| SQL         | Heurístico      | ✅ Plugin                     |
+| Java        | java-parser     | ⚙️ Disponível (desabilitado) |
+| Kotlin      | Heurístico      | ⚙️ Disponível (desabilitado) |
 
 Para detalhes sobre cada diretório, veja [Estrutura de Código](./docs/desenvolvimento/estrutura-codigo/README.md).
 
@@ -854,13 +856,13 @@ npm run diagnosticar
 
 ### Links Importantes
 
-| Link | Descrição |
-|------|-----------|
-| [📦 npm Package](https://www.npmjs.com/package/prometheus) | Instalar via npm |
-| [🐙 GitHub Repository](https://github.com/5-5-5-5-5-5-5/prometheus) | Código-fonte |
-| [🐛 Issues](https://github.com/5-5-5-5-5-5-5/prometheus/issues) | Reportar bugs |
-| [📋 Releases](https://github.com/5-5-5-5-5-5-5/prometheus/releases) | Versões |
-| [📝 License](./LICENSE) | MIT-0 |
+| Link                                                                | Descrição        |
+| ------------------------------------------------------------------- | ---------------- |
+| [📦 npm Package](https://www.npmjs.com/package/prometheus)          | Instalar via npm |
+| [🐙 GitHub Repository](https://github.com/5-5-5-5-5-5-5/prometheus) | Código-fonte     |
+| [🐛 Issues](https://github.com/5-5-5-5-5-5-5/prometheus/issues)     | Reportar bugs    |
+| [📋 Releases](https://github.com/5-5-5-5-5-5-5/prometheus/releases) | Versões          |
+| [📝 License](./LICENSE)                                             | MIT-0            |
 
 ---
 
@@ -914,18 +916,18 @@ O Prometheus é mantido em altos padrões de qualidade:
 
 ### Dependências Principais
 
-| Dependência | Uso | Versão |
-|-------------|-----|--------|
-| @babel/parser | Parsing JS/TS | ^7.29.2 |
-| commander | CLI framework | ^14.0.3 |
-| chalk | Terminal colorido | ^5.6.2 |
-| micromatch | Pattern matching | ^4.0.8 |
-| css-tree | Parsing CSS | ^3.2.1 |
-| htmlparser2 | Parsing HTML | ^12.0.0 |
-| fast-xml-parser | Parsing XML | ^5.5.11 |
-| java-parser | Parsing Java | ^3.0.1 |
-| ora | Spinners de progresso | ^9.3.0 |
-| vitest | Framework de testes | ^4.1.4 |
+| Dependência     | Uso                   | Versão   |
+| --------------- | --------------------- | -------- |
+| @babel/parser   | Parsing JS/TS         | ^7.29.2  |
+| commander       | CLI framework         | ^14.0.3  |
+| chalk           | Terminal colorido     | ^5.6.2   |
+| micromatch      | Pattern matching      | ^4.0.8   |
+| css-tree        | Parsing CSS           | ^3.2.1   |
+| htmlparser2     | Parsing HTML          | ^12.0.0  |
+| fast-xml-parser | Parsing XML           | ^5.5.11  |
+| java-parser     | Parsing Java          | ^3.0.1   |
+| ora             | Spinners de progresso | ^9.3.0   |
+| vitest          | Framework de testes   | ^4.1.4   |
 
 ---
 

@@ -274,12 +274,12 @@ Tests  8 passed (8)
 
 ## Comparação com Ferramentas Similares
 
-| Ferramenta         | Stack Traces | Contexto de Arquivo | Modo Verbose |
-| ------------------ | ------------ | ------------------- | ------------ |
-| **Prometheus (novo)** | ✅           | ✅                  | ✅           |
-| ESLint             | ✅           | ✅                  | ✅           |
-| TypeScript         | ✅           | ✅                  | ⚠️ Limitado  |
-| Prometheus (antigo)   | ❌           | ⚠️ Parcial          | ❌           |
+| Ferramenta            | Stack Traces | Contexto de Arquivo | Modo Verbose |
+| --------------------- | ------------ | ------------------- | ------------ |
+| **Prometheus (novo)** | ✅            | ✅                   | ✅            |
+| ESLint                | ✅            | ✅                   | ✅            |
+| TypeScript            | ✅            | ✅                   | ⚠️ Limitado  |
+| Prometheus (antigo)   | ❌            | ⚠️ Parcial          | ❌            |
 
 ## Próximos Passos
 
@@ -357,4 +357,3 @@ Para melhorar o sistema de erros:
 **Implementado em:** Fase 6
 **Problema resolvido:** #7 do feedback - Mensagens de erro genéricas
 **Status:** ✅ Completo e testado
-

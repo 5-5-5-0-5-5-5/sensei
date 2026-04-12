@@ -11,14 +11,14 @@ Guia completo e detalhado de todos os comandos disponíveis no Prometheus.
 
 ## 📋 Sumário de Comandos
 
-| Comando | Descrição | Uso |
-|---------|-----------|-----|
-| `diagnosticar` | Analisar o projeto | Principal |
-| `corrigir` | Auto-fix de problemas | Manutenção |
-| `guardian` | Monitor de saúde | Monitoramento |
-| `relatorio` | Gerar relatórios | Análise |
-| `config` | Gerenciar configuração | Setup |
-| `analista` | Info sobre analistas | Consulta |
+| Comando        | Descrição              | Uso           |
+| -------------- | ---------------------- | ------------- |
+| `diagnosticar` | Analisar o projeto     | Principal     |
+| `corrigir`     | Auto-fix de problemas  | Manutenção    |
+| `guardian`     | Monitor de saúde       | Monitoramento |
+| `relatorio`    | Gerar relatórios       | Análise       |
+| `config`       | Gerenciar configuração | Setup         |
+| `analista`     | Info sobre analistas   | Consulta      |
 
 ---
 
@@ -34,20 +34,20 @@ prometheus diagnosticar [opções]
 
 ### Opções
 
-| Opção | Tipo | Padrão | Descrição |
-|-------|------|--------|-----------|
-| `--caminho` | string | `.` | Diretório raiz para análise |
-| `--profundidade` | number | Infinito | Profundidade máxima de diretórios |
-| `--extensoes` | string[] | `ts,js,jsx,tsx` | Extensões de arquivo |
-| `--excluir` | string[] | `node_modules,dist,build` | Diretórios para ignorar |
-| `--analista` | string[] | Todos | Analistas específicos a rodar |
-| `--relatorio` | `json\|markdown\|html\|csv` | `json` | Formato do relatório |
-| `--saida` | string | `stdout` | Arquivo de saída |
-| `--verbose` | boolean | `false` | Modo verbose (mais detalhes) |
-| `--debug` | boolean | `false` | Modo debug (muito detalhe) |
-| `--paralelo` | number | `4` | Workers paralelos |
-| `--pode-corrigir` | boolean | `false` | Mostrar O QUE PODERIA ser corrigido |
-| `--cache` | boolean | `true` | Usar cache de análise |
+| Opção             | Tipo     | Padrão                    | Descrição                           |
+| ----------------- | -------- | ------------------------- | ----------------------------------- | ---- | ------ | -------------------- |
+| `--caminho`       | string   | `.`                       | Diretório raiz para análise         |
+| `--profundidade`  | number   | Infinito                  | Profundidade máxima de diretórios   |
+| `--extensoes`     | string[] | `ts,js,jsx,tsx`           | Extensões de arquivo                |
+| `--excluir`       | string[] | `node_modules,dist,build` | Diretórios para ignorar             |
+| `--analista`      | string[] | Todos                     | Analistas específicos a rodar       |
+| `--relatorio`     | `json\   | markdown\                 | html\                               | csv` | `json` | Formato do relatório |
+| `--saida`         | string   | `stdout`                  | Arquivo de saída                    |
+| `--verbose`       | boolean  | `false`                   | Modo verbose (mais detalhes)        |
+| `--debug`         | boolean  | `false`                   | Modo debug (muito detalhe)          |
+| `--paralelo`      | number   | `4`                       | Workers paralelos                   |
+| `--pode-corrigir` | boolean  | `false`                   | Mostrar O QUE PODERIA ser corrigido |
+| `--cache`         | boolean  | `true`                    | Usar cache de análise               |
 
 ### Exemplos
 
@@ -125,14 +125,14 @@ prometheus corrigir [opções]
 
 ### Opções
 
-| Opção | Tipo | Padrão | Descrição |
-|-------|------|--------|-----------|
-| `--auto` | boolean | `false` | Aplicar correções automaticamente |
-| `--revisar` | boolean | `false` | Revisar antes de aplicar |
-| `--tipo` | string | Todos | Tipo específico para corrigir |
-| `--arquivo` | string | Todos | Arquivo específico |
-| `--backup` | boolean | `true` | Criar backup antes |
-| `--dry-run` | boolean | `false` | Simular sem aplicar |
+| Opção       | Tipo    | Padrão   | Descrição                         |
+| ----------- | ------- | -------- | --------------------------------- |
+| `--auto`    | boolean | `false`  | Aplicar correções automaticamente |
+| `--revisar` | boolean | `false`  | Revisar antes de aplicar          |
+| `--tipo`    | string  | Todos    | Tipo específico para corrigir     |
+| `--arquivo` | string  | Todos    | Arquivo específico                |
+| `--backup`  | boolean | `true`   | Criar backup antes                |
+| `--dry-run` | boolean | `false`  | Simular sem aplicar               |
 
 ### Exemplos
 
@@ -613,4 +613,3 @@ prometheus diagnosticar | less
 - [Exemplos de Uso](../exemplos/EXEMPLOS-USO.md)
 - [Documentação Completa](../INDICE.md)
 - [Criar Analista](../desenvolvimento/analistas/CRIAR-ANALISTA.md)
-

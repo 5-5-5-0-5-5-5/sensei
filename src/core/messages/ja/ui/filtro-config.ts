@@ -178,14 +178,6 @@ export const AGRUPAMENTOS_MENSAGEM: AgrupamentoConfig[] = [
     acaoSugerida: '型ガードを追加するか、固有型に置き換えてください',
   },
   {
-    padrao: /missing-tests|missing tests|sem testes|no.*tests/i,
-    categoria: 'TESTES_AUSENTES',
-    titulo: 'テストのないファイル',
-    prioridade: 'alta',
-    icone: '[TEST]',
-    acaoSugerida: 'カバレッジを向上させるために単体テストを実装',
-  },
-  {
     padrao: /complexidade.*alta|complex.*high|cyclomatic.*complexity/i,
     categoria: 'COMPLEXIDADE_ALTA',
     titulo: '高複雑度のコード',

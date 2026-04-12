@@ -35,12 +35,12 @@ Um **Analista** é uma classe/função que:
 
 ### Tipos de Analistas
 
-| Tipo | Propósito | Exemplo |
-|------|----------|---------|
-| **Detector** | Identificar problemas | Código frágil, dependências circulares |
-| **Arquiteto** | Identificar padrões | MVC, Clean Architecture |
-| **Estrategista** | Propor soluções | Como refatorar, como organizar |
-| **Pontuador** | Atribuir scores | Qualidade da estrutura |
+| Tipo             | Propósito             | Exemplo                                |
+| ---------------- | --------------------- | -------------------------------------- |
+| **Detector**     | Identificar problemas | Código frágil, dependências circulares |
+| **Arquiteto**    | Identificar padrões   | MVC, Clean Architecture                |
+| **Estrategista** | Propor soluções       | Como refatorar, como organizar         |
+| **Pontuador**    | Atribuir scores       | Qualidade da estrutura                 |
 
 ---
 
@@ -465,4 +465,3 @@ R: Sim, mas retorne `Promise<ResultadoAnalise>` apropriadamente.
 - [Padrões de Desenvolvimento](../PADROES.md)
 - [Sistema de Plugins](../SISTEMA-PLUGINS.md)
 - [Type Safety no Prometheus](../../arquitetura/TYPE-SAFETY.md)
-

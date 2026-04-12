@@ -178,14 +178,6 @@ export const AGRUPAMENTOS_MENSAGEM: AgrupamentoConfig[] = [
     acaoSugerida: '添加类型守卫或替换为具体类型',
   },
   {
-    padrao: /missing-tests|missing tests|sem testes|no.*tests/i,
-    categoria: 'TESTES_AUSENTES',
-    titulo: '缺少测试的文件',
-    prioridade: 'alta',
-    icone: '[TEST]',
-    acaoSugerida: '实现单元测试以提高覆盖率',
-  },
-  {
     padrao: /complexidade.*alta|complex.*high|cyclomatic.*complexity/i,
     categoria: 'COMPLEXIDADE_ALTA',
     titulo: '高复杂度代码',

@@ -93,13 +93,13 @@ Planejamento estratégico do desenvolvimento do Prometheus, incluindo features p
 
 ## 🚀 Em Desenvolvimento
 
-| Feature | Status | ETA | Lead |
-|---------|--------|-----|------|
-| Marketplace de Analistas | 🔨 Em Progresso | v0.5 | Team |
-| Dashboard Web | 🔴 Planejado | v0.6 | - |
-| Integração IA | 🔴 Planejado | v0.7 | - |
-| Suporte PHP Avançado | 🟡 Pesquisa | v0.5.x | - |
-| Performance Optimizations | 🟡 Em Backlog | vNext | - |
+| Feature                   | Status          | ETA    | Lead   |
+| ------------------------- | --------------- | ------ | ------ |
+| Marketplace de Analistas  | 🔨 Em Progresso | v0.5   | Team   |
+| Dashboard Web             | 🔴 Planejado    | v0.6   | -      |
+| Integração IA             | 🔴 Planejado    | v0.7   | -      |
+| Suporte PHP Avançado      | 🟡 Pesquisa     | v0.5.x | -      |
+| Performance Optimizations | 🟡 Em Backlog   | vNext  | -      |
 
 ---
 
@@ -124,4 +124,3 @@ Tem uma ideia? Abra uma [issue no GitHub](https://github.com/5-5-5-5-5-5-5/prome
 3. Complexidade de implementação
 4. Demanda da comunidade
 5. Recursos disponíveis
-

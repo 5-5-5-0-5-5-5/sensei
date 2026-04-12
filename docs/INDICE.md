@@ -14,14 +14,14 @@ Mapa completo e navegação de toda a documentação do Prometheus.
 
 ## 📍 Navegação Rápida
 
-| Seção | Para | Link |
-|-------|------|------|
-| 🚀 Começar | Novo com Prometheus? | [Início Rápido →](guias/GUIA-INICIO-RAPIDO.md) |
-| ⚙️ Configurar | Customizar seu setup? | [Config →](guias/GUIA-CONFIGURACAO.md) |
-| 📚 Aprender | Entender como funciona? | [Arquitetura →](arquitetura/ARVORE-ARQUITETURAL.md) |
-| 👨‍💻 Desenvolver | Criar novos analistas? | [Criar Analista →](desenvolvimento/analistas/CRIAR-ANALISTA.md) |
-| 🔍 Usar | Que comando usar? | [Referência →](referencia/comandos/README.md) |
-| 💡 Exemplos | Como fazer X? | [Exemplos →](exemplos/EXEMPLOS-USO.md) |
+| Seção             | Para                    | Link                                                            |
+| ----------------- | ----------------------- | --------------------------------------------------------------- |
+| 🚀 Começar        | Novo com Prometheus?    | [Início Rápido →](guias/GUIA-INICIO-RAPIDO.md)                  |
+| ⚙️ Configurar     | Customizar seu setup?   | [Config →](guias/GUIA-CONFIGURACAO.md)                          |
+| 📚 Aprender       | Entender como funciona? | [Arquitetura →](arquitetura/ARVORE-ARQUITETURAL.md)             |
+| 👨‍💻 Desenvolver | Criar novos analistas?  | [Criar Analista →](desenvolvimento/analistas/CRIAR-ANALISTA.md) |
+| 🔍 Usar           | Que comando usar?       | [Referência →](referencia/comandos/README.md)                   |
+| 💡 Exemplos       | Como fazer X?           | [Exemplos →](exemplos/EXEMPLOS-USO.md)                          |
 
 ---
 
@@ -220,14 +220,14 @@ O futuro do Prometheus.
 
 ## 🔑 Conceitos-Chave
 
-| Conceito | Explicação | Link |
-|----------|-----------|------|
-| **Analista** | Detector de problema específico | [Criar →](desenvolvimento/analistas/CRIAR-ANALISTA.md) |
-| **Ocorrência** | Uma instância de um problema | [Tipos →](arquitetura/TYPE-SAFETY.md) |
-| **Registry** | Sistema de descoberta de plugins | [Plugins →](desenvolvimento/SISTEMA-PLUGINS.md) |
-| **Guardian** | Monitor contínuo de saúde | [Usar →](referencia/comandos/README.md#-prometheus-guardian) |
-| **i18n** | Internacionalização (multi-idioma) | [Mensagens →](arquitetura/MENSAGENS-LOGS.md) |
-| **Zelador** | Executor de correções automáticas | [Arquitetura →](arquitetura/ARVORE-ARQUITETURAL.md) |
+| Conceito       | Explicação                         | Link                                                         |
+| -------------- | ---------------------------------- | ------------------------------------------------------------ |
+| **Analista**   | Detector de problema específico    | [Criar →](desenvolvimento/analistas/CRIAR-ANALISTA.md)       |
+| **Ocorrência** | Uma instância de um problema       | [Tipos →](arquitetura/TYPE-SAFETY.md)                        |
+| **Registry**   | Sistema de descoberta de plugins   | [Plugins →](desenvolvimento/SISTEMA-PLUGINS.md)              |
+| **Guardian**   | Monitor contínuo de saúde          | [Usar →](referencia/comandos/README.md#-prometheus-guardian) |
+| **i18n**       | Internacionalização (multi-idioma) | [Mensagens →](arquitetura/MENSAGENS-LOGS.md)                 |
+| **Zelador**    | Executor de correções automáticas  | [Arquitetura →](arquitetura/ARVORE-ARQUITETURAL.md)          |
 
 ---
 
@@ -322,4 +322,3 @@ Todos os tópicos principais documentados:
 **Questões técnicas?** → [Arquitetura](arquitetura/README.md)
 
 **Referência rápida?** → [Guia de Comandos](guias/GUIA-COMANDOS.md)
-

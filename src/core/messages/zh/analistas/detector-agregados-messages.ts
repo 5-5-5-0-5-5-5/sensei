@@ -2,7 +2,7 @@
 
 /**
  * @fileoverview 聚合检测器的诊断消息。
- * 提供安全、性能、文档、重复性和测试质量问题的汇总文本模板，
+ * 提供安全、性能、文档和重复性问题的汇总文本模板，
  * 支持结果分页。
  */
 
@@ -18,7 +18,5 @@ export const DetectorAgregadosMensagens = {
   problemasDocumentacaoResumo: (prioridade: string, resumo: string, total: number) => `文档问题（${prioridade}）：${resumo}${total > 3 ? `（+${total - 3} 更多）` : ''}`,
   erroAnalisarDocumentacao: (erro: ErroUnknown) => `分析文档时出错：${erroToMessage(erro)}`,
   duplicacoesResumo: (tipo: string, resumo: string, total: number) => `${tipo}重复：${resumo}${total > 3 ? `（+${total - 3} 更多）` : ''}`,
-  erroAnalisarDuplicacoes: (erro: ErroUnknown) => `分析重复时出错：${erroToMessage(erro)}`,
-  problemasTesteResumo: (severidade: string, resumo: string, total: number) => `测试问题（${severidade}）：${resumo}${total > 3 ? `（+${total - 3} 更多）` : ''}`,
-  erroAnalisarQualidadeTestes: (erro: ErroUnknown) => `分析测试质量时出错：${erroToMessage(erro)}`
+  erroAnalisarDuplicacoes: (erro: ErroUnknown) => `分析重复时出错：${erroToMessage(erro)}`
 } as const;

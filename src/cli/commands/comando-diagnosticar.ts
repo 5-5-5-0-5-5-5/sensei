@@ -56,8 +56,8 @@ export function comandoDiagnosticar(aplicarFlagsGlobais: (opts: Record<string, u
       const parentObj = command.parent as unknown as {
         opts?: () => Record<string, unknown>;
       } | undefined;
-      const parentFlags = parentObj && typeof parentObj.opts === 'function' ? parentObj.opts() : {};
-      const localFlags = typeof command.opts === 'function' ? command.opts() : {};
+      const parentFlags = parentObj && typeof parentObj.opts === 'function' ? parentObj.opts() : {} as Record<string, never>;
+      const localFlags = typeof command.opts === 'function' ? command.opts() : {} as Record<string, never>;
       const merged = {
         ...(parentFlags || {}),
         ...(localFlags || {}),
@@ -186,7 +186,7 @@ export function comandoDiagnosticar(aplicarFlagsGlobais: (opts: Record<string, u
           const header = chalk.cyan(messages.CliComandoDiagnosticarMensagens.sugestoesHeader);
           const footer = chalk.cyan(messages.CliComandoDiagnosticarMensagens.sugestoesFooter);
           log.info(header);
-          if (activeFlags.length) log.info(chalk.yellow(`${CABECALHOS.diagnostico.flagsAtivas} `) + activeFlags.join(' '));else log.info(chalk.gray(messages.CliComandoDiagnosticarMensagens.nenhumaFlagRelevante));
+          if (activeFlags.length) log.info(chalk.yellow(`${CABECALHOS.diagnostico.flagsAtivas} `) + activeFlags.join(' ')); else log.info(chalk.gray(messages.CliComandoDiagnosticarMensagens.nenhumaFlagRelevante));
           log.info(messages.CliComandoDiagnosticarMensagens.linhaEmBranco);
           log.info(chalk.green(CABECALHOS.diagnostico.informacoesUteis));
           for (const d of details) log.info(messages.CliComandoDiagnosticarMensagens.detalheLinha(String(d)));
@@ -201,8 +201,8 @@ export function comandoDiagnosticar(aplicarFlagsGlobais: (opts: Record<string, u
     const spinner = opts.json ? {
       text: '',
       start: () => spinner,
-      succeed: () => {},
-      fail: () => {}
+      succeed: () => { },
+      fail: () => { }
     } : ora({
       text: messages.CliComandoDiagnosticarMensagens.spinnerExecutando,
       spinner: 'dots'

@@ -128,12 +128,6 @@
   "STRUCTURE_REVERSE_MAP_PATH": ".prometheus/mapa-reversao.json",
   "ESTRUTURA_PLANO_MAX_FILE_SIZE": 131072,
   "STRUCTURE_CONCURRENCY": 5,
-  "coverageGate": {
-    "lines": 100,
-    "functions": 100,
-    "branches": 100,
-    "statements": 100
-  },
   "languageSupport": {
     "javascript": {
       "enabled": true,
@@ -267,15 +261,28 @@
       "seguranca",
       "detector-tipos-inseguros",
       "todo-comments",
-      "analista-padroes-uso"
+      "analista-padroes-uso",
+      "github-actions"
     ],
     "analystsExclude": [
-      "documentacao",
-      "qualidade-testes"
+      "documentacao"
     ],
     "conventions": {
       "typesDirectory": "src/types"
     }
+  },
+  "analistaGithubActions": {
+    "checkActionsDesatualizadas": true,
+    "checkPermissoesExcessivas": true,
+    "checkSecretsHardcoded": true,
+    "checkFaltaTimeout": true,
+    "checkRunInseguro": true,
+    "checkFaltaCache": true,
+    "minScoreAceitavel": 70,
+    "actionsIgnoradas": [],
+    "caminhosWorkflow": [
+      ".github/workflows/"
+    ]
   },
   "detectorMarkdown": {
     "checkProveniencia": true,

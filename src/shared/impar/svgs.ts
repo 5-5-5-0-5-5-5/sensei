@@ -125,25 +125,23 @@ function colapsarEspacosEntreTags(code: string, params?: {
   out: string;
   changed: boolean;
 } {
-  // Troca sequências de whitespace entre tags por nada ou newline (se pretty).
-  // Isso não mexe em espaços dentro de nós de texto.
-  const replacement = params?.pretty ? '>\n<' : '><';
-  const out = code.replace(/>\s+</g, replacement);
-
   if (params?.pretty) {
-    // Basic indentation logic for pretty mode
+    // Adiciona quebra de linha entre TODAS as tags, mesmo quando estão coladas
+    let out = code.replace(/></g, '>\n<');
+
+    // Indentação básica para pretty mode
     const lines = out.split('\n');
     let indent = 0;
     const formatted = lines.map(line => {
       const trimmed = line.trim();
       if (!trimmed) return '';
       const isClosing = trimmed.startsWith('</');
-      const isSelfClosing = trimmed.endsWith('/>') || !trimmed.includes('<') || !trimmed.includes('>');
-      const isOpening = trimmed.startsWith('<') && !isClosing && !isSelfClosing;
+      const isSelfClosing = trimmed.endsWith('/>');
+      const isSingleTag = trimmed.startsWith('<') && trimmed.includes('>');
 
       if (isClosing) indent = Math.max(0, indent - 1);
       const res = '  '.repeat(indent) + trimmed;
-      if (isOpening) indent++;
+      if (isSingleTag && !isClosing && !isSelfClosing) indent++;
       return res;
     }).filter(l => l.trim()).join('\n');
 
@@ -153,6 +151,8 @@ function colapsarEspacosEntreTags(code: string, params?: {
     };
   }
 
+  // Sem pretty: colapsa tudo em uma linha
+  const out = code.replace(/>\s+</g, '><');
   return {
     out,
     changed: out !== code
@@ -172,6 +172,9 @@ export function otimizarSvgLikeSvgo(params: {
   if (/<script\b/i.test(out)) warnings.push('script-inline');
   if (/\son\w+\s*=\s*['"]/i.test(out)) warnings.push('evento-inline');
   if (/javascript:\s*/i.test(out)) warnings.push('javascript-url');
+
+  // Default para pretty: true (manter legibilidade com quebras de linha)
+  const opts = { ...params, pretty: params.pretty ?? true };
   const eol = normalizarFimDeLinha(out);
   if (eol !== out) {
     out = eol;
@@ -212,7 +215,7 @@ export function otimizarSvgLikeSvgo(params: {
     out = attrs.out;
     mudancas.push(...attrs.mudancas);
   }
-  const collapsed = colapsarEspacosEntreTags(out, params);
+  const collapsed = colapsarEspacosEntreTags(out, opts);
   if (collapsed.changed) {
     out = collapsed.out;
     mudancas.push('colapsar-espacos-entre-tags');

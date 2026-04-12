@@ -20,6 +20,7 @@ jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       security-events: write
       packages: read
@@ -42,6 +43,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 1
+          persist-credentials: false
 
       - name: Setup Node.js
         if: matrix.language == 'javascript-typescript'
@@ -66,6 +68,14 @@ jobs:
       - name: Install dependencies
         if: matrix.language == 'javascript-typescript'
         run: npm ci
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Build
         if: matrix.language == 'javascript-typescript'

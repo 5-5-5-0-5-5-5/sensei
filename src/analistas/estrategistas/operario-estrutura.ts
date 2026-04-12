@@ -68,7 +68,7 @@ export const OperarioEstrutura = {
         // Extrair sinais avançados para inteligência contextual
         const sinaisAvancados = extrairSinaisAvancados(
           fileEntriesComAst,
-          {}, // packageJson - será carregado internamente se necessário
+          undefined, // packageJson - será carregado internamente se necessário
           undefined,
           baseDir,
           fileEntriesComAst.map((f) => f.relPath),

@@ -14,16 +14,16 @@ Prometheus é uma ferramenta CLI poderosa para análise, diagnóstico e manuten�
 
 **Procurando algo específico?**
 
-| Na | Consulte |
-|---------|-------------|
-| ⏱️ Começar rápido | [Guia de Início Rápido](guias/GUIA-INICIO-RAPIDO.md) |
-| 📖 Todos os comandos | [Referência de Comandos](referencia/comandos/README.md) |
-| ⚙️ Configurar | [Guia de Configuração](guias/GUIA-CONFIGURACAO.md) |
-| 👨‍💻 Criar analista | [Como Criar Analistas](desenvolvimento/analistas/CRIAR-ANALISTA.md) |
-| 🏗️ Entender arquitetura | [Árvore Arquitetural](arquitetura/ARVORE-ARQUITETURAL.md) |
-| 💡 Exemplos práticos | [Exemplos de Uso](exemplos/EXEMPLOS-USO.md) |
-| 🔌 Sistema de plugins | [Sistema de Plugins](desenvolvimento/SISTEMA-PLUGINS.md) |
-| 📋 Tudo (índice completo) | [INDICE.md](INDICE.md) |
+| Na                        | Consulte                                                            |
+| ------------------------- | ------------------------------------------------------------------- |
+| ⏱️ Começar rápido         | [Guia de Início Rápido](guias/GUIA-INICIO-RAPIDO.md)                |
+| 📖 Todos os comandos      | [Referência de Comandos](referencia/comandos/README.md)             |
+| ⚙️ Configurar             | [Guia de Configuração](guias/GUIA-CONFIGURACAO.md)                  |
+| 👨‍💻 Criar analista      | [Como Criar Analistas](desenvolvimento/analistas/CRIAR-ANALISTA.md) |
+| 🏗️ Entender arquitetura  | [Árvore Arquitetural](arquitetura/ARVORE-ARQUITETURAL.md)           |
+| 💡 Exemplos práticos      | [Exemplos de Uso](exemplos/EXEMPLOS-USO.md)                         |
+| 🔌 Sistema de plugins     | [Sistema de Plugins](desenvolvimento/SISTEMA-PLUGINS.md)            |
+| 📋 Tudo (índice completo) | [INDICE.md](INDICE.md)                                              |
 
 ---
 
@@ -168,18 +168,18 @@ Consulte o [INDICE.md completo](INDICE.md)
 
 ## 💬 Procurando algo?
 
-| Pergunta | Resposta |
-|---------|----------|
-| "Como instalo?" | [Guia de Início Rápido](guias/GUIA-INICIO-RAPIDO.md) |
-| "Como configuro?" | [GUIA-CONFIGURACAO.md](guias/GUIA-CONFIGURACAO.md) |
-| "Qual comando usar?" | [Referência de Comandos](referencia/comandos/README.md) |
+| Pergunta               | Resposta                                                         |
+| ---------------------- | ---------------------------------------------------------------- |
+| "Como instalo?"        | [Guia de Início Rápido](guias/GUIA-INICIO-RAPIDO.md)             |
+| "Como configuro?"      | [GUIA-CONFIGURACAO.md](guias/GUIA-CONFIGURACAO.md)               |
+| "Qual comando usar?"   | [Referência de Comandos](referencia/comandos/README.md)          |
 | "Como criar analista?" | [CRIAR-ANALISTA.md](desenvolvimento/analistas/CRIAR-ANALISTA.md) |
-| "Como funciona?" | [ARVORE-ARQUITETURAL.md](arquitetura/ARVORE-ARQUITETURAL.md) |
-| "Exemplo prático" | [EXEMPLOS-USO.md](exemplos/EXEMPLOS-USO.md) |
-| "Qual padrão usar?" | [PADROES.md](desenvolvimento/PADROES.md) |
-| "Como estender?" | [SISTEMA-PLUGINS.md](desenvolvimento/SISTEMA-PLUGINS.md) |
-| "Organização do src/" | [estrutura-codigo/](desenvolvimento/estrutura-codigo/README.md) |
-| "Tudo!" | [INDICE.md](INDICE.md) |
+| "Como funciona?"       | [ARVORE-ARQUITETURAL.md](arquitetura/ARVORE-ARQUITETURAL.md)     |
+| "Exemplo prático"      | [EXEMPLOS-USO.md](exemplos/EXEMPLOS-USO.md)                      |
+| "Qual padrão usar?"    | [PADROES.md](desenvolvimento/PADROES.md)                         |
+| "Como estender?"       | [SISTEMA-PLUGINS.md](desenvolvimento/SISTEMA-PLUGINS.md)         |
+| "Organização do src/"  | [estrutura-codigo/](desenvolvimento/estrutura-codigo/README.md)  |
+| "Tudo!"                | [INDICE.md](INDICE.md)                                           |
 
 ---
 

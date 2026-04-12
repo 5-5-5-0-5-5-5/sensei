@@ -16,6 +16,7 @@ jobs:
   check-version:
     name: 🏷️ Check Version and Create Tag
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
     steps:
@@ -23,6 +24,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Get Current Version
         id: current
@@ -63,6 +65,13 @@ jobs:
       - name: Install Dependencies
         if: steps.check_tag.outputs.exists == 'false'
         run: npm ci
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Run Build
         if: steps.check_tag.outputs.exists == 'false'
