@@ -24,7 +24,7 @@ Proveniência e Autoria: Este documento integra o projeto Prometheus (licença M
 
 ---
 
-![version](https://img.shields.io/badge/version-0.4.3-brightblue?style=flat-square)
+![version](https://img.shields.io/badge/version-0.6.0-brightblue?style=flat-square)
 ![node](https://img.shields.io/badge/node-%3E%3D24.14.1-brightgreen?style=flat-square)
 ![license](https://img.shields.io/badge/license-MIT--0-red?style=flat-square)
 [![issues](https://img.shields.io/github/issues/5-5-5-5-5-5-5/prometheus?style=flat-square)](https://github.com/5-5-5-5-5-5-5/prometheus/issues)
