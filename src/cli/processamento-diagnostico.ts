@@ -160,11 +160,11 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
     // Fase inicial do diagnóstico
     if (opts.json) {
       // Suprime cabeçalhos verbosos no modo JSON
-    } else if (!iniciouDiagnostico && !config.COMPACT_MODE) {
+    } else if (!config.COMPACT_MODE) {
       // Usa optional chaining para suportar mocks parciais do módulo de log nos testes
       (log as typeof log & LogExtensions).fase?.('Iniciando diagnóstico completo');
       iniciouDiagnostico = true;
-    } else if (!iniciouDiagnostico && config.COMPACT_MODE) {
+    } else {
       (log as typeof log & LogExtensions).fase?.('Diagnóstico (modo compacto)');
       iniciouDiagnostico = true;
     }
