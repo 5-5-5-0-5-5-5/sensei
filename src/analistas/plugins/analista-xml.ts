@@ -111,7 +111,7 @@ function collectXmlIssues(src: string, relPath: string): Msg[] {
   }
 
   // CDATA em atributos (inválido)
-  for (const m of scan.matchAll(/=\s*['"]\s*<![CDATA[[^]]*]]>\s*['"]/gi)) {
+  for (const m of scan.matchAll(/=\s*['"]\s*<!\[CDATA\[[\s\S]*?\]\]>\s*['"]/gi)) {
     ocorrencias.push(warn(messages.XmlMensagens.cdataInAttribute, relPath, lineOf(m.index), messages.SeverityNiveis.error));
   }
   return ocorrencias;
