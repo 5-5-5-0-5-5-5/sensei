@@ -110,8 +110,8 @@ export async function listarAnalistas(): Promise<void> {
   }
 
   const titulo = 'Técnicas ativas (registro de analistas)';
-  // Largura: 80 para testes, 84/96 para modo compacto/padrão
-  let largura: number | undefined = 80;
+  // Largura definida dinamicamente com fallback para modo compacto/padrão
+  let largura: number;
   if (typeof (log as Record<string, unknown>).calcularLargura === 'function') {
     largura = (log as { calcularLargura: Function }).calcularLargura(
       titulo,
