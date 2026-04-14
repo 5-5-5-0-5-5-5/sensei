@@ -2,16 +2,12 @@
 /**
  * Executor de worker para processamento paralelo de arquivos
  * Este arquivo é executado em threads separadas pelos Worker Threads
+ * Formato ESM (compatível com "type": "module")
  */
 
-const {
-  parentPort,
-  workerData
-} = require('worker_threads');
-const {
-  promises: fs
-} = require('fs');
-const path = require('path');
+import { parentPort, workerData } from 'node:worker_threads';
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
 
 // Importar tipos necessários (simplificados para worker)
 const tipos = {

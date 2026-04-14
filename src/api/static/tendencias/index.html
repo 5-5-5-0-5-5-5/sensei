@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prometheus | Tendências</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../global.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark-mode">
+  <div class="glass-bg"></div>
+  <div id="toast-container"></div>
+
+  <div class="container">
+    <header>
+      <div class="logo">
+        <h1>Prometheus <span>Platform</span></h1>
+        <p class="tagline">Multitool de Qualidade e Segurança</p>
+      </div>
+
+      <nav class="global-nav">
+        <a href="../" class="nav-btn"><i class="fas fa-home"></i> <span>Home</span></a>
+        <a href="../workflows/" class="nav-btn"><i class="fab fa-github"></i> <span>GitHub Actions</span></a>
+        <a href="../projeto/" class="nav-btn"><i class="fas fa-heartbeat"></i> <span>Saúde do Projeto</span></a>
+        <a href="../analise/" class="nav-btn"><i class="fas fa-code"></i> <span>Análise de Código</span></a>
+        <a href="../detectores/" class="nav-btn"><i class="fas fa-shield-alt"></i> <span>Detectores</span></a>
+        <a href="../licencas/" class="nav-btn"><i class="fas fa-balance-scale"></i> <span>Licenças</span></a>
+        <a href="../performance/" class="nav-btn"><i class="fas fa-tachometer-alt"></i> <span>Performance</span></a>
+        <a href="../tendencias/" class="nav-btn active"><i class="fas fa-chart-line"></i> <span>Tendências</span></a>
+      </nav>
+
+      <div class="stats-summary">
+        <div class="stat-card" title="Status geral de integridade do projeto">
+          <span class="label"><i class="fas fa-shield-alt"></i> Integridade</span>
+          <span class="value" id="status-integridade">OK</span>
+        </div>
+        <div class="stat-card" title="Total de arquivos TypeScript/JavaScript">
+          <span class="label"><i class="fas fa-file-code"></i> Arquivos</span>
+          <span class="value" id="info-files">0</span>
+        </div>
+        <div class="stat-card" title="Número de dependências do projeto">
+          <span class="label"><i class="fas fa-cube"></i> Deps</span>
+          <span class="value" id="info-dependencies">0</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="card full-width">
+        <h2><i class="fas fa-chart-line"></i> Histórico de Segurança</h2>
+        <div id="tendencias-loading" class="hidden">
+          <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Carregando histórico...</p>
+          </div>
+        </div>
+        <div class="chart-container" id="trend-chart-container" style="height: 350px;">
+          <canvas id="trend-chart"></canvas>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="music-player" id="music-player">
+    <button class="music-toggle" id="music-toggle" title="Tocar/Pausar música"><i class="fas fa-music"></i></button>
+    <div class="music-controls" id="music-controls">
+      <audio id="audio-player" loop><source src="../music/gratidao.mp3" type="audio/mpeg"></audio>
+      <button class="music-btn-play" id="music-play" title="Play"><i class="fas fa-play"></i></button>
+      <button class="music-btn-pause" id="music-pause" title="Pause" style="display: none;"><i class="fas fa-pause"></i></button>
+      <input type="range" class="music-volume" id="music-volume" min="0" max="1" step="0.1" value="0.3" aria-label="Controle de volume">
+    </div>
+  </div>
+
+  <script src="tendencias.js"></script>
+</body>
+</html>

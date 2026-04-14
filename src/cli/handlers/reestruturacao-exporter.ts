@@ -72,7 +72,7 @@ export async function exportarRelatoriosReestruturacao(options: ReestruturacaoEx
     } = options;
 
     // Determinar diretório de saída
-    const dir = typeof config.REPORT_OUTPUT_DIR === 'string' ? config.REPORT_OUTPUT_DIR : path.join(baseDir, 'relatorios');
+    const dir = typeof config.REPORT_OUTPUT_DIR === 'string' ? config.REPORT_OUTPUT_DIR : path.join(baseDir, 'reports');
 
     // Criar diretório se não existir
     await fs.mkdir(dir, {

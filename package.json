@@ -16,7 +16,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist bin",
-    "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json && mkdir -p dist/api/static && cp -r src/api/static/* dist/api/static/",
+    "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json && mkdir -p dist/api/static && cp -r src/api/static/* dist/api/static/ && cp src/core/workers/worker-executor.js dist/core/workers/worker-executor.js",
     "prepare": "npm run build",
     "start": "prometheus",
     "diagnosticar": "prometheus diagnosticar",
@@ -91,15 +91,15 @@
     "p-limit": "^7.3.0",
     "prometheus": "file:prometheus-0.6.0.tgz",
     "xxhashjs": "^0.2.2",
-    "yaml": "^2.7.0"
+    "yaml": "^2.8.3"
   },
   "devDependencies": {
     "@types/babel__generator": "^7.27.0",
     "@types/babel__traverse": "^7.28.0",
     "@types/micromatch": "^4.0.10",
     "@types/node": "^25.6.0",
-    "@typescript-eslint/eslint-plugin": "^8.58.1",
-    "@typescript-eslint/parser": "^8.58.1",
+    "@typescript-eslint/eslint-plugin": "^8.58.2",
+    "@typescript-eslint/parser": "^8.58.2",
     "@vitest/coverage-istanbul": "^4.1.4",
     "@vitest/coverage-v8": "^4.1.4",
     "eslint": "^9.39.4",

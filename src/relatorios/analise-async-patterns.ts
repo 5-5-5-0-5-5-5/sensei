@@ -212,6 +212,6 @@ export async function salvarRelatorioAsync(report: AsyncAnalysisReport, outputCa
  */
 export async function executarAnaliseAsync(ocorrencias: Ocorrencia[], baseDir: string, options: AsyncAnalysisOptions = {}): Promise<void> {
   const report = await analisarAsyncPatterns(ocorrencias, options);
-  const reportCaminho = path.join(baseDir, 'relatorios', 'async-analysis-report.json');
+  const reportCaminho = path.join(baseDir, 'reports', 'async-analysis-report.json');
   await salvarRelatorioAsync(report, reportCaminho);
 }

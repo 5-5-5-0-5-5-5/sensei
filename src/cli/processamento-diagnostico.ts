@@ -294,7 +294,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
       if (config.REPORT_EXPORT_ENABLED) {
         try {
           const ts = new Date().toISOString().replace(/[:.]/g, '-');
-          const dir = typeof config.REPORT_OUTPUT_DIR === 'string' ? config.REPORT_OUTPUT_DIR : path.join(baseDir, 'prometheus-reports');
+          const dir = typeof config.REPORT_OUTPUT_DIR === 'string' ? config.REPORT_OUTPUT_DIR : path.join(baseDir, 'reports');
           const fs = await import('node:fs');
           await fs.promises.mkdir(dir, {
             recursive: true
@@ -1335,12 +1335,12 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
         emitirConselhoPrometheus(contextoConselho);
         if (config.REPORT_EXPORT_ENABLED) {
           const ts = new Date().toISOString().replace(/[:.]/g, '-');
-          const dir = typeof config.REPORT_OUTPUT_DIR === 'string' ? config.REPORT_OUTPUT_DIR : path.join(baseDir, 'prometheus-reports');
+          const dir = typeof config.REPORT_OUTPUT_DIR === 'string' ? config.REPORT_OUTPUT_DIR : path.join(baseDir, 'reports');
           const fs = await import('node:fs');
           await fs.promises.mkdir(dir, {
             recursive: true
           });
-          const outputCaminho = path.join(dir, `prometheus-diagnostico-${ts}.md`);
+          const outputCaminho = path.join(dir, `relatorio-${ts}.md`);
           const resultadoCompleto = {
             ...resultadoExecucao,
             fileEntries: fileEntriesComAst,
@@ -1414,7 +1414,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
               ocorrencias: ocorrenciasLimpas
             };
             const salvar = await getSalvarEstado();
-            await salvar(path.join(dir, `prometheus-relatorio-summary-${ts}.json`), relatorioResumo);
+            await salvar(path.join(dir, `relatorio-${ts}.json`), relatorioResumo);
 
             // Se exportação full estiver ativa, grava também o payload completo em arquivo separado
             let fragmentResultado: {
@@ -1652,7 +1652,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
           if (config.REPORT_EXPORT_ENABLED) {
             try {
               const ts = new Date().toISOString().replace(/[:.]/g, '-');
-              const dir = typeof config.REPORT_OUTPUT_DIR === 'string' ? config.REPORT_OUTPUT_DIR : path.join(baseDir, 'prometheus-reports');
+              const dir = typeof config.REPORT_OUTPUT_DIR === 'string' ? config.REPORT_OUTPUT_DIR : path.join(baseDir, 'reports');
               const fs = await import('node:fs');
               await fs.promises.mkdir(dir, {
                 recursive: true

@@ -1,344 +1,320 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-      Prometheus | Dashboard Master
-    </title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Styles -->
-    <link rel="stylesheet" href="dashboard.css">
-    <!-- Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js">
-    </script>
-  </head>
-  <body class="dark-mode">
-    <div class="glass-bg">
-    </div>
-    <div class="container">
-      <header>
-        <div class="logo">
-          <h1>
-            Prometheus
-            <span>
-              Platform
-            </span>
-          </h1>
-          <p class="tagline">
-            Multitool de Qualidade e Segurança
-          </p>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prometheus | Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="global.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="dark-mode">
+  <div class="glass-bg"></div>
+  <div id="toast-container"></div>
+
+  <div class="container">
+    <header>
+      <div class="logo">
+        <h1>Prometheus <span>Platform</span></h1>
+        <p class="tagline">Multitool de Qualidade e Segurança</p>
+      </div>
+
+      <nav class="global-nav">
+        <a href="/" class="nav-btn active"><i class="fas fa-home"></i> <span>Home</span></a>
+        <a href="workflows/" class="nav-btn"><i class="fab fa-github"></i> <span>GitHub Actions</span></a>
+        <a href="projeto/" class="nav-btn"><i class="fas fa-heartbeat"></i> <span>Saúde do Projeto</span></a>
+        <a href="analise/" class="nav-btn"><i class="fas fa-code"></i> <span>Análise de Código</span></a>
+        <a href="detectores/" class="nav-btn"><i class="fas fa-shield-alt"></i> <span>Detectores</span></a>
+        <a href="licencas/" class="nav-btn"><i class="fas fa-balance-scale"></i> <span>Licenças</span></a>
+        <a href="performance/" class="nav-btn"><i class="fas fa-tachometer-alt"></i> <span>Performance</span></a>
+        <a href="tendencias/" class="nav-btn"><i class="fas fa-chart-line"></i> <span>Tendências</span></a>
+      </nav>
+
+      <div class="stats-summary">
+        <div class="stat-card" title="Status geral de integridade do projeto">
+          <span class="label"><i class="fas fa-shield-alt"></i> Integridade</span>
+          <span class="value" id="status-integridade">OK</span>
         </div>
-        <nav class="global-nav">
-          <button class="nav-btn active" data-view="workflows">
-            <i class="fab fa-github">
-            </i>
-            GitHub Actions
-          </button>
-          <button class="nav-btn" data-view="projeto">
-            <i class="fas fa-heartbeat">
-            </i>
-            Saúde do Projeto
-          </button>
-          <button class="nav-btn" data-view="tendencias">
-            <i class="fas fa-chart-line">
-            </i>
-            Tendências
-          </button>
-        </nav>
-        <div class="stats-summary">
-          <div class="stat-card" title="Status geral de integridade do projeto">
-            <span class="label">
-              <i class="fas fa-shield-alt">
-              </i>
-              Integridade
-            </span>
-            <span class="value" id="status-integridade">
-              OK
-            </span>
-          </div>
-          <div class="stat-card" title="Total de arquivos TypeScript/JavaScript">
-            <span class="label">
-              <i class="fas fa-file-code">
-              </i>
-              Arquivos
-            </span>
-            <span class="value" id="info-files">
-              0
-            </span>
-          </div>
-          <div class="stat-card" title="Número de dependências do projeto">
-            <span class="label">
-              <i class="fas fa-cube">
-              </i>
-              Deps
-            </span>
-            <span class="value" id="info-dependencies">
-              0
-            </span>
-          </div>
+        <div class="stat-card" title="Total de arquivos TypeScript/JavaScript">
+          <span class="label"><i class="fas fa-file-code"></i> Arquivos</span>
+          <span class="value" id="info-files">0</span>
         </div>
-      </header>
-      <!-- VISÃO: WORKFLOWS (Padrão) -->
-      <main id="view-workflows" class="view">
-        <aside class="sidebar">
-          <h2 class="sidebar-title">
-            <i class="fas fa-folder-open">
-            </i>
-            Workflows
-          </h2>
-          <ul id="workflow-list">
-            <li class="loading">
-              Carregando...
-            </li>
-          </ul>
-        </aside>
-        <section class="content">
-          <div id="welcome-screen">
-            <i class="fas fa-search-code" style="font-size: 3rem; margin-bottom: 20px; color: var(--accent);">
-            </i>
-            <h2>
-              Selecione um workflow para analisar
-            </h2>
-            <p>
-              Visão geral detalhada de segurança, performance e boas práticas.
-            </p>
-          </div>
-          <div id="analysis-detail" class="hidden">
-            <div class="detail-header">
-              <h2 id="current-workflow-name">
-                main.yml
-              </h2>
-              <div class="score-badge" id="workflow-score">
-                Score: 85
-              </div>
-            </div>
-            <div class="tabs">
-              <button class="tab-btn active" data-tab="resumo">
-                <i class="fas fa-file-alt">
-                </i>
-                Resumo
-              </button>
-              <button class="tab-btn" data-tab="problemas">
-                <i class="fas fa-bug">
-                </i>
-                Problemas
-              </button>
-              <button class="tab-btn" data-tab="grafo">
-                <i class="fas fa-project-diagram">
-                </i>
-                Representação Visual
-              </button>
-            </div>
-            <!-- Conteúdo: Resumo -->
-            <div class="tab-content" id="tab-resumo">
-              <div class="summary-cards">
-                <div class="card" title="Status de segurança do workflow">
-                  <h3>
-                    <i class="fas fa-lock">
-                    </i>
-                    Segurança
-                  </h3>
-                  <p id="sec-status">
-                    ✅ Seguro
-                  </p>
-                </div>
-                <div class="card" title="Status de otimização de performance">
-                  <h3>
-                    <i class="fas fa-bolt">
-                    </i>
-                    Performance
-                  </h3>
-                  <p id="perf-status">
-                    Otimizada
-                  </p>
-                </div>
-                <div class="card" title="Boas práticas identificadas">
-                  <h3>
-                    <i class="fas fa-check-double">
-                    </i>
-                    Boas Práticas
-                  </h3>
-                  <p id="best-practices-status">
-                    Verificando
-                  </p>
-                </div>
-                <div class="card" title="Documentação do workflow">
-                  <h3>
-                    <i class="fas fa-book">
-                    </i>
-                    Documentação
-                  </h3>
-                  <p id="docs-status">
-                    Pendente
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- Conteúdo: Tabela -->
-            <div class="tab-content hidden" id="tab-problemas">
-              <table class = "data-table" id = "problems-table" aria-label = "Tabela de problemas detectados" >
-              <thead>
-                <tr>
-                  <th>
-                    Linha
-                  </th>
-                  <th>
-                    Tipo
-                  </th>
-                  <th>
-                    Mensagem
-                  </th>
-                  <th>
-                    Nível
-                  </th>
-                </tr>
-              </thead>
-              <tbody id="problems-body">
-                <!-- Preenchido via JS -->
-              </tbody>
-            </table>
-          </div>
-          <!-- Conteúdo: Grafo -->
-          <div class="tab-content hidden" id="tab-grafo">
-            <div class="mermaid" id="workflow-graph">
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <!-- VISÃO: PROJETO (Guardian + Metricas) -->
-    <main id="view-projeto" class="view hidden">
-      <div class="dashboard-grid">
-        <div class="card stat-hero">
-          <h2>
-            <i class="fas fa-user-shield">
-            </i>
-            Guardian Status
-          </h2>
-          <p id="guardian-desc">
-            Monitoramento de integridade ativo.
-          </p>
-          <div class="health-bar">
-            <div class="fill" style="width: 100%">
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <h2>
-            <i class="fas fa-database">
-            </i>
-            Métricas Base
-          </h2>
-          <ul class="metrics-list">
-            <li title="Versão atual do projeto">
-              <strong>
-                Versão:
-              </strong>
-              <span id="info-versao">
-                0.6.0
-              </span>
-            </li>
-            <li title="Total de workflows GitHub Actions">
-              <strong>
-                Workflows:
-              </strong>
-              <span id="info-workflows">
-                0
-              </span>
-            </li>
-            <li title="Status do ambiente de desenvolvimento">
-              <strong>
-                Status Ambiente:
-              </strong>
-              <span class="badge">
-                Produção
-              </span>
-            </li>
-          </ul>
-        </div>
-        <div class="card">
-          <h2>
-            <i class="fas fa-spider">
-            </i>
-            Mapa de Saúde
-          </h2>
-          <div class="chart-container" style="height: 250px;">
-            <canvas id="radar-chart">
-            </canvas>
-          </div>
-        </div>
-        <div class="card full-width">
-          <h2>
-            <i class="fas fa-tools">
-            </i>
-            Ferramentas Rápidas
-          </h2>
-          <div class="tool-buttons">
-            <button class="tool-btn" id="btn-diagnosticar">
-              <i class="fas fa-stethoscope">
-              </i>
-              Diagnosticar
-            </button>
-            <button class="tool-btn" id="btn-otimizar">
-              <i class="fas fa-compress-arrows-alt">
-              </i>
-              Otimizar SVG
-            </button>
-            <button class="tool-btn disabled">
-              <i class="fas fa-magic">
-              </i>
-              Auto-Fix (Em breve)
-            </button>
-          </div>
+        <div class="stat-card" title="Número de dependências do projeto">
+          <span class="label"><i class="fas fa-cube"></i> Deps</span>
+          <span class="value" id="info-dependencies">0</span>
         </div>
       </div>
-    </main>
-    <!-- VISÃO: TENDÊNCIAS -->
-    <main id="view-tendencias" class="view hidden">
-      <div class="card">
-        <h2>
-          <i class="fas fa-chart-line">
-          </i>
-          Histórico de Segurança
-        </h2>
-        <div class="chart-container">
-          <canvas id="trend-chart">
-          </canvas>
+    </header>
+
+    <main>
+      <div class="dashboard-grid">
+        <!-- Cards de Navegação -->
+        <div class="card full-width">
+          <h2><i class="fas fa-th-large"></i> Módulos do Dashboard</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Selecione um módulo para acessar sua página
+            dedicada.</p>
+          <div class="tool-buttons" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <a href="workflows/" class="tool-btn"
+              style="text-decoration:none;flex-direction:column;gap:0.5rem;padding:2rem;">
+              <i class="fab fa-github" style="font-size:2rem;"></i>
+              <strong>GitHub Actions</strong>
+              <span style="font-size:0.8rem;font-family:Outfit,sans-serif;text-transform:none;">Análise de workflows de
+                CI/CD</span>
+            </a>
+            <a href="projeto/" class="tool-btn"
+              style="text-decoration:none;flex-direction:column;gap:0.5rem;padding:2rem;">
+              <i class="fas fa-heartbeat" style="font-size:2rem;"></i>
+              <strong>Saúde do Projeto</strong>
+              <span style="font-size:0.8rem;font-family:Outfit,sans-serif;text-transform:none;">Guardian status e
+                métricas base</span>
+            </a>
+            <a href="analise/" class="tool-btn"
+              style="text-decoration:none;flex-direction:column;gap:0.5rem;padding:2rem;">
+              <i class="fas fa-code" style="font-size:2rem;"></i>
+              <strong>Análise de Código</strong>
+              <span style="font-size:0.8rem;font-family:Outfit,sans-serif;text-transform:none;">Diagnóstico detalhado do
+                código</span>
+            </a>
+            <a href="detectores/" class="tool-btn"
+              style="text-decoration:none;flex-direction:column;gap:0.5rem;padding:2rem;">
+              <i class="fas fa-shield-alt" style="font-size:2rem;"></i>
+              <strong>Detectores</strong>
+              <span style="font-size:0.8rem;font-family:Outfit,sans-serif;text-transform:none;">Plugins e técnicas
+                ativas</span>
+            </a>
+            <a href="licencas/" class="tool-btn"
+              style="text-decoration:none;flex-direction:column;gap:0.5rem;padding:2rem;">
+              <i class="fas fa-balance-scale" style="font-size:2rem;"></i>
+              <strong>Licenças</strong>
+              <span style="font-size:0.8rem;font-family:Outfit,sans-serif;text-transform:none;">Scan de licenças de
+                dependências</span>
+            </a>
+            <a href="performance/" class="tool-btn"
+              style="text-decoration:none;flex-direction:column;gap:0.5rem;padding:2rem;">
+              <i class="fas fa-tachometer-alt" style="font-size:2rem;"></i>
+              <strong>Performance</strong>
+              <span style="font-size:0.8rem;font-family:Outfit,sans-serif;text-transform:none;">Métricas e histórico de
+                performance</span>
+            </a>
+            <a href="tendencias/" class="tool-btn"
+              style="text-decoration:none;flex-direction:column;gap:0.5rem;padding:2rem;">
+              <i class="fas fa-chart-line" style="font-size:2rem;"></i>
+              <strong>Tendências</strong>
+              <span style="font-size:0.8rem;font-family:Outfit,sans-serif;text-transform:none;">Histórico de segurança
+                ao longo do tempo</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Guardian Status -->
+        <div class="card full-width">
+          <h2><i class="fas fa-user-shield"></i> Guardian Status</h2>
+          <p id="guardian-desc">Monitoramento de integridade ativo.</p>
+          <div class="health-bar">
+            <div class="fill" style="width: 100%"></div>
+          </div>
+        </div>
+
+        <!-- Métricas Base -->
+        <div class="card">
+          <h2><i class="fas fa-database"></i> Métricas Base</h2>
+          <ul class="metrics-list">
+            <li title="Versão atual do projeto">
+              <strong>Versão:</strong> <span id="info-versao">0.6.0</span>
+            </li>
+            <li title="Total de workflows GitHub Actions">
+              <strong>Workflows:</strong> <span id="info-workflows">0</span>
+            </li>
+            <li title="Status do ambiente de desenvolvimento">
+              <strong>Status Ambiente:</strong> <span class="badge">Produção</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mapa de Saúde -->
+        <div class="card">
+          <h2><i class="fas fa-spider"></i> Mapa de Saúde</h2>
+          <div class="chart-container" style="height: 250px;">
+            <canvas id="radar-chart"></canvas>
+          </div>
+        </div>
+
+        <!-- Ferramentas Rápidas -->
+        <div class="card full-width">
+          <h2><i class="fas fa-tools"></i> Ferramentas Rápidas</h2>
+          <div class="tool-buttons">
+            <button class="tool-btn" id="btn-diagnosticar"><i class="fas fa-stethoscope"></i> Diagnosticar</button>
+            <button class="tool-btn" id="btn-otimizar"><i class="fas fa-compress-arrows-alt"></i> Otimizar SVG</button>
+          </div>
         </div>
       </div>
     </main>
   </div>
-  <!-- Music Player Discreto -->
+
   <div class="music-player" id="music-player">
-    <button class = "music-toggle" id = "music-toggle" title = "Tocar/Pausar música" >
-    <i class="fas fa-music">
-    </i>
-  </button>
-  <div class="music-controls" id="music-controls">
-    <audio id="audio-player" loop>
-      <source src="music/gratidao.mp3" type="audio/mpeg">
-    </audio>
-    <button class = "music-btn-play" id = "music-play" title = "Play" >
-    <i class="fas fa-play">
-    </i>
-  </button>
-  <button class = "music-btn-pause" id = "music-pause" title = "Pause" style = "display: none;" >
-  <i class="fas fa-pause">
-  </i>
-</button>
-<input type="range" class="music-volume" id="music-volume" min="0" max="1" step="0.1" value="0.3" title="Volume">
-</div>
-</div>
-<!-- Scripts do Dashboard -->
-<script src="dashboard.js">
-</script>
+    <button class="music-toggle" id="music-toggle" title="Tocar/Pausar música"><i class="fas fa-music"></i></button>
+    <div class="music-controls" id="music-controls">
+      <audio id="audio-player" loop>
+        <source src="music/gratidao.mp3" type="audio/mpeg">
+      </audio>
+      <button class="music-btn-play" id="music-play" title="Play"><i class="fas fa-play"></i></button>
+      <button class="music-btn-pause" id="music-pause" title="Pause" style="display: none;"><i
+          class="fas fa-pause"></i></button>
+      <input type="range" class="music-volume" id="music-volume" min="0" max="1" step="0.1" value="0.3"
+        aria-label="Controle de volume">
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!document.getElementById('toast-container')) {
+        const tc = document.createElement('div');
+        tc.id = 'toast-container';
+        document.body.appendChild(tc);
+      }
+
+      initMusicPlayer();
+      loadProjectStatus();
+      initToolButtons();
+
+      async function loadProjectStatus() {
+        const integrityEl = document.getElementById('status-integridade');
+        if (integrityEl) integrityEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+        try {
+          const res = await fetch('/api/v1/repositorio/status');
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+
+          const el = document.getElementById('status-integridade');
+          if (el) el.textContent = data.saude || 'OK';
+
+          const wfEl = document.getElementById('info-workflows');
+          if (wfEl) wfEl.textContent = data.metricas?.workflows || '0';
+
+          const verEl = document.getElementById('info-versao');
+          if (verEl) verEl.textContent = data.versao || '0.6.0';
+
+          const filesEl = document.getElementById('info-files');
+          if (filesEl && data.metricas?.totalFiles) filesEl.textContent = data.metricas.totalFiles;
+
+          const depsEl = document.getElementById('info-dependencies');
+          if (depsEl && data.metricas?.dependencies !== undefined) depsEl.textContent = data.metricas.dependencies;
+
+          const guardianDesc = document.getElementById('guardian-desc');
+          if (guardianDesc && data.metricas?.integridade) guardianDesc.textContent = data.metricas.integridade;
+
+          if (data.metricas?.radar) renderRadarChart(data.metricas.radar);
+
+          const healthBar = document.querySelector('.health-bar .fill');
+          if (healthBar && data.metricas?.radar) {
+            const avgScore = Object.values(data.metricas.radar).reduce((a, b) => a + b, 0) / 5;
+            healthBar.style.width = `${avgScore}%`;
+            if (avgScore >= 80) healthBar.style.background = 'var(--success)';
+            else if (avgScore >= 60) healthBar.style.background = 'var(--warning)';
+            else healthBar.style.background = 'var(--critical)';
+          }
+        } catch (err) {
+          console.error('Erro ao obter status:', err);
+          const el = document.getElementById('status-integridade');
+          if (el) { el.textContent = 'Erro'; el.style.color = 'var(--critical)'; }
+        }
+      }
+
+      function renderRadarChart(radarData) {
+        const ctx = document.getElementById('radar-chart').getContext('2d');
+        if (window.radarChart) window.radarChart.destroy();
+
+        window.radarChart = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: ['Segurança', 'Performance', 'Documentação', 'Arquitetura', 'Qualidade'],
+            datasets: [{
+              label: 'Saúde do Projeto',
+              data: [radarData.seguranca || 0, radarData.performance || 0, radarData.documentacao || 0, radarData.arquitetura || 0, radarData.qualidade || 0],
+              backgroundColor: 'rgba(78, 205, 196, 0.2)',
+              borderColor: '#4ecdc4',
+              pointBackgroundColor: '#4ecdc4',
+              borderWidth: 2
+            }]
+          },
+          options: {
+            scales: { r: { angleLines: { color: 'rgba(255,255,255,0.1)' }, grid: { color: 'rgba(255,255,255,0.1)' }, pointLabels: { color: '#a4b0be', font: { size: 12 } }, ticks: { display: false, max: 100, min: 0, stepSize: 20 } } },
+            plugins: { legend: { display: false } }
+          }
+        });
+      }
+
+      function initToolButtons() {
+        document.getElementById('btn-diagnosticar')?.addEventListener('click', async () => {
+          const btn = document.getElementById('btn-diagnosticar');
+          btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executando...';
+          btn.disabled = true;
+          try {
+            const res = await fetch('/api/v1/comando/diagnosticar', { method: 'POST' });
+            const data = await res.json();
+            showToast(data.message || 'Diagnóstico Concluído!', 'success');
+            loadProjectStatus();
+          } catch (err) { showToast('Erro: ' + err, 'error'); }
+          finally { btn.innerHTML = '<i class="fas fa-stethoscope"></i> Diagnosticar'; btn.disabled = false; }
+        });
+
+        document.getElementById('btn-otimizar')?.addEventListener('click', async () => {
+          const btn = document.getElementById('btn-otimizar');
+          btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Otimizando...';
+          btn.disabled = true;
+          try {
+            const res = await fetch('/api/v1/comando/otimizar-svg', { method: 'POST' });
+            const data = await res.json();
+            showToast(`Otimização concluída! ${data.otimizados} arquivos.`, 'success');
+          } catch (err) { showToast('Erro: ' + err, 'error'); }
+          finally { btn.innerHTML = '<i class="fas fa-compress-arrows-alt"></i> Otimizar SVG'; btn.disabled = false; }
+        });
+      }
+
+      function showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        const icon = type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle';
+        const iconEl = document.createElement('i'); iconEl.className = `fas fa-${icon}`;
+        const msgSpan = document.createElement('span'); msgSpan.textContent = message;
+        const closeBtn = document.createElement('button'); closeBtn.className = 'toast-close'; closeBtn.textContent = '\u00D7';
+        closeBtn.addEventListener('click', () => toast.remove());
+        toast.appendChild(iconEl); toast.appendChild(msgSpan); toast.appendChild(closeBtn);
+        (document.getElementById('toast-container') || document.body).appendChild(toast);
+        setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateX(100%)'; setTimeout(() => toast.remove(), 300); }, 5000);
+      }
+
+      function initMusicPlayer() {
+        const audioPlayer = document.getElementById('audio-player');
+        const musicToggle = document.getElementById('music-toggle');
+        const musicControls = document.getElementById('music-controls');
+        const playBtn = document.getElementById('music-play');
+        const pauseBtn = document.getElementById('music-pause');
+        const volumeSlider = document.getElementById('music-volume');
+        let isPlaying = false, isExpanded = false;
+        if (audioPlayer) audioPlayer.volume = 0.3;
+
+        musicToggle?.addEventListener('click', () => {
+          isExpanded = !isExpanded; musicControls.classList.toggle('visible', isExpanded);
+          if (isExpanded && !isPlaying) playMusic();
+        });
+        playBtn?.addEventListener('click', playMusic);
+        pauseBtn?.addEventListener('click', pauseMusic);
+        volumeSlider?.addEventListener('input', (e) => { if (audioPlayer) audioPlayer.volume = parseFloat(e.target.value); });
+
+        function playMusic() { if (audioPlayer) { audioPlayer.play().catch(() => { }); isPlaying = true; playBtn.style.display = 'none'; pauseBtn.style.display = 'flex'; musicToggle.classList.add('playing'); } }
+        function pauseMusic() { if (audioPlayer) { audioPlayer.pause(); isPlaying = false; playBtn.style.display = 'flex'; pauseBtn.style.display = 'none'; musicToggle.classList.remove('playing'); } }
+      }
+    });
+  </script>
 </body>
+
 </html>

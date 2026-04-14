@@ -25,8 +25,8 @@ export const PROMETHEUS_DIRS = {
   STATE: path.join(PROJETO_RAIZ, '.prometheus'),
   /** Diretório de histórico de métricas (.prometheus/historico-metricas/) */
   METRICS_HISTORY: path.join(PROJETO_RAIZ, '.prometheus', 'historico-metricas'),
-  /** Diretório de relatórios (relatorios/) */
-  REPORTS: path.join(PROJETO_RAIZ, 'relatorios'),
+  /** Diretório de relatórios (reports/) */
+  REPORTS: path.join(PROJETO_RAIZ, 'reports'),
   /** Diretório de performance baselines (docs/perf/) */
   PERF: path.join(PROJETO_RAIZ, 'docs', 'perf')
 } as const;
