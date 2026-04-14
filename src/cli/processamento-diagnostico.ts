@@ -1667,7 +1667,6 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
         } catch (e) {
           console.error(messages.CliProcessamentoDiagnosticoMensagens.errorGeneratingJson, e);
           console.log(messages.CliProcessamentoDiagnosticoMensagens.fallbackJson, JSON.stringify(saidaJson));
-          _jsonEmitted = true;
         }
       }
       // Exit codes padronizados: 0=ok/avisos, 1=erros, 2=critico (parse erros fatais)
