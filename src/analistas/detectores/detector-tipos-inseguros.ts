@@ -281,7 +281,7 @@ const ANALISTA: Analista = {
 
       // Construir mensagem baseada na categorização
       let mensagem = '';
-      let nivel: 'info' | 'aviso' | 'erro' = 'info';
+      let nivel: 'info' | 'aviso' | 'erro';
       if (categorizacao.categoria === 'legitimo') {
         // Legítimo com alta confiança (>=95%) - PULAR completamente
         if (categorizacao.confianca >= 95) {
