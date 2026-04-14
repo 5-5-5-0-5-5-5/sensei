@@ -1,0 +1,2122 @@
+{
+  "baselineModificado": false,
+  "metricas": {
+    "analistas": [
+      {
+        "duracaoTotalMs": 382.13,
+        "execucoes": 1330,
+        "nome": "documentacao",
+        "ocorrenciasTotal": 460
+      },
+      {
+        "duracaoTotalMs": 92.62,
+        "execucoes": 649,
+        "nome": "detector-tipos-inseguros",
+        "ocorrenciasTotal": 12
+      },
+      {
+        "duracaoTotalMs": 422.14,
+        "execucoes": 665,
+        "nome": "seguranca",
+        "ocorrenciasTotal": 11
+      },
+      {
+        "duracaoTotalMs": 31.88,
+        "execucoes": 670,
+        "nome": "quick-fixes",
+        "ocorrenciasTotal": 10
+      },
+      {
+        "duracaoTotalMs": 1535.84,
+        "execucoes": 1,
+        "nome": "sugestoes-contextuais",
+        "ocorrenciasTotal": 7
+      },
+      {
+        "duracaoTotalMs": 14.92,
+        "execucoes": 1,
+        "nome": "detector-estrutura",
+        "ocorrenciasTotal": 4
+      },
+      {
+        "duracaoTotalMs": 79.84,
+        "execucoes": 20,
+        "nome": "github-actions",
+        "ocorrenciasTotal": 4
+      },
+      {
+        "duracaoTotalMs": 66,
+        "execucoes": 63,
+        "nome": "analista-formatador",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 46.25,
+        "execucoes": 66,
+        "nome": "detector-markdown",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 59.49,
+        "execucoes": 665,
+        "nome": "construcoes-sintaticas",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 57.51,
+        "execucoes": 665,
+        "nome": "codigo-fragil",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 61.77,
+        "execucoes": 665,
+        "nome": "detector-duplicacoes",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 57.33,
+        "execucoes": 665,
+        "nome": "arquitetura",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 65.95,
+        "execucoes": 665,
+        "nome": "analista-css-in-js",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 65.34,
+        "execucoes": 660,
+        "nome": "detector-dependencias",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 92.78,
+        "execucoes": 660,
+        "nome": "analista-funcoes-longas",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 94.58,
+        "execucoes": 660,
+        "nome": "analista-padroes-uso",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 86.53,
+        "execucoes": 660,
+        "nome": "analista-comandos-cli",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 56.18,
+        "execucoes": 660,
+        "nome": "anti-padroes-async",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 55.87,
+        "execucoes": 660,
+        "nome": "vazamento-memoria",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 111.93,
+        "execucoes": 660,
+        "nome": "analista-react-hooks",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 166.25,
+        "execucoes": 660,
+        "nome": "analista-react",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 102.16,
+        "execucoes": 668,
+        "nome": "analista-tailwind",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 95.87,
+        "execucoes": 633,
+        "nome": "todo-comments",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 283.54,
+        "execucoes": 531,
+        "nome": "detector-interfaces-inline",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 1.22,
+        "execucoes": 1,
+        "nome": "analista-shell",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 13.05,
+        "execucoes": 8,
+        "nome": "analista-html",
+        "ocorrenciasTotal": 0
+      },
+      {
+        "duracaoTotalMs": 0.77,
+        "execucoes": 5,
+        "nome": "analista-svg",
+        "ocorrenciasTotal": 0
+      }
+    ],
+    "cacheAstHits": 0,
+    "cacheAstMiss": 669,
+    "tempoAnaliseMs": 10160,
+    "tempoParsingMs": 1094,
+    "totalArquivos": 750
+  },
+  "ocorrencias": [
+    {
+      "linha": 0,
+      "mensagem": "Muitos arquivos na raiz do projeto. Considere organizar em pastas.",
+      "nivel": "info",
+      "relPath": "[raiz do projeto]",
+      "tipo": "estrutura-suspeita"
+    },
+    {
+      "linha": 0,
+      "mensagem": "Sinais de backend detectados (controllers/, prisma/, api/).",
+      "nivel": "info",
+      "relPath": "[raiz do projeto]",
+      "tipo": "estrutura-backend"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Arquivos de configuração detectados: package.json, tsconfig.json",
+      "nivel": "info",
+      "relPath": "[raiz do projeto]",
+      "tipo": "estrutura-config"
+    },
+    {
+      "linha": 0,
+      "mensagem": "Projeto possui múltiplos entrypoints (agrupados por diretório): src/bin (2), src/analistas/arquitetos (1), src/analistas/corrections (1), src/analistas/corrections/quick-fixes (1), src/analistas/corrections/type-safety (1), src/analistas/detectores (1), src/analistas/estrategistas (1), src/analistas/js-ts (1), src/analistas/plugins (1), src/analistas/pontuadores (1) … (+91 dirs, +91 entrypoints ocultos)",
+      "nivel": "aviso",
+      "relPath": "[raiz do projeto]",
+      "tipo": "estrutura-entrypoints"
+    },
+    {
+      "linha": 0,
+      "mensagem": "[i] Projeto identificado como: vitest-testing (confiança: 85%)",
+      "nivel": "info",
+      "relPath": "",
+      "tipo": "identificacao_projeto"
+    },
+    {
+      "linha": 0,
+      "mensagem": "[CODE] Padrão de código específico detectado em .github/workflows/license-gate.yml",
+      "nivel": "info",
+      "relPath": ".github/workflows/license-gate.yml",
+      "tipo": "evidencia_contextual"
+    },
+    {
+      "linha": 0,
+      "mensagem": "[CODE] Padrão de código específico detectado em CONTRIBUTING.md",
+      "nivel": "info",
+      "relPath": "CONTRIBUTING.md",
+      "tipo": "evidencia_contextual"
+    },
+    {
+      "linha": 0,
+      "mensagem": "[CODE] Padrão de código específico detectado em docs/arquitetura/SEGURANCA.md",
+      "nivel": "info",
+      "relPath": "docs/arquitetura/SEGURANCA.md",
+      "tipo": "evidencia_contextual"
+    },
+    {
+      "linha": 0,
+      "mensagem": "[SCAN] Outras tecnologias detectadas: cli-modular (84%), next-fullstack (81%)",
+      "nivel": "info",
+      "relPath": "",
+      "tipo": "tecnologias_alternativas"
+    },
+    {
+      "coluna": 1,
+      "linha": 1,
+      "mensagem": "Pinning por SHA faltando",
+      "nivel": "aviso",
+      "relPath": ".github/workflows/codeql.yml",
+      "tipo": "GITHUB_ACTIONS_FALTA_SHA_PINNING"
+    },
+    {
+      "coluna": 1,
+      "linha": 1,
+      "mensagem": "Pinning por SHA faltando",
+      "nivel": "aviso",
+      "relPath": ".github/workflows/monitor-deps.yml",
+      "tipo": "GITHUB_ACTIONS_FALTA_SHA_PINNING"
+    },
+    {
+      "coluna": 1,
+      "linha": 1,
+      "mensagem": "Pinning por SHA faltando",
+      "nivel": "aviso",
+      "relPath": ".github/workflows/release.yml",
+      "tipo": "GITHUB_ACTIONS_FALTA_SHA_PINNING"
+    },
+    {
+      "linha": 19,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "eslint.config.js",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 16,
+      "mensagem": "Problemas de segurança (media): unhandled-async",
+      "nivel": "aviso",
+      "relPath": "scripts/fix-tdz-messages.mjs",
+      "tipo": "vulnerabilidade-seguranca"
+    },
+    {
+      "linha": 30,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "scripts/fix-tdz-messages.mjs",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 165,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "scripts/migrate-imports-to-short-aliases.mjs",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 7,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/arquitetos/diagnostico-projeto.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 179,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/arquitetos/sinais-projeto-avancados.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 111,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/corrections/analista-pontuacao.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 5,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/corrections/fix-md-fences.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 17,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/corrections/mapa-reversao.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 8,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+5 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/corrections/pontuacao-shared.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 21,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/corrections/quick-fixes/fix-any-to-proper-type.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 26,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+1 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/corrections/quick-fixes/fix-unknown-to-specific-type.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 52,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/corrections/type-safety/type-analyzer.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 30,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+6 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/corrections/type-safety/type-inference.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 47,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+1 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/corrections/type-safety/type-validator.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 119,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/corrections/type-safety/usage-analyzer.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 26,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+10 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-arquetipos.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 234,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-arquitetura.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 283,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+6 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-arquitetura.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 139,
+      "mensagem": "Problemas de documentação (media): missing-types",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-codigo-fragil.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 150,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-codigo-fragil.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 413,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-contexto-inteligente.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 16,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+4 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-duplicacoes.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 127,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-estrutura.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 116,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-interfaces-inline.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 352,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-interfaces-inline.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 164,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-performance.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 84,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+1 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-seguranca.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 34,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/detectores/detector-tipos-inseguros.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 82,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/analistas/estrategistas/operario-estrutura.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 64,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/estrategistas/sugestoes-contextuais.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 46,
+      "mensagem": "Problemas de documentação (media): poor-naming, poor-naming",
+      "nivel": "info",
+      "relPath": "src/analistas/js-ts/analista-comandos-cli.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 15,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/js-ts/analista-funcoes-longas.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 16,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/analistas/js-ts/analista-padroes-uso.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 17,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/analistas/js-ts/analista-padroes-uso.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 18,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/analistas/js-ts/analista-padroes-uso.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 19,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/analistas/js-ts/analista-padroes-uso.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 20,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/analistas/js-ts/analista-padroes-uso.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 21,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/analistas/js-ts/analista-padroes-uso.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 22,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/analistas/js-ts/analista-padroes-uso.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 50,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/js-ts/analista-todo-comments.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 164,
+      "mensagem": "Problemas de documentação (media): poor-naming, poor-naming, poor-naming",
+      "nivel": "info",
+      "relPath": "src/analistas/plugins/analista-css.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 11,
+      "mensagem": "Problemas de documentação (media): missing-types",
+      "nivel": "aviso",
+      "relPath": "src/analistas/plugins/analista-github-actions-security-hardening.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 14,
+      "mensagem": "Problemas de documentação (media): missing-types, missing-types, missing-types (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/plugins/analista-github-actions.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 30,
+      "mensagem": "Problemas de documentação (media): poor-naming, poor-naming",
+      "nivel": "info",
+      "relPath": "src/analistas/plugins/analista-html.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 88,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/plugins/analista-react-hooks.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 112,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/analistas/plugins/analista-react-hooks.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 71,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/plugins/analista-react.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 157,
+      "mensagem": "Problemas de documentação (media): poor-naming, poor-naming, poor-naming",
+      "nivel": "info",
+      "relPath": "src/analistas/plugins/analista-react.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Otimizar SVG (Prometheus)",
+      "nivel": "aviso",
+      "relPath": "src/analistas/plugins/analista-svg.ts",
+      "sugestao": "Remove prolog/doctype/comentários/metadata e colapsa whitespace entre tags para reduzir tamanho do SVG.\n\n🔧 Correção sugerida:\n❌ Antes: // SPDX-License-Identifier: MIT\n✅ Depois: // SPDX-License-Identifier: MIT\n\nConfiança: 95%\nCategoria: performance\nID do Fix: svg-optimize-svgo-like",
+      "tipo": "auto-fix-disponivel"
+    },
+    {
+      "linha": 13,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/analistas/plugins/analista-tailwind.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 56,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/plugins/detector-markdown.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 20,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/plugins/detector-xml.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 7,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+64 mais)",
+      "nivel": "info",
+      "relPath": "src/analistas/pontuadores/pontuador.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 14,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+49 mais)",
+      "nivel": "info",
+      "relPath": "src/api/server.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Otimizar SVG (Prometheus)",
+      "nivel": "aviso",
+      "relPath": "src/api/server.ts",
+      "sugestao": "Remove prolog/doctype/comentários/metadata e colapsa whitespace entre tags para reduzir tamanho do SVG.\n\n🔧 Correção sugerida:\n❌ Antes: // SPDX-License-Identifier: MIT\n✅ Depois: // SPDX-License-Identifier: MIT\n\nConfiança: 95%\nCategoria: performance\nID do Fix: svg-optimize-svgo-like",
+      "tipo": "auto-fix-disponivel"
+    },
+    {
+      "linha": 40,
+      "mensagem": "Problemas de segurança (alta): dangerous-html, dangerous-html, dangerous-html",
+      "nivel": "erro",
+      "relPath": "src/api/static/analise/analise.js",
+      "tipo": "vulnerabilidade-seguranca"
+    },
+    {
+      "linha": 80,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+1 mais)",
+      "nivel": "info",
+      "relPath": "src/api/static/analise/analise.js",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 48,
+      "mensagem": "Problemas de segurança (alta): dangerous-html, dangerous-html",
+      "nivel": "erro",
+      "relPath": "src/api/static/detectores/detectores.js",
+      "tipo": "vulnerabilidade-seguranca"
+    },
+    {
+      "linha": 117,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/api/static/detectores/detectores.js",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 41,
+      "mensagem": "Problemas de segurança (alta): dangerous-html, dangerous-html, dangerous-html (+2 mais)",
+      "nivel": "erro",
+      "relPath": "src/api/static/licencas/licencas.js",
+      "tipo": "vulnerabilidade-seguranca"
+    },
+    {
+      "linha": 141,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+1 mais)",
+      "nivel": "info",
+      "relPath": "src/api/static/licencas/licencas.js",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 67,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+5 mais)",
+      "nivel": "info",
+      "relPath": "src/api/static/performance/performance.js",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 17,
+      "mensagem": "Problemas de segurança (alta): dangerous-html, dangerous-html, dangerous-html (+2 mais)",
+      "nivel": "erro",
+      "relPath": "src/api/static/projeto/projeto.js",
+      "tipo": "vulnerabilidade-seguranca"
+    },
+    {
+      "linha": 48,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+7 mais)",
+      "nivel": "info",
+      "relPath": "src/api/static/projeto/projeto.js",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 45,
+      "mensagem": "Problemas de segurança (alta): dangerous-html, dangerous-html",
+      "nivel": "erro",
+      "relPath": "src/api/static/tendencias/tendencias.js",
+      "tipo": "vulnerabilidade-seguranca"
+    },
+    {
+      "linha": 73,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/api/static/tendencias/tendencias.js",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 54,
+      "mensagem": "Problemas de segurança (alta): dangerous-html, dangerous-html, dangerous-html (+6 mais)",
+      "nivel": "erro",
+      "relPath": "src/api/static/workflows/workflows.js",
+      "tipo": "vulnerabilidade-seguranca"
+    },
+    {
+      "linha": 21,
+      "mensagem": "Problemas de documentação (media): poor-naming, poor-naming",
+      "nivel": "aviso",
+      "relPath": "src/api/static/workflows/workflows.js",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 151,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+4 mais)",
+      "nivel": "info",
+      "relPath": "src/api/static/workflows/workflows.js",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 14,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/cli/commands/comando-dashboard.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 59,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/cli/commands/comando-diagnosticar.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 60,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/cli/commands/comando-diagnosticar.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 22,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+14 mais)",
+      "nivel": "info",
+      "relPath": "src/cli/commands/comando-fix-types.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 77,
+      "mensagem": "Problemas de segurança (media): unhandled-async, unhandled-async, unhandled-async",
+      "nivel": "info",
+      "relPath": "src/cli/commands/comando-formatar.ts",
+      "tipo": "vulnerabilidade-seguranca"
+    },
+    {
+      "linha": 160,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/cli/commands/comando-formatar.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 61,
+      "mensagem": "Problemas de segurança (media): unhandled-async",
+      "nivel": "info",
+      "relPath": "src/cli/commands/comando-otimizar-svg.ts",
+      "tipo": "vulnerabilidade-seguranca"
+    },
+    {
+      "linha": 24,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+1 mais)",
+      "nivel": "info",
+      "relPath": "src/cli/commands/comando-otimizar-svg.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Otimizar SVG (Prometheus)",
+      "nivel": "aviso",
+      "relPath": "src/cli/commands/comando-otimizar-svg.ts",
+      "sugestao": "Remove prolog/doctype/comentários/metadata e colapsa whitespace entre tags para reduzir tamanho do SVG.\n\n🔧 Correção sugerida:\n❌ Antes: // SPDX-License-Identifier: MIT\n✅ Depois: // SPDX-License-Identifier: MIT\n\nConfiança: 95%\nCategoria: performance\nID do Fix: svg-optimize-svgo-like",
+      "tipo": "auto-fix-disponivel"
+    },
+    {
+      "linha": 87,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/cli/commands/comando-perf.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 50,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/cli/commands/comando-plugins.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 2,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/cli/diagnostico/exporters/json-exporter.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 2,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/cli/diagnostico/exporters/markdown-exporter.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 2,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/cli/diagnostico/exporters/sharded-exporter.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 14,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/cli/diagnostico/exporters/svg-otimizacao-exporter.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Otimizar SVG (Prometheus)",
+      "nivel": "aviso",
+      "relPath": "src/cli/diagnostico/exporters/svg-otimizacao-exporter.ts",
+      "sugestao": "Remove prolog/doctype/comentários/metadata e colapsa whitespace entre tags para reduzir tamanho do SVG.\n\n🔧 Correção sugerida:\n❌ Antes: // SPDX-License-Identifier: MIT\n✅ Depois: // SPDX-License-Identifier: MIT\n\nConfiança: 95%\nCategoria: performance\nID do Fix: svg-optimize-svgo-like",
+      "tipo": "auto-fix-disponivel"
+    },
+    {
+      "linha": 26,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/cli/diagnostico/handlers/arquetipo-handler.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 2,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/cli/diagnostico/handlers/auto-fix-handler.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 48,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+7 mais)",
+      "nivel": "info",
+      "relPath": "src/cli/handlers/fix-types-exporter.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 66,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+1 mais)",
+      "nivel": "info",
+      "relPath": "src/cli/helpers/exibir-moldura.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 62,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+15 mais)",
+      "nivel": "info",
+      "relPath": "src/cli/processamento-diagnostico.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 39,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+9 mais)",
+      "nivel": "info",
+      "relPath": "src/cli/processing/display.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 30,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/config/auto/auto-fix-config.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 63,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/config/auto/fix-config.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 98,
+      "mensagem": "Problemas de documentação (media): poor-naming, poor-naming, poor-naming (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/core/config/auto/fix-config.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Otimizar SVG (Prometheus)",
+      "nivel": "aviso",
+      "relPath": "src/core/config/auto/fix-config.ts",
+      "sugestao": "Remove prolog/doctype/comentários/metadata e colapsa whitespace entre tags para reduzir tamanho do SVG.\n\n🔧 Correção sugerida:\n❌ Antes: // SPDX-License-Identifier: MIT\n✅ Depois: // SPDX-License-Identifier: MIT\n\nConfiança: 95%\nCategoria: performance\nID do Fix: svg-optimize-svgo-like",
+      "tipo": "auto-fix-disponivel"
+    },
+    {
+      "linha": 65,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/config/auto/validacao.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 49,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+6 mais)",
+      "nivel": "info",
+      "relPath": "src/core/config/config.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 15,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+13 mais)",
+      "nivel": "info",
+      "relPath": "src/core/config/configuracao-pontuacao.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 26,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/core/config/conventions.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 209,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/config/excludes-padrao.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 12,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+7 mais)",
+      "nivel": "info",
+      "relPath": "src/core/config/format.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "info",
+      "relPath": "src/core/config/index.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 11,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+7 mais)",
+      "nivel": "info",
+      "relPath": "src/core/config/limites.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 82,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+11 mais)",
+      "nivel": "info",
+      "relPath": "src/core/execution/executor.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 334,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/core/execution/executor.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 397,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/core/execution/inquisidor.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 62,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/core/execution/scanner.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 9,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/analistas/analista-github-actions-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/analistas/arquetipos-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/analistas/corretor-estrutura-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 17,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/analistas/detector-arquitetura-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/analistas/detector-contexto-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/analistas/mapa-reversao-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 83,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/core/correcoes-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 104,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+1 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/core/diagnostico-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/core/executor-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 19,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/core/fix-types-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/core/inquisidor-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/core/parser-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 159,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/core/plugin-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Otimizar SVG (Prometheus)",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/core/plugin-messages.ts",
+      "sugestao": "Remove prolog/doctype/comentários/metadata e colapsa whitespace entre tags para reduzir tamanho do SVG.\n\n🔧 Correção sugerida:\n❌ Antes: // SPDX-License-Identifier: MIT\n✅ Depois: // SPDX-License-Identifier: MIT\n\nConfiança: 95%\nCategoria: performance\nID do Fix: svg-optimize-svgo-like",
+      "tipo": "auto-fix-disponivel"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/guardian/vigia-oculta-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/licensas/licensas-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 71,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/log/log-helper.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 184,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/log/log.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 222,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/log/log.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 14,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/relatorios/json-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/relatorios/relatorio-async-patterns-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 79,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/relatorios/relatorio-templates.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/relatorios/relatorio-zelador-saude-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/shared/plugin-core-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/en/shared/plugin-registry-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 213,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/ui/sugestoes.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 162,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/en/zeladores/zelador-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 10,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/analistas/analista-github-actions-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/analistas/arquetipos-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/analistas/corretor-estrutura-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 17,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/analistas/detector-arquitetura-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/analistas/mapa-reversao-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 83,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/core/correcoes-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 104,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+1 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/core/diagnostico-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/core/executor-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 19,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/core/fix-types-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/core/inquisidor-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/core/parser-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 159,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/core/plugin-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Otimizar SVG (Prometheus)",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/core/plugin-messages.ts",
+      "sugestao": "Remove prolog/doctype/comentários/metadata e colapsa whitespace entre tags para reduzir tamanho do SVG.\n\n🔧 Correção sugerida:\n❌ Antes: // SPDX-License-Identifier: MIT\n✅ Depois: // SPDX-License-Identifier: MIT\n\nConfiança: 95%\nCategoria: performance\nID do Fix: svg-optimize-svgo-like",
+      "tipo": "auto-fix-disponivel"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/licensas/licensas-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 71,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/log/log-helper.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 184,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/log/log.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 222,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/log/log.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 14,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/relatorios/json-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/relatorios/relatorio-async-patterns-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 79,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/relatorios/relatorio-templates.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/relatorios/relatorio-zelador-saude-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/shared/plugin-core-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/ja/shared/plugin-registry-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 213,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/ui/sugestoes.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 162,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/ja/zeladores/zelador-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 9,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/analistas/analista-github-actions-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/analistas/arquetipos-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/analistas/corretor-estrutura-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 17,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/analistas/detector-arquitetura-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/analistas/detector-contexto-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/analistas/mapa-reversao-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 83,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/core/correcoes-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 104,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+1 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/core/diagnostico-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/core/executor-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 19,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/core/fix-types-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/core/inquisidor-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/core/parser-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 159,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/core/plugin-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Otimizar SVG (Prometheus)",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/core/plugin-messages.ts",
+      "sugestao": "Remove prolog/doctype/comentários/metadata e colapsa whitespace entre tags para reduzir tamanho do SVG.\n\n🔧 Correção sugerida:\n❌ Antes: // SPDX-License-Identifier: MIT\n✅ Depois: // SPDX-License-Identifier: MIT\n\nConfiança: 95%\nCategoria: performance\nID do Fix: svg-optimize-svgo-like",
+      "tipo": "auto-fix-disponivel"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/guardian/vigia-oculta-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/licensas/licensas-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 43,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+4 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/log/log-engine.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 71,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/log/log-helper.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 184,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/log/log.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 222,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/log/log.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 14,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/relatorios/json-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/relatorios/relatorio-async-patterns-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 79,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/relatorios/relatorio-templates.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/relatorios/relatorio-zelador-saude-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/shared/plugin-core-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/pt/shared/plugin-registry-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 213,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/ui/sugestoes.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 162,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/pt/zeladores/zelador-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 9,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/analistas/analista-github-actions-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/zh/analistas/arquetipos-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 17,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/analistas/detector-arquitetura-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/zh/analistas/mapa-reversao-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 83,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/core/correcoes-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 104,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+1 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/core/diagnostico-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/zh/core/executor-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 19,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/core/fix-types-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/zh/core/inquisidor-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/zh/core/parser-extra-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 159,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/core/plugin-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Otimizar SVG (Prometheus)",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/zh/core/plugin-messages.ts",
+      "sugestao": "Remove prolog/doctype/comentários/metadata e colapsa whitespace entre tags para reduzir tamanho do SVG.\n\n🔧 Correção sugerida:\n❌ Antes: // SPDX-License-Identifier: MIT\n✅ Depois: // SPDX-License-Identifier: MIT\n\nConfiança: 95%\nCategoria: performance\nID do Fix: svg-optimize-svgo-like",
+      "tipo": "auto-fix-disponivel"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/zh/licensas/licensas-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 71,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/log/log-helper.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 184,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/log/log.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 222,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/log/log.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 14,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/relatorios/json-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/zh/relatorios/relatorio-async-patterns-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 79,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/relatorios/relatorio-templates.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/zh/relatorios/relatorio-zelador-saude-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/zh/shared/plugin-core-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/core/messages/zh/shared/plugin-registry-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 213,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/ui/sugestoes.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 162,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/core/messages/zh/zeladores/zelador-messages.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 235,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/core/parsing/parser.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 23,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/schema/version.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 133,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/core/workers/worker-executor.js",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 51,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/core/workers/worker-pool.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 172,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/core/workers/worker-pool.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 26,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/guardian/hash.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 46,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/licensas/disclaimer.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 81,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/licensas/disclaimer.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 47,
+      "mensagem": "Problemas de documentação (media): poor-naming, poor-naming",
+      "nivel": "info",
+      "relPath": "src/licensas/normalizer.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 38,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "aviso",
+      "relPath": "src/licensas/scanner.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 76,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/relatorios/analise-async-patterns.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 20,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/relatorios/conselheiro-prometheus.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 17,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/relatorios/filtro-inteligente.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 86,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/relatorios/gerador-relatorio.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 25,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/relatorios/relatorio-padroes-uso.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 30,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+3 mais)",
+      "nivel": "info",
+      "relPath": "src/relatorios/relatorio-zelador-saude.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 14,
+      "mensagem": "Problemas de segurança (media): unhandled-async, unhandled-async",
+      "nivel": "aviso",
+      "relPath": "src/sdk/index.ts",
+      "tipo": "vulnerabilidade-seguranca"
+    },
+    {
+      "linha": 21,
+      "mensagem": "Problemas de documentação (media): missing-types",
+      "nivel": "aviso",
+      "relPath": "src/sdk/index.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 24,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/shared/contexto-projeto.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 26,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/shared/data-processing/fragmentar-relatorio.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 90,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "aviso",
+      "relPath": "src/shared/data-processing/fragmentar-relatorio.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 33,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+2 mais)",
+      "nivel": "info",
+      "relPath": "src/shared/data-processing/json.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 38,
+      "mensagem": "Problemas de documentação (media): poor-naming, poor-naming, poor-naming",
+      "nivel": "info",
+      "relPath": "src/shared/helpers/imports.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 33,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/shared/helpers/json.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 19,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "aviso",
+      "relPath": "src/shared/helpers/line-lookup.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 24,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+23 mais)",
+      "nivel": "info",
+      "relPath": "src/shared/helpers/magic-constants-whitelist.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 25,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "aviso",
+      "relPath": "src/shared/helpers/suppressao.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 41,
+      "mensagem": "Problemas de documentação (media): poor-naming, poor-naming, poor-naming (+25 mais)",
+      "nivel": "info",
+      "relPath": "src/shared/impar/formater.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 438,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/shared/impar/formater.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 17,
+      "mensagem": "Problemas de documentação (media): poor-naming, missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/shared/impar/formatter-registry.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 78,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/shared/impar/stylelint.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 187,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "src/shared/impar/stylelint.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 10,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/shared/impar/svgs.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "info",
+      "relPath": "src/shared/impar/svgs.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Otimizar SVG (Prometheus)",
+      "nivel": "aviso",
+      "relPath": "src/shared/impar/svgs.ts",
+      "sugestao": "Remove prolog/doctype/comentários/metadata e colapsa whitespace entre tags para reduzir tamanho do SVG.\n\n🔧 Correção sugerida:\n❌ Antes: // SPDX-License-Identifier: MIT\n✅ Depois: // SPDX-License-Identifier: MIT\n\nConfiança: 95%\nCategoria: performance\nID do Fix: svg-optimize-svgo-like",
+      "tipo": "auto-fix-disponivel"
+    },
+    {
+      "linha": 59,
+      "mensagem": "Problemas de documentação (media): poor-naming, missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/shared/impar/syntax-map.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 72,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/shared/memory.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 1,
+      "mensagem": "Problemas de documentação (media): missing-jsdoc",
+      "nivel": "aviso",
+      "relPath": "src/shared/memory.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 70,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/shared/memory.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 83,
+      "mensagem": "Tipo '{}' é muito permissivo e pouco útil para type safety | 💡 Use Record<string, never> para objetos vazios ou interface específica",
+      "nivel": "aviso",
+      "relPath": "src/shared/memory.ts",
+      "tipo": "tipo-permissivo-object"
+    },
+    {
+      "linha": 85,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants",
+      "nivel": "info",
+      "relPath": "src/shared/persistence/persistencia.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 67,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/shared/validation/validacao.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 16,
+      "mensagem": "Problemas de documentação (media): missing-types, missing-types",
+      "nivel": "aviso",
+      "relPath": "src/types/analistas/github-actions-plugins.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 65,
+      "mensagem": "Problemas de segurança (media): unhandled-async",
+      "nivel": "info",
+      "relPath": "src/types/comum/analistas.ts",
+      "tipo": "vulnerabilidade-seguranca"
+    },
+    {
+      "linha": 31,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/types/comum/analistas.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 14,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/types/core/config/config.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 3,
+      "mensagem": "Problemas de documentação (media): missing-types",
+      "nivel": "aviso",
+      "relPath": "src/types/postcss-scss.d.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 92,
+      "mensagem": "Problemas de documentação (media): missing-types",
+      "nivel": "aviso",
+      "relPath": "src/types/relatorios/index.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 13,
+      "mensagem": "Problemas de documentação (baixa): magic-constants",
+      "nivel": "info",
+      "relPath": "src/types/zeladores/pontuacao.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 293,
+      "mensagem": "Problemas de documentação (baixa): magic-constants, magic-constants, magic-constants (+4 mais)",
+      "nivel": "info",
+      "relPath": "vitest.config.ts",
+      "tipo": "problema-documentacao"
+    },
+    {
+      "linha": 322,
+      "mensagem": "Problemas de documentação (media): poor-naming",
+      "nivel": "info",
+      "relPath": "vitest.config.ts",
+      "tipo": "problema-documentacao"
+    }
+  ],
+  "timestamp": "2026-04-14T08:20:55.435Z",
+  "totalOcorrencias": 275
+}

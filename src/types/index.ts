@@ -135,9 +135,6 @@ export type {
 } from './relatorios/fragmentacao.js';
 export * from './relatorios/leitor.js';
 
-// Scripts
-export * from './scripts/index.js';
-
 // Zeladores
 export * from './zeladores/imports.js';
 export * from './zeladores/mapa-reversao.js';
