@@ -131,7 +131,7 @@ function mergeWhitelist(base: MarkdownWhitelistConfig, override: Partial<Markdow
  */
 function isBenignProvenienciaOnly(content: string): boolean {
   const rxCessao = /cess(?:ã|a)o\s+de\s+direitos/i;
-  const rxOthers = new RegExp(['\\bGPL\\b', '\\bAGPL\\b', '\\bLGPL\\b', 'Creative\\s+Commons', '\\bCC-BY\\b', 'Stack\\s*Overflow', 'stackoverflow\\.com', 'All\\s+rights\\s+reserved', 'transfer(?:ê|e)ncia\\s+de\\s+direitos', '\\bassign\\b', '\\bcession\\b'].join('|'), 'i');
+  const rxOthers = new RegExp(['\\bGPL\\b', '\\bAGPL\\b', '\\bLGPL\\b', 'Creative\\s+Commons', '\\bCC-BY\\b', 'Stack\\s*Overflow', '(?:^|[^\\w.-])(?:[\\w-]+\\.)*stackoverflow\\.com(?:$|[^\\w.-])', 'All\\s+rights\\s+reserved', 'transfer(?:ê|e)ncia\\s+de\\s+direitos', '\\bassign\\b', '\\bcession\\b'].join('|'), 'i');
   const hasCessao = rxCessao.test(content);
   const hasOthers = rxOthers.test(content);
   const hasAviso = /Proveni[eê]ncia\s+e\s+Autoria/i.test(content);
