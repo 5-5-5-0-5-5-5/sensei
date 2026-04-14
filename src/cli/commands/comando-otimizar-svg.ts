@@ -7,10 +7,7 @@ import { processPatternList } from '@cli/helpers/pattern-helpers.js';
 import { chalk } from '@core/config/chalk-safe.js';
 import { scanRepository } from '@core/execution/scanner.js';
 import { getMessages } from '@core/messages/index.js';
-import {
-  otimizarSvgLikeSvgo,
-  shouldSugerirOtimizacaoSvg,
-} from '@shared/impar/svgs.js';
+import { otimizarSvgLikeSvgo } from '@shared/impar/svgs.js';
 import { salvarEstado } from '@shared/persistence/persistencia.js';
 import { Command } from 'commander';
 import micromatch from 'micromatch';
