@@ -180,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Resumo
     const hasCritical = results.some(r => r.nivel === 'erro');
-    const hasWarnings = results.some(r => r.nivel === 'aviso');
 
     const secStatus = document.getElementById('sec-status');
     if (secStatus) {
