@@ -6,7 +6,6 @@
  */
 
 import { parentPort, workerData } from 'node:worker_threads';
-import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 // Importar tipos necessários (simplificados para worker)
