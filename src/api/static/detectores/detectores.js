@@ -96,29 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function showToast(message, type = 'info') {
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    const icon = type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle';
-    const iconEl = document.createElement('i');
-    iconEl.className = `fas fa-${icon}`;
-    const msgSpan = document.createElement('span');
-    msgSpan.textContent = message;
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'toast-close';
-    closeBtn.textContent = '\u00D7';
-    closeBtn.addEventListener('click', () => toast.remove());
-    toast.appendChild(iconEl);
-    toast.appendChild(msgSpan);
-    toast.appendChild(closeBtn);
-    (document.getElementById('toast-container') || document.body).appendChild(toast);
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateX(100%)';
-      setTimeout(() => toast.remove(), 300);
-    }, 5000);
-  }
-
   function initMusicPlayer() {
     const audioPlayer = document.getElementById('audio-player');
     const musicToggle = document.getElementById('music-toggle');
