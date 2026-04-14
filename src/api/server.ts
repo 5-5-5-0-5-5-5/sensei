@@ -147,7 +147,7 @@ const server = http.createServer(async (req, res) => {
   // Status Geral do Repositório (Guardian + Métricas)
   if (req.method === 'GET' && req.url === '/api/v1/repositorio/status') {
     try {
-      const { scanSystemIntegrity } = await import('../guardian/sentinela.js');
+      await import('../guardian/sentinela.js');
 
       const workflowDir = path.join(process.cwd(), '.github', 'workflows');
       const hasWorkflows = fs.existsSync(workflowDir);
