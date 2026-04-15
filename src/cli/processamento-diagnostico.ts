@@ -163,7 +163,6 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
     } else if (!config.COMPACT_MODE) {
       // Usa optional chaining para suportar mocks parciais do módulo de log nos testes
       (log as typeof log & LogExtensions).fase?.('Iniciando diagnóstico completo');
-      iniciouDiagnostico = true;
     } else {
       (log as typeof log & LogExtensions).fase?.('Diagnóstico (modo compacto)');
       iniciouDiagnostico = true;
