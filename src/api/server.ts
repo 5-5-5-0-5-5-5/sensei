@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
-import http from 'node:http';
+import { spawn } from 'node:child_process';
 import fs from 'node:fs';
+import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { spawn } from 'node:child_process';
+
 import { PrometheusSDK } from '../sdk/index.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -69,7 +70,7 @@ function calculateSecurityScore(rootDir: string): number {
   return Math.min(100, score);
 }
 
-function calculatePerformanceScore(rootDir: string, totalFiles: number): number {
+function calculatePerformanceScore(rootDir: string, _totalFiles: number): number {
   let score = 60; // Base
 
   // Tem config de build otimizada
@@ -104,7 +105,7 @@ function calculateDocumentationScore(rootDir: string): number {
   return Math.min(100, score);
 }
 
-function calculateArchitectureScore(rootDir: string, totalFiles: number): number {
+function calculateArchitectureScore(rootDir: string, _totalFiles: number): number {
   let score = 65; // Base
 
   // Tem estrutura de src organizada
@@ -124,7 +125,7 @@ function calculateArchitectureScore(rootDir: string, totalFiles: number): number
   return Math.min(100, score);
 }
 
-function calculateQualityScore(rootDir: string, totalFiles: number): number {
+function calculateQualityScore(rootDir: string, _totalFiles: number): number {
   let score = 60; // Base
 
   // Tem TypeScript
@@ -196,7 +197,7 @@ const server = http.createServer(async (req, res) => {
       if (fs.existsSync(srcDir)) {
         try {
           totalFiles = fs.readdirSync(srcDir, { recursive: true }).filter(f => typeof f === 'string' && (f.endsWith('.ts') || f.endsWith('.js'))).length;
-        } catch (e) { /* ignore */ }
+        } catch { /* ignore */ }
       }
 
       const pkgPath = path.join(process.cwd(), 'package.json');
@@ -281,7 +282,8 @@ const server = http.createServer(async (req, res) => {
     req.on('end', async () => {
       try {
         const payload = JSON.parse(body);
-        let { conteudo, relPath } = payload;
+        let { conteudo } = payload;
+        const { relPath } = payload;
 
         if (!conteudo && relPath) {
           const fullPath = path.join(process.cwd(), relPath);
@@ -574,7 +576,7 @@ const server = http.createServer(async (req, res) => {
           plugins: categorizados.plugins.length,
           tecnicas: categorizados.tecnicas.length
         },
-        analistas: analistas
+        analistas
       }));
     } catch (err) {
       res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -725,14 +727,15 @@ const server = http.createServer(async (req, res) => {
   }
 
   // Servir arquivos estáticos (dashboard e sub-páginas)
-  let urlPath = req.url === '/' || req.url === '/dashboard' ? 'index.html' : req.url!;
+  const requestUrl = req.url ?? '/';
+  let urlPath = requestUrl === '/' || requestUrl === '/dashboard' ? 'index.html' : requestUrl;
 
   // Normalizar caminhos para sub-páginas (ex: /workflows/ -> /workflows/index.html)
   if (urlPath.endsWith('/')) {
     urlPath += 'index.html';
   }
 
-  let filePath = path.join(__dirname, 'static', urlPath);
+  const filePath = path.join(__dirname, 'static', urlPath);
 
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
     const ext = path.extname(filePath);
@@ -758,7 +761,7 @@ const server = http.createServer(async (req, res) => {
 /**
  * Inicia o servidor de API
  */
-export function iniciarServidorApi(porta = 3000) {
+export function iniciarServidorApi(porta = 3000): void {
   server.listen(porta, () => {
     console.log(`🚀 Prometheus REST API rodando em http://localhost:${porta}`);
   });

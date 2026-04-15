@@ -1,6 +1,6 @@
 {
   "name": "prometheus",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "type": "module",
   "description": "C.L.I modular para análise, diagnóstico e manutenção de projetos JavaScript/TypeScript e multi-stack leve",
   "author": "5 5 5",
@@ -16,7 +16,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist bin",
-    "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json && mkdir -p dist/api/static && cp -r src/api/static/* dist/api/static/ && cp src/core/workers/worker-executor.js dist/core/workers/worker-executor.js",
+    "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json && npx cpx2 \"src/api/static/**/*.{html,css,png,svg,ico}\" dist/api/static/ && npx cpx2 \"src/core/workers/worker-executor.js\" dist/core/workers/",
     "prepare": "npm run build",
     "start": "prometheus",
     "diagnosticar": "prometheus diagnosticar",
@@ -89,7 +89,7 @@
     "micromatch": "^4.0.8",
     "ora": "^9.3.0",
     "p-limit": "^7.3.0",
-    "prometheus": "file:prometheus-0.6.1.tgz",
+    "prometheus": "file:prometheus-0.6.2.tgz",
     "xxhashjs": "^0.2.2",
     "yaml": "^2.8.3"
   },
@@ -102,6 +102,7 @@
     "@typescript-eslint/parser": "^8.58.2",
     "@vitest/coverage-istanbul": "^4.1.4",
     "@vitest/coverage-v8": "^4.1.4",
+    "cpx2": "^8.0.2",
     "eslint": "^9.39.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-simple-import-sort": "^13.0.0",

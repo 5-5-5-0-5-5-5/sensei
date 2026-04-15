@@ -8,7 +8,7 @@ import { messages } from '@core/messages/index.js';
 import { detectarContextoProjeto } from '@shared/contexto-projeto.js';
 import { garantirArray, incrementar } from '@shared/helpers/helpers-analistas.js';
 
-import type { ContextoExecucao, Estatisticas, Ocorrencia, TecnicaAplicarResultado, Contador } from '@';
+import type { Contador,ContextoExecucao, Estatisticas, Ocorrencia, TecnicaAplicarResultado } from '@';
 import { criarOcorrencia, ocorrenciaErroAnalista } from '@';
 
 // Estatísticas globais (mantidas)

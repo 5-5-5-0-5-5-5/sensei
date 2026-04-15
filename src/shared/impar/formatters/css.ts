@@ -2,7 +2,7 @@
 
 import type { FormatadorMinimoResult } from '@';
 
-import { normalizarFimDeLinha, normalizarNewlinesFinais, removerBom, removerEspacosFinaisPorLinha } from './utils.js';
+import { normalizarFimDeLinha, normalizarNewlinesFinais, removerBom } from './utils.js';
 
 function tokenizeCssBlocks(src: string): Array<{ kind: 'rule' | 'at-rule' | 'comment' | 'text'; value: string }> {
   const out: Array<{ kind: 'rule' | 'at-rule' | 'comment' | 'text'; value: string }> = [];
@@ -133,7 +133,8 @@ function parseCssTokens(tokenList: Array<{ kind: string; value: string }>): CssI
   }
   let idx = 0;
   while (idx < tokenList.length) {
-    const tok = tokenList[idx]!;
+    const tok = tokenList[idx];
+    if (!tok) break;
     if (tok.kind === 'comment') {
       items.push({ kind: 'comment', text: tok.value.trim() });
       idx++;
@@ -147,8 +148,9 @@ function parseCssTokens(tokenList: Array<{ kind: string; value: string }>): CssI
           idx++;
           const innerTokens: Array<{ kind: string; value: string }> = [];
           let depth = 1;
-          while (idx < tokenList.length && depth > 0) {
-            const innerTok = tokenList[idx]!;
+          while (idx < tokenList.length) {
+            const innerTok = tokenList[idx];
+            if (!innerTok) break;
             if (innerTok.kind === 'text') {
               if (innerTok.value === '{') depth++;
               else if (innerTok.value === '}') depth--;
@@ -204,7 +206,7 @@ function parseCssTokens(tokenList: Array<{ kind: string; value: string }>): CssI
           continue;
         }
       }
-      currentSelector = (currentSelector ? currentSelector + ' ' : '') + trimmed;
+      currentSelector = (currentSelector ? `${currentSelector  } ` : '') + trimmed;
       idx++;
       continue;
     }
