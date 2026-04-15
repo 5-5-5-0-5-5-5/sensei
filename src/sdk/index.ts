@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 import { analistaGithubActions, analistaGithubActionsGlobal, registrarDetectorGithubActions } from '../analistas/plugins/analista-github-actions.js';
-import type { ContextoExecucao,Ocorrencia } from '../types/index.js';
+import type { Ocorrencia } from '../types/index.js';
 
 /**
  * Prometheus SDK Principal
@@ -18,7 +18,7 @@ export const PrometheusSDK = {
   /**
    * Analisa um repositório completo (Contexto global)
    */
-  async analisarRepositorio(contexto: ContextoExecucao): Promise<Ocorrencia[]> {
+  async analisarRepositorio(contexto: any): Promise<Ocorrencia[]> {
     const res = await analistaGithubActionsGlobal.aplicar('', '', null, undefined, contexto);
     return Array.isArray(res) ? res : [];
   },

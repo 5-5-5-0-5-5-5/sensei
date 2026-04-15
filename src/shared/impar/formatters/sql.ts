@@ -2,7 +2,7 @@
 
 import type { FormatadorMinimoResult } from '@';
 
-import { normalizarFimDeLinha, normalizarNewlinesFinais, removerBom } from './utils.js';
+import { normalizarFimDeLinha, normalizarNewlinesFinais, removerBom, removerEspacosFinaisPorLinha } from './utils.js';
 
 const SQL_KEYWORDS = new Set([
   'select', 'from', 'where', 'insert', 'into', 'values', 'update', 'set',

@@ -2,7 +2,7 @@
 
 import type { FormatadorMinimoResult } from '@';
 
-import { limitarLinhasEmBranco,normalizarFimDeLinha, normalizarNewlinesFinais, removerEspacosFinaisPorLinha } from './utils.js';
+import { normalizarFimDeLinha, normalizarNewlinesFinais, removerEspacosFinaisPorLinha, limitarLinhasEmBranco } from './utils.js';
 
 export function formatarYamlMinimo(code: string): FormatadorMinimoResult {
   const normalized = normalizarFimDeLinha(code);

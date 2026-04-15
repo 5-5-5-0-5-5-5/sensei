@@ -9,7 +9,6 @@
 // Comandos principais
 export * from './comando-analistas.js';
 export * from './comando-atualizar.js';
-export * from './comando-dashboard.js';
 export * from './comando-diagnosticar.js';
 export * from './comando-fix-types.js';
 export * from './comando-formatar.js';
@@ -18,9 +17,10 @@ export * from './comando-licensas.js';
 export * from './comando-metricas.js';
 export * from './comando-otimizar-svg.js';
 export * from './comando-perf.js';
-export * from './comando-plugins.js';
 export * from './comando-podar.js';
 export * from './comando-reestruturar.js';
+export * from './comando-plugins.js';
+export * from './comando-dashboard.js';
 
 // Comando de reversão (diferente padrão de export)
 export * from './comando-reverter.js';

@@ -194,7 +194,7 @@ export function formatarHtmlMinimo(code: string): FormatadorMinimoResult {
     const hasOnlyTextBetween = nextTok && nextTok.kind === 'text' && nextNextTok && nextNextTok.kind === 'tag' && nextNextTok.value.startsWith('</');
     if (hasOnlyTextBetween) {
       const content = nextTok.value.replace(/\s+/g, ' ').trim();
-      outLines.push(`${indentStr(indent) + tag + content  }</${  tagName ?? ''  }>`);
+      outLines.push(indentStr(indent) + tag + content + '</' + (tagName ?? '') + '>');
       i += 3;
       continue;
     }

@@ -2,7 +2,6 @@
 import {
   comandoAnalistas,
   comandoAtualizar,
-  comandoDashboard,
   comandoDiagnosticar,
   comandoFormatar,
   comandoGuardian,
@@ -10,10 +9,11 @@ import {
   comandoMetricas,
   comandoNames,
   comandoOtimizarSvg,
-  comandoPlugins,
   comandoPodar,
   comandoReestruturar,
   comandoRename,
+  comandoPlugins,
+  comandoDashboard,
   criarComandoFixTypes,
   registrarComandoReverter,
 } from '@cli/commands/index.js';

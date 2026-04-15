@@ -4,36 +4,39 @@ import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 
-import type { FormatadorMinimoResult } from '@';
+import type { FormatadorMinimoParser, FormatadorMinimoResult, MarkdownFenceMatch } from '@';
 
 import type { FormatterFn } from './formatter-registry.js';
 import { getFormatterForPath, registerFormatter } from './formatter-registry.js';
-import {
-  formatarCodeMinimo,
-  formatarJavaMinimo,
-  formatarJavaScriptMinimo,
-  formatarPhpMinimo,
-  formatarPythonMinimo,
-  formatarTypeScriptMinimo} from './formatters/code.js';
-import { formatarCssMinimo, formatarLessMinimo,formatarScssMinimo } from './formatters/css.js';
-import { formatarDockerfileMinimo, formatarShellMinimo } from './formatters/dockerfile.js';
-import { formatarEditorconfigMinimo, formatarGitignoreMinimo, formatarNpmrcMinimo, formatarNvmrcMinimo } from './formatters/dotfiles.js';
-import { formatarGoMinimo } from './formatters/go.js';
-import { formatarHtmlMinimo } from './formatters/html.js';
-import { formatarJsonMinimo } from './formatters/json.js';
-import { formatarKotlinMinimo } from './formatters/kotlin.js';
-import { formatarMarkdownMinimo } from './formatters/markdown.js';
-import { formatarGradleMinimo,formatarPropertiesMinimo } from './formatters/properties.js';
-import { formatarSqlMinimo } from './formatters/sql.js';
-import { formatarSvgMinimo } from './formatters/svg.js';
-import { formatarIniMinimo,formatarTomlMinimo } from './formatters/toml.js';
-import { normalizarFimDeLinha, normalizarNewlinesFinais, removerEspacosFinaisPorLinha } from './formatters/utils.js';
-import { formatarXmlMinimo } from './formatters/xml.js';
-import { formatarYamlMinimo } from './formatters/yaml.js';
 import { getSyntaxInfoForPath } from './syntax-map.js';
 
-export type { FormatterFn } from './formatter-registry.js';
 export type { FormatadorMinimoParser, FormatadorMinimoResult, MarkdownFenceMatch } from '@';
+export type { FormatterFn } from './formatter-registry.js';
+
+import { formatarJsonMinimo } from './formatters/json.js';
+import { formatarMarkdownMinimo } from './formatters/markdown.js';
+import { formatarYamlMinimo } from './formatters/yaml.js';
+import { formatarXmlMinimo } from './formatters/xml.js';
+import { formatarSvgMinimo } from './formatters/svg.js';
+import { formatarHtmlMinimo } from './formatters/html.js';
+import { formatarCssMinimo, formatarScssMinimo, formatarLessMinimo } from './formatters/css.js';
+import {
+  formatarCodeMinimo,
+  formatarTypeScriptMinimo,
+  formatarJavaScriptMinimo,
+  formatarJavaMinimo,
+  formatarPythonMinimo,
+  formatarPhpMinimo
+} from './formatters/code.js';
+import { formatarSqlMinimo } from './formatters/sql.js';
+import { formatarTomlMinimo, formatarIniMinimo } from './formatters/toml.js';
+import { formatarDockerfileMinimo, formatarShellMinimo } from './formatters/dockerfile.js';
+import { formatarKotlinMinimo } from './formatters/kotlin.js';
+import { formatarGoMinimo } from './formatters/go.js';
+import { formatarPropertiesMinimo, formatarGradleMinimo } from './formatters/properties.js';
+import { formatarGitignoreMinimo, formatarEditorconfigMinimo, formatarNpmrcMinimo, formatarNvmrcMinimo } from './formatters/dotfiles.js';
+
+import { normalizarFimDeLinha, normalizarNewlinesFinais, removerEspacosFinaisPorLinha } from './formatters/utils.js';
 
 function formatarJson5Minimo(code: string): FormatadorMinimoResult {
   return formatarCodeMinimo(code, {

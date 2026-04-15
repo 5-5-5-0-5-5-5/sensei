@@ -137,7 +137,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
 
   // Configurar filtros no config global
   configurarFiltros(includeGroupsRaw, includeListFlat, excludeList, incluiNodeModules);
-  let _iniciouDiagnostico = false;
+  let iniciouDiagnostico = false;
   const baseDir = process.cwd();
   let guardianResultado: ResultadoGuardian | undefined;
   let fileEntries: FileEntryWithAst[] = [];
@@ -165,7 +165,7 @@ export async function processarDiagnostico(opts: OpcoesProcessamentoDiagnostico)
       (log as typeof log & LogExtensions).fase?.('Iniciando diagnóstico completo');
     } else {
       (log as typeof log & LogExtensions).fase?.('Diagnóstico (modo compacto)');
-      _iniciouDiagnostico = true;
+      iniciouDiagnostico = true;
     }
 
     // 1) Primeira varredura rápida (sem AST) apenas para obter entries e opcionalmente rodar Guardian

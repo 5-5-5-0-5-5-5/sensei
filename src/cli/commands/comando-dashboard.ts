@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
+import { iniciarServidorApi } from '../../api/server.js';
 import { messages } from '@core/messages/index.js';
 import { Command } from 'commander';
-
-import { iniciarServidorApi } from '../../api/server.js';
 
 const log = messages.log;
 
@@ -15,10 +14,10 @@ export function comandoDashboard(): Command {
     .option('-p, --port <numero>', 'Porta para o servidor', '3000')
     .action((opts) => {
       const porta = parseInt(opts.port, 10);
-      log.info(`\n${  '='.repeat(50)}`);
+      log.info('\n' + '='.repeat(50));
       log.info(`🚀 Iniciando Dashboard do Prometheus na porta ${porta}`);
       log.info(`🔗 Acesse: http://localhost:${porta}`);
-      log.info(`${'='.repeat(50)  }\n`);
+      log.info('='.repeat(50) + '\n');
 
       try {
         iniciarServidorApi(porta);

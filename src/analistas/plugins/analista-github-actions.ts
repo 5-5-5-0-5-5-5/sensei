@@ -4,20 +4,19 @@
  * @fileoverview Analista de qualidade para workflows do GitHub Actions (v0.6.0)
  */
 
+import type { Analista, ProblemaWorkflow, ResultadoAnalise, ContextoExecucao, Ocorrencia } from '@';
 import { parseDocument } from 'yaml';
-
-import type { Analista, ContextoExecucao, Ocorrencia,ProblemaWorkflow } from '@';
 
 export interface DeteccaoCustom {
   nome: string;
   descricao: string;
   severidade: 'baixa' | 'media' | 'alta' | 'critica';
-  testar: (workflow: unknown, context: { conteudo: string, caminhos: string[] }) => ProblemaWorkflow[] | Promise<ProblemaWorkflow[]>;
+  testar: (workflow: any, context: { conteudo: string, caminhos: string[] }) => ProblemaWorkflow[] | Promise<ProblemaWorkflow[]>;
 }
 
 const detectoresRegistrados: DeteccaoCustom[] = [];
 
-export function registrarDetectorGithubActions(detector: DeteccaoCustom): void {
+export function registrarDetectorGithubActions(detector: DeteccaoCustom) {
   detectoresRegistrados.push(detector);
 }
 
@@ -27,7 +26,7 @@ export const analistaGithubActions: Analista = {
   descricao: 'Analista avançado de workflows do GitHub Actions com suporte a plugins',
   test: (relPath: string) => relPath.startsWith('.github/workflows/') || relPath.endsWith('.yml') || relPath.endsWith('.yaml'),
 
-  async aplicar(conteudo: string, relPath: string, _ast: unknown = null, _fc?: string, contexto?: ContextoExecucao): Promise<Ocorrencia[]> {
+  async aplicar(conteudo: string, relPath: string, _ast: any = null, _fc?: string, contexto?: ContextoExecucao): Promise<Ocorrencia[]> {
     const ocorrencias: Ocorrencia[] = [];
     try {
       const doc = parseDocument(conteudo);
@@ -43,7 +42,7 @@ export const analistaGithubActions: Analista = {
         ocorrencias.push({
           tipo: `GITHUB_ACTIONS_${p.tipo.toUpperCase().replace(/-/g, '_')}`,
           mensagem: p.descricao,
-          relPath,
+          relPath: relPath,
           linha: p.linha || 1,
           coluna: 1,
           sugestao: p.sugestao || '',
@@ -93,7 +92,7 @@ export const analistaGithubActionsGlobal: Analista = {
   }
 };
 
-async function executarDetectoresNativos(wf: unknown, _raw: string): Promise<ProblemaWorkflow[]> {
+async function executarDetectoresNativos(wf: any, raw: string): Promise<ProblemaWorkflow[]> {
   const probs: ProblemaWorkflow[] = [];
   if (!wf) return probs;
 
@@ -102,30 +101,29 @@ async function executarDetectoresNativos(wf: unknown, _raw: string): Promise<Pro
 
   for (const item of candidates) {
     if (typeof item === 'object' && item !== null) {
-      analisarEstrutura(item as Record<string, unknown>, probs, _raw);
+      analisarEstrutura(item, probs, raw);
     }
   }
 
   // Final check for raw string patterns (like sudo)
-  if (/sudo\s+/.test(_raw)) {
+  if (/sudo\s+/.test(raw)) {
     probs.push({ tipo: 'uso-sudo', descricao: 'Uso de sudo detectado', severidade: 'alta' });
   }
-  if (_raw.includes('pull_request_target:')) {
+  if (raw.includes('pull_request_target:')) {
     probs.push({ tipo: 'estrutura-workflow', descricao: 'Uso de pull_request_target', severidade: 'alta' });
   }
 
   return probs;
 }
 
-function analisarEstrutura(wf: Record<string, unknown>, probs: ProblemaWorkflow[], _raw: string) {
+function analisarEstrutura(wf: any, probs: ProblemaWorkflow[], raw: string) {
   // Container (Root level for snippets)
   if (wf.container && typeof wf.container === 'string') {
     probs.push({ tipo: 'container-sem-user', descricao: 'Container sem user', severidade: 'media' });
   }
 
   // Strategy
-  const strategy = wf.strategy as Record<string, unknown> | undefined;
-  if (strategy?.matrix && (strategy as Record<string, unknown>)['fail-fast'] === undefined) {
+  if (wf.strategy?.matrix && wf.strategy['fail-fast'] === undefined) {
     probs.push({ tipo: 'matrix-sem-fail-fast', descricao: 'Matrix sem fail-fast', severidade: 'baixa' });
   }
 
@@ -137,19 +135,16 @@ function analisarEstrutura(wf: Record<string, unknown>, probs: ProblemaWorkflow[
   }
 
   // Jobs
-  const jobs = wf.jobs as Record<string, Record<string, unknown>> | undefined;
-  if (jobs) {
-    for (const [id, job] of Object.entries(jobs)) {
-      const jobStrategy = job.strategy as Record<string, unknown> | undefined;
-      if (jobStrategy?.matrix && jobStrategy['fail-fast'] === undefined) {
+  if (wf.jobs) {
+    for (const [id, job] of Object.entries<any>(wf.jobs)) {
+      if (job?.strategy?.matrix && job.strategy['fail-fast'] === undefined) {
         probs.push({ tipo: 'matrix-sem-fail-fast', descricao: `Job ${id} sem fail-fast`, severidade: 'baixa' });
       }
       if (job?.container && typeof job.container === 'string') {
         probs.push({ tipo: 'container-sem-user', descricao: 'Container rodando como root', severidade: 'media' });
       }
-      const steps = job.steps as unknown[] | undefined;
-      if (steps) {
-        for (const s of steps) analisarStep(s, probs);
+      if (job?.steps) {
+        for (const s of job.steps) analisarStep(s, probs);
       }
     }
   }
@@ -158,31 +153,26 @@ function analisarEstrutura(wf: Record<string, unknown>, probs: ProblemaWorkflow[
   if (wf.uses || wf.run) analisarStep(wf, probs);
 }
 
-function analisarStep(s: unknown, probs: ProblemaWorkflow[]): void {
-  if (!s || typeof s !== 'object') return;
-  const step = s as Record<string, unknown>;
+function analisarStep(s: any, probs: ProblemaWorkflow[]) {
+  if (!s) return;
   // Pinning
-  if (step.uses && typeof step.uses === 'string' && /@v\d+/.test(step.uses) && !step.uses.startsWith('actions/')) {
+  if (s.uses && /@v\d+/.test(s.uses) && !s.uses.startsWith('actions/')) {
     probs.push({ tipo: 'falta-sha-pinning', descricao: 'Pinning por SHA faltando', severidade: 'media' });
   }
   // Upload
-  const usesValue = step.uses as string | undefined;
-  const withObj = step.with as Record<string, unknown> | undefined;
-  const pathValue = withObj?.path as string | undefined;
-  if (usesValue?.includes('upload-artifact') && pathValue?.includes('.env')) {
+  if (s.uses?.includes('upload-artifact') && s.with?.path?.includes('.env')) {
     probs.push({ tipo: 'upload-sensivel', descricao: 'Upload de .env', severidade: 'critica' });
   }
   // Env
-  const envObj = step.env as Record<string, unknown> | undefined;
-  if (envObj) {
-    for (const [k, v] of Object.entries(envObj)) {
+  if (s.env) {
+    for (const [k, v] of Object.entries(s.env)) {
       if (/(KEY|TOKEN|SECRET|PASSWORD)/i.test(k) && v && typeof v !== 'object' && !String(v).includes('${{')) {
         probs.push({ tipo: 'env-sensivel', descricao: `Env ${k} hardcoded`, severidade: 'critica' });
       }
     }
   }
   // Injection
-  if (step.run && typeof step.run === 'string' && /\$\{\{\s*github\.event\./.test(step.run)) {
+  if (s.run && /\$\{\{\s*github\.event\./.test(s.run)) {
     probs.push({ tipo: 'script-injection', descricao: 'Script injection', severidade: 'alta' });
   }
 }

@@ -127,7 +127,7 @@ function colapsarEspacosEntreTags(code: string, params?: {
 } {
   if (params?.pretty) {
     // Adiciona quebra de linha entre TODAS as tags, mesmo quando estão coladas
-    const out = code.replace(/></g, '>\n<');
+    let out = code.replace(/></g, '>\n<');
 
     // Indentação básica para pretty mode
     const lines = out.split('\n');

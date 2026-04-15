@@ -1,18 +1,4 @@
-import type { ProblemaWorkflow } from '@';
-
 import { registrarDetectorGithubActions } from './analista-github-actions.js';
-
-interface JobGithubActions {
-  permissions?: Record<string, string>;
-  'runs-on'?: string | string[];
-  container?: { image?: string };
-  steps?: unknown[];
-}
-
-interface WorkflowGithubActions {
-  jobs?: Record<string, JobGithubActions>;
-  permissions?: Record<string, string>;
-}
 
 /**
  * Plugin de exemplo para demonstrar o sistema de extensibilidade v0.5.0
@@ -22,13 +8,12 @@ registrarDetectorGithubActions({
   descricao: 'Regras adicionais de segurança para workflows',
   severidade: 'alta',
   testar: (workflow) => {
-    const problemas: ProblemaWorkflow[] = [];
-    const wf = workflow as WorkflowGithubActions;
-    if (!wf || !wf.jobs) return problemas;
+    const problemas: any[] = [];
+    if (!workflow || !workflow.jobs) return problemas;
 
-    for (const [jobId, job] of Object.entries(wf.jobs) as [string, JobGithubActions][]) {
+    for (const [jobId, job] of Object.entries(workflow.jobs) as [string, any][]) {
       // Regra: Todo job deve ter permissões explícitas
-      if (!job.permissions && !wf.permissions) {
+      if (!job.permissions && !workflow.permissions) {
         problemas.push({
           tipo: 'security-hardening',
           descricao: `Job '${jobId}' não define permissões explícitas (usa default GITHUB_TOKEN)`,

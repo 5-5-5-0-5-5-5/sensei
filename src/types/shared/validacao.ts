@@ -123,7 +123,7 @@ export interface GlobalComVitest {
 /**
  * Pendência processável (estende Pendencia base)
  */
-interface _PendenciaProcessavel {
+interface PendenciaProcessavel {
   arquivo: string;
   motivo: string;
   detectedAt: number;
@@ -206,7 +206,7 @@ export interface EntradaMapaReversao {
 /**
  * Contexto de relatório
  */
-interface _ContextoRelatorio {
+interface ContextoRelatorio {
   total: number;
   processados: number;
   erros: number;

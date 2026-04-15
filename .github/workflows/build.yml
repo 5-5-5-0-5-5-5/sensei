@@ -38,13 +38,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - uses: actions/cache@v5
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Build TypeScript
         run: npm run build
 
       - name: Verify Build Artifacts
         run: |
-          ls dist/
-          ls dist/bin/index.js
+          test -d dist/ && echo "✅ Dist directory exists" || exit 1
+          test -f dist/bin/index.js && echo "✅ CLI entry point exists" || exit 1
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v7
@@ -76,9 +83,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - uses: actions/cache@v5
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Build
         run: npm run build
 
       - name: Verify Build
         run: |
-          ls dist/
+          test -d dist/ && echo "✅ Dist directory exists" || exit 1
