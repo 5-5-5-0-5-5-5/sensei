@@ -13,11 +13,11 @@ export interface DeteccaoCustom {
    * Executa a detecção sobre o workflow parseado
    * @param workflow Objeto representando o workflow (AST ou record)
    */
-  testar: (workflow: any) => ProblemaWorkflow[];
+  testar: (workflow: unknown) => ProblemaWorkflow[];
   /**
    * (Opcional) Aplica uma correção automática ao workflow
    */
-  corrigir?: (workflow: any) => any;
+  corrigir?: (workflow: unknown) => unknown;
 }
 
 /**

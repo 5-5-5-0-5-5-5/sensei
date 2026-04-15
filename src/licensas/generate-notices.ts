@@ -4,10 +4,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
 
-import type { GenerateNoticesOptions, RenderPackageMeta } from '../types/licensas/licensas.js';
 import type { HeaderOptions } from '../types/licensas/header-options.js';
+import type { GenerateNoticesOptions, RenderPackageMeta } from '../types/licensas/licensas.js';
 
-export type { GenerateNoticesOptions, RenderPackageMeta, HeaderOptions };
+export type { GenerateNoticesOptions, HeaderOptions,RenderPackageMeta };
 
 const exec = promisify(_exec);
 const execFile = promisify(_execFile);

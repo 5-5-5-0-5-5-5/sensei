@@ -2,8 +2,6 @@
 
 import type { FormatadorMinimoResult } from '@';
 
-import { normalizarFimDeLinha, removerBom } from './utils.js';
-
 import { otimizarSvgLikeSvgo } from '../svgs.js';
 
 export function formatarSvgMinimo(code: string): FormatadorMinimoResult {

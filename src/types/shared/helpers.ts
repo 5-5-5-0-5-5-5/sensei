@@ -63,7 +63,7 @@ export interface RegrasSuprimidas {
 /**
  * Mensagem em memória de conversação
  */
-interface MemoryMessage {
+interface _MemoryMessage {
   role: 'user' | 'assistant' | 'system';
   content: string;
   timestamp: string;

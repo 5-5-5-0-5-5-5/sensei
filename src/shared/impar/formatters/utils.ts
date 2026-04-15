@@ -2,7 +2,7 @@
 
 import { createRequire } from 'node:module';
 
-import type { FormatadorMinimoParser, MarkdownFenceMatch } from '@';
+import type { MarkdownFenceMatch } from '@';
 
 export type { FormatadorMinimoParser, FormatadorMinimoResult, MarkdownFenceMatch } from '@';
 

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-import type { FormatadorMinimoResult, MarkdownFenceMatch } from '@';
+import type { FormatadorMinimoResult } from '@';
 
 import {
   isMarkdownFenceCloser,
@@ -269,7 +269,7 @@ function formatarTabelasMarkdown(code: string): {
 } {
   const lines = normalizarFimDeLinha(code).split('\n');
   const out: string[] = [];
-  let changed = false;
+  const changed = false;
   let inFence = false;
   let fenceChar: '`' | '~' | null = null;
   let fenceLen = 0;
