@@ -207,8 +207,8 @@ function parseTag(raw: string): HtmlTag {
 function tokenizeHtml(src: string): HtmlToken[] {
   const tokens: HtmlToken[] = [];
 
-  // Match comments, pre, script, style, and tags
-  const re = /(<!--[\s\S]*?-->)|(<pre\b[^>]*>[\s\S]*?<\/pre>)|(<script\b[^>]*>[\s\S]*?<\/script>)|(<style\b[^>]*>[\s\S]*?<\/style>)|(<\/?[^>]+?>)/gi;
+  // Match comments (including permissive --!> ending), pre, script, style, and tags
+  const re = /(<!--[\s\S]*?--!?>)|(<pre\b[^>]*>[\s\S]*?<\/pre>)|(<script\b[^>]*>[\s\S]*?<\/script>)|(<style\b[^>]*>[\s\S]*?<\/style>)|(<\/?[^>]+?>)/gi;
   let last = 0;
 
   for (const m of src.matchAll(re)) {
