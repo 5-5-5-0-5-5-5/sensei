@@ -401,7 +401,6 @@ export function formatarHtmlMinimo(code: string): FormatadorMinimoResult {
     if (tag.isClosing) {
       if (indent > 0) indent--;
       outLines.push(indentStr(indent) + tag.raw);
-      _lastWasBlock = tag.isBlock;
       i++;
       continue;
     }
