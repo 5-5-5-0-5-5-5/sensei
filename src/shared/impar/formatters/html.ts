@@ -392,7 +392,6 @@ export function formatarHtmlMinimo(code: string): FormatadorMinimoResult {
     if (tag.isVoid || tag.isSelfClosing) {
       const tagStr = buildTagString(tag.name ?? '', tag.attrs, false, tag.isVoid || tag.isSelfClosing);
       outLines.push(indentStr(indent) + tagStr);
-      _lastWasBlock = tag.isBlock;
       i++;
       continue;
     }
